@@ -27,7 +27,7 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
 
   if (submitted) {
     return (
-      <div className={`p-12 border ${dark ? 'border-pink/20 bg-pink/5' : 'border-pink/20 bg-pink/5'} flex flex-col items-center justify-center min-h-[400px]`}>
+      <div className={`p-12 border ${dark ? 'border-white/20 bg-white/5' : 'border-black/10 bg-black/[0.03]'} flex flex-col items-center justify-center min-h-[400px]`}>
         <h3 className={`font-display text-2xl mb-3 ${dark ? 'text-white' : 'text-black'}`}>
           Thank you!
         </h3>
@@ -38,8 +38,8 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
     );
   }
 
-  const inputClasses = `w-full bg-transparent border-b ${dark ? 'border-white/25 text-white placeholder:text-white/30 focus:border-pink' : 'border-black/25 text-black placeholder:text-black/30 focus:border-pink'} py-3 font-body text-base outline-none transition-colors`;
-  const labelClasses = `section-label block mb-2 ${dark ? 'text-pink' : 'text-pink'}`;
+  const inputClasses = `w-full bg-transparent border-b ${dark ? 'border-white/25 text-white placeholder:text-white/30 focus:border-white' : 'border-black/25 text-black placeholder:text-black/30 focus:border-near-black'} py-3 font-body text-base outline-none transition-colors`;
+  const labelClasses = `section-label block mb-2 ${dark ? 'text-white/50' : 'text-black/45'}`;
 
   const serviceOptions = [
     'Frameworks & Courses',
@@ -51,7 +51,7 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
   ];
 
   return (
-    <form onSubmit={handleSubmit} className={`p-6 md:p-12 border ${dark ? 'border-pink/15 bg-pink/[0.03]' : 'border-pink/15 bg-pink/[0.03]'}`}>
+    <form onSubmit={handleSubmit} className={`p-6 md:p-12 border ${dark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'}`}>
       <div className="space-y-6">
         <div>
           <label className={labelClasses}>Name *</label>

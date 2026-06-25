@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 interface ButtonProps {
   text: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'solid' | 'outline';
   dark?: boolean;
   href?: string;
   onClick?: () => void;
@@ -21,15 +21,32 @@ export default function Button({
 }: ButtonProps) {
   const baseClasses = 'inline-block px-8 py-3.5 font-body text-sm font-medium transition-all duration-250 ease-out cursor-pointer';
 
-  // Primary: bright pink CTA (always pink regardless of dark/light)
+  // Pink brand CTA (kept for pages that still want the accent)
   const primaryClasses = 'bg-pink text-white border border-pink hover:bg-pink-dark hover:border-pink-dark';
 
-  // Secondary: outlined pink
+  // Pink outlined
   const secondaryClasses = dark
     ? 'bg-transparent text-pink border border-pink hover:bg-pink hover:text-white'
     : 'bg-transparent text-pink border border-pink hover:bg-pink hover:text-white';
 
-  const variantClasses = variant === 'primary' ? primaryClasses : secondaryClasses;
+  // Neutral solid: authoritative, high-contrast
+  const solidClasses = dark
+    ? 'bg-white text-near-black border border-white hover:bg-white/90'
+    : 'bg-near-black text-white border border-near-black hover:bg-black';
+
+  // Neutral outline
+  const outlineClasses = dark
+    ? 'bg-transparent text-white border border-white hover:bg-white hover:text-near-black'
+    : 'bg-transparent text-near-black border border-near-black hover:bg-near-black hover:text-white';
+
+  const variantClasses =
+    variant === 'primary'
+      ? primaryClasses
+      : variant === 'secondary'
+        ? secondaryClasses
+        : variant === 'solid'
+          ? solidClasses
+          : outlineClasses;
 
   if (href) {
     if (href.startsWith('/')) {

@@ -78,8 +78,8 @@ export default function Navigation({ isHome = false }: NavigationProps) {
               onClick={(e) => handleNavClick(e, link.href)}
               className={`font-body text-sm font-medium transition-colors duration-300 cursor-pointer ${
                 isDark
-                  ? 'text-white/80 hover:text-pink'
-                  : 'text-black/70 hover:text-pink'
+                  ? 'text-white/70 hover:text-white'
+                  : 'text-black/70 hover:text-near-black'
               }`}
             >
               {link.label}
@@ -101,14 +101,14 @@ export default function Navigation({ isHome = false }: NavigationProps) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-20 left-0 right-0 bg-white border-b border-pink/20 md:hidden shadow-lg">
+        <div className="absolute top-20 left-0 right-0 bg-white border-b border-black/10 md:hidden shadow-lg">
           <nav className="flex flex-col p-6 gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="font-body text-base font-medium text-black/80 hover:text-pink"
+                className="font-body text-base font-medium text-black/80 hover:text-near-black"
               >
                 {link.label}
               </a>

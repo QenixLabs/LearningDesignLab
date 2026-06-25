@@ -25,8 +25,8 @@ export default function StatCounter({ value, suffix, prefix = '', label, light =
         {({ countUpRef }) => (
           <span
             ref={countUpRef}
-            className={`font-display text-[3.5vw] md:text-[2.5vw] leading-none tracking-[-0.01em] ${
-              light ? 'text-pink' : 'text-pink'
+            className={`font-display text-3xl md:text-4xl lg:text-[2.5vw] leading-none tracking-[-0.01em] ${
+              light ? 'text-white' : 'text-near-black'
             }`}
           />
         )}

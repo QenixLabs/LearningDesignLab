@@ -32,7 +32,7 @@ const services = [
 export default function ServicesSection() {
   return (
     <section id="services">
-      <div className="bg-black py-20 md:py-32 relative overflow-hidden">
+      <div className="bg-near-black py-20 md:py-32 relative overflow-hidden">
         <div className="page-margin max-content relative z-10">
           <ScrollReveal>
             <SectionLabel text="Our services" light />
@@ -67,7 +67,7 @@ export default function ServicesSection() {
                     </p>
                     <a
                       href={s.link}
-                      className="absolute bottom-4 right-4 text-pink hover:text-pink-light transition-colors"
+                      className="absolute bottom-4 right-4 text-white/40 hover:text-white transition-colors"
                       aria-label={`Explore ${s.title}`}
                     >
                       <ArrowUpRight className="w-5 h-5" />
@@ -91,7 +91,7 @@ export default function ServicesSection() {
                   </p>
                   <a
                     href={s.link}
-                    className="text-pink hover:text-pink-light transition-colors"
+                    className="text-white/40 hover:text-white transition-colors"
                     aria-label={`Explore ${s.title}`}
                   >
                     <ArrowUpRight className="w-5 h-5" />

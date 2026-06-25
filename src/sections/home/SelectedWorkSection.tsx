@@ -54,7 +54,7 @@ function PlaceholderImage({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-white/5 border border-pink/10 rounded-md flex items-center justify-center',
+        'bg-white/5 border border-white/10 rounded-md flex items-center justify-center',
         className
       )}
     >
@@ -77,8 +77,8 @@ function BentoPanel({
   return (
     <div
       className={cn(
-        'border border-pink/15 bg-black/40 p-6 md:p-8 flex flex-col h-full',
-        'hover:bg-pink/[0.03] transition-colors duration-300',
+        'border border-white/15 bg-white/[0.03] p-6 md:p-8 flex flex-col h-full',
+        'hover:bg-white/[0.05] transition-colors duration-300',
         className
       )}
     >
@@ -94,13 +94,13 @@ function SeeMoreButton({ className }: { className?: string }) {
 
 export default function SelectedWorkSection() {
   return (
-    <section id="projects" className="bg-black py-20 md:py-32 relative overflow-hidden">
-      {/* Pink neuron motif overlay */}
+    <section id="projects" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
+      {/* Subtle grid motif overlay */}
       <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FF1493' stroke-width='0.6'%3E%3Cpath d='M10 50 Q30 20 50 50 T90 50'/%3E%3Cpath d='M0 30 Q20 5 40 30 T80 30'/%3E%3Cpath d='M20 70 Q40 45 60 70 T100 70'/%3E%3Cpath d='M5 80 Q25 60 45 80 T85 80'/%3E%3Ccircle cx='10' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='50' cy='50' r='2.5' fill='%23FF1493'/%3E%3Ccircle cx='90' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='40' cy='30' r='1.5' fill='%23C71585'/%3E%3Ccircle cx='60' cy='70' r='1.5' fill='%23C71585'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px',
         }}
       />
 
@@ -124,7 +124,7 @@ export default function SelectedWorkSection() {
                   >
                     <PlaceholderImage className="w-20 h-16 md:w-24 md:h-20 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <span className="section-label text-pink block mb-1">
+                      <span className="section-label text-white/50 block mb-1">
                         {project.client}
                       </span>
                       <h4 className="font-body text-base font-medium text-white leading-snug">
@@ -146,7 +146,7 @@ export default function SelectedWorkSection() {
                   {scholarships.map((item) => (
                     <div
                       key={item}
-                      className="border-b border-pink/10 pb-4 last:border-0 last:pb-0 cursor-pointer hover:text-pink transition-colors"
+                      className="border-b border-white/10 pb-4 last:border-0 last:pb-0 cursor-pointer hover:text-white transition-colors"
                     >
                       <p className="font-body text-sm md:text-base text-white/80 leading-relaxed">
                         {item}
@@ -165,7 +165,7 @@ export default function SelectedWorkSection() {
                     {blogs.map((blog) => (
                       <div
                         key={blog}
-                        className="border border-pink/10 p-3 text-center cursor-pointer hover:border-pink/30 hover:bg-pink/5 transition-colors"
+                        className="border border-white/10 p-3 text-center cursor-pointer hover:border-white/25 hover:bg-white/5 transition-colors"
                       >
                         <span className="font-body text-sm text-white/80">
                           {blog}
@@ -188,7 +188,7 @@ export default function SelectedWorkSection() {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-12 h-12 flex-shrink-0 object-cover rounded-md border border-pink/10 bg-white"
+                          className="w-12 h-12 flex-shrink-0 object-cover rounded-md border border-white/10 bg-white"
                         />
                         <p className="font-body text-sm text-white/80 leading-snug">
                           {item.title}

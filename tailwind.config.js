@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Instrument Serif"', 'serif'],
-        body: ['"Space Grotesk"', 'sans-serif'],
+        display: ['"Source Serif 4"', 'serif'],
+        body: ['"Source Sans 3"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,24 +52,19 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Learning Design Labs brand colors
+        // Client colour palette
         'pink': {
-          DEFAULT: '#FF1493',
-          dark: '#E01283',
-          light: '#FF4DA8',
+          DEFAULT: '#E5009C',
+          dark: '#A60573',
+          light: '#FF4DB5',
         },
         'magenta': {
-          DEFAULT: '#C71585',
-          dark: '#A81170',
-          light: '#D9449E',
+          DEFAULT: '#A60573',
+          dark: '#7A0456',
+          light: '#C4188C',
         },
-        'purple': {
-          DEFAULT: '#B026FF',
-          dark: '#960EE8',
-          light: '#C55FFF',
-        },
-        'warm-grey': '#f4f4f4',
-        'near-black': '#111111',
+        'warm-grey': '#EFEFEF',
+        'near-black': '#000000',
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

@@ -4,13 +4,13 @@ import ContactForm from '../../components/ContactForm';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-black py-20 md:py-32 relative overflow-hidden">
-      {/* Pink neuron motif overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+    <section id="contact" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
+      {/* Subtle grid motif overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FF1493' stroke-width='0.6'%3E%3Cpath d='M10 50 Q30 20 50 50 T90 50'/%3E%3Cpath d='M0 30 Q20 5 40 30 T80 30'/%3E%3Cpath d='M20 70 Q40 45 60 70 T100 70'/%3E%3Cpath d='M5 80 Q25 60 45 80 T85 80'/%3E%3Ccircle cx='10' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='50' cy='50' r='2.5' fill='%23FF1493'/%3E%3Ccircle cx='90' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='40' cy='30' r='1.5' fill='%23C71585'/%3E%3Ccircle cx='60' cy='70' r='1.5' fill='%23C71585'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px',
         }}
       />
       
@@ -35,7 +35,7 @@ export default function ContactSection() {
             <ScrollReveal delay={0.3}>
               <a
                 href="mailto:hello@learningdesignlabs.com"
-                className="font-body text-base text-pink hover:text-pink-light transition-colors"
+                className="font-body text-base text-white/50 hover:text-white transition-colors"
               >
                 hello@learningdesignlabs.com
               </a>

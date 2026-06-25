@@ -10,13 +10,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden">
-      {/* Subtle pink neuron motif overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+    <footer className="bg-near-black text-white relative overflow-hidden">
+      {/* Subtle grid motif overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FF1493' stroke-width='0.5'%3E%3Cpath d='M10 30 Q20 10 30 30 T50 30'/%3E%3Cpath d='M5 20 Q15 5 25 20 T45 20'/%3E%3Cpath d='M15 40 Q25 25 35 40 T55 40'/%3E%3Ccircle cx='10' cy='30' r='1.5' fill='%23FF1493'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23FF1493'/%3E%3Ccircle cx='50' cy='30' r='1.5' fill='%23FF1493'/%3E%3Ccircle cx='5' cy='20' r='1' fill='%23FF1493'/%3E%3Ccircle cx='25' cy='20' r='1' fill='%23FF1493'/%3E%3Ccircle cx='45' cy='20' r='1' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '120px 120px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px',
         }}
       />
       
@@ -34,13 +34,13 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <span className="section-label text-pink mb-4 block">Navigate</span>
+            <span className="section-label text-white/50 mb-4 block">Navigate</span>
             <nav className="flex flex-col gap-3">
               {footerLinks.map((link) => (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="text-white/70 hover:text-pink text-sm transition-colors"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -50,11 +50,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <span className="section-label text-pink mb-4 block">Get in Touch</span>
+            <span className="section-label text-white/50 mb-4 block">Get in Touch</span>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:hello@learningdesignlabs.com"
-                className="text-white/70 hover:text-pink text-sm transition-colors"
+                className="text-white/70 hover:text-white text-sm transition-colors"
               >
                 hello@learningdesignlabs.com
               </a>
@@ -62,7 +62,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-pink text-sm transition-colors"
+                className="text-white/70 hover:text-white text-sm transition-colors"
               >
                 LinkedIn
               </a>
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-6 border-t border-pink/20 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-xs">
             &copy; {new Date().getFullYear()} Learning Design Labs. All rights reserved.
           </p>
