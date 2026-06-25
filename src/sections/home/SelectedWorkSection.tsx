@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
 import SectionLabel from '../../components/SectionLabel';
-import { Button } from '@/components/ui/button';
+import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
 
 const projects = [
@@ -89,17 +89,7 @@ function BentoPanel({
 }
 
 function SeeMoreButton({ className }: { className?: string }) {
-  return (
-    <Button
-      variant="outline"
-      className={cn(
-        'border-pink text-pink hover:bg-pink/10 hover:text-pink rounded-full px-6',
-        className
-      )}
-    >
-      See More
-    </Button>
-  );
+  return <Button text="See More" variant="secondary" className={className} />;
 }
 
 export default function SelectedWorkSection() {

@@ -83,23 +83,23 @@
   }
 
   .display-xl {
-    @apply font-display text-[8vw] leading-[0.9] tracking-[-0.02em];
+    @apply font-display text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.9] tracking-[-0.02em];
   }
 
   .display-lg {
-    @apply font-display text-[6.5vw] leading-[0.95] tracking-[-0.02em];
+    @apply font-display text-[8vw] md:text-[6.5vw] lg:text-[5vw] leading-[0.95] tracking-[-0.02em];
   }
 
   .display-md {
-    @apply font-display text-[3.5vw] leading-[1.0] tracking-[-0.01em];
+    @apply font-display text-2xl md:text-3xl lg:text-[3.5vw] leading-[1.0] tracking-[-0.01em];
   }
 
   .heading-xl {
-    @apply font-display text-[2.5vw] leading-[1.1] tracking-[-0.01em];
+    @apply font-display text-3xl md:text-4xl lg:text-[2.5vw] leading-[1.1] tracking-[-0.01em];
   }
 
   .heading-lg {
-    @apply font-body text-[1.5vw] font-medium leading-[1.2];
+    @apply font-body text-lg md:text-xl lg:text-[1.5vw] font-medium leading-[1.2];
   }
 
   .heading-md {
