@@ -4,7 +4,7 @@ import ContactForm from '../../components/ContactForm';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="bg-black py-32 relative overflow-hidden">
+    <section id="contact" className="bg-black py-20 md:py-32 relative overflow-hidden">
       {/* Pink neuron motif overlay */}
       <div 
         className="absolute inset-0 opacity-[0.05] pointer-events-none"

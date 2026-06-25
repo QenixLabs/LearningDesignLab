@@ -32,18 +32,18 @@ const services = [
 export default function ServicesSection() {
   return (
     <section id="services">
-      <div className="bg-black py-32 relative overflow-hidden">
+      <div className="bg-black py-20 md:py-32 relative overflow-hidden">
         <div className="page-margin max-content relative z-10">
           <ScrollReveal>
             <SectionLabel text="Our services" light />
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="heading-xl text-white mb-16">Our Practice Areas</h2>
+            <h2 className="heading-xl text-white mb-10 md:mb-16">Our Practice Areas</h2>
           </ScrollReveal>
 
           {/* Desktop table layout */}
           <ScrollReveal delay={0.15}>
-            <div className="hidden md:block border-t border-b border-white/10">
+            <div className="hidden lg:block border-t border-b border-white/10">
               <div className="grid grid-cols-4">
                 {services.map((s) => (
                   <div
@@ -79,7 +79,7 @@ export default function ServicesSection() {
           </ScrollReveal>
 
           {/* Mobile stacked layout */}
-          <div className="md:hidden space-y-0 border-t border-white/10">
+          <div className="lg:hidden flex flex-col border-t border-white/10">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={0.1 * i}>
                 <div className="border-b border-white/10 px-2 py-8 relative">

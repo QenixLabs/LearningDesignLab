@@ -31,18 +31,18 @@ const solutions = [
 
 export default function DifferentiatorsSection() {
   return (
-    <section id="about" className="bg-warm-grey py-32 relative overflow-hidden">
+    <section id="about" className="bg-warm-grey py-20 md:py-32 relative overflow-hidden">
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <SectionLabel text="Outcomes/benefits" light={false} />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-black mb-16">What Defines Our Solutions</h2>
+          <h2 className="heading-xl text-black mb-10 md:mb-16">What Defines Our Solutions</h2>
         </ScrollReveal>
 
         {/* Desktop table layout */}
         <ScrollReveal delay={0.15}>
-          <div className="hidden md:block border-t border-b border-black/10">
+          <div className="hidden lg:block border-t border-b border-black/10">
             <div className="grid grid-cols-5">
               {solutions.map((s) => (
                 <div
@@ -71,7 +71,7 @@ export default function DifferentiatorsSection() {
         </ScrollReveal>
 
         {/* Mobile stacked layout */}
-        <div className="md:hidden space-y-0 border-t border-black/10">
+        <div className="lg:hidden flex flex-col border-t border-black/10">
           {solutions.map((s, i) => (
             <ScrollReveal key={s.title} delay={0.1 * i}>
               <div className="border-b border-black/10 px-2 py-8">

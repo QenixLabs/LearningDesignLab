@@ -62,7 +62,7 @@ export default function HeroSection() {
               <SectionLabel text="LEARNING DESIGN LABS" light />
             </div>
 
-            <h1 className="hero-heading font-display uppercase text-[8vw] md:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
+            <h1 className="hero-heading font-display uppercase text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
               Designing Learning That Works
             </h1>
 

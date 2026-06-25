@@ -47,7 +47,7 @@ export default function TestimonialsSection() {
   }, [emblaApi, scrollNext]);
 
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       {/* Subtle magenta neuron motif on right */}
       <div
         className="absolute top-0 right-0 w-1/3 h-full opacity-[0.025] pointer-events-none"
@@ -62,7 +62,7 @@ export default function TestimonialsSection() {
           <SectionLabel text="What Clients Say" light={false} />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-black mb-16">Client Voices</h2>
+          <h2 className="heading-xl text-black mb-10 md:mb-16">Client Voices</h2>
         </ScrollReveal>
       </div>
 

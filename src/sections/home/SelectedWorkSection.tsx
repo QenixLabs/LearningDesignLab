@@ -94,7 +94,7 @@ function SeeMoreButton({ className }: { className?: string }) {
 
 export default function SelectedWorkSection() {
   return (
-    <section id="projects" className="bg-black py-32 relative overflow-hidden">
+    <section id="projects" className="bg-black py-20 md:py-32 relative overflow-hidden">
       {/* Pink neuron motif overlay */}
       <div
         className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -109,7 +109,7 @@ export default function SelectedWorkSection() {
           <SectionLabel text="Our Work (So Far)" light />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-white mb-16">Selected Projects</h2>
+          <h2 className="heading-xl text-white mb-10 md:mb-16">Selected Projects</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
