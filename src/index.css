@@ -1,0 +1,116 @@
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 328 100% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 328 100% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 328 100% 54%;
+    --radius: 2px;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 328 100% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 328 100% 54%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #FF1493;
+    color: #ffffff;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-body text-xs font-medium uppercase tracking-[0.06em];
+  }
+
+  .section-label-light {
+    @apply section-label text-white/50;
+  }
+
+  .section-label-dark {
+    @apply section-label text-black/45;
+  }
+
+  .section-label-pink {
+    @apply section-label text-pink;
+  }
+
+  .display-xl {
+    @apply font-display text-[8vw] leading-[0.9] tracking-[-0.02em];
+  }
+
+  .display-lg {
+    @apply font-display text-[6.5vw] leading-[0.95] tracking-[-0.02em];
+  }
+
+  .display-md {
+    @apply font-display text-[3.5vw] leading-[1.0] tracking-[-0.01em];
+  }
+
+  .heading-xl {
+    @apply font-display text-[2.5vw] leading-[1.1] tracking-[-0.01em];
+  }
+
+  .heading-lg {
+    @apply font-body text-[1.5vw] font-medium leading-[1.2];
+  }
+
+  .heading-md {
+    @apply font-body text-lg font-medium leading-[1.3];
+  }
+
+  .page-margin {
+    @apply px-[3vw];
+  }
+
+  .max-content {
+    @apply max-w-[1680px] mx-auto;
+  }
+}
