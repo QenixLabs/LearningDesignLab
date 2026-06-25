@@ -7,6 +7,7 @@ const testimonials = [
   {
     quote:
       'The courses are highly comprehensive and well suited for e-learning, offering practical insights with a strong balance of personalisation and scaffolded key concepts.',
+      highlight: 'highly comprehensive and well suited for e-learning',
     attribution: 'Myat Thiri, Programme Officer, UNESCO Myanmar',
   },
   {
