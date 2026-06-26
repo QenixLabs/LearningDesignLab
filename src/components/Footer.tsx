@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div>
             <Link to="/" className="font-body text-sm font-medium uppercase tracking-[0.08em] text-white mb-4 block">
-              Learning Design Labs
+              Learning Design Lab
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Research rigour and implementer's realism for organisations that want learning that actually works.
@@ -68,7 +68,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-xs">
-            &copy; {new Date().getFullYear()} Learning Design Labs. All rights reserved.
+            &copy; {new Date().getFullYear()} Learning Design Lab. All rights reserved.
           </p>
           <p className="text-white/40 text-xs">
             Designed with evidence. Built for impact.

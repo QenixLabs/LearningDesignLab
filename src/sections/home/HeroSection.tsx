@@ -44,53 +44,35 @@ export default function HeroSection() {
         fadeStart="70%"
       />
 
-      <div
-        className="md:hidden absolute top-0 right-0 w-[85%] h-[85%] opacity-[0.08] pointer-events-none bg-no-repeat bg-right-top bg-contain"
-        style={{ backgroundImage: `url('/designs/image18.png')` }}
-      />
-
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
-        <div className="flex gap-8 max-md:flex-col">
-          <div className="w-[55%] max-md:w-full">
-            <div className="hero-label">
-              <SectionLabel text="LEARNING DESIGN LABS" light />
-            </div>
-
-            <h1 className="hero-heading font-display uppercase text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
-              Designing Learning That Works
-            </h1>
-
-            <p className="hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[55ch] mb-12">
-              We are an impact-driven, international learning design firm dedicated to enhancing the
-              effectiveness of skilling, competency development and educational interventions. We partner
-              with organizations and educational institutions to build evidence-informed, contextually
-              grounded designs that translate learning into real-world outcomes.
-            </p>
-
-            <div className="hero-buttons flex flex-wrap gap-4">
-              <Button
-                text="Work With Us"
-                variant="primary"
-                onClick={() => handleScrollTo('contact')}
-              />
-              <Button
-                text="Explore Services"
-                variant="secondary"
-                dark
-                onClick={() => handleScrollTo('services')}
-              />
-            </div>
+        <div className="w-full max-w-[60ch] lg:max-w-[75%]">
+          <div className="hero-label">
+            <SectionLabel text="LEARNING DESIGN LAB" light />
           </div>
 
-          {/* Right side visual */}
-          <div className="w-[45%] max-md:hidden flex items-start justify-end">
-            <div className="bg-white p-2 relative overflow-hidden shadow-2xl">
-              <img
-                src="/designs/image18.png"
-                alt=""
-                className="max-h-[55vh] w-auto object-contain relative z-10"
-              />
-            </div>
+          <h1 className="hero-heading font-display uppercase text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
+            Designing Learning That Works
+          </h1>
+
+          <p className="hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[55ch] mb-12">
+            We are an impact-driven, international learning design firm dedicated to enhancing the
+            effectiveness of skilling, competency development and educational interventions. We partner
+            with organizations and educational institutions to build evidence-informed, contextually
+            grounded designs that translate learning into real-world outcomes.
+          </p>
+
+          <div className="hero-buttons flex flex-wrap gap-4">
+            <Button
+              text="Work With Us"
+              variant="primary"
+              onClick={() => handleScrollTo('contact')}
+            />
+            <Button
+              text="Explore Services"
+              variant="secondary"
+              dark
+              onClick={() => handleScrollTo('services')}
+            />
           </div>
         </div>
 

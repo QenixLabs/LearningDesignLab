@@ -66,7 +66,7 @@ export default function Navigation({ isHome = false }: NavigationProps) {
           }`}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          Learning Design Labs
+          Learning Design Lab
         </Link>
 
         {/* Desktop Nav */}

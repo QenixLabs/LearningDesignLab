@@ -10,22 +10,22 @@ interface NeuronMotifProps {
   className?: string;
 }
 
-const SIMPLE_SVG = `<svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><g fill='none' stroke='{color}' stroke-width='0.6'><path d='M10 50 Q30 20 50 50 T90 50'/><path d='M0 30 Q20 5 40 30 T80 30'/><path d='M20 70 Q40 45 60 70 T100 70'/><circle cx='10' cy='50' r='2' fill='{color}'/><circle cx='50' cy='50' r='2.5' fill='{color}'/><circle cx='90' cy='50' r='2' fill='{color}'/></g></svg>`;
-
-const RICH_SVG = `<svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><g fill='none' stroke='{color}' stroke-width='0.6'><path d='M10 50 Q30 20 50 50 T90 50'/><path d='M0 30 Q20 5 40 30 T80 30'/><path d='M20 70 Q40 45 60 70 T100 70'/><path d='M5 80 Q25 60 45 80 T85 80'/><circle cx='10' cy='50' r='2' fill='{color}'/><circle cx='50' cy='50' r='2.5' fill='{color}'/><circle cx='90' cy='50' r='2' fill='{color}'/><circle cx='40' cy='30' r='1.5' fill='{color}'/><circle cx='60' cy='70' r='1.5' fill='{color}'/></g></svg>`;
+const IMAGE_SRC = '/designs/image18.png';
 
 export default function NeuronMotif({
-  variant = 'simple',
-  color = '#FF1493',
+  variant,
+  color,
   opacity = 0.03,
-  size = 250,
+  size,
   fade = 'none',
   fadeStart = '0%',
   className,
 }: NeuronMotifProps) {
-  const svg = variant === 'rich' ? RICH_SVG : SIMPLE_SVG;
-  const coloredSvg = svg.replaceAll('{color}', color);
-  const encodedSvg = encodeURIComponent(coloredSvg);
+  // variant + color no longer apply: raster image cannot be recolored.
+  // size no longer applies: image covers the container instead of tiling.
+  void variant;
+  void color;
+  void size;
 
   const maskStyle =
     fade !== 'none'
@@ -40,8 +40,10 @@ export default function NeuronMotif({
       className={cn('absolute inset-0 pointer-events-none', className)}
       style={{
         opacity,
-        backgroundImage: `url("data:image/svg+xml,${encodedSvg}")`,
-        backgroundSize: `${size}px ${size}px`,
+        backgroundImage: `url("${IMAGE_SRC}")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         ...maskStyle,
       }}
     />
