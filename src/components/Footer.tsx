@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import NeuronMotif from './NeuronMotif';
 
 export default function Footer() {
   const footerLinks = [
@@ -11,15 +12,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-near-black text-white relative overflow-hidden">
-      {/* Subtle grid motif overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
-        }}
-      />
-      
+      {/* Neuron motif overlay */}
+      <NeuronMotif color="#FF1493" opacity={0.12} size={250} />
+
       <div className="page-margin max-content pt-24 pb-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Logo & Tagline */}

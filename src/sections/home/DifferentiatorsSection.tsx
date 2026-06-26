@@ -1,5 +1,6 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import SectionLabel from '../../components/SectionLabel';
+import NeuronMotif from '../../components/NeuronMotif';
 
 const solutions = [
   {
@@ -32,6 +33,8 @@ const solutions = [
 export default function DifferentiatorsSection() {
   return (
     <section id="about" className="bg-warm-grey py-20 md:py-32 relative overflow-hidden">
+      <NeuronMotif color="#000000" opacity={0.06} size={220} />
+
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <SectionLabel text="Outcomes/benefits" light={false} />

@@ -1,5 +1,6 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import SectionLabel from '../../components/SectionLabel';
+import NeuronMotif from '../../components/NeuronMotif';
 import { ArrowUpRight } from 'lucide-react';
 
 const services = [
@@ -33,6 +34,8 @@ export default function ServicesSection() {
   return (
     <section id="services">
       <div className="bg-near-black py-20 md:py-32 relative overflow-hidden">
+        <NeuronMotif color="#FF1493" opacity={0.12} size={250} />
+
         <div className="page-margin max-content relative z-10">
           <ScrollReveal>
             <SectionLabel text="Our services" light />

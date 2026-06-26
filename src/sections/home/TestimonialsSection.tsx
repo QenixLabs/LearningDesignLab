@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import ScrollReveal from '../../components/ScrollReveal';
 import SectionLabel from '../../components/SectionLabel';
+import NeuronMotif from '../../components/NeuronMotif';
 
 const testimonials = [
   {
@@ -69,14 +70,8 @@ export default function TestimonialsSection() {
 
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
-      {/* Subtle grid motif */}
-      <div
-        className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23000000' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Neuron motif */}
+      <NeuronMotif color="#000000" opacity={0.06} size={220} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>

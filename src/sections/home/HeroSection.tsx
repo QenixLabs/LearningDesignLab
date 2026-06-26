@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionLabel from '../../components/SectionLabel';
 import Button from '../../components/Button';
 import StatCounter from '../../components/StatCounter';
+import NeuronMotif from '../../components/NeuronMotif';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,13 +34,14 @@ export default function HeroSection() {
 
   return (
     <section ref={heroRef} className="bg-black min-h-screen flex flex-col justify-center relative overflow-hidden">
-      {/* Subtle grid motif overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
-        }}
+      {/* Neuron motif — full fold, strongest on right, fading left */}
+      <NeuronMotif
+        variant="rich"
+        color="#FF1493"
+        opacity={0.18}
+        size={220}
+        fade="left"
+        fadeStart="70%"
       />
 
       <div

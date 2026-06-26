@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
 import SectionLabel from '../../components/SectionLabel';
 import Button from '../../components/Button';
+import NeuronMotif from '../../components/NeuronMotif';
 import { cn } from '@/lib/utils';
 
 const projects = [
@@ -95,14 +96,8 @@ function SeeMoreButton({ className }: { className?: string }) {
 export default function SelectedWorkSection() {
   return (
     <section id="projects" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
-      {/* Subtle grid motif overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5'%3E%3Cpath d='M0 0h60v60H0z'/%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Neuron motif overlay */}
+      <NeuronMotif color="#FF1493" opacity={0.12} size={250} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
