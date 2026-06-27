@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Source Serif 4"', 'serif'],
-        body: ['"Source Sans 3"', 'sans-serif'],
+        display: ['"Lexend Deca"', 'sans-serif'],
+        body: ['"Google Sans Code"', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,14 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const testimonials = [
   {
     quote:
       'The courses are highly comprehensive and well suited for e-learning, offering practical insights with a strong balance of personalisation and scaffolded key concepts.',
-      highlight: 'highly comprehensive and well suited for e-learning',
+    highlight: 'highly comprehensive and well suited for e-learning',
     attribution: 'Myat Thiri, Programme Officer, UNESCO Myanmar',
   },
   {
@@ -49,50 +46,24 @@ function QuoteWithHighlight({ quote, highlight }: { quote: string; highlight?: s
 }
 
 export default function TestimonialsSection() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: 'start',
-    dragFree: true,
-  });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi && !isHovered) {
-      emblaApi.scrollNext();
-    }
-  }, [emblaApi, isHovered]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const interval = setInterval(scrollNext, 4000);
-    return () => clearInterval(interval);
-  }, [emblaApi, scrollNext]);
+  const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
-      {/* Neuron motif */}
       <NeuronMotif color="#000000" opacity={0.06} size={220} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <SectionLabel text="What Clients Say" light={false} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black mb-10 md:mb-16">Client Voices</h2>
         </ScrollReveal>
       </div>
 
-      <div
-        ref={emblaRef}
-        className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="flex gap-6 pl-[3vw]">
-          {testimonials.map((t, i) => (
+      <div className="overflow-hidden">
+        <div className="animate-marquee flex gap-6 pl-[3vw] w-max">
+          {slides.map((t, i) => (
             <div
-              key={i}
-              className="flex-[0_0_320px] md:flex-[0_0_400px] border border-black/10 p-6 md:p-8 bg-white"
+              key={`${i}-${t.attribution}`}
+              className="flex-[0_0_320px] md:flex-[0_0_400px] border border-black/10 rounded-lg p-6 md:p-8 bg-white shadow-sm"
             >
               <span className="font-display text-5xl text-black/10 leading-none block mb-4">
                 &ldquo;
