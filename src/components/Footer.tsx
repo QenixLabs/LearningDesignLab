@@ -45,7 +45,6 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <span className="section-label text-white/50 mb-4 block">Get in Touch</span>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:hello@learningdesignlabs.com"

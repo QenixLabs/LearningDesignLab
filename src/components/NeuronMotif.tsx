@@ -44,6 +44,7 @@ export default function NeuronMotif({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
         ...maskStyle,
       }}
     />

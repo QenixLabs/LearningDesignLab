@@ -1,5 +1,4 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const solutions = [
@@ -37,48 +36,14 @@ export default function DifferentiatorsSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <SectionLabel text="Outcomes/benefits" light={false} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black mb-10 md:mb-16">What Defines Our Solutions</h2>
         </ScrollReveal>
 
-        {/* Desktop table layout */}
-        <ScrollReveal delay={0.15}>
-          <div className="hidden lg:block border-t border-b border-black/10">
-            <div className="grid grid-cols-5">
-              {solutions.map((s) => (
-                <div
-                  key={s.title}
-                  className="px-6 py-8 border-r border-black/10 last:border-r-0 text-center"
-                >
-                  <h3 className="font-body text-lg font-medium text-black leading-snug">
-                    {s.title}
-                  </h3>
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-5 border-t border-black/10">
-              {solutions.map((s) => (
-                <div
-                  key={`${s.title}-desc`}
-                  className="px-6 py-8 border-r border-black/10 last:border-r-0 text-center"
-                >
-                  <p className="font-body text-sm leading-relaxed text-black/60">
-                    {s.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Mobile stacked layout */}
-        <div className="lg:hidden flex flex-col border-t border-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {solutions.map((s, i) => (
             <ScrollReveal key={s.title} delay={0.1 * i}>
-              <div className="border-b border-black/10 px-2 py-8">
-                <h3 className="font-body text-lg font-medium text-black mb-3">
+              <div className="group h-full bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-pink hover:shadow-pink/10">
+                <h3 className="font-display text-lg font-semibold text-black leading-snug mb-4 group-hover:text-pink transition-colors">
                   {s.title}
                 </h3>
                 <p className="font-body text-sm leading-relaxed text-black/60">

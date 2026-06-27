@@ -1,5 +1,4 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import NeuronMotif from '../../components/NeuronMotif';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -38,67 +37,28 @@ export default function ServicesSection() {
 
         <div className="page-margin max-content relative z-10">
           <ScrollReveal>
-            <SectionLabel text="Our services" light />
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
             <h2 className="heading-xl text-white mb-10 md:mb-16">Our Practice Areas</h2>
           </ScrollReveal>
 
-          {/* Desktop table layout */}
-          <ScrollReveal delay={0.15}>
-            <div className="hidden lg:block border-t border-b border-white/10">
-              <div className="grid grid-cols-4">
-                {services.map((s) => (
-                  <div
-                    key={s.title}
-                    className="px-6 py-8 border-r border-white/10 last:border-r-0 text-center"
-                  >
-                    <h3 className="font-body text-lg font-medium text-white leading-snug">
-                      {s.title}
-                    </h3>
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-4 border-t border-white/10">
-                {services.map((s) => (
-                  <div
-                    key={`${s.title}-desc`}
-                    className="relative px-6 py-8 border-r border-white/10 last:border-r-0"
-                  >
-                    <p className="font-body text-sm leading-relaxed text-white/60 mb-10">
-                      {s.description}
-                    </p>
-                    <a
-                      href={s.link}
-                      className="absolute bottom-4 right-4 text-white/40 hover:text-white transition-colors"
-                      aria-label={`Explore ${s.title}`}
-                    >
-                      <ArrowUpRight className="w-5 h-5" />
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Mobile stacked layout */}
-          <div className="lg:hidden flex flex-col border-t border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={0.1 * i}>
-                <div className="border-b border-white/10 px-2 py-8 relative">
-                  <h3 className="font-body text-lg font-medium text-white mb-3 pr-8">
+                <div className="group h-full flex flex-col bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:border-pink hover:shadow-xl hover:shadow-pink/10">
+                  <h3 className="font-display text-lg font-semibold text-white leading-snug mb-4 group-hover:text-pink transition-colors">
                     {s.title}
                   </h3>
-                  <p className="font-body text-sm leading-relaxed text-white/60 mb-6">
+                  <p className="font-body text-sm leading-relaxed text-white/60 mb-8 flex-1">
                     {s.description}
                   </p>
-                  <a
-                    href={s.link}
-                    className="text-white/40 hover:text-white transition-colors"
-                    aria-label={`Explore ${s.title}`}
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
+                  <div className="flex justify-end">
+                    <a
+                      href={s.link}
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pink text-white hover:bg-pink-light transition-colors"
+                      aria-label={`Explore ${s.title}`}
+                    >
+                      <ArrowUpRight className="w-7 h-7" />
+                    </a>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}

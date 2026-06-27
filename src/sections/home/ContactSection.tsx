@@ -1,5 +1,4 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import ContactForm from '../../components/ContactForm';
 import NeuronMotif from '../../components/NeuronMotif';
 
@@ -14,9 +13,6 @@ export default function ContactSection() {
           {/* Left column */}
           <div>
             <ScrollReveal>
-              <SectionLabel text="Get in Touch" light />
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
               <h2 className="heading-xl text-white mb-6">
                 Let's Build Learning That Drives Impact
               </h2>

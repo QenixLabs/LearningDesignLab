@@ -1,6 +1,5 @@
 import { type ReactNode } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import Button from '../../components/Button';
 import NeuronMotif from '../../components/NeuronMotif';
 import { cn } from '@/lib/utils';
@@ -101,9 +100,6 @@ export default function SelectedWorkSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <SectionLabel text="Our Work (So Far)" light />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-white mb-10 md:mb-16">Selected Projects</h2>
         </ScrollReveal>
 

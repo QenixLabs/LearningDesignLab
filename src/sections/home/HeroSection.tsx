@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionLabel from '../../components/SectionLabel';
 import Button from '../../components/Button';
 import StatCounter from '../../components/StatCounter';
 import NeuronMotif from '../../components/NeuronMotif';
@@ -16,8 +15,7 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      tl.fromTo('.hero-label', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' })
-        .fromTo('.hero-heading', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }, '-=0.5')
+      tl.fromTo('.hero-heading', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' })
         .fromTo('.hero-subtext', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }, '-=0.5')
         .fromTo('.hero-buttons', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }, '-=0.5')
         .fromTo('.hero-divider', { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.8, ease: 'expo.out' }, '-=0.3')
@@ -38,18 +36,12 @@ export default function HeroSection() {
       <NeuronMotif
         variant="rich"
         color="#FF1493"
-        opacity={0.18}
+        opacity={0.12}
         size={220}
-        fade="left"
-        fadeStart="70%"
       />
 
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
         <div className="w-full max-w-[60ch] lg:max-w-[75%]">
-          <div className="hero-label">
-            <SectionLabel text="LEARNING DESIGN LAB" light />
-          </div>
-
           <h1 className="hero-heading font-display uppercase text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
             Designing Learning That Works
           </h1>

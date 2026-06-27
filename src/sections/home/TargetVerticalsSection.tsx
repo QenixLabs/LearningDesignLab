@@ -1,5 +1,4 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const verticals = [
@@ -17,9 +16,6 @@ export default function TargetVerticalsSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <SectionLabel text="Targeted verticals" light={false} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black text-center mb-10 md:mb-16">Who We Work With</h2>
         </ScrollReveal>
 
