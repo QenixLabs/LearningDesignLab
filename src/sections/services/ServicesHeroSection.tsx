@@ -32,12 +32,12 @@ export default function ServicesHeroSection() {
       <NeuronMotif opacity={0.12} />
 
       <div className="page-margin max-content pt-32 pb-24 relative z-10">
-        <div className="max-w-[60%] max-md:max-w-full">
-          <h1 className="sv-hero-heading font-display text-[8vw] md:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
+        <div className="max-w-[70%] max-md:max-w-full">
+          <h1 className="sv-hero-heading font-display text-[7vw] md:text-[5.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
             Curriculums & courses to change outcomes, not just build knowledge
           </h1>
 
-          <p className="sv-hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[50ch] mb-10">
+          <p className="sv-hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[60ch] mb-10">
             We partner with universities, nonprofits, and organizations to design courses, training programs, and full curricula that build real competence. Grounded in research and Science of Learning.
           </p>
 
