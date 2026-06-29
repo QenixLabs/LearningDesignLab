@@ -21,7 +21,7 @@ const offerings: { label: string; Icon: LucideIcon; highlight?: string }[] = [
   { label: 'Communities of practice', Icon: Users },
   { label: 'Instructional manuals & workbooks', Icon: FileText },
   { label: 'AI tools for practice, feedback and performance support', Icon: Bot },
-  { label: 'Job-aids and performance support tools', Icon: Wrench, highlight: 'Job-aids' },
+  { label: 'Job-aids and performance support tools', Icon: Wrench },
   { label: 'Assessment tools and systems', Icon: ClipboardCheck },
 ];
 
