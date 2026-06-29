@@ -41,12 +41,12 @@ export default function HeroSection() {
       />
 
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
-        <div className="w-full max-w-[60ch] lg:max-w-[75%]">
-          <h1 className="hero-heading font-display uppercase text-[10vw] md:text-[8vw] lg:text-[6.5vw] leading-[0.95] tracking-[-0.02em] text-white mb-8">
+        <div className="w-full max-w-[70%] max-md:max-w-full">
+          <h1 className="hero-heading font-display uppercase text-[9vw] md:text-[7vw] lg:text-[5.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
             Designing Learning That Works
           </h1>
 
-          <p className="hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[55ch] mb-12">
+          <p className="hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[60ch] mb-12">
             We are an impact-driven, international learning design firm dedicated to enhancing the
             effectiveness of skilling, competency development and educational interventions. We partner
             with organizations and educational institutions to build evidence-informed, contextually
