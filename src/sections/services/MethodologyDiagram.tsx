@@ -23,56 +23,71 @@ export default function MethodologyDiagram() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate center circle
       gsap.fromTo(
-        '.center-circle',
+        '.center-core',
+        { scale: 0.6, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.7,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: diagramRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        '.field-node',
         { scale: 0.8, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
-          duration: 0.6,
-          ease: 'expo.out',
+          duration: 0.5,
+          stagger: 0.07,
+          ease: 'back.out(1.7)',
           scrollTrigger: {
             trigger: diagramRef.current,
             start: 'top 80%',
             once: true,
           },
+          delay: 0.2,
         }
       );
 
-      // Animate nodes
       gsap.fromTo(
-        '.field-node',
+        '.connecting-line',
+        { strokeDashoffset: 1 },
+        {
+          strokeDashoffset: 0,
+          duration: 0.8,
+          stagger: 0.06,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: diagramRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+          delay: 0.4,
+        }
+      );
+
+      gsap.fromTo(
+        '.signal-pulse',
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: 'expo.out',
+          duration: 0.4,
+          stagger: 0.06,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: diagramRef.current,
             start: 'top 80%',
             once: true,
           },
-          delay: 0.3,
-        }
-      );
-
-      // Animate lines
-      gsap.fromTo(
-        '.connecting-line',
-        { strokeDashoffset: 200 },
-        {
-          strokeDashoffset: 0,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: diagramRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-          delay: 0.5,
+          delay: 1,
         }
       );
     }, diagramRef);
@@ -82,11 +97,9 @@ export default function MethodologyDiagram() {
 
   return (
     <section className="bg-black py-32 relative overflow-hidden">
-      {/* Neuron motif */}
       <NeuronMotif opacity={0.04} />
 
-      {/* Soft radial glow behind the diagram */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.08)_0%,transparent_65%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.1)_0%,transparent_60%)]" />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
@@ -96,50 +109,89 @@ export default function MethodologyDiagram() {
         </ScrollReveal>
 
         {/* Desktop Diagram */}
-        <div ref={diagramRef} className="hidden md:block relative h-[560px] max-w-[880px] mx-auto">
-          {/* Radial backdrop */}
-          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.06)_0%,transparent_55%)]" style={{ zIndex: 0 }} />
+        <div ref={diagramRef} className="hidden md:block relative h-[580px] max-w-[920px] mx-auto">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.08)_0%,transparent_55%)]" style={{ zIndex: 0 }} />
 
-          {/* SVG Lines */}
-          <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+          {/* SVG lines and signals */}
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            style={{ zIndex: 1 }}
+          >
             <defs>
               <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="rgba(255,20,147,0.6)" />
+                <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="rgba(255,20,147,0.8)" />
               </filter>
+              <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(255,20,147,0.6)" />
+                <stop offset="100%" stopColor="rgba(255,20,147,0.1)" />
+              </linearGradient>
             </defs>
+
             {fields.map((field, i) => {
-              const cx = 50;
-              const cy = 50;
               const fx = parseFloat(field.left);
               const fy = parseFloat(field.top);
               return (
-                <line
-                  key={i}
+                <path
+                  key={`line-${i}`}
+                  id={`line-${i}`}
+                  d={`M 50 50 L ${fx} ${fy}`}
                   className="connecting-line"
-                  x1={`${cx}%`}
-                  y1={`${cy}%`}
-                  x2={`${fx}%`}
-                  y2={`${fy}%`}
-                  stroke="rgba(255,20,147,0.35)"
-                  strokeWidth="1.5"
-                  strokeDasharray="220"
-                  strokeDashoffset="220"
+                  pathLength="1"
+                  stroke="url(#line-gradient)"
+                  strokeWidth="0.35"
+                  strokeLinecap="round"
+                  strokeDasharray="1"
+                  strokeDashoffset="1"
+                  fill="none"
                   filter="url(#line-glow)"
                 />
               );
             })}
+
+            {fields.map((_field, i) => (
+                <circle
+                  key={`pulse-${i}`}
+                  r="0.6"
+                  fill="#ff69b4"
+                  className="signal-pulse"
+                  opacity="0"
+                >
+                  <animateMotion
+                    dur={`${1.8 + (i % 3) * 0.4}s`}
+                    repeatCount="indefinite"
+                    begin={`${i * 0.15}s`}
+                  >
+                    <mpath href={`#line-${i}`} />
+                  </animateMotion>
+                </circle>
+              ))}
           </svg>
 
-          {/* Center Circle */}
+          {/* Rotating orbit rings */}
           <div
-            className="center-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full border border-pink/30 bg-gradient-to-br from-pink/20 to-pink/5 backdrop-blur-sm flex items-center justify-center shadow-[0_0_60px_rgba(255,20,147,0.25)]"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full border border-dashed border-pink/20"
             style={{ zIndex: 2 }}
+          />
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] rounded-full border border-pink/10"
+            style={{ zIndex: 2 }}
+          />
+
+          {/* Center Core */}
+          <div
+            className="center-core absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ zIndex: 3 }}
           >
-            <div className="absolute inset-[-16px] rounded-full border border-pink/20 animate-ping opacity-30" />
-            <div className="absolute inset-[-8px] rounded-full border border-pink/10" />
-            <span className="section-label text-pink text-center text-[10px] leading-tight tracking-[0.12em]">
-              LEARNING<br />DESIGN
-            </span>
+            <div className="relative w-[168px] h-[168px] rounded-full border border-pink/30 bg-gradient-to-br from-pink/25 to-pink/5 backdrop-blur-sm flex items-center justify-center shadow-[0_0_80px_rgba(255,20,147,0.35)]">
+              <div className="absolute inset-[-20px] rounded-full border border-pink/20 animate-ping opacity-25" />
+              <div className="absolute inset-[-10px] rounded-full border border-pink/10" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,105,180,0.35),transparent_60%)]" />
+              <span className="section-label text-pink text-center text-[10px] leading-tight tracking-[0.14em] relative z-10">
+                LEARNING<br />DESIGN
+              </span>
+            </div>
           </div>
 
           {/* Field Nodes */}
@@ -151,12 +203,14 @@ export default function MethodologyDiagram() {
                 top: field.top,
                 left: field.left,
                 transform: field.center ? 'translateX(-50%)' : 'translate(-50%, -50%)',
-                zIndex: 3,
+                zIndex: 4,
               }}
             >
               <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-110">
-                <span className="w-2 h-2 rounded-full bg-pink mb-2 ring-4 ring-pink/10 transition-all duration-300 group-hover:ring-pink/30" />
-                <span className="font-body text-xs text-white/80 whitespace-pre-line text-center leading-tight px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-sm transition-colors duration-300 group-hover:text-pink group-hover:border-pink/30 group-hover:bg-pink/10">
+                <span className="relative w-3 h-3 rounded-full bg-pink mb-2 shadow-[0_0_12px_rgba(255,20,147,0.8)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,20,147,1)]">
+                  <span className="absolute inset-0 rounded-full bg-pink animate-ping opacity-40" />
+                </span>
+                <span className="font-body text-xs text-white/90 whitespace-pre-line text-center leading-tight px-4 py-2 rounded-full border border-white/10 bg-white/[0.08] backdrop-blur-sm shadow-lg transition-colors duration-300 group-hover:text-pink group-hover:border-pink/40 group-hover:bg-pink/15 group-hover:shadow-[0_0_24px_rgba(255,20,147,0.25)]">
                   {field.name}
                 </span>
               </div>
@@ -171,8 +225,8 @@ export default function MethodologyDiagram() {
               key={i}
               className={`text-center py-3 px-2 rounded-full border transition-colors duration-300 ${
                 field.center
-                  ? 'border-pink/30 bg-pink/10 text-pink'
-                  : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/30 hover:bg-pink/10 hover:text-pink'
+                  ? 'border-pink/40 bg-pink/15 text-pink shadow-[0_0_20px_rgba(255,20,147,0.2)]'
+                  : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/40 hover:bg-pink/10 hover:text-pink'
               }`}
             >
               <span className="font-body text-xs whitespace-pre-line">

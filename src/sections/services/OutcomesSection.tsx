@@ -1,13 +1,11 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
-import { Users, Brain, BarChart3, TrendingUp } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 
-const outcomes: { title: string; Icon: LucideIcon }[] = [
-  { title: 'Higher Learner Engagement', Icon: Users },
-  { title: 'Improved Retention', Icon: Brain },
-  { title: 'Measurable Behavior Change', Icon: BarChart3 },
-  { title: 'Higher ROI on Training Budgets', Icon: TrendingUp },
+const outcomes: { title: string; image: string }[] = [
+  { title: 'Higher Learner Engagement', image: '/images/verticals/Engagement.jpeg' },
+  { title: 'Improved Retention', image: '/images/verticals/Retention.jpeg' },
+  { title: 'Measurable Behavior Change', image: '/images/verticals/measurable.jpeg' },
+  { title: 'Higher ROI on Training Budgets', image: '/images/verticals/RTO.jpeg' },
 ];
 
 export default function OutcomesSection() {
@@ -26,8 +24,12 @@ export default function OutcomesSection() {
           {outcomes.map((outcome, i) => (
             <ScrollReveal key={outcome.title} delay={0.1 * i}>
               <div className="border border-pink/20 rounded-2xl overflow-hidden h-full transition-colors hover:bg-pink/[0.02]">
-                <div className="aspect-[4/3] bg-black/5 flex items-center justify-center">
-                  <outcome.Icon className="w-12 h-12 text-pink" strokeWidth={1.5} />
+                <div className="aspect-[4/3] bg-black/5">
+                  <img
+                    src={outcome.image}
+                    alt={outcome.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6 flex items-center justify-center min-h-[100px]">
                   <h3 className="heading-md text-black text-center">{outcome.title}</h3>
