@@ -16,7 +16,9 @@ export default function Layout({ children, isHome = false }: LayoutProps) {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);

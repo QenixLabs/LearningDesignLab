@@ -45,7 +45,11 @@ function QuoteWithHighlight({ quote, highlight }: { quote: string; highlight?: s
   );
 }
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  title?: string;
+}
+
+export default function TestimonialsSection({ title = 'Client Voices' }: TestimonialsSectionProps) {
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
@@ -54,7 +58,7 @@ export default function TestimonialsSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="heading-xl text-black mb-10 md:mb-16">Client Voices</h2>
+          <h2 className="heading-xl text-black mb-10 md:mb-16">{title}</h2>
         </ScrollReveal>
       </div>
 
