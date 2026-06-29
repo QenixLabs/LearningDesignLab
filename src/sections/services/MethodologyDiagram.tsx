@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
+import NeuronMotif from '../../components/NeuronMotif';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,32 +82,34 @@ export default function MethodologyDiagram() {
 
   return (
     <section className="bg-black py-32 relative overflow-hidden">
-      {/* Pink neuron motif */}
-      <div 
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FF1493' stroke-width='0.6'%3E%3Cpath d='M10 50 Q30 20 50 50 T90 50'/%3E%3Cpath d='M0 30 Q20 5 40 30 T80 30'/%3E%3Cpath d='M20 70 Q40 45 60 70 T100 70'/%3E%3Ccircle cx='10' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='50' cy='50' r='2.5' fill='%23FF1493'/%3E%3Ccircle cx='90' cy='50' r='2' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '220px 220px',
-        }}
-      />
-      
+      {/* Neuron motif */}
+      <NeuronMotif opacity={0.04} />
+
+      {/* Soft radial glow behind the diagram */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.08)_0%,transparent_65%)]" />
+
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <SectionLabel text="How We Work" light />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-white text-center mb-20">
             We Borrow from Every Field That Studies Learning
           </h2>
         </ScrollReveal>
 
         {/* Desktop Diagram */}
-        <div ref={diagramRef} className="hidden md:block relative h-[500px] max-w-[800px] mx-auto">
+        <div ref={diagramRef} className="hidden md:block relative h-[560px] max-w-[880px] mx-auto">
+          {/* Radial backdrop */}
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.06)_0%,transparent_55%)]" style={{ zIndex: 0 }} />
+
           {/* SVG Lines */}
           <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+            <defs>
+              <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="rgba(255,20,147,0.6)" />
+              </filter>
+            </defs>
             {fields.map((field, i) => {
-              const cx = 50; // center %
-              const cy = 50; // center %
+              const cx = 50;
+              const cy = 50;
               const fx = parseFloat(field.left);
               const fy = parseFloat(field.top);
               return (
@@ -118,10 +120,11 @@ export default function MethodologyDiagram() {
                   y1={`${cy}%`}
                   x2={`${fx}%`}
                   y2={`${fy}%`}
-                  stroke="rgba(255,20,147,0.2)"
-                  strokeWidth="1"
-                  strokeDasharray="200"
-                  strokeDashoffset="200"
+                  stroke="rgba(255,20,147,0.35)"
+                  strokeWidth="1.5"
+                  strokeDasharray="220"
+                  strokeDashoffset="220"
+                  filter="url(#line-glow)"
                 />
               );
             })}
@@ -129,10 +132,12 @@ export default function MethodologyDiagram() {
 
           {/* Center Circle */}
           <div
-            className="center-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full border border-pink/25 bg-pink/5 flex items-center justify-center"
+            className="center-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full border border-pink/30 bg-gradient-to-br from-pink/20 to-pink/5 backdrop-blur-sm flex items-center justify-center shadow-[0_0_60px_rgba(255,20,147,0.25)]"
             style={{ zIndex: 2 }}
           >
-            <span className="section-label text-pink text-center text-[10px] leading-tight">
+            <div className="absolute inset-[-16px] rounded-full border border-pink/20 animate-ping opacity-30" />
+            <div className="absolute inset-[-8px] rounded-full border border-pink/10" />
+            <span className="section-label text-pink text-center text-[10px] leading-tight tracking-[0.12em]">
               LEARNING<br />DESIGN
             </span>
           </div>
@@ -141,7 +146,7 @@ export default function MethodologyDiagram() {
           {fields.map((field, i) => (
             <div
               key={i}
-              className="field-node absolute"
+              className="field-node absolute group cursor-default"
               style={{
                 top: field.top,
                 left: field.left,
@@ -149,9 +154,9 @@ export default function MethodologyDiagram() {
                 zIndex: 3,
               }}
             >
-              <div className="flex flex-col items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink mb-2" />
-                <span className="font-body text-xs text-white/80 whitespace-pre-line text-center leading-tight">
+              <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-110">
+                <span className="w-2 h-2 rounded-full bg-pink mb-2 ring-4 ring-pink/10 transition-all duration-300 group-hover:ring-pink/30" />
+                <span className="font-body text-xs text-white/80 whitespace-pre-line text-center leading-tight px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-sm transition-colors duration-300 group-hover:text-pink group-hover:border-pink/30 group-hover:bg-pink/10">
                   {field.name}
                 </span>
               </div>
@@ -160,15 +165,17 @@ export default function MethodologyDiagram() {
         </div>
 
         {/* Mobile Grid */}
-        <div className="md:hidden grid grid-cols-3 gap-6 max-w-md mx-auto">
+        <div className="md:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-md mx-auto">
           {fields.map((field, i) => (
             <div
               key={i}
-              className={`text-center py-3 ${
-                field.center ? 'border border-pink/25 rounded-full bg-pink/5' : ''
+              className={`text-center py-3 px-2 rounded-full border transition-colors duration-300 ${
+                field.center
+                  ? 'border-pink/30 bg-pink/10 text-pink'
+                  : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/30 hover:bg-pink/10 hover:text-pink'
               }`}
             >
-              <span className="font-body text-sm text-white/80 whitespace-pre-line">
+              <span className="font-body text-xs whitespace-pre-line">
                 {field.name}
               </span>
             </div>

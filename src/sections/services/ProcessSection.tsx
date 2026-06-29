@@ -1,72 +1,61 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import SectionLabel from '../../components/SectionLabel';
+import NeuronMotif from '../../components/NeuronMotif';
 
 const steps = [
-  {
-    num: '01',
-    title: 'Discover',
-    description:
-      'We study your context, enablers and barriers. We define what people need to do differently and consult with stakeholders to understand the landscape.',
-  },
-  {
-    num: '02',
-    title: 'Design',
-    description:
-      'We conduct rigorous research to understand what has worked. We identify evidence-based strategies and pedagogy, then design learning activities backwards from the goal in collaboration with domain experts.',
-  },
-  {
-    num: '03',
-    title: 'Develop',
-    description:
-      'We apply instructional design and user-centered design to create engaging, effective learning experiences. We prototype solutions, test with real learners, then refine before scaling.',
-  },
-  {
-    num: '04',
-    title: 'Deliver',
-    description:
-      'We create tools and conduct trainings to enable facilitators for quality implementation. We ensure your team can sustain and scale the learning independently.',
-  },
+  'We study the context, enablers and barriers for reaching the desired state.',
+  'We define what people need to do differently and consult with them to design solutions.',
+  'We conduct rigorous research to understand what has worked and identify evidence-based strategies and pedagogy to drive impact.',
+  'We design learning activities and strategies backwards from the goal in collaboration with in context and domain experts.',
+  'We apply instructional design and user-centered design to create engaging and effective courses and curriculums.',
+  'We prototype our solutions, test with real learners, then refine before scaling.',
+  'We create tools and conduct trainings to enable facilitators for quality implementation.',
 ];
 
 export default function ProcessSection() {
   return (
-    <section className="bg-warm-grey py-32 relative overflow-hidden">
-      {/* Pink neuron motif */}
-      <div 
-        className="absolute bottom-0 left-0 w-1/3 h-1/2 opacity-[0.035] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FF1493' stroke-width='0.6'%3E%3Cpath d='M10 50 Q30 20 50 50 T90 50'/%3E%3Cpath d='M0 30 Q20 5 40 30 T80 30'/%3E%3Cpath d='M20 70 Q40 45 60 70 T100 70'/%3E%3Ccircle cx='10' cy='50' r='2' fill='%23FF1493'/%3E%3Ccircle cx='50' cy='50' r='2.5' fill='%23FF1493'/%3E%3Ccircle cx='90' cy='50' r='2' fill='%23FF1493'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
-        }}
-      />
-      
+    <section className="bg-white py-32 relative overflow-hidden">
+      <NeuronMotif opacity={0.03} />
+
       <div className="page-margin max-content relative z-10">
-        <ScrollReveal>
-          <SectionLabel text="Our Process" light={false} />
-        </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-black mb-16">How We Partner With You</h2>
+          <h2 className="heading-xl text-black text-center mb-20 max-w-4xl mx-auto">
+            We Start with the Change You Need to See, Then Work Backwards
+          </h2>
         </ScrollReveal>
 
-        <div className="space-y-16">
-          {steps.map((step, i) => (
-            <ScrollReveal key={step.num} delay={0.15 * i}>
-              <div className="flex flex-col md:flex-row gap-6 md:gap-0">
-                <div className="md:w-[15%] shrink-0">
-                  <span className="font-display text-[6vw] md:text-[3.5vw] text-pink/15 leading-none tracking-[-0.01em]">
-                    {step.num}
-                  </span>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Vertical line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-pink/30 -translate-x-1/2" />
+
+          {steps.map((step, i) => {
+            const isLeft = i % 2 === 0;
+            const number = String(i + 1).padStart(2, '0');
+
+            return (
+              <ScrollReveal key={i} delay={0.15 + i * 0.08}>
+                <div className="relative flex items-start mb-12 md:mb-16 last:mb-0">
+                  {/* Dot */}
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-pink mt-2" />
+
+                  {/* Content */}
+                  <div
+                    className={`pl-12 md:pl-0 md:w-1/2 ${
+                      isLeft
+                        ? 'md:pr-16 md:text-right md:ml-0'
+                        : 'md:pl-16 md:text-left md:ml-auto'
+                    }`}
+                  >
+                    <span className="font-display text-2xl text-pink/30 block mb-2">
+                      {number}
+                    </span>
+                    <p className="font-body text-base md:text-lg text-black/80 leading-relaxed">
+                      {step}
+                    </p>
+                  </div>
                 </div>
-                <div className="hidden md:block w-px bg-pink/15 self-stretch mx-6" />
-                <div className="flex-1">
-                  <h3 className="heading-lg text-black mb-3">{step.title}</h3>
-                  <p className="font-body text-base leading-relaxed text-black/45 max-w-[55ch]">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
