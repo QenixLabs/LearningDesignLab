@@ -9,7 +9,7 @@ import ContactSection from '../sections/home/ContactSection';
 
 export default function Home() {
   return (
-    <Layout isHome>
+    <Layout>
       <HeroSection />
       <ServicesSection />
       <TargetVerticalsSection />
