@@ -9,10 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface LayoutProps {
   children: React.ReactNode;
-  isHome?: boolean;
 }
 
-export default function Layout({ children, isHome = false }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function Layout({ children, isHome = false }: LayoutProps) {
 
   return (
     <div className="min-h-screen">
-      <Navigation isHome={isHome} />
+      <Navigation />
       <main className="pt-0">{children}</main>
       <Footer />
     </div>

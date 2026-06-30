@@ -9,11 +9,7 @@ interface NavLink {
   children?: { label: string; href: string }[];
 }
 
-interface NavigationProps {
-  isHome?: boolean;
-}
-
-export default function Navigation({ isHome = false }: NavigationProps) {
+export default function Navigation() {
   const scrollY = useScrollPosition();
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,7 +19,7 @@ export default function Navigation({ isHome = false }: NavigationProps) {
   const servicesRef = useRef<HTMLDivElement>(null);
 
   const isScrolled = scrollY > 100;
-  const isDark = isHome && !isScrolled && location.pathname === '/';
+  const isDark = !isScrolled;
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
