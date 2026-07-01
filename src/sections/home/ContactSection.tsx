@@ -19,8 +19,7 @@ export default function ContactSection() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="font-body text-base leading-relaxed text-white/70 mb-6 max-w-[45ch]">
-                Better Learning Together. Tell us about your learning challenges and we'll design
-                solutions that work.
+                Submit your contact details. We'll get back to you within 7 working days.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>

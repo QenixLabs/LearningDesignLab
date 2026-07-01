@@ -17,11 +17,6 @@ const sectors: { title: string; description: string; image: string }[] = [
     description: 'That need to upskill their employees and training of L&D divisions',
     image: '/images/verticals/corporatjob.jpeg',
   },
-  {
-    title: 'Governments',
-    description: 'To be added',
-    image: '/images/verticals/government.jpg',
-  },
 ];
 
 export default function TargetSectorsSection() {
@@ -34,7 +29,7 @@ export default function TargetSectorsSection() {
           <h2 className="heading-xl text-black text-center mb-16">We Work Across Sectors</h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sectors.map((sector, i) => (
             <ScrollReveal key={sector.title} delay={0.1 * i}>
               <div className="border border-pink/20 rounded-2xl overflow-hidden h-full transition-colors hover:bg-pink/[0.02]">

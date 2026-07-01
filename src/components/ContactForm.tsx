@@ -102,9 +102,10 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
           />
         </div>
         <div>
-          <label className={labelClasses}>Service Interest</label>
+          <label className={labelClasses}>Service Interest *</label>
           <select
             name="service"
+            required
             value={formData.service}
             onChange={handleChange}
             className={`${inputClasses} cursor-pointer`}
@@ -118,10 +119,9 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
           </select>
         </div>
         <div>
-          <label className={labelClasses}>Message *</label>
+          <label className={labelClasses}>Message</label>
           <textarea
             name="message"
-            required
             rows={4}
             value={formData.message}
             onChange={handleChange}
