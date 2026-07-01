@@ -162,6 +162,9 @@ export default function MethodologyDiagram() {
                     dur={`${1.8 + (i % 3) * 0.4}s`}
                     repeatCount="indefinite"
                     begin={`${i * 0.15}s`}
+                    calcMode="linear"
+                    keyPoints="1;0"
+                    keyTimes="0;1"
                   >
                     <mpath href={`#line-${i}`} />
                   </animateMotion>
@@ -188,7 +191,7 @@ export default function MethodologyDiagram() {
               <div className="absolute inset-[-20px] rounded-full border border-pink/20 animate-ping opacity-25" />
               <div className="absolute inset-[-10px] rounded-full border border-pink/10" />
               <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,105,180,0.35),transparent_60%)]" />
-              <span className="section-label text-pink text-center text-[10px] leading-tight tracking-[0.14em] relative z-10">
+              <span className="section-label text-white text-center text-[10px] leading-tight tracking-[0.14em] relative z-10">
                 LEARNING<br />DESIGN
               </span>
             </div>
