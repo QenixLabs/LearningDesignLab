@@ -1,7 +1,13 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
-const testimonials = [
+interface Testimonial {
+  quote: string;
+  highlight?: string;
+  attribution: string;
+}
+
+const defaultTestimonials: Testimonial[] = [
   {
     quote:
       'The courses are highly comprehensive and well suited for e-learning, offering practical insights with a strong balance of personalisation and scaffolded key concepts.',
@@ -47,9 +53,11 @@ function QuoteWithHighlight({ quote, highlight }: { quote: string; highlight?: s
 
 interface TestimonialsSectionProps {
   title?: string;
+  items?: Testimonial[];
 }
 
-export default function TestimonialsSection({ title = 'Client Voices' }: TestimonialsSectionProps) {
+export default function TestimonialsSection({ title = 'Client Voices', items }: TestimonialsSectionProps) {
+  const testimonials = items ?? defaultTestimonials;
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (

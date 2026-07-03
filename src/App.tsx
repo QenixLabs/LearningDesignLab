@@ -8,7 +8,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/services" element={<Navigate to="/services/course-development" replace />} />
       <Route path="/services/course-development" element={<ServicePage serviceId="course-development" />} />
-      <Route path="/services/faculty-enrichment" element={<ServicePage serviceId="faculty-enrichment" blank />} />
+      <Route path="/services/faculty-enrichment" element={<ServicePage serviceId="faculty-enrichment" />} />
       <Route path="/services/research-evaluation" element={<ServicePage serviceId="research-evaluation" blank />} />
       <Route path="/services/advisory" element={<ServicePage serviceId="advisory" blank />} />
     </Routes>

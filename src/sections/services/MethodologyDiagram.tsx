@@ -104,7 +104,7 @@ export default function MethodologyDiagram() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <h2 className="heading-xl text-white text-center mb-20">
-            We Borrow from Every Field That Studies Learning
+            We Borrow from Diverse Fields That Facilitate Learning
           </h2>
         </ScrollReveal>
 

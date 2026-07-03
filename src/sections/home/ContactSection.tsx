@@ -14,7 +14,7 @@ export default function ContactSection() {
           <div>
             <ScrollReveal>
               <h2 className="heading-xl text-white mb-6">
-                Let's Build Learning That Drives Impact
+                Your Teachers Are Working Hard. Let's Ensure Their Efforts Pay Off.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
