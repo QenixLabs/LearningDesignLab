@@ -53,7 +53,7 @@ export default function FacultyHeroSection() {
         </div>
 
         {/* Stats */}
-        <div className="fe-hero-stats mt-20 bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl max-w-5xl mx-auto overflow-hidden">
+        <div className="fe-hero-stats mt-20 bg-white bg-gradient-to-br from-white to-pink/10 border border-black/20 rounded-2xl shadow-xl max-w-5xl mx-auto overflow-hidden">
           <div className="grid grid-cols-2 divide-x divide-y divide-black/10">
             <div className="flex flex-col items-center text-center p-6 md:p-10">
               <CountUp
@@ -72,7 +72,7 @@ export default function FacultyHeroSection() {
                   />
                 )}
               </CountUp>
-              <span className="section-label mt-4 text-black/70 max-w-[28ch]">
+              <span className="section-label mt-4 text-black/80 max-w-[28ch]">
                 Educators confident they can actively reduce student forgetting
               </span>
             </div>
@@ -95,7 +95,7 @@ export default function FacultyHeroSection() {
                   />
                 )}
               </CountUp>
-              <span className="section-label mt-4 text-black/70 max-w-[28ch]">
+              <span className="section-label mt-4 text-black/80 max-w-[28ch]">
                 Average rating on usefulness and engagement of workshop
               </span>
             </div>
@@ -117,7 +117,7 @@ export default function FacultyHeroSection() {
                   />
                 )}
               </CountUp>
-              <span className="section-label mt-4 text-black/70 max-w-[28ch]">
+              <span className="section-label mt-4 text-black/80 max-w-[28ch]">
                 Left believing AI can save them time and improve efficiency
               </span>
             </div>
@@ -139,7 +139,7 @@ export default function FacultyHeroSection() {
                   />
                 )}
               </CountUp>
-              <span className="section-label mt-4 text-black/70 max-w-[28ch]">
+              <span className="section-label mt-4 text-black/80 max-w-[28ch]">
                 Jump in confidence to manage cognitive load while teaching
               </span>
             </div>
