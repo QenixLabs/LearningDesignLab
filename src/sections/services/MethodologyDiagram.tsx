@@ -13,7 +13,7 @@ const fields = [
   { name: 'Behavioural\nScience', top: '35%', left: '90%' },
   { name: 'AI & Learning', top: '65%', left: '80%' },
   { name: 'UX & UI', top: '85%', left: '50%', center: true },
-  { name: 'Educational\nResearch', top: '65%', left: '20%' },
+  { name: 'Education\nTechnology', top: '65%', left: '20%' },
   { name: 'Performance\nSupport', top: '35%', left: '10%' },
   { name: 'EdTech & L&D', top: '50%', left: '5%' },
 ];
