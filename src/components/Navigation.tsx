@@ -14,18 +14,22 @@ export default function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+  const dropdownsRef = useRef<HTMLDivElement>(null);
 
+  const whiteHeroRoutes = ['/team', '/projects', '/publications', '/conferences'];
+  const hasWhiteHero = whiteHeroRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
   const isScrolled = scrollY > 100;
-  const isDark = !isScrolled;
+  const isDark = !isScrolled && !hasWhiteHero;
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
-    setServicesOpen(false);
-    setMobileServicesOpen(false);
+    setOpenDropdown(null);
+    setMobileOpenDropdown(null);
 
     const hashIndex = href.indexOf('#');
     if (hashIndex !== -1) {
@@ -49,14 +53,14 @@ export default function Navigation() {
 
   useEffect(() => {
     setMenuOpen(false);
-    setServicesOpen(false);
-    setMobileServicesOpen(false);
+    setOpenDropdown(null);
+    setMobileOpenDropdown(null);
   }, [location.pathname]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
-        setServicesOpen(false);
+      if (dropdownsRef.current && !dropdownsRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -89,7 +93,16 @@ export default function Navigation() {
       ],
     },
     { label: 'About', href: '/#about' },
-    { label: 'Projects', href: '/#projects' },
+    { label: 'Team', href: '/team' },
+    {
+      label: 'Resources',
+      href: '/projects',
+      children: [
+        { label: 'Projects', href: '/projects' },
+        { label: 'Publications', href: '/publications' },
+        { label: 'Conferences', href: '/conferences' },
+      ],
+    },
     { label: 'Contact', href: '/#contact' },
   ];
 
@@ -113,27 +126,29 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav ref={dropdownsRef} className="hidden md:flex items-center gap-8">
           {navLinks.map((link) =>
             link.children ? (
-              <div key={link.label} ref={servicesRef} className="relative">
+              <div key={link.label} className="relative">
                 <button
-                  onClick={() => setServicesOpen((open) => !open)}
+                  onClick={() =>
+                    setOpenDropdown((current) => (current === link.label ? null : link.label))
+                  }
                   className={`font-body text-sm font-medium transition-colors duration-300 cursor-pointer inline-flex items-center gap-1 ${
                     isDark
                       ? 'text-white/70 hover:text-white'
                       : 'text-black/70 hover:text-near-black'
                   }`}
-                  aria-expanded={servicesOpen}
+                  aria-expanded={openDropdown === link.label}
                 >
                   {link.label}
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      servicesOpen ? 'rotate-180' : ''
+                      openDropdown === link.label ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
-                {servicesOpen && (
+                {openDropdown === link.label && (
                   <div className="absolute top-full left-0 mt-2 w-56 bg-white border border-black/10 rounded shadow-lg py-2 z-50">
                     {link.children.map((child) => (
                       <a
@@ -206,18 +221,22 @@ export default function Navigation() {
                 link.children ? (
                   <div key={link.label} className="flex flex-col">
                     <button
-                      onClick={() => setMobileServicesOpen((open) => !open)}
+                      onClick={() =>
+                        setMobileOpenDropdown((current) =>
+                          current === link.label ? null : link.label
+                        )
+                      }
                       className="flex items-center justify-between py-3 font-body text-base font-medium text-black/80 hover:text-near-black"
-                      aria-expanded={mobileServicesOpen}
+                      aria-expanded={mobileOpenDropdown === link.label}
                     >
                       {link.label}
                       <ChevronDown
                         className={`w-5 h-5 transition-transform duration-200 ${
-                          mobileServicesOpen ? 'rotate-180' : ''
+                          mobileOpenDropdown === link.label ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
-                    {mobileServicesOpen && (
+                    {mobileOpenDropdown === link.label && (
                       <div className="flex flex-col pl-4 border-l border-black/10 mb-2">
                         {link.children.map((child) => (
                           <a
