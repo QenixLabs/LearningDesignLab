@@ -38,15 +38,15 @@ const blogs = [
 const presentations = [
   {
     title: '12th Annual Conference of Cognitive Science (ACCS-12), 2025',
-    image: '/conferences/image11.jpg',
+    image: '/images/conferences/12th Annual Conference of Cognitive Science.jpg',
   },
   {
     title: 'Masinde Muliro University of Science and Technology (MMAST) - 18th International Multidisciplinary Conference, 2024, Kenya',
-    image: '/conferences/Truth centric education.png',
+    image: '/images/conferences/18th International.jpg',
   },
   {
     title: 'Let the Games Begin: The Future of Education at the Global Learning Planet Festival and Catalyst Now, 2025',
-    image: '/conferences/image5.jpg',
+    image: '/images/conferences/The Future of Education2.jpg',
   },
 ];
 

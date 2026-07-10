@@ -13,6 +13,9 @@ interface Conference {
   location: string;
   description: string;
   imageAlt: string;
+  image?: string;
+  images?: string[];
+  imagePosition?: string;
   actions?: ConferenceAction[];
   tags?: string[];
 }
@@ -42,6 +45,7 @@ const conferences: Conference[] = [
     description:
       'Shraddha spoke on a "Games and Cognition" panel, discussing the cognitive and affective mechanisms underpinning engagement, and game-based learning. Drawing on our projects with youth and adults, she shared practical insights on applying cognitive science to enhance the educational effectiveness of games and gamification.',
     imageAlt: 'ACCS-12 2025',
+    image: '/images/conferences/12th Annual Conference of Cognitive Science.jpg',
     tags: ['Panel Discussion', 'Gaming and Cognition'],
   },
   {
@@ -51,6 +55,8 @@ const conferences: Conference[] = [
     description:
       "Shraddha and collaborators Nivid and Deepthy presented a co-authored paper on 'world higher education beyond transformation as performance' toward 'knowledge as transformation'. It highlighted how skill-building and AI must be paired with ethical grounding and contemplative ways of knowing to foster genuine discernment and sincere action in learners.",
     imageAlt: 'India Higher Education Research Conference 2025',
+    image: '/images/conferences/India Higher Education Research Conference.jpg',
+    imagePosition: 'object-[center_20%]',
   },
   {
     title: 'Let the Games Begin: The Future of Education',
@@ -59,6 +65,10 @@ const conferences: Conference[] = [
     description:
       'Shraddha joined a panel of experts to unpack the nuances of using games and gamification for learning. She shared guiding principles for designing cultural sensitivity in narratives and translating learnings to diverse audiences; insights on scaling game-based learning for large and diverse audiences.',
     imageAlt: 'Let the Games Begin 2025',
+    images: [
+      '/images/conferences/The Future of Education2.jpg',
+      '/images/conferences/The Future of Education1.jpg',
+    ],
     actions: [{ label: 'Watch the Video', href: 'https://youtu.be/i-g9ngG4_0A?si=c6QBRQSMsSnXAKEr' }],
   },
   {
@@ -68,6 +78,7 @@ const conferences: Conference[] = [
     description:
       "Shraddha delivered a talk on how interdisciplinary approaches can reshape learning in educational institutions and workplaces. The session explored the cognitive science of memory and retention, the role of emotions and motivation in learning, and strategies from social science and marketing—such as 'stored value' and 'social proof'—to reduce learner friction and resistance. She discussed how learning professionals can leverage AI to enhance true effectiveness, not just efficiency.",
     imageAlt: 'MMUAST 2024',
+    image: '/images/conferences/18th International.jpg',
     actions: [{ label: 'Learn More', href: 'https://cnxus.org/digital-community-stewards-online-course/' }],
   },
   {
@@ -93,6 +104,7 @@ const conferences: Conference[] = [
     description:
       "Shraddha was invited as a guest speaker to share her journey of founding the Learning Design Collaborative, speaking alongside fellow psychologists and educators on 'Breaking Women's Day', she discussed the challenges and triumphs of making a societal impact as a social entrepreneur.",
     imageAlt: 'Skill Aid Empower India Foundation Event',
+    image: '/images/conferences/Skill Aid Empower.jpg',
   },
   {
     title: 'Games and Cognition Course',
@@ -208,7 +220,32 @@ export default function Conferences() {
                       isReversed && 'md:order-1'
                     )}
                   >
-                    <PlaceholderImage className="w-full aspect-[4/3]" />
+                    {conf.images ? (
+                      <div className="flex flex-col gap-4">
+                        {conf.images.map((img, i) => (
+                          <img
+                            key={i}
+                            src={img}
+                            alt={`${conf.imageAlt} ${i + 1}`}
+                            className={cn(
+                              'w-full aspect-[4/3] object-cover rounded-lg border border-black/10',
+                              conf.imagePosition
+                            )}
+                          />
+                        ))}
+                      </div>
+                    ) : conf.image ? (
+                      <img
+                        src={conf.image}
+                        alt={conf.imageAlt}
+                        className={cn(
+                          'w-full aspect-[4/3] object-cover rounded-lg border border-black/10',
+                          conf.imagePosition
+                        )}
+                      />
+                    ) : (
+                      <PlaceholderImage className="w-full aspect-[4/3]" />
+                    )}
                   </div>
                 </article>
               );
