@@ -2,213 +2,6 @@ import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
 
-// ---------- Table data ----------
-
-interface TableRow {
-  type: 'section' | 'project';
-  number?: number;
-  title: string;
-  notes?: React.ReactNode;
-}
-
-const projectRows: TableRow[] = [
-  {
-    type: 'project',
-    number: 1,
-    title: 'UNESCO MYANMAR',
-    notes: (
-      <ProjectImage
-        src="/images/projects/Shraddha online.png"
-        alt="UNESCO Myanmar table reference"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 2,
-    title: 'Search for Common Ground',
-    notes: (
-      <ProjectImage
-        src="/images/projects/Search for Common Ground.png"
-        alt="Search for Common Ground"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 3,
-    title:
-      'Program Design for a school-based intervention on Social-Emotional-Culture Skills - UNICEF India',
-    notes: (
-      <ProjectImage
-        src="/images/projects/UNICEF India.png"
-        alt="UNICEF India SEL program design"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 4,
-    title: 'Patang India - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/Patang India.jpg"
-        alt="Patang India"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 5,
-    title:
-      'Online courses on Digital Skills, Life Skills, & Data Analysis using Power BI for Swayam/GIZ - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/GIZ & Swayam.jpg"
-        alt="GIZ and Swayam"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 6,
-    title: 'Quest Alliance - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/QUEST Alliance.png"
-        alt="Quest Alliance"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 7,
-    title: 'UNESCO MGIEP - Course review for ECCE - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/UNESCO MGIEP.png"
-        alt="UNESCO MGIEP"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 8,
-    title: 'Wingreen - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/Wingreens World.png"
-        alt="Wingreens World"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-];
-
-const workshopRows: TableRow[] = [
-  { type: 'section', title: 'Workshops' },
-  {
-    type: 'project',
-    number: 1,
-    title: 'Stirling - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/University of Stirling.jpg"
-        alt="University of Stirling"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 2,
-    title: 'KR Mangalam - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/K R Mangalam University.JPG"
-        alt="K R Mangalam University"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  { type: 'project', number: 3, title: 'Ashoka' },
-  {
-    type: 'project',
-    number: 4,
-    title: 'ITM Skill University - UDL Workshop',
-    notes: (
-      <ProjectImage
-        src="/images/projects/ITM Skills University.png"
-        alt="ITM Skill University UDL workshop"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-];
-
-const researchRows: TableRow[] = [
-  { type: 'section', title: 'Research' },
-  {
-    type: 'project',
-    number: 1,
-    title: 'Unicef P2E Study - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/UNICEF India.webp"
-        alt="UNICEF P2E study"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 2,
-    title: 'UNICEF DGH Study - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/UNICEF India.png"
-        alt="UNICEF DGH study"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-  {
-    type: 'project',
-    number: 3,
-    title: 'UNICEF India - Technical guidelines - done',
-    notes: (
-      <ProjectImage
-        src="/images/projects/UNICEF India Technical.png"
-        alt="UNICEF India technical guidelines"
-        className="max-w-xs aspect-video"
-        fit="contain"
-      />
-    ),
-  },
-];
-
-const allRows: TableRow[] = [...projectRows, ...workshopRows, ...researchRows];
-
 // ---------- Card data ----------
 
 interface ProjectAction {
@@ -250,8 +43,8 @@ const cardSections: CardSection[] = [
         image: '/images/projects/Patang India.jpg',
         imageAlt: 'Patang India project',
         actions: [
-          { label: 'View Course', href: '#' },
-          { label: 'Watch Video', href: '#' },
+          { label: 'View Course', href: 'https://patang.graphy.com/' },
+          { label: 'Watch Video', href: 'https://youtu.be/eRkFhV0jKgk?si=Ftr-9xIKl1FumNCy' },
         ],
       },
       {
@@ -271,8 +64,8 @@ const cardSections: CardSection[] = [
         image: '/images/projects/Search for Common Ground.png',
         imageAlt: 'Search for Common Ground project',
         actions: [
-          { label: 'View Course', href: '#' },
-          { label: 'Watch Video', href: '#' },
+          { label: 'View Course', href: 'https://cnxus.org/digital-community-stewards-online-course/' },
+          { label: 'Watch Video', href: 'https://www.youtube.com/watch?v=khGvtsxTVdU&t=1117s' },
         ],
       },
       {
@@ -298,8 +91,9 @@ const cardSections: CardSection[] = [
           'While at UNESCO MGIEP, Shraddha led the development of the Digital Teacher Online Course that has been implemented in more than nine countries, including India, Bangladesh, Bhutan, Sri Lanka, Nigeria, Maldives, Mexico, South Africa, and Jordan, reaching over 175,000 teachers in the first 3 years of its launch.',
         imageAlt: 'UNESCO MGIEP project',
         actions: [
-          { label: 'View Course', href: '#' },
-          { label: 'Facilitator Toolkit', href: '#' },
+          { label: 'View Course', href: 'https://mgiep.unesco.org/course-the-digital-educator' },
+          { label: 'Read More', href: 'https://mgiep.unesco.org/course-the-digital-educator' },
+          { label: 'Facilitator Toolkit', href: 'https://view.genially.com/60e9b7eb0ce4b10fb8bee09e/presentation-course-implementation-toolkit' },
         ],
       },
     ],
@@ -314,7 +108,7 @@ const cardSections: CardSection[] = [
           'Our two-day faculty training program combined the hands-on exploration of more than ten AI tools with critical discussions on ethical use. We drove measurable improvements: 88% of participants discovered new tools to enhance their teaching materials, and 35% gained confidence in using AI for research and student guidance.',
         image: '/images/projects/University of Stirling.jpg',
         imageAlt: 'University of Stirling workshop',
-        actions: [{ label: 'Learn More', href: '#' }],
+        actions: [{ label: 'Learn More', href: 'https://drive.google.com/file/d/1Sk81oRmbEV4iGesY0P13eXDs9Z1ogeFB/view?usp=drive_link' }],
       },
       {
         client: 'ITM Skill University',
@@ -323,12 +117,7 @@ const cardSections: CardSection[] = [
           'The workshop explores how the UDL framework helps educators proactively identify and preempt diverse learner barriers, such as language, varying background knowledge, and attention spans. Rather than reacting to challenges mid-lesson, the workshop guides faculty to intentionally build flexibility and support directly into their materials, activities, and assessments across the three dimensions of learning: the why (motivation), what (comprehension), and how (expression).',
         image: '/images/projects/ITM Skills University.png',
         imageAlt: 'ITM Skill University UDL workshop',
-        actions: [
-          {
-            label: 'Learn More',
-            href: 'https://drive.google.com/file/d/1AdeOuv0k7TURic-C4F-2fBgoJ3oSkW3/view?usp=drive_link',
-          },
-        ],
+        actions: [{ label: 'Watch Video', href: 'https://youtu.be/2D7OZqMqIOw?si=8Gb-Ctf2--2IBoxI' }],
       },
       {
         client: 'K R Mangalam University',
@@ -337,7 +126,6 @@ const cardSections: CardSection[] = [
           'A three-day Science of Learning workshop trained 150 faculty across three cohorts, combining insights from cognitive science and educational research. With a heavy application focus, the workshop helped faculty to apply the insights to redesign their slides, assessments, retrieval strategies, and lesson plans for better learning outcomes. Post workshop, 65% felt confident managing cognitive load (up from 24% pre-workshop), and 76% felt confident applying retrieval practice.',
         image: '/images/projects/K R Mangalam University.JPG',
         imageAlt: 'K R Mangalam University workshop',
-        actions: [{ label: 'Learn More', href: '#' }],
       },
     ],
   },
@@ -430,7 +218,6 @@ export default function ProjectsList() {
   return (
     <section className="bg-white py-20 md:py-32">
       <div className="page-margin max-content">
-        {/* Table */}
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
             <h1 className="heading-xl text-black mb-6">Our Projects</h1>
@@ -439,55 +226,6 @@ export default function ProjectsList() {
               focus remains the same: learning designed to produce real change,
               not just completion.
             </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-black/10">
-              <thead>
-                <tr className="bg-black text-white">
-                  <th className="w-16 p-4 text-left font-body text-sm font-medium border-r border-white/20">
-                    #
-                  </th>
-                  <th className="w-1/3 p-4 text-left font-body text-sm font-medium border-r border-white/20">
-                    Project
-                  </th>
-                  <th className="p-4 text-left font-body text-sm font-medium">
-                    Images
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {allRows.map((row) =>
-                  row.type === 'section' ? (
-                    <tr key={`section-${row.title}`} className="bg-black text-white">
-                      <td
-                        colSpan={3}
-                        className="p-4 font-display text-lg font-semibold"
-                      >
-                        {row.title}
-                      </td>
-                    </tr>
-                  ) : (
-                    <tr
-                      key={`project-${row.title}`}
-                      className="border-t border-black/10"
-                    >
-                      <td className="p-4 align-top font-body text-sm text-black/60 border-r border-black/10 text-center">
-                        {row.number}
-                      </td>
-                      <td className="p-4 align-top font-body text-sm font-medium text-black border-r border-black/10">
-                        {row.title}
-                      </td>
-                      <td className="p-4 align-top font-body text-sm text-black/70 leading-relaxed">
-                        {row.notes || '—'}
-                      </td>
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
           </div>
         </ScrollReveal>
 

@@ -75,7 +75,7 @@ export default function Footer() {
           <div className="flex flex-col gap-12 h-full justify-between">
             <div>
               <span className="font-display text-lg text-pink mb-4 block">
-                Resources
+                Our work
               </span>
               <nav className="flex flex-col gap-3">
                 {resourceLinks.map((link) => (

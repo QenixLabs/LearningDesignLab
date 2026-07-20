@@ -28,6 +28,7 @@ const conferences: Conference[] = [
     description:
       'Shraddha hosted a chat with Dr. Carl Hendrick, co-author of Instructional Illusions, for educators and L&D professionals. The discussion explored why effective learning design is often counterintuitive. Together, they unpacked common "illusions" about discovery, expertise, engagement, and learner-centred design, that appear attractive but lack evidence. They also offered practical guidance designing for genuine cognitive engagement and durable learning.',
     imageAlt: 'Learning Planet Festival 2026',
+    image: '/images/conferences/Learning Planet Festival (LDC Collaboration), 2026.png',
     actions: [{ label: 'Watch the Video', href: 'https://www.learning-planet.org/event/science-of-learning-essentials-discover-popular-instructional-illusions-with-carl-hendrick/' }],
   },
   {
@@ -37,6 +38,7 @@ const conferences: Conference[] = [
     description:
       "LDC collaborators Deepthy (Professor, ITM University) and Nivid (Professor, IIT Gwalior) delivered an oral presentation on 'Truth-Centric Education Through Indian Knowledge Systems'. Their paper explored the potential of Indian Knowledge Systems (IKS) as a pedagogical foundation in contemporary higher education. They positioned truth-centric learning not merely as a moral ideal, but as an active, educative process of refining perception, attention, and awareness.",
     imageAlt: 'Redefining Education Conference 2026',
+    image: '/images/conferences/Redefining Education Conference.png',
   },
   {
     title: '12th Annual Conference of Cognitive Science (ACCS-12)',
@@ -67,7 +69,6 @@ const conferences: Conference[] = [
     imageAlt: 'Let the Games Begin 2025',
     images: [
       '/images/conferences/The Future of Education2.jpg',
-      '/images/conferences/The Future of Education1.jpg',
     ],
     actions: [{ label: 'Watch the Video', href: 'https://youtu.be/i-g9ngG4_0A?si=c6QBRQSMsSnXAKEr' }],
   },
@@ -88,6 +89,7 @@ const conferences: Conference[] = [
     description:
       'Shraddha presented a co-authored paper with Parisha Jain demonstrating how Universal Design for Learning (UDL) can be practically implemented in online courses, from low- to premium digital tools. Through examples from our 3M\'s Digital Teacher course as a case study, the session modelled accessible design (interactive slides, polls, multimedia) to key UDL checkpoints, illustrating how to boost learner engagement and comprehension in low-cost, scalable contexts.',
     imageAlt: 'T4E 2022',
+    image: '/images/conferences/International Conference on Technology .jpg',
   },
   {
     title: '11th World Congress on Adolescent Health (IAAH)',
@@ -96,6 +98,7 @@ const conferences: Conference[] = [
     description:
       'Shraddha spoke on a panel about applying the Human-Centered Design (HCD) approach to practical programming. She shared perspectives and practical experience with design research and prototyping to create more effective, youth-centered health and education initiatives.',
     imageAlt: 'IAAH 2022',
+    image: '/images/conferences/11th World Congress on Adolescent.jpg',
   },
   {
     title: 'Skill Aid Empower India Foundation Event',
@@ -113,13 +116,16 @@ const conferences: Conference[] = [
     description:
       'Shraddha delivered a guest lecture for the Games and Cognition course, exploring the fundamentals of games for learning. She explained why merely making a game "engaging" is insufficient for educational outcomes and broke down the principles of effective game-based learning and gamification.',
     imageAlt: 'Games and Cognition Course',
+    image: '/images/conferences/Games & Cognition Session.JPG',
   },
   {
-    title: 'Podcast Appearance: Parisha and Shraddha',
-    year: '',
+    title: 'Podcast Appearance: Parisha and Shraddha, 2025',
+    year: '2025',
     location: 'Virtual',
-    description: '',
+    description:
+      'Shraddha and Parisha explained how they turned a grassroots idea into a thriving global community of learning designers, the importance of cross-sector collaboration to unlocking meaningful innovation in learning, what it takes to nurture a member-led community, and their vision for the future – regional chapters, sustainable operations, and a stronger Global South voice in L&D.',
     imageAlt: 'Podcast Appearance',
+    image: '/images/conferences/Podcast Appearance: Parisha and .jpg',
   },
 ];
 

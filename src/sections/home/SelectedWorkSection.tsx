@@ -1,26 +1,13 @@
-import { type ReactNode } from 'react';
 import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import NeuronMotif from '../../components/NeuronMotif';
 import { cn } from '@/lib/utils';
 
 const projects = [
-  {
-    client: '',
-    title: 'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
-  },
-  {
-    client: '',
-    title: 'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
-  },
-  {
-    client: '',
-    title: 'Workshops on AI for Teaching, Learning and Research for University of Stirling, UAE',
-  },
-  {
-    client: '',
-    title: 'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
-  },
+  'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
+  'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
+  'Workshops on AI for Teaching, Learning and Research for faculty members of Stirling University, UAE',
+  'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
 ];
 
 const scholarships = [
@@ -36,34 +23,10 @@ const blogs = [
 ];
 
 const presentations = [
-  {
-    name: 'Indian Institute of Technology, Delhi',
-    image: '/images/logos/iit delhi.png',
-  },
-  {
-    name: 'Tata Institute of Social Sciences, Mumbai',
-    image: '/images/logos/tata insitute.png',
-  },
-  {
-    name: 'Masinde Muliro University of Science & Technology, Kenya',
-    image: '/images/logos/masinde muliro.png',
-  },
+  { name: 'Indian Institute of Technology, Delhi', image: '/images/logos/iit delhi.jpg' },
+  { name: 'University of Colorado', image: '/images/logos/university of colorado.jpg' },
+  { name: 'Masinde Muliro University of Science & Technology, Kenya', image: '/images/logos/masinde muliro.png' },
 ];
-
-function PlaceholderImage({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        'bg-white/5 border border-white/10 rounded-md flex items-center justify-center',
-        className
-      )}
-    >
-      <span className="text-white/20 text-[10px] font-body uppercase tracking-wider">
-        Image
-      </span>
-    </div>
-  );
-}
 
 function BentoPanel({
   title,
@@ -71,25 +34,23 @@ function BentoPanel({
   className,
 }: {
   title: string;
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
 }) {
   return (
     <div
       className={cn(
-        'border border-white/15 bg-white/[0.03] p-6 md:p-8 flex flex-col h-full',
+        'border border-white/15 bg-white/[0.03] p-5 md:p-6 flex flex-col h-full',
         'hover:bg-white/[0.05] transition-colors duration-300',
         className
       )}
     >
-      <h3 className="heading-md text-white mb-6 text-center">{title}</h3>
+      <h3 className="font-display text-lg md:text-xl font-semibold text-white mb-4 md:mb-5">
+        {title}
+      </h3>
       {children}
     </div>
   );
-}
-
-function SeeMoreButton({ className }: { className?: string }) {
-  return <Button text="See More" variant="secondary" className={className} />;
 }
 
 export default function SelectedWorkSection() {
@@ -103,97 +64,109 @@ export default function SelectedWorkSection() {
           <h2 className="heading-xl text-white mb-10 md:mb-16">Our Work (So Far)</h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch">
           {/* Projects */}
-          <ScrollReveal className="h-full">
+          <ScrollReveal className="md:col-span-3 h-full">
             <BentoPanel title="Projects" className="h-full">
-              <div className="flex flex-col gap-6 flex-1">
+              <div className="flex flex-col gap-4 flex-1">
                 {projects.map((project) => (
                   <div
-                    key={project.title}
-                    className="flex gap-4 items-start group/item cursor-pointer"
+                    key={project}
+                    className="border-b border-white/10 pb-4 last:border-0 last:pb-0"
                   >
-                    <PlaceholderImage className="w-20 h-16 md:w-24 md:h-20 flex-shrink-0" />
-                    <div className="flex-1 min-w-0">
-                      {project.client && (
-                        <span className="section-label text-white/50 block mb-1">
-                          {project.client}
-                        </span>
-                      )}
-                      <h4 className="font-body text-base font-medium text-white leading-snug">
-                        {project.title}
-                      </h4>
-                    </div>
+                    <p className="font-body text-sm md:text-base text-white/80 leading-snug">
+                      {project}
+                    </p>
                   </div>
                 ))}
               </div>
-              <SeeMoreButton className="mt-8" />
+              <Button
+                text="See More"
+                href="/projects"
+                variant="primary"
+                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+              />
             </BentoPanel>
           </ScrollReveal>
 
-          {/* Right column */}
-          <div className="flex flex-col gap-6">
-            <ScrollReveal>
-              <BentoPanel title="Scholarship & Publications">
-                <div className="flex flex-col gap-4 flex-1">
-                  {scholarships.map((item) => (
-                    <div
-                      key={item}
-                      className="border-b border-white/10 pb-4 last:border-0 last:pb-0 cursor-pointer hover:text-white transition-colors"
-                    >
-                      <p className="font-body text-sm md:text-base text-white/80 leading-relaxed">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <SeeMoreButton className="mt-6" />
-              </BentoPanel>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ScrollReveal delay={0.1}>
-                <BentoPanel title="Blogs">
-                  <div className="flex flex-col gap-4 flex-1">
-                    {blogs.map((blog) => (
-                      <div
-                        key={blog}
-                        className="border border-white/10 p-3 text-center cursor-pointer hover:border-white/25 hover:bg-white/5 transition-colors"
-                      >
-                        <span className="font-body text-sm text-white/80">
-                          {blog}
-                        </span>
-                      </div>
-                    ))}
+          {/* Presentations At */}
+          <ScrollReveal className="md:col-span-1 h-full">
+            <BentoPanel title="Presentations At" className="h-full">
+              <div className="flex flex-col gap-3 flex-1">
+                {presentations.map((item) => (
+                  <div
+                    key={item.name}
+                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className={cn(
+                        'w-auto max-w-full object-contain',
+                        item.name === 'University of Colorado'
+                          ? 'h-24 md:h-32'
+                          : 'h-16 md:h-20'
+                      )}
+                    />
                   </div>
-                  <SeeMoreButton className="mt-6" />
-                </BentoPanel>
-              </ScrollReveal>
+                ))}
+              </div>
+              <Button
+                text="See More"
+                href="/conferences"
+                variant="primary"
+                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+              />
+            </BentoPanel>
+          </ScrollReveal>
 
-              <ScrollReveal delay={0.15}>
-                <BentoPanel title="Presentations At">
-                  <div className="flex flex-col gap-5 flex-1">
-                    {presentations.map((item) => (
-                      <div
-                        key={item.name}
-                        className="flex flex-col items-start gap-2 group/item cursor-pointer"
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="h-20 w-auto max-w-full flex-shrink-0 object-contain bg-transparent"
-                        />
-                        <p className="font-body text-sm text-white/80 leading-snug">
-                          {item.name}
-                        </p>
-                      </div>
-                    ))}
+          {/* Blogs */}
+          <ScrollReveal delay={0.1} className="md:col-span-2 h-full">
+            <BentoPanel title="Blogs" className="h-full">
+              <div className="flex flex-col gap-3 flex-1">
+                {blogs.map((blog) => (
+                  <div
+                    key={blog}
+                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
+                  >
+                    <p className="font-body text-sm text-white/80 leading-snug">
+                      {blog}
+                    </p>
                   </div>
-                  <SeeMoreButton className="mt-6" />
-                </BentoPanel>
-              </ScrollReveal>
-            </div>
-          </div>
+                ))}
+              </div>
+              <Button
+                text="See More"
+                href="https://www.linkedin.com/newsletters/global-south-s-learning-voices-7289983829136588802/"
+                variant="primary"
+                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+              />
+            </BentoPanel>
+          </ScrollReveal>
+
+          {/* Scholarship & Publications */}
+          <ScrollReveal delay={0.15} className="md:col-span-2 h-full">
+            <BentoPanel title="Scholarship & Publications" className="h-full">
+              <div className="flex flex-col gap-3 flex-1">
+                {scholarships.map((item) => (
+                  <div
+                    key={item}
+                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
+                  >
+                    <p className="font-body text-sm text-white/80 leading-snug">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Button
+                text="See More"
+                href="/publications"
+                variant="primary"
+                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+              />
+            </BentoPanel>
+          </ScrollReveal>
         </div>
       </div>
     </section>

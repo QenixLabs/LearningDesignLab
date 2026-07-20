@@ -84,7 +84,7 @@ export default function Navigation() {
     { label: 'About us', href: '/' },
     { label: 'Our team', href: '/team' },
     {
-      label: 'Resources',
+      label: 'Our work',
       href: '/projects',
       children: [
         { label: 'Projects', href: '/projects' },
@@ -100,7 +100,7 @@ export default function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 h-20 flex items-center transition-all duration-300 ${
         isDark
-          ? 'bg-transparent'
+          ? 'bg-black/80 backdrop-blur-sm md:bg-transparent'
           : 'bg-white/95 backdrop-blur-sm border-b border-black/8'
       }`}
     >
