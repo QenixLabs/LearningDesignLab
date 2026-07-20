@@ -3,13 +3,15 @@ import NeuronMotif from '../../components/NeuronMotif';
 import Button from '../../components/Button';
 import { FileText } from 'lucide-react';
 
-const projects: { title: string; image?: string }[] = [
+const projects: { title: string; image?: string; fit?: 'cover' | 'contain' }[] = [
   {
     title: 'A story-based course on data analytics for Swayam Platform, GIZ',
     image: '/images/verticals/A story-based.jpg',
   },
   {
     title: 'Behavioral design of trainings that enable teachers to practice desired behaviors for UNESCO Myanmar',
+    image: '/images/projects/UNESCO_Myanmar_collage.png',
+    fit: 'contain',
   },
   {
     title: 'A scenario based gamified course on gender for youth in colombia',
@@ -21,14 +23,14 @@ const projects: { title: string; image?: string }[] = [
   },
 ];
 
-function ProjectImage({ title, image }: { title: string; image?: string }) {
+function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: string; fit?: 'cover' | 'contain' }) {
   if (image) {
     return (
       <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${fit === 'contain' ? 'object-contain p-2' : 'object-cover'}`}
         />
       </div>
     );
@@ -55,10 +57,10 @@ export default function ProofPointsSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {projects.map(({ title, image }, i) => (
+          {projects.map(({ title, image, fit }, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
               <div className="flex items-start gap-4">
-                <ProjectImage title={title} image={image} />
+                <ProjectImage title={title} image={image} fit={fit} />
                 <h3 className="heading-lg text-black leading-snug">{title}</h3>
               </div>
             </ScrollReveal>
@@ -67,7 +69,12 @@ export default function ProofPointsSection() {
 
         <ScrollReveal delay={0.4}>
           <div className="mt-16 flex justify-center">
-            <Button text="See All Our Projects" href="/projects" variant="primary" />
+            <Button
+              text="See All Our Projects"
+              href="/projects"
+              variant="primary"
+              className="px-10 py-4 text-base"
+            />
           </div>
         </ScrollReveal>
       </div>
