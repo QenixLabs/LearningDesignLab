@@ -2,11 +2,10 @@ import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const steps = [
-  'We study the context, enablers and barriers for reaching the desired state.',
-  'We define what people need to do differently and consult with them to design solutions.',
+  'We define what people need to do differently, and study the context, enablers, and barriers to achieving that',
   'We conduct rigorous research to understand what has worked and identify evidence-based strategies and pedagogy to drive impact.',
   'We design learning activities and strategies backwards from the goal in collaboration with in context and domain experts.',
-  'We apply instructional design and user-centered design to create engaging and effective courses and curriculums.',
+  'We apply instructional design and user-center design to create engaging and effective courses and curriculums.',
   'We prototype our solutions, test with real learners, then refine before scaling.',
   'We create tools and conduct trainings to enable facilitators for quality implementation.',
 ];
@@ -48,7 +47,7 @@ export default function ProcessSection() {
                     <span className="font-display text-2xl text-pink/30 block mb-2">
                       {number}
                     </span>
-                    <p className="font-body text-base md:text-lg text-black/80 leading-relaxed">
+                    <p className="font-body text-sm text-black/80 leading-relaxed">
                       {step}
                     </p>
                   </div>

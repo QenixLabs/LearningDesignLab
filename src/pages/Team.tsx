@@ -21,7 +21,7 @@ const founder: TeamMember = {
   role: 'Founder & Executive Director',
   image: '/images/team/Shraddha_Rawat-removebg-preview.png',
   description:
-    'In 2011, Shraddha founded the Learning Designers Community (LDC), a global network of over 7,000 professionals across 36 countries. Her work spans instructional design, learning experience design, and gamified learning solutions that translate into real-world outcomes. Through this, Shraddha ensures that high-quality learning remains accessible to all, and her educational experiences have reached learners in diverse contexts—from schools and universities to corporate training. She is also a consultant for organisations like UNICEF, integrating learning science research and practical application.',
+    'In 2011, Shraddha founded the Learning Designers Community (LDC), a global network of over 7,000 professionals across 36 countries. Her work spans instructional design, learning experience design, and gamified learning solutions that translate into real-world outcomes. Through this, Shraddha ensures that high-quality learning remains accessible to all, and her educational experiences have reached learners in diverse contexts—from schools and universities to corporate training. She is also a consultant for organizations like UNICEF, integrating learning science research and practical application.',
   socials: {
     facebook: 'https://www.facebook.com/wix',
     twitter: 'https://www.twitter.com/wix',
@@ -55,7 +55,7 @@ const team: TeamMember[] = [
     role: 'Senior Learning Design Specialist',
     image: '/images/team/Divya Menon.png',
     description:
-      "Divya Menon is an L&D leader with a master's in EdTech and 20+ years driving large-scale capacity-building and digital transformation for global organisations like the WHO, UNESCO, and UNITAR. She specialises in competency-based education, curriculum design, and programme management. Divya blends advanced EdTech with behavioural science and guides cross-functional teams to design, scale, and measure impactful learning solutions. She also holds certifications in Kirkpatrick Evaluation.",
+      "Divya Menon is an L&D leader with a master's in EdTech and 20+ years driving large-scale capacity-building and digital transformation for global organizations like the WHO, UNESCO, and UNITAR. She specialises in competency-based education, curriculum design, and programme management. Divya blends advanced EdTech with behavioural science and guides cross-functional teams to design, scale, and measure impactful learning solutions. She also holds certifications in Kirkpatrick Evaluation.",
   },
   {
     name: 'Preeti Panda',
@@ -83,7 +83,7 @@ const team: TeamMember[] = [
     role: 'Curriculum & Assessment Expert',
     image: '/images/team/Kritika Mattoo.png',
     description:
-      'Kritika is a psychologist and learning designer with several years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organisations.',
+      'Kritika is a psychologist and learning designer with several years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organizations.',
   },
   {
     name: 'Miriam Elnaggar',
@@ -104,14 +104,14 @@ const team: TeamMember[] = [
     role: 'Disaster Education Expert',
     image: '/images/team/Ranit_Chatterjee-removebg-preview.png',
     description:
-      'Ranit is a disaster risk reduction expert and co-founder of an organisation utilising AI and scenario-centered approaches to build resilience. An acclaimed academic and practitioner, he has trained thousands of learners in translating knowledge into action through interactive simulations and serious games. He has also designed effective disaster preparedness programs for communities and organisations across the world.',
+      'Ranit is a disaster risk reduction expert and co-founder of an organisation utilising AI and scenario-centered approaches to build resilience. An acclaimed academic and practitioner, he has trained thousands of learners in translating knowledge into action through interactive simulations and serious games. He has also designed effective disaster preparedness programs for communities and organizations across the world.',
   },
   {
     name: 'Ayomide Ajani',
     role: 'Visual Designer & Course Developer',
     image: '/images/team/Ayomide_Ajani-removebg-preview.png',
     description:
-      'Ayomide is a curricula and learning experience designer with expertise in visual design and digital media to drive social impact. He combines creativity, learning science, and instructional technology to create engaging learning experiences. His work spans curriculum strategy, content design, and multimedia production for education-focused organisations and initiatives.',
+      'Ayomide is a curricula and learning experience designer with expertise in visual design and digital media to drive social impact. He combines creativity, learning science, and instructional technology to create engaging learning experiences. His work spans curriculum strategy, content design, and multimedia production for education-focused organizations and initiatives.',
   },
   {
     name: 'Rabia Malik',
@@ -271,7 +271,7 @@ export default function Team() {
       <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh]">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="heading-xl text-black mb-6">
+            <h1 className="page-heading text-black mb-6">
               Meet Our Transdisciplinary Team
             </h1>
           </div>

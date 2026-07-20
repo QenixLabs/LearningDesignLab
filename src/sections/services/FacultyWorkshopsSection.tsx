@@ -6,25 +6,25 @@ const workshops = [
     title: 'Science of Learning for Evidence-Based Teaching',
     meta: 'In-Person · 3 Days',
     description:
-      'For teachers and universities that want to improve the effectiveness of teaching practice by aligning it with the human cognitive architecture and in line with how memory, attention, and transfer actually work.',
+      'For teachers and universities that want to improve the effectiveness of teaching practice by aligning it with the human cognitive architecture and in line with how memory, attention, and transfer really work.',
   },
   {
     title: 'AI for Teaching, & Learning & Research',
     meta: 'In-Person · 2 Days',
     description:
-      'For faculty to move beyond the regular use of ChatGPT and accelerate the creation of slides, graphics, videos, and customGPTs using curated AI tools. Also learn critical use of AI research tools for academic research and publishing.',
+      'For faculty that want to expand the regular use of ChatGPT and accelerate the creation of slides, graphics, videos, and custom GPTs using curated AI tools. Also learn critical use of AI research tools for academic research and publishing.',
   },
   {
     title: 'Designing AI-Aligned Assessments for the GenAI Era',
     meta: 'Virtual · 3 Hours',
     description:
-      'For universities that want to realign their assessments for the AI era and in line with global best practices. The workshop exposes participants to design principles and frameworks globally and enables them to redesign assessments that remain valid, ethical, and academically rigorous.',
+      'For universities that want to realign their assessments for the AI era and towards global best practices. The workshop exposes participants to the changes in assessment practices globally and enables them to redesign assessments that remain valid, ethical, and academically rigorous.',
   },
   {
     title: 'Universal Design for Learning',
     meta: 'In-Person · 1 Day',
     description:
-      'For schools and universities that want to equip their teachers with strategies to cater to a wide variety of students. UDL can enable educators to anticipate and address learning barriers and design flexible methods and supports for more effective instruction.',
+      'For schools and universities that want to equip their teachers with strategies to cater to a wide variety of students. UDL can enable educators to anticipate and address learning barriers and design flexible methods and support for more effective instruction.',
   },
 ];
 
@@ -47,7 +47,7 @@ export default function FacultyWorkshopsSection() {
                 <h3 className="font-display text-lg font-semibold text-black leading-snug mb-2 group-hover:text-pink transition-colors">
                   {workshop.title}
                 </h3>
-                <span className="section-label-pink mb-4 block">{workshop.meta}</span>
+                <span className="font-display text-sm font-medium text-pink mb-4 block">{workshop.meta}</span>
                 <p className="font-body text-sm leading-relaxed text-black/60">
                   {workshop.description}
                 </p>

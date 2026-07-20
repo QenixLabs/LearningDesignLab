@@ -62,14 +62,14 @@ export default function ServiceDetail({
             {/* Content */}
             <div className="flex-1">
               <h3 className={`heading-xl ${textColor} mb-6`}>{title}</h3>
-              <p className={`font-body text-lg leading-relaxed ${textMuted} max-w-[60ch] mb-8`}>
+              <p className={`font-body text-sm leading-relaxed ${textMuted} max-w-[60ch] mb-8`}>
                 {description}
               </p>
 
               <h4 className={`heading-md ${textColor} mt-12 mb-6`}>{itemsHeading}</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                 {items.map((item, i) => (
-                  <div key={i} className={`font-body text-base ${textMuted}`}>
+                  <div key={i} className={`font-body text-sm ${textMuted}`}>
                     {item.title ? (
                       <div className="mb-1">
                         <span className={`heading-md text-base ${textColor} block mb-1`}>{item.title}</span>
@@ -94,7 +94,7 @@ export default function ServiceDetail({
 
               {differentiator && (
                 <blockquote className={`mt-8 pl-6 border-l-2 ${borderLight}`}>
-                  <p className={`font-body text-base italic leading-relaxed ${textMuted}`}>
+                  <p className={`font-body text-sm italic leading-relaxed ${textMuted}`}>
                     {differentiator}
                   </p>
                 </blockquote>

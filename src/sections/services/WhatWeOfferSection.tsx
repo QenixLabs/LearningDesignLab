@@ -20,9 +20,9 @@ const offerings: { label: string; Icon: LucideIcon; highlight?: string }[] = [
   { label: 'Behavioral nudges', Icon: Bell },
   { label: 'Communities of practice', Icon: Users },
   { label: 'Instructional manuals & workbooks', Icon: FileText },
-  { label: 'AI tools for practice, feedback and performance support', Icon: Bot },
-  { label: 'Job-aids and performance support tools', Icon: Wrench },
-  { label: 'Assessment tools and systems', Icon: ClipboardCheck },
+  { label: 'AI tools for practice, feedback & performance support', Icon: Bot },
+  { label: 'Job-aids & performance support tools', Icon: Wrench },
+  { label: 'Assessment tools & systems', Icon: ClipboardCheck },
 ];
 
 export default function WhatWeOfferSection() {
@@ -56,7 +56,7 @@ export default function WhatWeOfferSection() {
                         <div className="w-12 h-12 rounded-full bg-pink/10 flex items-center justify-center shrink-0">
                           <item.Icon className="w-6 h-6 text-pink" strokeWidth={1.5} />
                         </div>
-                        <p className="font-body text-lg md:text-xl text-black/90 leading-snug">
+                        <p className="font-body text-sm md:text-base text-black/90 leading-snug">
                           {item.highlight ? (
                             <>
                               <span className="underline decoration-pink decoration-2 underline-offset-4">

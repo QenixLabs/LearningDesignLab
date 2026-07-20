@@ -2,7 +2,11 @@ import ScrollReveal from '../../components/ScrollReveal';
 import ContactForm from '../../components/ContactForm';
 import NeuronMotif from '../../components/NeuronMotif';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  title?: string;
+}
+
+export default function ContactSection({ title }: ContactSectionProps) {
   return (
     <section id="contact" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif overlay */}
@@ -14,7 +18,7 @@ export default function ContactSection() {
           <div>
             <ScrollReveal>
               <h2 className="heading-xl text-white mb-6">
-                Your Teachers Are Working Hard. Let's Ensure Their Efforts Pay Off.
+                {title ?? "Let's build learning that drives impact"}
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>

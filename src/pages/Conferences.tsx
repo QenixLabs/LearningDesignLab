@@ -146,7 +146,7 @@ export default function Conferences() {
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="heading-xl text-black mb-6">Our Work at Conferences</h1>
-            <p className="font-body text-base md:text-lg text-black/70 leading-relaxed">
+            <p className="font-body text-xs md:text-base text-black/70 leading-relaxed">
               We've delivered talks and presentations on a diverse range of
               topics, including AI in education, Universal Design for Learning
               (UDL), youth empowerment, and the intersection of cognitive science

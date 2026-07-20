@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { scrollToTop } from '../lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -14,15 +15,18 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!location.hash) {
-      window.scrollTo(0, 0);
+      scrollToTop();
     }
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
+      if (!location.hash) {
+        scrollToTop();
+      }
     }, 100);
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="min-h-screen">

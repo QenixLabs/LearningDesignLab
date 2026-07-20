@@ -5,12 +5,12 @@ const sectors: { title: string; description: string; image: string }[] = [
   {
     title: 'Educational Institutes',
     description: 'Schools, universities and online learning departments of universities',
-    image: '/images/verticals/education.jpeg',
+    image: '/images/verticals/education.jpg',
   },
   {
-    title: 'Social Impact Organisations',
+    title: 'Social Impact Organizations',
     description: 'United Nations, large non-profits, donor agencies and foundations',
-    image: '/images/verticals/non-profit.jpeg',
+    image: '/images/verticals/non-profit.png',
   },
   {
     title: 'Corporates & Enterprises',
@@ -42,7 +42,7 @@ export default function TargetSectorsSection() {
                 </div>
                 <div className="p-6">
                   <h3 className="heading-md text-black mb-3">{sector.title}</h3>
-                  <p className="font-body text-base text-black/70 leading-relaxed">
+                  <p className="font-body text-sm text-black/70 leading-relaxed">
                     {sector.description}
                   </p>
                 </div>

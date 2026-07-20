@@ -42,13 +42,13 @@ export default function HeroSection() {
 
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
         <div className="w-full max-w-[70%] max-md:max-w-full">
-          <h1 className="hero-heading font-display uppercase text-[9vw] md:text-[7vw] lg:text-[5.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
+          <h1 className="hero-heading font-display uppercase text-[7vw] md:text-[5vw] lg:text-[3.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
             Designing Learning That Works
           </h1>
 
-          <p className="hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[60ch] mb-12">
+          <p className="hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-12">
             We are an impact-driven, international learning design firm dedicated to enhancing the
-            effectiveness of skilling, competency development and educational interventions. We partner
+            effectiveness of skilling, competency development, and educational interventions. We partner
             with organizations and educational institutions to build evidence-informed, contextually
             grounded designs that translate learning into real-world outcomes.
           </p>
@@ -77,7 +77,7 @@ export default function HeroSection() {
           <StatCounter value={200} suffix="+" label="Trainings Delivered" />
           <StatCounter value={65} suffix="+" label="Digital Courses Built" />
           <StatCounter value={20} suffix="+" label="Countries Reached" />
-          <StatCounter value={25} suffix="+" label="Organisations Partnered" />
+          <StatCounter value={25} suffix="+" label="Organizations Partnered" />
         </div>
       </div>
     </section>

@@ -2,12 +2,10 @@ import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const steps = [
-  'Through pre-workshop surveys and stakeholder consultation, we map the institutional context, the faculty\'s current practice, and the specific gaps we\'re designing to close.',
-  'We specify the teaching behaviours we want to alter, consult with institutional leadership, and review existing course packages to understand current practices, barriers and enablers.',
+  'We conduct pre-workshop surveys, consult institutional leadership and stakeholders, and review existing courses.',
+  "Through that, we map the institutional context, the faculty's current practice, the specific behaviors we want to alter, and the barriers and enablers to that change.",
   'We ground every workshop in current evidence from Science of Learning (SOL) and select only strategies with a real evidence base.',
   'We design every session as 70% practice and 30% information, so faculty apply, create, and redesign during the workshop itself and gain the skill and confidence to continue later.',
-  'We follow every workshop with resources for continued application including AI tools, templates, handouts, curated reading and invitation to join a community for learning designers.',
-  'Where deeper change is needed, we offer optional structured transfer support: review and refresher sessions, expert feedback, and community learning.',
 ];
 
 export default function FacultyStrategySection() {
