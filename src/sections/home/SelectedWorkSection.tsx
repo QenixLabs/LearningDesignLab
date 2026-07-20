@@ -6,47 +6,47 @@ import { cn } from '@/lib/utils';
 
 const projects = [
   {
-    client: 'GIZ & SWAYAM',
-    title: 'Applied Online Courses on AI and Data Science',
+    client: '',
+    title: 'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
   },
   {
-    client: 'UNICEF INDIA',
-    title: 'Digital Girl Hub Impact Research',
+    client: '',
+    title: 'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
   },
   {
-    client: 'UNIVERSITY OF STIRLING, UAE',
-    title: 'AI for Teaching, Learning & Research',
+    client: '',
+    title: 'Workshops on AI for Teaching, Learning and Research for University of Stirling, UAE',
   },
   {
-    client: 'QUEST ALLIANCE',
-    title: 'ITI Employability Curriculum',
+    client: '',
+    title: 'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
   },
 ];
 
 const scholarships = [
   'Navigating Structural, Epistemic, and Human Dimensions in Education',
   'Reimagining Learning with AI: Towards a Learning Society',
-  'Development and Validation of a Brief Digital Pedagogy Competency Scale (DiPeCoS)',
+  'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPANCER)',
 ];
 
 const blogs = [
-  'The Future of AI in Education',
-  'Designing Inclusive Learning Experiences',
-  'Storytelling for Effective Online Courses',
+  "Why Facts Don't Change Minds: Designing Learning That Transcends Behavior",
+  'Learning How to Learn: Introducing the Science of Learning to Undergraduate Students',
+  'Beyond the Hype: What AI Actually Means for the Next Billion Learners',
 ];
 
 const presentations = [
   {
-    title: '12th Annual Conference of Cognitive Science (ACCS-12), 2025',
-    image: '/images/conferences/12th Annual Conference of Cognitive Science.jpg',
+    name: 'Indian Institute of Technology, Delhi',
+    image: '/images/logos/iit delhi.png',
   },
   {
-    title: 'Masinde Muliro University of Science and Technology (MMAST) - 18th International Multidisciplinary Conference, 2024, Kenya',
-    image: '/images/conferences/18th International.jpg',
+    name: 'Tata Institute of Social Sciences, Mumbai',
+    image: '/images/logos/tata insitute.png',
   },
   {
-    title: 'Let the Games Begin: The Future of Education at the Global Learning Planet Festival and Catalyst Now, 2025',
-    image: '/images/conferences/The Future of Education2.jpg',
+    name: 'Masinde Muliro University of Science & Technology, Kenya',
+    image: '/images/logos/masinde muliro.png',
   },
 ];
 
@@ -100,7 +100,7 @@ export default function SelectedWorkSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="heading-xl text-white mb-10 md:mb-16">Selected Projects</h2>
+          <h2 className="heading-xl text-white mb-10 md:mb-16">Our Work (So Far)</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
@@ -115,9 +115,11 @@ export default function SelectedWorkSection() {
                   >
                     <PlaceholderImage className="w-20 h-16 md:w-24 md:h-20 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <span className="section-label text-white/50 block mb-1">
-                        {project.client}
-                      </span>
+                      {project.client && (
+                        <span className="section-label text-white/50 block mb-1">
+                          {project.client}
+                        </span>
+                      )}
                       <h4 className="font-body text-base font-medium text-white leading-snug">
                         {project.title}
                       </h4>
@@ -170,19 +172,19 @@ export default function SelectedWorkSection() {
 
               <ScrollReveal delay={0.15}>
                 <BentoPanel title="Presentations At">
-                  <div className="flex flex-col gap-4 flex-1">
+                  <div className="flex flex-col gap-5 flex-1">
                     {presentations.map((item) => (
                       <div
-                        key={item.title}
-                        className="flex gap-3 items-start group/item cursor-pointer"
+                        key={item.name}
+                        className="flex flex-col items-start gap-2 group/item cursor-pointer"
                       >
                         <img
                           src={item.image}
-                          alt={item.title}
-                          className="w-12 h-12 flex-shrink-0 object-cover rounded-md border border-white/10 bg-white"
+                          alt={item.name}
+                          className="h-20 w-auto max-w-full flex-shrink-0 object-contain bg-transparent"
                         />
                         <p className="font-body text-sm text-white/80 leading-snug">
-                          {item.title}
+                          {item.name}
                         </p>
                       </div>
                     ))}

@@ -28,7 +28,7 @@ const defaultTestimonials: Testimonial[] = [
   },
   {
     quote:
-      'The modules are highly engaging and deeply reflective. The use of popular culture along with a diverse range of methodologies stands out. It is evident how much thought and passion have gone into this effort. Truly admirable work—this has the potential to be a game changer.',
+      'The modules are highly engaging and deeply reflective. The use of popular culture along with a diverse range of methodologies stands out. It is evident how much hard work, thought, and passion have gone into this effort. Truly admirable work—this has the potential to be a real game changer.',
     highlight: 'highly engaging and deeply reflective',
     attribution: 'Dr. Rita Mishra, Founder and CEO, Patang',
   },
@@ -56,7 +56,7 @@ interface TestimonialsSectionProps {
   items?: Testimonial[];
 }
 
-export default function TestimonialsSection({ title = 'Client Voices', items }: TestimonialsSectionProps) {
+export default function TestimonialsSection({ title, items }: TestimonialsSectionProps) {
   const testimonials = items ?? defaultTestimonials;
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
@@ -65,9 +65,11 @@ export default function TestimonialsSection({ title = 'Client Voices', items }: 
       <NeuronMotif color="#000000" opacity={0.06} size={220} />
 
       <div className="page-margin max-content relative z-10">
-        <ScrollReveal>
-          <h2 className="heading-xl text-black mb-10 md:mb-16">{title}</h2>
-        </ScrollReveal>
+        {title && (
+          <ScrollReveal>
+            <h2 className="heading-xl text-black mb-10 md:mb-16">{title}</h2>
+          </ScrollReveal>
+        )}
       </div>
 
       <div className="overflow-hidden">

@@ -3,7 +3,7 @@ import NeuronMotif from '../../components/NeuronMotif';
 
 const partners = [
   { name: 'K.R. Mangalam University', logo: '/images/logos/kr-mangalam.webp' },
-  { name: 'ITM Skills University', logo: '/images/logos/itm-skills.png' },
+  { name: 'ITM Skills University', logo: '/images/logos/itm-skills-removebg-preview.png' },
   { name: 'University of Stirling', logo: '/images/logos/stirling.svg' },
   { name: 'Ashoka University', logo: '/images/logos/ashoka.png' },
 ];
@@ -21,21 +21,15 @@ export default function FacultySocialProofSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="border border-black/10 rounded-lg bg-white overflow-hidden">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-black/10">
-              {partners.map((partner) => (
-                <div
-                  key={partner.name}
-                  className="flex items-center justify-center p-6 md:p-10"
-                >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-12 md:max-h-16 w-auto max-w-full object-contain opacity-90 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+            {partners.map((partner) => (
+              <img
+                key={partner.name}
+                src={partner.logo}
+                alt={partner.name}
+                className="max-h-14 md:max-h-20 w-auto max-w-[180px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+            ))}
           </div>
         </ScrollReveal>
       </div>

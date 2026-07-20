@@ -107,7 +107,7 @@ export default function ProjectsList() {
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="heading-xl text-black mb-6">Our Projects</h1>
-            <p className="font-body text-base md:text-lg text-black/70 leading-relaxed">
+            <p className="font-body text-xs md:text-base text-black/70 leading-relaxed">
               Different sectors, different audiences, different formats. But our
               focus remains the same: learning designed to produce real change,
               not just completion.

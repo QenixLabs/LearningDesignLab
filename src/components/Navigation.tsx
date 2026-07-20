@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, X } from 'lucide-react';
 import useScrollPosition from '../hooks/useScrollPosition';
+import { scrollToTop } from '../lib/utils';
 
 interface NavLink {
   label: string;
   href: string;
   children?: { label: string; href: string }[];
+  button?: boolean;
 }
 
 export default function Navigation() {
@@ -31,23 +33,10 @@ export default function Navigation() {
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
 
-    const hashIndex = href.indexOf('#');
-    if (hashIndex !== -1) {
-      const targetPath = href.slice(0, hashIndex) || location.pathname;
-      const targetId = href.slice(hashIndex + 1);
-      if (location.pathname === targetPath) {
-        const el = document.getElementById(targetId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        navigate(targetPath);
-        setTimeout(() => {
-          const el = document.getElementById(targetId);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
+    if (location.pathname === href) {
+      scrollToTop();
     } else {
       navigate(href);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -92,8 +81,8 @@ export default function Navigation() {
         { label: 'Advisory for Large-Scale Skilling', href: '/services/advisory' },
       ],
     },
-    { label: 'About', href: '/#about' },
-    { label: 'Team', href: '/team' },
+    { label: 'About us', href: '/' },
+    { label: 'Our team', href: '/team' },
     {
       label: 'Resources',
       href: '/projects',
@@ -103,7 +92,7 @@ export default function Navigation() {
         { label: 'Conferences', href: '/conferences' },
       ],
     },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Contact us', href: '/', button: true },
   ];
 
   return (
@@ -118,16 +107,22 @@ export default function Navigation() {
       <div className="w-full page-margin max-content flex items-center justify-between">
         <Link
           to="/"
-          className={`font-body text-sm md:text-base font-medium uppercase tracking-[0.08em] transition-colors duration-300 ${
-            isDark ? 'text-white' : 'text-black'
-          }`}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="transition-colors duration-300"
+          onClick={(e) => handleNavClick(e, '/')}
         >
-          Learning Design Lab
+          <img
+            src={
+              isDark
+                ? '/images/logos/Logo_-_dark_version-removebg-preview.png'
+                : '/images/logos/Logo_-_light_version-removebg-preview.png'
+            }
+            alt="Learning Design Lab"
+            className="h-20 w-auto"
+          />
         </Link>
 
         {/* Desktop Nav */}
-        <nav ref={dropdownsRef} className="hidden md:flex items-center gap-8">
+        <nav ref={dropdownsRef} className="hidden md:flex items-center gap-12">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label} className="relative">
@@ -164,6 +159,15 @@ export default function Navigation() {
                   </div>
                 )}
               </div>
+            ) : link.button ? (
+              <button
+                key={link.label}
+                type="button"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="px-4 py-2 rounded font-body text-sm font-medium bg-pink text-white hover:bg-pink-dark transition-colors cursor-pointer"
+              >
+                {link.label}
+              </button>
             ) : (
               <a
                 key={link.label}
@@ -220,7 +224,7 @@ export default function Navigation() {
               <X className="w-6 h-6 text-black" />
             </button>
           </div>
-          <nav className="flex flex-col px-6 py-4 gap-1 overflow-y-auto">
+          <nav className="flex flex-col px-6 py-4 gap-3 overflow-y-auto">
             {navLinks.map((link) =>
               link.children ? (
                 <div key={link.label} className="flex flex-col">
@@ -255,6 +259,15 @@ export default function Navigation() {
                     </div>
                   )}
                 </div>
+              ) : link.button ? (
+                <button
+                  key={link.label}
+                  type="button"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="w-full text-left px-4 py-3 rounded font-body text-base font-medium bg-pink text-white hover:bg-pink-dark transition-colors"
+                >
+                  {link.label}
+                </button>
               ) : (
                 <a
                   key={link.label}

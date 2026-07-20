@@ -3,29 +3,29 @@ import NeuronMotif from '../../components/NeuronMotif';
 
 const solutions = [
   {
-    title: 'Evidence-Informed',
+    title: 'Evidence-informed',
     description:
-      'Rather than tradition or trends, our designs are rooted in the Science of Learning, translating research from cognitive science, behaviour science, and educational research into practice.',
+      'Rather than tradition or trends, our designs are rooted in the Science of Learning, translational research from cognitive science, and educational research.',
   },
   {
-    title: 'Impact-First and Application-Focused',
+    title: 'Impact-First & Application-Focused',
     description:
-      'We work for impact and prioritise transfer of learning to the real world rather than mere skilling. Our work drives sustained, measurable improvements in people\'s performance.',
+      "We work for impact and prioritize transfer of learning to the real world. We build skills, not just content; we drive measurable improvements in people's performance.",
   },
   {
-    title: 'Inclusive and Contextually Grounded',
+    title: 'Inclusive & Contextually Grounded',
     description:
-      'We ground our work in a deep understanding of context, barriers, and needs. We operate with a systems view and create solutions that target specific gaps and goals. Equity and accessibility are embedded in our design process, not an afterthought.',
+      'We ground our work in a deep understanding of context, barriers, and needs. We co-design with the users and create solutions that are relevant to specific gaps and goals. Inclusion, accessibility, and equity are embedded in our design process from the beginning.',
   },
   {
-    title: 'Cross-Sectoral and Multidisciplinary',
+    title: 'Cross-Sectoral & Multidisciplinary',
     description:
-      'We combine good practices from diverse sectors like instructional design, cognitive & behavioral science, human-centered design, learning technologies, AI for learning, and data analytics to build the optimal learning strategies and solutions.',
+      'We combine good practices from diverse sectors like instructional design, cognition, learning science, human-centred design, and learning technologies. At our core, we use research and analytics to build the right strategies and solutions.',
   },
   {
     title: 'AI Native Thinking',
     description:
-      'Our work uses AI capabilities to deliver the best value even in non-AI projects. Along with workshops and learning products, we often offer AI-based tools, dashboards, and GPTs that make decision-making, learning and research deeper and more engaging.',
+      'Our work uses AI capabilities to deliver the most value even in novel contexts. Along with workshops and learning products, we offer AI-based tools, resources, and prompts that make decision-making, learning, research, and assessments deeper and more engaging.',
   },
 ];
 

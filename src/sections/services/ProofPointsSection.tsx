@@ -1,26 +1,45 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
-import { GraduationCap, Smartphone, FileText, Briefcase } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import Button from '../../components/Button';
+import { FileText } from 'lucide-react';
 
-const projects: { title: string; Icon: LucideIcon }[] = [
+const projects: { title: string; image?: string }[] = [
   {
-    title: 'Online Courses for Myanmar Community Teachers for UNESCO Myanmar',
-    Icon: GraduationCap,
+    title: 'A story-based course on data analytics for Swayam Platform, GIZ',
+    image: '/images/verticals/A story-based.jpg',
   },
   {
-    title: 'Digital Stewardship Courses using mobile-based micro-learning for Search for Common Ground',
-    Icon: Smartphone,
+    title: 'Behavioral design of trainings that enable teachers to practice desired behaviors for UNESCO Myanmar',
   },
   {
-    title: 'Technical Guidelines on Engaging the Most Marginalised Youth for UNICEF India',
-    Icon: FileText,
+    title: 'A scenario based gamified course on gender for youth in colombia',
+    image: '/images/verticals/A scenerio based .jpg',
   },
   {
-    title: 'Employability curriculum including trainer manual and learner workbook for ITIs in India with Quest Alliance',
-    Icon: Briefcase,
+    title: 'Targeted design and assessment of projects to build 12 competencies & digital badges for UNICEF India',
+    image: '/images/verticals/Targeted design .jpg',
   },
 ];
+
+function ProjectImage({ title, image }: { title: string; image?: string }) {
+  if (image) {
+    return (
+      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg flex items-center justify-center flex-shrink-0">
+      <FileText className="w-10 h-10 text-pink" strokeWidth={1.5} />
+    </div>
+  );
+}
 
 export default function ProofPointsSection() {
   return (
@@ -35,16 +54,22 @@ export default function ProofPointsSection() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-          {projects.map(({ title, Icon }, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {projects.map(({ title, image }, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
-              <div className="border-t border-pink/15 pt-8">
-                <Icon className="w-10 h-10 text-pink mb-4" strokeWidth={1.5} />
-                <h3 className="heading-lg text-black">{title}</h3>
+              <div className="flex items-start gap-4">
+                <ProjectImage title={title} image={image} />
+                <h3 className="heading-lg text-black leading-snug">{title}</h3>
               </div>
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={0.4}>
+          <div className="mt-16 flex justify-center">
+            <Button text="See All Our Projects" href="/projects" variant="primary" />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

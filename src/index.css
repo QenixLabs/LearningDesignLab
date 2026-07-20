@@ -110,6 +110,10 @@
     @apply font-body text-lg font-medium leading-[1.3];
   }
 
+  .page-heading {
+    @apply font-display text-xl md:text-2xl lg:text-[1.5vw] leading-[1.1] tracking-[-0.01em];
+  }
+
   .page-margin {
     @apply px-[3vw];
   }

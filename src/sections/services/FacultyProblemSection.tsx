@@ -15,7 +15,7 @@ export default function FacultyProblemSection() {
 
         <ScrollReveal delay={0.3}>
           <p className="font-body text-lg md:text-xl leading-relaxed text-black/70 max-w-4xl mx-auto mb-8">
-            The standard faculty development programme runs like this: a trainer
+            The standard faculty development program runs like this: a trainer
             presents slides, faculty take notes, everyone leaves with good
             intentions and a PDF. Six weeks later, nothing in the classroom has
             changed.
@@ -25,9 +25,9 @@ export default function FacultyProblemSection() {
         <ScrollReveal delay={0.4}>
           <p className="font-body text-lg md:text-xl leading-relaxed text-black/70 max-w-4xl mx-auto">
             That's a design problem. When workshops are 90% information and 10%
-            practice – delivered without clear behavioural goals,
-            context-mapping, without application tasks, and follow-through – they
-            produce awareness, not behaviour change.
+            practice – delivered without clear behavioral goals,
+            content-mapping, application, or follow-through – they only produce
+            awareness, not behavior change.
           </p>
         </ScrollReveal>
       </div>

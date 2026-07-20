@@ -33,16 +33,16 @@ export default function ServicesHeroSection() {
 
       <div className="page-margin max-content pt-32 pb-24 relative z-10">
         <div className="max-w-[70%] max-md:max-w-full">
-          <h1 className="sv-hero-heading font-display text-[7vw] md:text-[5.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
-            Curriculums & courses to change outcomes, not just build knowledge
+          <h1 className="sv-hero-heading font-display text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
+            Curricula & courses to change outcomes, not just build knowledge
           </h1>
 
-          <p className="sv-hero-subtext font-body text-lg leading-relaxed text-white/80 max-w-[60ch] mb-10">
+          <p className="sv-hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-10">
             We partner with universities, nonprofits, and organizations to design courses, training programs, and full curricula that build real competence. Grounded in research and Science of Learning.
           </p>
 
           <div className="sv-hero-cta">
-            <Button text="Start a Conversation" variant="primary" onClick={handleScrollToContact} />
+            <Button text="Contact Us" variant="primary" onClick={handleScrollToContact} />
           </div>
         </div>
 
@@ -50,11 +50,12 @@ export default function ServicesHeroSection() {
         <div className="sv-hero-divider mt-16 mb-12 h-px bg-white/20 origin-left" />
 
         {/* Stats */}
-        <div className="sv-hero-stats grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+        <div className="sv-hero-stats grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4">
           <StatCounter value={10} suffix="M+" label="Learners impacted" />
-          <StatCounter value={200} suffix="+" label="Courses delivered" />
-          <StatCounter value={65} suffix="+" label="Digital courses built" />
+          <StatCounter value={200} suffix="+" label="Trainings delivered" />
+          <StatCounter value={70} suffix="+" label="Digital courses built" />
           <StatCounter value={20} suffix="+" label="Countries reached" />
+          <StatCounter value={25} suffix="+" label="Organizations partnered" />
         </div>
       </div>
     </section>

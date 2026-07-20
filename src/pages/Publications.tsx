@@ -69,7 +69,7 @@ const publications: Publication[] = [
   },
   {
     citation: 'Rawat, S., Raghavendra, D., Desai, N., Ofotu, N., Onwiri, C., Omon, S., Chime, C., & Jain, P. (2025).',
-    title: 'AI as catalytic companion: Towards truth-centric, evolutionary education [Preprint].',
+    title: 'AI as catalytic companion: Towards truth-centric, evolutionary education.',
     venue: '',
     type: 'Preprint',
     href: 'https://drive.google.com/file/d/1xuxuzWBKB9h6ghfsd6BKIuRvM89imeOo/view?usp=drive_link',
@@ -113,7 +113,7 @@ const publications: Publication[] = [
 
 function TypeTag({ type }: { type: string }) {
   return (
-    <span className="inline-block px-3 py-1 bg-pink text-white text-[10px] font-body uppercase tracking-wider rounded-sm">
+    <span className="inline-block px-3 py-1 bg-pink text-white text-[11px] font-display font-medium rounded-sm">
       {type}
     </span>
   );
@@ -127,7 +127,7 @@ export default function Publications() {
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="heading-xl text-black mb-6">Our Publications</h1>
-            <p className="font-body text-base md:text-lg text-black/70 leading-relaxed">
+            <p className="font-body text-xs md:text-base text-black/70 leading-relaxed">
               Our publications translate research into practice across digital
               pedagogy, AI in learning, instructional design, and education for
               social impact.
@@ -135,35 +135,44 @@ export default function Publications() {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            {publications.map((pub, index) => (
-              <a
-                key={index}
-                href={pub.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  'group block bg-black border border-white/10 p-6 md:p-8'
-                )}
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <p className="font-body text-sm text-white/70 leading-relaxed mb-3">
-                      {pub.citation}{' '}
-                      <span className="text-white underline underline-offset-4 decoration-white/30">
-                        {pub.title}
-                      </span>{' '}
-                      {pub.venue}
-                    </p>
-                    <TypeTag type={pub.type} />
+            {publications.map((pub, index) => {
+              const isLinked = index < 9;
+              const CardWrapper = isLinked ? 'a' : 'div';
+
+              return (
+                <CardWrapper
+                  key={index}
+                  {...(isLinked && {
+                    href: pub.href,
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  })}
+                  className={cn(
+                    'group block bg-warm-grey border border-black/10 p-6 md:p-8 transition-colors hover:border-pink/30'
+                  )}
+                >
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <p className="font-body text-sm text-black/70 leading-relaxed mb-3">
+                        {pub.citation}{' '}
+                        <span className="text-black underline underline-offset-4 decoration-black/30">
+                          {pub.title}
+                        </span>{' '}
+                        {pub.venue}
+                      </p>
+                      <TypeTag type={pub.type} />
+                    </div>
+                    {isLinked && (
+                      <div className="flex-shrink-0">
+                        <span className="inline-flex items-center justify-center w-10 h-10 bg-pink text-white transition-colors group-hover:bg-pink-dark">
+                          <ExternalLink className="w-4 h-4" />
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex-shrink-0">
-                    <span className="inline-flex items-center justify-center w-10 h-10 bg-pink text-white transition-colors group-hover:bg-pink-dark">
-                      <ExternalLink className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
+                </CardWrapper>
+              );
+            })}
           </div>
         </div>
       </section>
