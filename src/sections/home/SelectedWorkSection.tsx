@@ -24,7 +24,7 @@ const blogs = [
 
 const presentations = [
   { name: 'Indian Institute of Technology, Delhi', image: '/images/logos/iit delhi.jpg' },
-  { name: 'University of Colorado', image: '/images/logos/university of colorado.jpg' },
+  { name: 'University of Northern Colorado', image: '/images/logos/northern colorado.jpg' },
   { name: 'Masinde Muliro University of Science & Technology, Kenya', image: '/images/logos/masinde muliro.png' },
 ];
 

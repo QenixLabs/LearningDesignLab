@@ -45,7 +45,7 @@ function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: 
 
 export default function ProofPointsSection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif */}
       <NeuronMotif opacity={0.025} />
 

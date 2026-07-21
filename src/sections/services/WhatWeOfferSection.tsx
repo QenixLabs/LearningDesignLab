@@ -27,7 +27,7 @@ const offerings: { label: string; Icon: LucideIcon; highlight?: string }[] = [
 
 export default function WhatWeOfferSection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">

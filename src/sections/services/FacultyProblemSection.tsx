@@ -3,7 +3,7 @@ import NeuronMotif from '../../components/NeuronMotif';
 
 export default function FacultyProblemSection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10 text-center">

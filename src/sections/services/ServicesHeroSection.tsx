@@ -55,7 +55,9 @@ export default function ServicesHeroSection() {
           <StatCounter value={200} suffix="+" label="Trainings delivered" />
           <StatCounter value={70} suffix="+" label="Digital courses built" />
           <StatCounter value={20} suffix="+" label="Countries reached" />
-          <StatCounter value={25} suffix="+" label="Organizations partnered" />
+          <div className="col-span-2 md:col-span-1 flex justify-center">
+            <StatCounter value={25} suffix="+" label="Organizations partnered" />
+          </div>
         </div>
       </div>
     </section>
