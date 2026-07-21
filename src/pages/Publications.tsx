@@ -122,12 +122,11 @@ function TypeTag({ type }: { type: string }) {
 export default function Publications() {
   return (
     <Layout>
-      <div className="pt-20" />
       <section className="bg-white py-20 md:py-32 min-h-[80vh]">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="heading-xl text-black mb-6">Our Publications</h1>
-            <p className="font-body text-xs md:text-base text-black/70 leading-relaxed">
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Publications</h1>
+            <p className="font-body text-[16px] leading-[23px] text-black/70">
               Our publications translate research into practice across digital
               pedagogy, AI in learning, instructional design, and education for
               social impact.

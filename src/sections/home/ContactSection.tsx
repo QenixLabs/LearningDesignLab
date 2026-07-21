@@ -22,14 +22,14 @@ export default function ContactSection({ title }: ContactSectionProps) {
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="font-body text-base leading-relaxed text-white/70 mb-6 max-w-[45ch]">
+              <p className="font-body text-[14px] leading-[23px] text-white/70 mb-6 max-w-[45ch]">
                 Submit your contact details. We'll get back to you within 7 working days.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <a
                 href="mailto:hello@learningdesignlabs.com"
-                className="font-body text-base text-white/50 hover:text-white transition-colors"
+                className="font-body text-[14px] leading-[23px] text-white/50 hover:text-white transition-colors"
               >
                 hello@learningdesignlabs.com
               </a>

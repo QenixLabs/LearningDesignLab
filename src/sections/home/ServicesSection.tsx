@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import { ArrowUpRight } from 'lucide-react';
@@ -7,25 +8,25 @@ const services = [
     title: 'Frameworks, Courses, & Curricula',
     description:
       'We design in-person and online courses, learning journeys, microlearning modules, and assessment frameworks. We design goal-aligned and barrier-informed learning products and behavioral nudges based in the Science of Learning (SoL).',
-    link: '/services',
+    link: '/services/course-development',
   },
   {
     title: 'Faculty & Teacher Enrichment',
     description:
       'We facilitate hands-on workshops on the Science of Learning, Universal Design for Learning (UDL), assessment design for the AI Era, AI applications for teaching and research. We equip faculty in schools and universities with evidence-based strategies to make their teaching practice more effective and boost student outcomes.',
-    link: '/services',
+    link: '/services/faculty-enrichment',
   },
   {
     title: 'Research & Evaluation of Skilling Programs',
     description:
       'We conduct rigorous process and impact evaluations of in-person and digital skilling programs. We help educational institutions, edtech companies, and nonprofits measure the results of their interventions and synthesize findings into actionable frameworks, toolkits and knowledge products.',
-    link: '/services',
+    link: '/services/research-evaluation',
   },
   {
     title: 'Advisory for Large-Scale Skilling Programs',
     description:
       'We diagnose barriers and conceptualise systems and solutions that address them using behavioral science and user-centred design. We define program structures, competency gaps and goals, develop and road-test strategies, advise policy makers, large-scale implementers, and investors on designing systems that support sustained learning at scale.',
-    link: '/services',
+    link: '/services/advisory',
   },
 ];
 
@@ -51,13 +52,13 @@ export default function ServicesSection() {
                     {s.description}
                   </p>
                   <div className="flex justify-end">
-                    <a
-                      href={s.link}
+                    <Link
+                      to={s.link}
                       className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-pink text-white hover:bg-pink-light transition-colors"
                       aria-label={`Explore ${s.title}`}
                     >
                       <ArrowUpRight className="w-5 h-5" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </ScrollReveal>

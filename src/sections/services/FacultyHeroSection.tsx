@@ -46,7 +46,7 @@ export default function FacultyHeroSection() {
 
       <div className="page-margin max-content pt-32 pb-20 relative z-10">
         <div className="max-w-[75%] max-md:max-w-full">
-          <h1 className="fe-hero-heading font-display text-[5vw] md:text-[3vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
+          <h1 className="fe-hero-heading font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-white mb-8">
             Faculty Enrichment That Changes How They Teach, Design, & Learn
           </h1>
 

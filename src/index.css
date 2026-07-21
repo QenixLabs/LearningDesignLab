@@ -111,7 +111,7 @@
   }
 
   .page-heading {
-    @apply font-display text-xl md:text-2xl lg:text-[1.5vw] leading-[1.1] tracking-[-0.01em];
+    @apply font-display text-[36px] leading-[38px] md:text-[60px] md:leading-[60px] font-medium tracking-[-0.01em];
   }
 
   .page-margin {

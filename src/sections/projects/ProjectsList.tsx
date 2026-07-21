@@ -220,8 +220,8 @@ export default function ProjectsList() {
       <div className="page-margin max-content">
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
-            <h1 className="heading-xl text-black mb-6">Our Projects</h1>
-            <p className="font-body text-sm md:text-base text-black/70 leading-relaxed">
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Projects</h1>
+            <p className="font-body text-[16px] leading-[23px] text-black/70">
               Different sectors, different audiences, different formats. But our
               focus remains the same: learning designed to produce real change,
               not just completion.
@@ -253,17 +253,17 @@ export default function ProjectsList() {
                       >
                         <div
                           className={cn(
-                            'flex flex-col justify-center',
-                            isReversed && 'md:order-2'
+                            'flex flex-col justify-center order-2 text-center md:text-left',
+                            isReversed ? 'md:order-2' : 'md:order-1'
                           )}
                         >
-                          <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-tight mb-2">
+                          <h3 className="font-display text-xl md:text-3xl lg:text-4xl font-semibold text-black leading-tight mb-2">
                             {project.client}
                           </h3>
                           <h4 className="font-display text-sm md:text-base text-pink mb-6">
                             {project.title}
                           </h4>
-                          <p className="font-body text-sm md:text-base text-black/70 leading-relaxed mb-8">
+                          <p className="font-body text-[14px] leading-[23px] text-black/70 mb-8">
                             {project.description}
                           </p>
                           {project.actions && project.actions.length > 0 && (
@@ -284,8 +284,8 @@ export default function ProjectsList() {
 
                         <div
                           className={cn(
-                            'flex items-center',
-                            isReversed && 'md:order-1'
+                            'flex items-center order-1',
+                            isReversed ? 'md:order-1' : 'md:order-2'
                           )}
                         >
                           <ProjectImage

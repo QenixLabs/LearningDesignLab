@@ -24,7 +24,7 @@ const defaultTestimonials: Testimonial[] = [
     quote:
       "This is one of the most inspiring and memorable collaborations for me and it's all because of everyone involved with so much commitment. Grateful for pushing the two microcredentials with full momentum and through many long weekends.",
     highlight: 'one of the most inspiring and memorable collaborations',
-    attribution: 'Preyansi, GIZ',
+    attribution: 'Preyansi, Education & Digitalisation Advisor, Digital Skills To Succeed in Asia, GIZ',
   },
   {
     quote:

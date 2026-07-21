@@ -147,12 +147,11 @@ function PlaceholderImage({ className }: { className?: string }) {
 export default function Conferences() {
   return (
     <Layout>
-      <div className="pt-20" />
       <section className="bg-white py-20 md:py-32">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="heading-xl text-black mb-6">Our Work at Conferences</h1>
-            <p className="font-body text-xs md:text-base text-black/70 leading-relaxed">
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Work at Conferences</h1>
+            <p className="font-body text-[16px] leading-[23px] text-black/70">
               We've delivered talks and presentations on a diverse range of
               topics, including AI in education, Universal Design for Learning
               (UDL), youth empowerment, and the intersection of cognitive science
@@ -187,7 +186,7 @@ export default function Conferences() {
                     </p>
                     {showContent && (
                       <>
-                        <p className="font-body text-sm md:text-base text-black/70 leading-relaxed mt-4 mb-6">
+                        <p className="font-body text-[14px] leading-[23px] text-black/70 mt-4 mb-6">
                           {conf.description}
                         </p>
                         {conf.tags && conf.tags.length > 0 && (
