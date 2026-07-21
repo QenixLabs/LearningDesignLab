@@ -7,14 +7,14 @@ import NeuronMotif from '../../components/NeuronMotif';
 gsap.registerPlugin(ScrollTrigger);
 
 const fields = [
-  { name: 'Cognitive Science', top: '5%', left: '20%' },
+  { name: 'Cognitive\nScience', top: '5%', left: '20%', highlight: true },
   { name: 'Instructional\nDesign', top: '5%', left: '50%', center: true },
   { name: 'Human-Centred\nDesign', top: '5%', left: '80%' },
-  { name: 'Behavioural\nScience', top: '35%', left: '90%' },
-  { name: 'AI & Learning', top: '65%', left: '80%' },
+  { name: 'Behavioral\nScience', top: '35%', left: '90%', highlight: true },
+  { name: 'AI & Learning', top: '65%', left: '80%', highlight: true },
   { name: 'UX & UI', top: '85%', left: '50%', center: true },
   { name: 'Education\nTechnology', top: '65%', left: '20%' },
-  { name: 'Performance\nSupport', top: '35%', left: '10%' },
+  { name: 'Performance\nSupport', top: '35%', left: '10%', highlight: true },
   { name: 'EdTech & L&D', top: '50%', left: '5%' },
 ];
 
@@ -96,7 +96,7 @@ export default function MethodologyDiagram() {
   }, []);
 
   return (
-    <section className="bg-black py-32 relative overflow-hidden">
+    <section className="bg-black py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.04} />
 
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,20,147,0.1)_0%,transparent_60%)]" />
@@ -227,7 +227,7 @@ export default function MethodologyDiagram() {
             <div
               key={i}
               className={`text-center py-3 px-2 rounded-full border transition-colors duration-300 ${
-                field.center
+                field.highlight
                   ? 'border-pink/40 bg-pink/15 text-pink shadow-[0_0_20px_rgba(255,20,147,0.2)]'
                   : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/40 hover:bg-pink/10 hover:text-pink'
               }`}

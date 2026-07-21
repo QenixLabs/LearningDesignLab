@@ -33,8 +33,15 @@ export default function Navigation() {
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
 
-    if (location.pathname === href) {
-      scrollToTop();
+    const [targetPath, targetHash] = href.split('#');
+
+    if (location.pathname === targetPath) {
+      if (targetHash) {
+        const el = document.getElementById(targetHash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        scrollToTop();
+      }
     } else {
       navigate(href);
     }
@@ -92,7 +99,7 @@ export default function Navigation() {
         { label: 'Conferences', href: '/conferences' },
       ],
     },
-    { label: 'Contact us', href: '/', button: true },
+    { label: 'Contact us', href: '/#contact', button: true },
   ];
 
   return (

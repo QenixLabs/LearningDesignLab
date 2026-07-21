@@ -255,7 +255,7 @@ function FeaturedCard({ member }: { member: TeamMember }) {
         {member.role}
       </p>
       {member.description && (
-        <p className="font-body text-base text-black/70 leading-relaxed max-w-3xl">
+        <p className="font-body text-[16px] leading-[23px] text-black/70 max-w-3xl">
           {member.description}
         </p>
       )}
@@ -267,7 +267,6 @@ function FeaturedCard({ member }: { member: TeamMember }) {
 export default function Team() {
   return (
     <Layout>
-      <div className="pt-20" />
       <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh]">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">

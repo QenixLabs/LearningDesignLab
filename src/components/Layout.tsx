@@ -16,9 +16,15 @@ export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   useLayoutEffect(() => {
-    if (!location.hash) {
-      scrollToTop();
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
     }
+    scrollToTop();
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
       if (!location.hash) {

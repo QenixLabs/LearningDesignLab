@@ -45,13 +45,13 @@ function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: 
 
 export default function ProofPointsSection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif */}
       <NeuronMotif opacity={0.025} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="heading-xl text-black mb-16">
+          <h2 className="font-body text-[14px] leading-[23px] font-medium text-black mb-16">
             We've Already Made This Happen … Several Times Over
           </h2>
         </ScrollReveal>
@@ -59,9 +59,9 @@ export default function ProofPointsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {projects.map(({ title, image, fit }, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <ProjectImage title={title} image={image} fit={fit} />
-                <h3 className="heading-lg text-black leading-snug">{title}</h3>
+                <h3 className="font-body text-xs md:text-sm lg:text-base font-medium text-black leading-snug">{title}</h3>
               </div>
             </ScrollReveal>
           ))}

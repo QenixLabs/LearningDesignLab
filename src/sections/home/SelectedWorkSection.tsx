@@ -24,7 +24,7 @@ const blogs = [
 
 const presentations = [
   { name: 'Indian Institute of Technology, Delhi', image: '/images/logos/iit delhi.jpg' },
-  { name: 'University of Colorado', image: '/images/logos/university of colorado.jpg' },
+  { name: 'University of Northern Colorado', image: '/images/logos/northern colorado.jpg' },
   { name: 'Masinde Muliro University of Science & Technology, Kenya', image: '/images/logos/masinde muliro.png' },
 ];
 
@@ -74,7 +74,7 @@ export default function SelectedWorkSection() {
                     key={project}
                     className="border-b border-white/10 pb-4 last:border-0 last:pb-0"
                   >
-                    <p className="font-body text-sm md:text-base text-white/80 leading-snug">
+                    <p className="font-body text-[14px] leading-[23px] text-white/80">
                       {project}
                     </p>
                   </div>
@@ -129,7 +129,7 @@ export default function SelectedWorkSection() {
                     key={blog}
                     className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
                   >
-                    <p className="font-body text-sm text-white/80 leading-snug">
+                    <p className="font-body text-[14px] leading-[23px] text-white/80">
                       {blog}
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export default function SelectedWorkSection() {
                     key={item}
                     className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
                   >
-                    <p className="font-body text-sm text-white/80 leading-snug">
+                    <p className="font-body text-[14px] leading-[23px] text-white/80">
                       {item}
                     </p>
                   </div>

@@ -42,7 +42,7 @@ export default function HeroSection() {
 
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
         <div className="w-full max-w-[70%] max-md:max-w-full">
-          <h1 className="hero-heading font-display uppercase text-[7vw] md:text-[5vw] lg:text-[3.5vw] leading-[1.05] tracking-[-0.02em] text-white mb-8">
+          <h1 className="hero-heading font-display uppercase text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-white mb-8">
             Designing Learning That Works
           </h1>
 

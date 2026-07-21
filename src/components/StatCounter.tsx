@@ -31,7 +31,7 @@ export default function StatCounter({ value, suffix, prefix = '', label, light =
           />
         )}
       </CountUp>
-      <span className={`section-label mt-3 ${light ? 'text-white/50' : 'text-black/45'}`}>
+      <span className={`section-label mt-3 text-center md:text-left ${light ? 'text-white/50' : 'text-black/45'}`}>
         {label}
       </span>
     </ScrollReveal>

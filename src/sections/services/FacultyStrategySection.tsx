@@ -10,12 +10,12 @@ const steps = [
 
 export default function FacultyStrategySection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.2}>
-          <h2 className="heading-xl text-black text-center mb-20 max-w-4xl mx-auto">
+          <h2 className="font-body text-[37px] leading-[40px] font-medium text-black text-center mb-20 max-w-4xl mx-auto">
             We Build Workshops Backwards from the Practice We Want to See
           </h2>
         </ScrollReveal>
@@ -30,7 +30,7 @@ export default function FacultyStrategySection() {
 
             return (
               <ScrollReveal key={i} delay={0.15 + i * 0.08}>
-                <div className="relative flex items-start mb-12 md:mb-16 last:mb-0">
+                <div className="relative flex items-start pt-14 pb-20 md:pt-20 md:pb-28 first:pt-0 last:pb-0">
                   {/* Dot */}
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-pink mt-2" />
 
@@ -45,7 +45,7 @@ export default function FacultyStrategySection() {
                     <span className="font-display text-2xl text-pink/30 block mb-2">
                       {number}
                     </span>
-                    <p className="font-body text-base md:text-lg text-black/80 leading-relaxed">
+                    <p className="font-body text-[14px] leading-[23px] text-black/80">
                       {step}
                     </p>
                   </div>

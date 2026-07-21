@@ -12,7 +12,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="bg-white py-32 relative overflow-hidden">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
@@ -32,7 +32,7 @@ export default function ProcessSection() {
 
             return (
               <ScrollReveal key={i} delay={0.15 + i * 0.08}>
-                <div className="relative flex items-start mb-12 md:mb-16 last:mb-0">
+                <div className="relative flex items-start pt-14 pb-20 md:pt-20 md:pb-28 first:pt-0 last:pb-0">
                   {/* Dot */}
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-pink mt-2" />
 
