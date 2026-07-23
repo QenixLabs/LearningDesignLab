@@ -22,6 +22,15 @@ interface Conference {
 
 const conferences: Conference[] = [
   {
+    title: "Mathew Farber's Innovation & Edtech Course",
+    year: '2026',
+    location: 'University of Northern Colorado, USA',
+    description:
+      'Shraddha spoke with a diverse group of PhD scholars about global edtech and innovation, and her work at UNESCO and LDC. They also discussed a potential anti-edtech climate in the US, and increasingly, globally. They called for edtech to be optimized for purpose and systems first, and only then for performance.',
+    imageAlt: "Mathew Farber's Innovation & Edtech Course 2026",
+    image: '/images/conferences/Mathew Farber’s Innovation .jpg',
+  },
+  {
     title: 'Learning Planet Festival (LDC Collaboration)',
     year: '2026',
     location: 'Virtual',
