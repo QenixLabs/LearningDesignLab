@@ -18,6 +18,8 @@ export interface ServiceData {
   dark?: boolean;
 }
 
+
+
 const courseDevelopmentItems: ServiceItem[] = [
   { text: 'Online courses and learning sprints' },
   { text: 'Mobile-based microlearning' },
