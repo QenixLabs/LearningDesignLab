@@ -13,6 +13,7 @@ interface TeamMember {
   role: string;
   image?: string;
   description?: string;
+  imagePosition?: string;
   socials?: SocialLinks;
 }
 
@@ -21,7 +22,7 @@ const founder: TeamMember = {
   role: 'Founder & Executive Director',
   image: '/images/team/Shraddha_Rawat-removebg-preview.png',
   description:
-    'In 2011, Shraddha founded the Learning Designers Community (LDC), a global network of over 7,000 professionals across 36 countries. Her work spans instructional design, learning experience design, and gamified learning solutions that translate into real-world outcomes. Through this, Shraddha ensures that high-quality learning remains accessible to all, and her educational experiences have reached learners in diverse contexts—from schools and universities to corporate training. She is also a consultant for organizations like UNICEF, integrating learning science research and practical application.',
+    "Shraddha is a learning design and strategy specialist who, in 2011, founded the Learning Designers Community (LDC), a global network of over 7,000 professionals across 36 countries. Now, at Learning Design Lab, she partners with global organisations and educational institutions to build evidence-informed, contextually grounded learning solutions that translate into real-world outcomes. Through this, Shraddha achieves her vision to make high-quality learning accessible to all, and indeed, to anyone. Her educational experiences have reached 5.5 million people worldwide. As an active researcher and strategic consultant for organisations like UNICEF, she bridges learning science research and practical application.",
   socials: {
     facebook: 'https://www.facebook.com/wix',
     twitter: 'https://www.twitter.com/wix',
@@ -30,39 +31,11 @@ const founder: TeamMember = {
 
 const team: TeamMember[] = [
   {
-    name: 'Parisha Jain',
-    role: 'Senior Instructional Designer & Visual Designer',
-    image: '/images/team/Parisha_Jain-removebg-preview.png',
-    description:
-      'Parisha is the co-founder of Learning Designers Community (LDC). She has a foundation in interdisciplinary and systems thinking and its application to learning technology and visual design. She has designed evidence-based, context-aware learning solutions across corporate, education, and development sectors. She is also committed to sustainable development, youth capacity building, and social impact.',
-  },
-  {
-    name: 'Praveen Kumar Naidu',
-    role: 'Learning Experience Designer & Facilitator',
-    image: '/images/team/Praveen Kumar Naidu.png',
-    description:
-      'Praveen is a Learning Experience Designer with 20+ years dedicated to making learning effective. Blending cognitive science, adult learning principles, and evidence-based instructional design, he has crafted and facilitated immersive learning experiences for 25,000+ professionals across the corporate, government, and social sectors. Praveen specialises in curriculum design, capability building, and transformation that drive behavioural change.',
-  },
-  {
-    name: 'Tarun Aggarwal',
-    role: 'Learning Analytics & Digital Learning Designer',
-    image: '/images/team/Tarun Aggarwal .png',
-    description:
-      'Tarun is a results-driven product and curriculum design leader with 10+ years of experience managing digital learning products. He excels at using AI, user research, and data analytics to build impactful learning solutions. Tarun seamlessly bridges the gap between agile product management, market strategy, and effective learning design.',
-  },
-  {
     name: 'Divya Menon',
     role: 'Senior Learning Design Specialist',
     image: '/images/team/Divya Menon.png',
     description:
       "Divya Menon is an L&D leader with a master's in EdTech and 20+ years driving large-scale capacity-building and digital transformation for global organizations like the WHO, UNESCO, and UNITAR. She specialises in competency-based education, curriculum design, and programme management. Divya blends advanced EdTech with behavioural science and guides cross-functional teams to design, scale, and measure impactful learning solutions. She also holds certifications in Kirkpatrick Evaluation.",
-  },
-  {
-    name: 'Preeti Panda',
-    role: 'Instructional Designer & Pedagogy Expert',
-    image: '/images/team/Preeti Panda.png',
-    description:
-      'With a background in engineering and over a decade of experience in education and learning design, Preeti brings together technology, pedagogy, and storytelling to create meaningful learning experiences. She enjoys breaking down complex ideas into engaging, interactive formats that make learning intuitive, practical, and memorable.',
   },
   {
     name: 'Robin Sharma',
@@ -76,14 +49,49 @@ const team: TeamMember[] = [
     role: 'Monitoring Learning Evaluation Expert',
     image: '/images/team/Anamika Gupta.png',
     description:
-      'Anamika works at the intersection of education research, policy, and programme strategy. With 15+ years of experience across Asia and Africa, she designs programs for schools, NGOs, and government institutions. She evaluates impact, and translates research and practice into policies. Her expertise spans mixed-methods research, monitoring, evaluation, and learning (MEL) in EdTech, girls\' education, gender equity, violence prevention (VAWG), and education in conflict-affected settings.',
+      "Anamika works at the intersection of education research, policy, and programme strategy. With 15+ years of experience across Asia and Africa, she designs programs for schools, NGOs, and government institutions. She evaluates impact, and translates research and practice into policies. Her expertise spans mixed-methods research, monitoring, evaluation, and learning (MEL) in EdTech, girls' education, gender equity, violence prevention (VAWG), and education in conflict-affected settings.",
   },
   {
-    name: 'Kritika Mattoo',
-    role: 'Curriculum & Assessment Expert',
-    image: '/images/team/Kritika Mattoo.png',
+    name: 'Dr Ranit Chatterjee',
+    role: 'Disaster Education Expert',
+    image: '/images/team/Ranit_Chatterjee-removebg-preview.png',
     description:
-      'Kritika is a psychologist and learning designer with several years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organizations.',
+      'Dr. Ranit is a disaster education expert and co-founder of RIKA Institute and DTECH, a startup utilising AI and quantum computing for climate resilience. With 15+ years across UN agencies, NGOs, and academia, he serves in advisory roles for the UNDRR and the IUCN. An acclaimed academic with innovative global teaching experience, Ranit specialises in translating complex research into actionable learning. He has designed effective disaster management and climate change courses for organisations like UNESCO.',
+  },
+  {
+    name: 'Shweta Bahri',
+    role: 'Climate Education Expert',
+    image: '/images/team/Shweta_Bahri-removebg-preview.png',
+    description:
+      'Shweta is the founder of Earth Warriors Global, a recognised UNESCO Green Citizen enterprise that delivers solutions-focused climate curricula to over 100,000 students worldwide. Building on a decade of experience as an education policy specialist across South Asia and Africa, she designs context-driven teacher training programs that build pedagogical confidence without inducing climate anxiety. Backed by degrees from LSE and Cambridge, Shweta scales age-appropriate, empowering climate education globally, from government schools to high-resource institutions.',
+  },
+  {
+    name: 'Praveen Kumar Naidu',
+    role: 'Learning Experience Designer & Facilitator',
+    image: '/images/team/Praveen Kumar Naidu.png',
+    description:
+      'Praveen is a Learning Experience Designer with 20+ years dedicated to making learning effective. Blending cognitive science, adult learning principles, and evidence-based instructional design, he has crafted and facilitated immersive learning experiences for 25,000+ professionals across the corporate, government, and social sectors. Praveen specialises in curriculum design, capability building, and transformation that drive behavioural change.',
+  },
+  {
+    name: 'Parisha Jain',
+    role: 'Senior Instructional Designer & Visual Designer',
+    image: '/images/team/Parisha_Jain-removebg-preview.png',
+    description:
+      'Parisha is the co-founder of Learning Designers Community (LDC). She has a foundation in interdisciplinary and systems thinking and its application to learning technology and visual design. She has designed evidence-based, context-aware learning solutions across corporate, education, and development sectors. She is also committed to sustainable development, youth capacity building, and social impact.',
+  },
+  {
+    name: 'Preeti Panda',
+    role: 'Instructional Designer & Pedagogy Expert',
+    image: '/images/team/Preeti Panda.png',
+    description:
+      'With a background in engineering and over a decade of experience in education and learning design, Preeti brings together technology, pedagogy, and storytelling to create meaningful learning experiences. She enjoys breaking down complex ideas into engaging, interactive formats that make learning intuitive, practical, and memorable.',
+  },
+  {
+    name: 'Tarun Aggarwal',
+    role: 'Learning Analytics & Digital Learning Designer',
+    image: '/images/team/Tarun Aggarwal .png',
+    description:
+      'Tarun is a results-driven product and curriculum design leader with 10+ years of experience managing digital learning products. He excels at using AI, user research, and data analytics to build impactful learning solutions. Tarun seamlessly bridges the gap between agile product management, market strategy, and effective learning design.',
   },
   {
     name: 'Miriam Elnaggar',
@@ -93,46 +101,40 @@ const team: TeamMember[] = [
       "Miriam is a Cairo-based learning designer with a decade of international classroom experience crafting engaging, learner-centred digital environments. Holding a Master's in Education, she turns traditional curricula into interactive experiences ranging from corporate onboarding programs to courses using Learning Management Systems (LMS). Miriam believes in exploration and play, and designs hands-on professional and student workshops that integrate creative techniques like game design.",
   },
   {
-    name: 'Shweta Bahri',
-    role: 'Climate Education Expert',
-    image: '/images/team/Shweta_Bahri-removebg-preview.png',
+    name: 'Kritika Mattoo',
+    role: 'Curriculum & Assessment Expert',
+    image: '/images/team/Kritika Mattoo.png',
     description:
-      'Shweta is the founder of a climate education initiative that delivers solution-focused climate education. Working across India, Asia and Africa, she designs programs for schools, corporates, and governments. Shweta has led initiatives to turn learning into action. Her work sits at the intersection of environment, education, and social justice.',
-  },
-  {
-    name: 'Dr Ranit Chatterjee',
-    role: 'Disaster Education Expert',
-    image: '/images/team/Ranit_Chatterjee-removebg-preview.png',
-    description:
-      'Ranit is a disaster risk reduction expert and co-founder of an organisation utilising AI and scenario-centered approaches to build resilience. An acclaimed academic and practitioner, he has trained thousands of learners in translating knowledge into action through interactive simulations and serious games. He has also designed effective disaster preparedness programs for communities and organizations across the world.',
+      'Kritika is a psychologist and learning designer with 15+ years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organisations.',
   },
   {
     name: 'Ayomide Ajani',
     role: 'Visual Designer & Course Developer',
     image: '/images/team/Ayomide_Ajani-removebg-preview.png',
     description:
-      'Ayomide is a curricula and learning experience designer with expertise in visual design and digital media to drive social impact. He combines creativity, learning science, and instructional technology to create engaging learning experiences. His work spans curriculum strategy, content design, and multimedia production for education-focused organizations and initiatives.',
+      "Ayomide creates accessible and inclusive digital environments that leverage storytelling and digital media to drive social change. Holding a Master's in E-Learning Design and Development and an award-winning track record, she focuses on eliminating learning barriers to ensure education is available to everyone, regardless of ability or background. Ayomide combines universal design principles with strategic course development to create highly effective learning journeys.",
   },
   {
     name: 'Rabia Malik',
     role: 'Digital Learning Developer & Graphic Designer',
     image: '/images/team/Rabia Malik.png',
     description:
-      'Rabia specializes in turning complex technical concepts into clear, accessible visuals, animations, and LMS content. With experience across EdTech, BFSI, and healthcare, she creates intuitive graphics, motion videos, and eLearning assets that support learning outcomes.',
+      "Rabia specialises in turning complex, technical concepts into highly interactive and visually compelling learning experiences across both corporate and EdTech environments, including BYJU'S and LIDO. Blending instructional design with a sharp eye for aesthetic detail to build appealing learning that maximises retention.",
   },
   {
     name: 'Aditi Ankush',
     role: 'Visual & Experience Designer',
     image: '/images/team/Aditi_Ankush-removebg-preview.png',
     description:
-      'Aditi loves creative ideas, scribbles and participation. She started her career as an architect, an expansion of her interest in design. She completed a Ford fellowship and an M.Des in interaction design. Later, she pursued learning experience design at NYU, where she explored storytelling, AR/VR, AI/ML, and diverse areas at the intersection of design and technology.',
+      'Aditi makes complex ideas enjoyable and participatory. She excels at data visualisation, product design, game design, and animation. An alumnus of the National Institute of Design (NID), she received a Ford Foundation grant for her award-winning project, Khilkhil Labs, which created social-emotional learning toolkits for low-resource educational spaces. Aditi currently serves as a Lead Experience Designer at WongDoody.',
   },
   {
     name: 'Samuel Naidu',
     role: 'Video Editor',
     image: '/images/team/Samuel Naidu.png',
+    imagePosition: 'object-center',
     description:
-      'Samuel is a video editor and motion graphics designer who helps teams communicate ideas with clarity and impact. With experience in film, media, and tech, he brings stories to life through thoughtful editing, animation, and visual design, bridging messages and audiences.',
+      "Samuel is a video editor and visual storyteller who creates films and digital content that communicate ideas with clarity and impact. With a Bachelor's degree in Mass Media and Communication in Advertising, he works across editing, cinematography and motion design to bring meaningful stories to life.",
   },
   {
     name: 'Ishwar Kukreja',
@@ -198,14 +200,14 @@ function SocialIcons({ socials }: { socials: SocialLinks }) {
   );
 }
 
-function SquareImage({ src, alt }: { src?: string; alt: string }) {
+function SquareImage({ src, alt, position = 'object-top' }: { src?: string; alt: string; position?: string }) {
   return (
     <div className="w-full aspect-square bg-gray-100 overflow-hidden mb-4">
       {src ? (
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover object-top"
+          className={cn('w-full h-full object-cover', position)}
         />
       ) : (
         <PlaceholderImage className="w-full h-full" />
@@ -217,7 +219,7 @@ function SquareImage({ src, alt }: { src?: string; alt: string }) {
 function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div className="flex flex-col bg-white border border-black/10 p-4">
-      <SquareImage src={member.image} alt={member.name} />
+      <SquareImage src={member.image} alt={member.name} position={member.imagePosition} />
       <h3 className="font-display text-lg md:text-xl font-semibold text-black leading-tight mb-1">
         {member.name}
       </h3>
