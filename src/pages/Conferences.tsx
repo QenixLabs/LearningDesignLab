@@ -37,7 +37,7 @@ const conferences: Conference[] = [
     description:
       'Shraddha hosted a chat with Dr. Carl Hendrick, co-author of Instructional Illusions, for educators and L&D professionals. The discussion explored why effective learning design is often counterintuitive. Together, they unpacked common "illusions" about discovery, expertise, engagement, and learner-centred design, that appear attractive but lack evidence. They also offered practical guidance designing for genuine cognitive engagement and durable learning.',
     imageAlt: 'Learning Planet Festival 2026',
-    image: '/images/conferences/Learning Planet Festival (LDC Collaboration), 2026.png',
+    image: '/images/conferences/Learning Planet Festival (LDC Collaboration).jpg',
     actions: [{ label: 'Watch the Video', href: 'https://www.learning-planet.org/event/science-of-learning-essentials-discover-popular-instructional-illusions-with-carl-hendrick/' }],
   },
   {
