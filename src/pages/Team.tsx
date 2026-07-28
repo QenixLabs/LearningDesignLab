@@ -1,6 +1,7 @@
 import Layout from '../components/Layout';
 import { Facebook, Twitter, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import NeuronMotif from '../components/NeuronMotif';
 
 interface SocialLinks {
   facebook?: string;
@@ -78,6 +79,13 @@ const team: TeamMember[] = [
     image: '/images/team/Parisha_Jain-removebg-preview.png',
     description:
       'Parisha is the co-founder of Learning Designers Community (LDC). She has a foundation in interdisciplinary and systems thinking and its application to learning technology and visual design. She has designed evidence-based, context-aware learning solutions across corporate, education, and development sectors. She is also committed to sustainable development, youth capacity building, and social impact.',
+  },
+  {
+    name: 'Vibha Iyer',
+    role: 'Senior Learning Designer',
+    image: '/images/team/Vibha_Iyer_s_-removebg-preview.png',
+    description:
+      "Vibha is an education strategist, researcher, and learning designer with over 12 years of experience building, evaluating, and improving learning systems across government, nonprofit, and EdTech sectors. Her work has impacted millions of learners, educators, and caregivers. With an M.Des. in Education, Vibha applies systems thinking, user research, learning experience design, digital pedagogy, and iterative product improvement to instructional design and curriculum development. She has led digital learning innovation at Rocket Learning and co-developed India's National Curriculum for Early Childhood Education. Her expertise strengthens learner engagement, pedagogical coherence, accessibility, and learning outcomes.",
   },
   {
     name: 'Preeti Panda',
@@ -218,7 +226,7 @@ function SquareImage({ src, alt, position = 'object-top' }: { src?: string; alt:
 
 function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <div className="flex flex-col bg-white border border-black/10 p-4">
+    <div className="flex flex-col bg-white/80 border border-black/10 p-4">
       <SquareImage src={member.image} alt={member.name} position={member.imagePosition} />
       <h3 className="font-display text-lg md:text-xl font-semibold text-black leading-tight mb-1">
         {member.name}
@@ -238,7 +246,7 @@ function TeamCard({ member }: { member: TeamMember }) {
 
 function FeaturedCard({ member }: { member: TeamMember }) {
   return (
-    <div className="flex flex-col items-center text-center bg-white border border-black/10 p-6 mb-16 md:mb-24">
+    <div className="flex flex-col items-center text-center bg-white/80 border border-black/10 p-6 mb-16 md:mb-24">
       <div className="w-full max-w-sm aspect-square bg-gray-100 overflow-hidden mb-8">
         {member.image ? (
           <img
@@ -269,8 +277,10 @@ function FeaturedCard({ member }: { member: TeamMember }) {
 export default function Team() {
   return (
     <Layout>
-      <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh]">
-        <div className="page-margin max-content">
+      <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh] relative overflow-hidden">
+        <NeuronMotif color="#000000" opacity={0.06} size={220} />
+
+        <div className="page-margin max-content relative z-10">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="page-heading text-black mb-6">
               Meet Our Transdisciplinary Team
