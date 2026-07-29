@@ -98,10 +98,10 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col gap-3">
             <a
-              href="mailto:shraddha@learningdesigners.org"
+              href="mailto:shraddha@learningdesignlab.co"
               className="text-white/70 hover:text-white text-sm transition-colors"
             >
-              shraddha@learningdesigners.org
+              shraddha@learningdesignlab.co
             </a>
             <a
               href="https://linkedin.com"

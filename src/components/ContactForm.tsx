@@ -22,6 +22,16 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Contact request from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email}\n` +
+      `Organisation: ${formData.organisation}\n` +
+      `Service Interest: ${formData.service}\n\n` +
+      `Message:\n${formData.message || 'N/A'}`
+    );
+    window.location.href = `mailto:shraddha@learningdesignlab.co?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
