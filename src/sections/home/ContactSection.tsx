@@ -28,10 +28,10 @@ export default function ContactSection({ title }: ContactSectionProps) {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <a
-                href="mailto:shraddha@learningdesigners.org"
+                href="mailto:shraddha@learningdesignlab.co"
                 className="font-body text-[14px] leading-[23px] text-white/50 hover:text-white transition-colors"
               >
-                shraddha@learningdesigners.org
+                shraddha@learningdesignlab.co
               </a>
             </ScrollReveal>
           </div>
