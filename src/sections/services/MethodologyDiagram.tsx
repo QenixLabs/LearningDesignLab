@@ -120,13 +120,9 @@ export default function MethodologyDiagram() {
             style={{ zIndex: 1 }}
           >
             <defs>
-              <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <filter id="line-glow" x="0" y="0" width="100" height="100" filterUnits="userSpaceOnUse">
                 <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="rgba(255,20,147,0.8)" />
               </filter>
-              <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,20,147,0.6)" />
-                <stop offset="100%" stopColor="rgba(255,20,147,0.1)" />
-              </linearGradient>
             </defs>
 
             {fields.map((field, i) => {
@@ -139,8 +135,8 @@ export default function MethodologyDiagram() {
                   d={`M 50 50 L ${fx} ${fy}`}
                   className="connecting-line"
                   pathLength="1"
-                  stroke="url(#line-gradient)"
-                  strokeWidth="0.35"
+                  stroke="rgba(255,20,147,0.55)"
+                  strokeWidth="0.45"
                   strokeLinecap="round"
                   strokeDasharray="1"
                   strokeDashoffset="1"

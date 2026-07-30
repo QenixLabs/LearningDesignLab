@@ -54,14 +54,19 @@ function QuoteWithHighlight({ quote, highlight }: { quote: string; highlight?: s
 interface TestimonialsSectionProps {
   title?: string;
   items?: Testimonial[];
+  compact?: boolean;
 }
 
-export default function TestimonialsSection({ title, items }: TestimonialsSectionProps) {
+export default function TestimonialsSection({ title, items, compact }: TestimonialsSectionProps) {
   const testimonials = items ?? defaultTestimonials;
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section
+      className={`bg-white relative overflow-hidden ${
+        compact ? 'pt-6 md:pt-8 pb-20 md:pb-32' : 'py-20 md:py-32'
+      }`}
+    >
       <NeuronMotif color="#000000" opacity={0.06} size={220} />
 
       <div className="page-margin max-content relative z-10">

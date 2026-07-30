@@ -6,6 +6,8 @@ const steps = [
   "Through that, we map the institutional context, the faculty's current practice, the specific behaviors we want to alter, and the barriers and enablers to that change.",
   'We ground every workshop in current evidence from Science of Learning (SOL) and select only strategies with a real evidence base.',
   'We design every session as 70% practice and 30% information, so faculty apply, create, and redesign during the workshop itself and gain the skill and confidence to continue later.',
+  'We follow every workshop with resources for continued application including AI tools, templates, handouts, curated reading and invitation to join a community for learning designers.',
+  'Where deeper change is needed, we offer optional structured transfer support: review and refresher sessions, expert feedback, and community learning.',
 ];
 
 export default function FacultyStrategySection() {
@@ -15,8 +17,8 @@ export default function FacultyStrategySection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.2}>
-          <h2 className="font-body text-[37px] leading-[40px] font-medium text-black text-center mb-20 max-w-4xl mx-auto">
-            We Build Workshops Backwards from the Practice We Want to See
+          <h2 className="font-display text-[37px] leading-[40px] font-medium text-black text-center mb-20 max-w-4xl mx-auto">
+            We Build Training Backwards from the Practice We Want to See
           </h2>
         </ScrollReveal>
 
