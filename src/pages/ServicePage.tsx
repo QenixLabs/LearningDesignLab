@@ -6,6 +6,7 @@ import ServicesHeroSection from '../sections/services/ServicesHeroSection';
 import FacultyHeroSection from '../sections/services/FacultyHeroSection';
 import FacultyProblemSection from '../sections/services/FacultyProblemSection';
 import FacultyWorkshopsSection from '../sections/services/FacultyWorkshopsSection';
+import FacultyAcceleratorSection from '../sections/services/FacultyAcceleratorSection';
 import FacultyStrategySection from '../sections/services/FacultyStrategySection';
 import FacultySocialProofSection from '../sections/services/FacultySocialProofSection';
 import ProblemSection from '../sections/services/ProblemSection';
@@ -82,6 +83,7 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
       {serviceId === 'faculty-enrichment' ? <FacultyHeroSection /> : <ServicesHeroSection />}
       {serviceId === 'faculty-enrichment' ? <FacultyProblemSection /> : <ProblemSection />}
       {serviceId === 'faculty-enrichment' && <FacultyWorkshopsSection />}
+      {serviceId === 'faculty-enrichment' && <FacultyAcceleratorSection />}
       {serviceId === 'faculty-enrichment' ? <FacultyStrategySection /> : <ProcessSection />}
       {serviceId === 'course-development' ? <WhatWeOfferSection /> : serviceId !== 'faculty-enrichment' ? <ServiceDetail {...service} /> : null}
       <MethodologyDiagram />
@@ -94,7 +96,7 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
       )}
       {serviceId === 'faculty-enrichment' && <FacultySocialProofSection />}
       {serviceId === 'faculty-enrichment' ? (
-        <TestimonialsSection title="What Faculty Say" items={facultyTestimonials} />
+        <TestimonialsSection items={facultyTestimonials} compact />
       ) : (
         <TestimonialsSection />
       )}
