@@ -48,6 +48,7 @@ export default function Navigation() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMenuOpen(false);
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
@@ -88,7 +89,6 @@ export default function Navigation() {
         { label: 'Advisory for Large-Scale Skilling', href: '/services/advisory' },
       ],
     },
-    { label: 'About us', href: '/' },
     { label: 'Our team', href: '/team' },
     {
       label: 'Our work',
