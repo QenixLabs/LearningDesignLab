@@ -74,6 +74,7 @@ const cardSections: CardSection[] = [
           "We worked with GIZ to create application-focused online courses on AI and data science, tailored to upskill young people from social science backgrounds. Hosted on SWAYAM—India's largest government-led open-course platform—the program covers foundational concepts, real-world applications, and ethical considerations, equipping learners with future-ready skills to lead data-driven development and solutions.",
         image: '/images/projects/GIZ & Swayam.jpg',
         imageAlt: 'GIZ & Swayam project',
+        actions: [{ label: 'View Course', href: '#' }],
       },
       {
         client: 'QUEST Alliance',
