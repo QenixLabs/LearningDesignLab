@@ -59,7 +59,7 @@ const cardSections: CardSection[] = [
         client: 'Patang India',
         title: 'Gender Champion Course',
         description:
-          'We designed a highly interactive, seven-module course to empower youth with a critical awareness of gender, identity, privilege, masculinity, and unpaid care work. Through engaging and reflective activities, we equipped learners to challenge stereotypes, advocate for equality, and build more inclusive communities.',
+          'We designed a highly interactive, seven-module online course to empower youth with a critical awareness of gender, identity, privilege, masculinity, and unpaid care work. Through engaging and reflective activities, we equipped learners to challenge stereotypes, advocate for equality, and build more inclusive communities.',
         image: '/images/projects/Patang India.jpg',
         imageAlt: 'Patang India project',
         actions: [
