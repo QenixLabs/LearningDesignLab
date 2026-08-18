@@ -19,11 +19,11 @@ interface TeamMember {
 }
 
 const founder: TeamMember = {
-  name: 'Shraddha Rawat',
-  role: 'Founder & Executive Director',
+  name: 'Sharaddha Rawat',
+  role: 'Founder & Executive Chair',
   image: '/images/team/Shraddha_Rawat-removebg-preview.png',
   description:
-    "Shraddha is a learning design and strategy specialist with 17 years of experience in designing, implementing, and evaluating skilling and educational programs across educational, skilling, and L&D sectors. She has designed and reviewed 200+ curricula, online courses, and digital learning products impacting more than 10 million learners across 25+ countries. As director of Learning Design Lab, she helps clients and the LDL team make goal-oriented, evidence-informed, and context-informed design choices. She applies innovations, tools, and approaches from diverse disciplines and sectors to solutions that drive impact. Shraddha is also the founder of the Learning Designers Community (LDC), a volunteer-led global network of 7,000+ learning professionals and educators from 50 countries. Her publications span science of learning, digital learning, inclusive youth skilling, and AI and learning.",
+    "Sharaddha is a learning design and strategy specialist with 17 years of experience in designing and delivering high-impact, award-winning learning programs. She has designed and delivered 200+ learning programs, reaching millions of learners globally. Her work has impacted more than 10 million learners across 100+ countries. As Learning Design Lab, she leads a team of learning experience designers, researchers, and strategists who partner with organizations to create transformative learning experiences — from course curricula and micro-credentials to AI-powered learning platforms and cohort-based programs. Her expertise spans K-12, higher education, corporate learning, and social impact. Sharaddha is also the Founder of the Learning Designers Community (LDC) — a global network of 2,500+ learning designers, educators, and technologists. She is an invited speaker at events such as TEDx, UNESCO, and Digital Learning. Advisor to ed-tech, social impact, and future skills organizations.",
   socials: {
     facebook: 'https://www.facebook.com/wix',
     twitter: 'https://www.twitter.com/wix',
