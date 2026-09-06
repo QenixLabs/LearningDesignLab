@@ -2,8 +2,11 @@ import Layout from '../components/Layout';
 import { Facebook, Twitter, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import NeuronMotif from '../components/NeuronMotif';
-import { founder, team } from '../data/team';
-import type { SocialLinks, TeamMember } from '../data/team';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { TEAM_QUERY, type SanityTeamMember } from '@/lib/sanity/queries';
+import { imgUrl } from '@/lib/sanity/image';
+import { founder as fallbackFounder, team as fallbackTeam, type TeamMember } from '../data/team';
+import type { SocialLinks } from '../data/team';
 
 function PlaceholderImage({ className }: { className?: string }) {
   return (
@@ -127,6 +130,27 @@ function FeaturedCard({ member }: { member: TeamMember }) {
 }
 
 export default function Team() {
+  const { data: members } = useSanityQuery<SanityTeamMember[]>(TEAM_QUERY, {}, []);
+
+  const toTeamMember = (m: SanityTeamMember): TeamMember => ({
+    name: m.name,
+    role: m.role,
+    image: imgUrl(m.image, 800),
+    description: m.description,
+    imagePosition: m.imagePosition,
+    socials: m.linkedin ? { linkedin: m.linkedin } : undefined,
+  });
+
+  const founder: TeamMember =
+    members.length > 0
+      ? toTeamMember(members.find((m) => m.isFounder) ?? members[0])
+      : fallbackFounder;
+
+  const team: TeamMember[] =
+    members.length > 0
+      ? members.filter((m) => !m.isFounder).map(toTeamMember)
+      : fallbackTeam;
+
   return (
     <Layout>
       <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh] relative overflow-hidden">
