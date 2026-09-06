@@ -3,7 +3,7 @@ import { Facebook, Twitter, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import NeuronMotif from '../components/NeuronMotif';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { TEAM_QUERY, type SanityTeamMember } from '@/lib/sanity/queries';
+import { TEAM_QUERY, PAGE_COPY_QUERY, type SanityTeamMember, type SanityPageCopy } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
 import { founder as fallbackFounder, team as fallbackTeam, type TeamMember } from '../data/team';
 import type { SocialLinks } from '../data/team';
@@ -151,6 +151,12 @@ export default function Team() {
       ? members.filter((m) => m !== founderSource).map(toTeamMember)
       : fallbackTeam;
 
+  const { data: copy } = useSanityQuery<SanityPageCopy>(
+    PAGE_COPY_QUERY,
+    { id: 'pageCopy-team' },
+    { pageKey: 'team', heading: 'Meet Our Transdisciplinary Team', intro: '' }
+  );
+
   return (
     <Layout>
       <section className="bg-[#F3F4F6] py-20 md:py-32 min-h-[80vh] relative overflow-hidden">
@@ -159,8 +165,13 @@ export default function Team() {
         <div className="page-margin max-content relative z-10">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="page-heading text-black mb-6">
-              Meet Our Transdisciplinary Team
+              {copy.heading}
             </h1>
+            {copy.intro && (
+              <p className="font-body text-[16px] leading-[23px] text-black/70">
+                {copy.intro}
+              </p>
+            )}
           </div>
 
           <FeaturedCard member={founder} />

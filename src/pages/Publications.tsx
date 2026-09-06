@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import { ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { PUBLICATIONS_QUERY, type SanityPublication } from '@/lib/sanity/queries';
+import { PUBLICATIONS_QUERY, PAGE_COPY_QUERY, type SanityPublication, type SanityPageCopy } from '@/lib/sanity/queries';
 import { publications as fallbackPublications } from '../data/publications';
 
 function TypeTag({ type }: { type: string }) {
@@ -20,16 +20,25 @@ export default function Publications() {
     fallbackPublications
   );
 
+  const { data: copy } = useSanityQuery<SanityPageCopy>(
+    PAGE_COPY_QUERY,
+    { id: 'pageCopy-publications' },
+    {
+      pageKey: 'publications',
+      heading: 'Our Publications',
+      intro:
+        'Our publications translate research into practice across digital pedagogy, AI in learning, instructional design, and education for social impact.',
+    }
+  );
+
   return (
     <Layout>
       <section className="bg-white py-20 md:py-32 min-h-[80vh]">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Publications</h1>
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
             <p className="font-body text-[16px] leading-[23px] text-black/70">
-              Our publications translate research into practice across digital
-              pedagogy, AI in learning, instructional design, and education for
-              social impact.
+              {copy.intro}
             </p>
           </div>
 

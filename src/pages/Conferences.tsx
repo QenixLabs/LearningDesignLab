@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import Button from '../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { CONFERENCES_QUERY, type SanityConference } from '@/lib/sanity/queries';
+import { CONFERENCES_QUERY, PAGE_COPY_QUERY, type SanityConference, type SanityPageCopy } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
 import { conferences as fallbackConferences } from '../data/conferences';
 
@@ -37,17 +37,25 @@ export default function Conferences() {
         }))
       : fallbackConferences;
 
+  const { data: copy } = useSanityQuery<SanityPageCopy>(
+    PAGE_COPY_QUERY,
+    { id: 'pageCopy-conferences' },
+    {
+      pageKey: 'conferences',
+      heading: 'Our Work at Conferences',
+      intro:
+        "We've delivered talks and presentations on a diverse range of topics, including AI in education, Universal Design for Learning (UDL), youth empowerment, and the intersection of cognitive science and learning design.",
+    }
+  );
+
   return (
     <Layout>
       <section className="bg-white py-20 md:py-32">
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Work at Conferences</h1>
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
             <p className="font-body text-[16px] leading-[23px] text-black/70">
-              We've delivered talks and presentations on a diverse range of
-              topics, including AI in education, Universal Design for Learning
-              (UDL), youth empowerment, and the intersection of cognitive science
-              and learning design.
+              {copy.intro}
             </p>
           </div>
 

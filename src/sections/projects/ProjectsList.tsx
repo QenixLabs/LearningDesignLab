@@ -2,7 +2,7 @@ import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { PROJECTS_QUERY, type SanityProject } from '@/lib/sanity/queries';
+import { PROJECTS_QUERY, PAGE_COPY_QUERY, type SanityProject, type SanityPageCopy } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
 import { cardSections as fallbackSections } from '../../data/projects';
 
@@ -68,17 +68,28 @@ export default function ProjectsList() {
           .filter((s) => s.projects.length > 0)
       : fallbackSections;
 
+  const { data: copy } = useSanityQuery<SanityPageCopy>(
+    PAGE_COPY_QUERY,
+    { id: 'pageCopy-projects' },
+    {
+      pageKey: 'projects',
+      heading: 'Our Projects',
+      intro:
+        'Different sectors, different audiences, different formats. But our focus remains the same: learning designed to produce real change, not just completion.',
+    }
+  );
+
   return (
     <section className="bg-white py-20 md:py-32">
       <div className="page-margin max-content">
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
-            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">Our Projects</h1>
-            <p className="font-body text-[16px] leading-[23px] text-black/70">
-              Different sectors, different audiences, different formats. But our
-              focus remains the same: learning designed to produce real change,
-              not just completion.
-            </p>
+            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
+            {copy.intro && (
+              <p className="font-body text-[16px] leading-[23px] text-black/70">
+                {copy.intro}
+              </p>
+            )}
           </div>
         </ScrollReveal>
 
