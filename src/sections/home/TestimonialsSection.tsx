@@ -1,5 +1,7 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { TESTIMONIALS_QUERY, type SanityTestimonial } from '@/lib/sanity/queries';
 import { defaultTestimonials } from '../../data/testimonials';
 import type { Testimonial } from '../../data/testimonials';
 
@@ -27,7 +29,8 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({ title, items, compact }: TestimonialsSectionProps) {
-  const testimonials = items ?? defaultTestimonials;
+  const { data: fetched } = useSanityQuery<SanityTestimonial[]>(TESTIMONIALS_QUERY, {}, []);
+  const testimonials = items ?? (fetched.length > 0 ? fetched : defaultTestimonials);
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
