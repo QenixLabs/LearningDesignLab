@@ -1,9 +1,10 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
-import { cardSections } from '../../data/projects';
-
-// ---------- Card data ----------
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { PROJECTS_QUERY, type SanityProject } from '@/lib/sanity/queries';
+import { imgUrl } from '@/lib/sanity/image';
+import { cardSections as fallbackSections } from '../../data/projects';
 
 function ProjectImage({
   src,
@@ -45,6 +46,27 @@ function ProjectImage({
 }
 
 export default function ProjectsList() {
+  const { data: rawProjects } = useSanityQuery<SanityProject[]>(PROJECTS_QUERY, {}, []);
+
+  const cardSections =
+    rawProjects.length > 0
+      ? ['Courses & Curricula', 'Workshops', 'Research, Evaluation, & Knowledge Products']
+          .map((sectionTitle) => ({
+            title: sectionTitle,
+            projects: rawProjects
+              .filter((p) => p.section === sectionTitle)
+              .map((p) => ({
+                client: p.client,
+                title: p.title,
+                description: p.description,
+                image: imgUrl(p.image, 1200),
+                imageAlt: p.imageAlt,
+                actions: p.actions,
+              })),
+          }))
+          .filter((s) => s.projects.length > 0)
+      : fallbackSections;
+
   return (
     <section className="bg-white py-20 md:py-32">
       <div className="page-margin max-content">
