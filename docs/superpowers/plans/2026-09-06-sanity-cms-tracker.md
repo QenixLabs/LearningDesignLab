@@ -10,7 +10,7 @@
 | 01 | Sanity scaffold + schemas + embedded Studio | `2026-09-06-sanity-cms-01-scaffold-studio.md` | — | ✅ Complete |
 | 02 | Data extraction + query layer + seed | `2026-09-06-sanity-cms-02-query-layer-seed.md` | 01 | ✅ Complete |
 | 03 | Collections migration (Team, Publications, Conferences, Projects) | `2026-09-06-sanity-cms-03-collections-migration.md` | 02 | ✅ Complete |
-| 04 | Singletons migration (Home, Services, site settings, page copy) | `2026-09-06-sanity-cms-04-singletons-migration.md` | 02 (03 recommended) | ⬜ Not started |
+| 04 | Singletons migration (Home, Services, site settings, page copy) | `2026-09-06-sanity-cms-04-singletons-migration.md` | 02 (03 recommended) | ✅ Complete |
 | 05 | Client handoff (deploy env, CORS, editor invite, guide) | `2026-09-06-sanity-cms-05-client-handoff.md` | 03 + 04 | ⬜ Not started |
 
 ## Rules
