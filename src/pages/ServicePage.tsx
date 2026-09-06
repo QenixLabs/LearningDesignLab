@@ -18,7 +18,9 @@ import OutcomesSection from '../sections/services/OutcomesSection';
 import ProofPointsSection from '../sections/services/ProofPointsSection';
 import TestimonialsSection from '../sections/home/TestimonialsSection';
 import ContactSection from '../sections/home/ContactSection';
-import { services } from '../data/services';
+import { services as fallbackServices, type ServiceData } from '../data/services';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { SERVICE_PAGES_QUERY, type SanityServicePage } from '@/lib/sanity/queries';
 
 const facultyTestimonials = [
   {
@@ -60,7 +62,27 @@ interface ServicePageProps {
 
 export default function ServicePage({ serviceId, blank = false }: ServicePageProps) {
   const navigate = useNavigate();
-  const service = services[serviceId];
+  const { data: sanityServices } = useSanityQuery<SanityServicePage[]>(SERVICE_PAGES_QUERY, {}, []);
+
+  const service: ServiceData | undefined = (() => {
+    const doc = sanityServices.find((s) => s.serviceId === serviceId);
+    if (doc) {
+      return {
+        id: doc.serviceId,
+        number: doc.number ?? '',
+        title: doc.title,
+        description: doc.description,
+        items: doc.items ?? [],
+        itemsHeading: doc.itemsHeading ?? '',
+        approachNote: doc.approachNote,
+        outcomeNote: doc.outcomeNote,
+        differentiator: doc.differentiator,
+        cta: doc.cta ?? '',
+        dark: doc.dark,
+      };
+    }
+    return fallbackServices[serviceId];
+  })();
 
   useEffect(() => {
     if (!service && !blank) {
