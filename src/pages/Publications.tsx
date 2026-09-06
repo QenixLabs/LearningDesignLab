@@ -1,7 +1,9 @@
 import Layout from '../components/Layout';
 import { ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { publications } from '../data/publications';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { PUBLICATIONS_QUERY, type SanityPublication } from '@/lib/sanity/queries';
+import { publications as fallbackPublications } from '../data/publications';
 
 function TypeTag({ type }: { type: string }) {
   return (
@@ -12,6 +14,12 @@ function TypeTag({ type }: { type: string }) {
 }
 
 export default function Publications() {
+  const { data: publications } = useSanityQuery<SanityPublication[]>(
+    PUBLICATIONS_QUERY,
+    {},
+    fallbackPublications
+  );
+
   return (
     <Layout>
       <section className="bg-white py-20 md:py-32 min-h-[80vh]">
@@ -27,7 +35,7 @@ export default function Publications() {
 
           <div className="grid grid-cols-1 gap-6">
             {publications.map((pub, index) => {
-              const isLinked = index < 9;
+              const isLinked = pub.href !== '#';
               const CardWrapper = isLinked ? 'a' : 'div';
 
               return (
