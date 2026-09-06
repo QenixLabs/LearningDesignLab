@@ -11,7 +11,9 @@
 | 02 | Data extraction + query layer + seed | `2026-09-06-sanity-cms-02-query-layer-seed.md` | 01 | ✅ Complete |
 | 03 | Collections migration (Team, Publications, Conferences, Projects) | `2026-09-06-sanity-cms-03-collections-migration.md` | 02 | ✅ Complete |
 | 04 | Singletons migration (Home, Services, site settings, page copy) | `2026-09-06-sanity-cms-04-singletons-migration.md` | 02 (03 recommended) | ✅ Complete |
-| 05 | Client handoff (deploy env, CORS, editor invite, guide) | `2026-09-06-sanity-cms-05-client-handoff.md` | 03 + 04 | ⬜ Not started |
+| 05 | Client handoff (deploy env, CORS, editor invite, guide) | `2026-09-06-sanity-cms-05-client-handoff.md` | 03 + 04 | 🔶 Awaiting deploy |
+
+**Plan 05 status:** code-side work complete (guide written, PR #33 open, branch pushed). User-owned steps remain: merge PR, add Vercel env vars (`VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET`), add CORS origin `https://www.learningdesignlab.co` with credentials at manage.sanity.io, invite client as Editor, run production QA matrix, then mark this row ✅.
 
 ## Rules
 
