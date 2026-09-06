@@ -23,7 +23,6 @@ export const project = defineType({
     defineField({ name: 'description', type: 'text', rows: 5, validation: (r) => r.required() }),
     defineField({ name: 'image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'imageAlt', type: 'string', validation: (r) => r.required() }),
-    defineField({ name: 'imagePosition', title: 'Image position override (Tailwind class)', type: 'string' }),
     defineField({
       name: 'actions',
       title: 'Action buttons',

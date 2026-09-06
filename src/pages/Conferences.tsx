@@ -33,7 +33,9 @@ export default function Conferences() {
       ? rawConferences.map((c) => ({
           ...c,
           image: imgUrl(c.image, 1200),
-          images: c.images?.map((img) => imgUrl(img, 1200) ?? ''),
+          images: c.images?.length
+            ? c.images.map((img) => imgUrl(img, 1200)).filter((u): u is string => Boolean(u))
+            : undefined,
         }))
       : fallbackConferences;
 

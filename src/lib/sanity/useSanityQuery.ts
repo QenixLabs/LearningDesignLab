@@ -25,6 +25,11 @@ export function useSanityQuery<T>(
       return;
     }
     let cancelled = false;
+    if (!sanityClient) {
+      console.error('[sanity] VITE_SANITY_PROJECT_ID is not set; rendering fallback content');
+      setLoading(false);
+      return;
+    }
     sanityClient
       .fetch<T>(query, params)
       .then((result) => {
