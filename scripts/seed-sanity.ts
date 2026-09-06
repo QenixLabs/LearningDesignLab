@@ -53,6 +53,12 @@ async function imageField(localPath?: string) {
 }
 
 async function run() {
+  const existing = await client.fetch<number>('count(*[_type == "teamMember"])');
+  if (existing > 0) {
+    console.error(`Dataset already has ${existing} teamMember docs. Delete collection docs in Studio (or via 'npx sanity dataset' CLI) before re-seeding.`);
+    process.exit(1);
+  }
+
   // --- Singletons ---
   await client.createOrReplace({
     _id: 'siteSettings',
