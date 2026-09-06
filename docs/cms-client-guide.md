@@ -1,6 +1,6 @@
 # Editing the Website — Quick Guide
 
-**Where to log in:** https://<production-domain>/studio
+**Where to log in:** https://www.learningdesignlab.co/studio
 Use the Google account (or email) you were invited with.
 
 ## What you can edit
