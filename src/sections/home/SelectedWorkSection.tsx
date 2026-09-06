@@ -2,27 +2,30 @@ import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import NeuronMotif from '../../components/NeuronMotif';
 import { cn } from '@/lib/utils';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
+import { imgUrl } from '@/lib/sanity/image';
 
-const projects = [
+const fallbackProjects = [
   'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
   'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
   'Workshops on AI for Teaching, Learning and Research for faculty members of Stirling University, UAE',
   'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
 ];
 
-const scholarships = [
+const fallbackScholarships = [
   'Navigating Structural, Epistemic, and Human Dimensions in Education',
   'Reimagining Learning with AI: Towards a Learning Society',
   'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPANCER)',
 ];
 
-const blogs = [
+const fallbackBlogs = [
   "Why Facts Don't Change Minds: Designing Learning That Transcends Behavior",
   'Learning How to Learn: Introducing the Science of Learning to Undergraduate Students',
   'Beyond the Hype: What AI Actually Means for the Next Billion Learners',
 ];
 
-const presentations = [
+const fallbackPresentations: { name: string; image: string }[] = [
   { name: 'Indian Institute of Technology, Delhi', image: '/images/logos/iit delhi.jpg' },
   { name: 'University of Northern Colorado', image: '/images/logos/northern colorado.jpg' },
   { name: 'Masinde Muliro University of Science & Technology, Kenya', image: '/images/logos/masinde muliro.png' },
@@ -54,6 +57,15 @@ function BentoPanel({
 }
 
 export default function SelectedWorkSection() {
+  const { data: home } = useSanityQuery<SanityHomePage>(HOME_PAGE_QUERY, {}, {} as SanityHomePage);
+
+  const projects = home.selectedWorkProjects?.length ? home.selectedWorkProjects : fallbackProjects;
+  const scholarships = home.selectedWorkScholarships?.length ? home.selectedWorkScholarships : fallbackScholarships;
+  const blogs = home.selectedWorkBlogs?.length ? home.selectedWorkBlogs : fallbackBlogs;
+  const presentations = home.presentations?.length
+    ? home.presentations.map((p) => ({ name: p.name, image: imgUrl(p.image, 400) ?? '' }))
+    : fallbackPresentations;
+
   return (
     <section id="projects" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif overlay */}
