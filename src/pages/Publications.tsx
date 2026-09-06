@@ -35,7 +35,7 @@ export default function Publications() {
 
           <div className="grid grid-cols-1 gap-6">
             {publications.map((pub, index) => {
-              const isLinked = pub.href !== '#';
+              const isLinked = pub.href.trim() !== '#';
               const CardWrapper = isLinked ? 'a' : 'div';
 
               return (

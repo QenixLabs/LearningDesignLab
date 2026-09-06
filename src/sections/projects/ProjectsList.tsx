@@ -48,6 +48,7 @@ function ProjectImage({
 export default function ProjectsList() {
   const { data: rawProjects } = useSanityQuery<SanityProject[]>(PROJECTS_QUERY, {}, []);
 
+  // Section titles must match the schema's options.list in src/studio/schemaTypes/collections/project.ts
   const cardSections =
     rawProjects.length > 0
       ? ['Courses & Curricula', 'Workshops', 'Research, Evaluation, & Knowledge Products']

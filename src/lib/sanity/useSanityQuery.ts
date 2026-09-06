@@ -13,12 +13,17 @@ interface QueryResult<T> {
 export function useSanityQuery<T>(
   query: string,
   params: Record<string, unknown>,
-  fallback: T
+  fallback: T,
+  skip = false
 ): QueryResult<T> {
   const [data, setData] = useState<T>(fallback);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (skip) {
+      setLoading(false);
+      return;
+    }
     let cancelled = false;
     sanityClient
       .fetch<T>(query, params)
@@ -36,7 +41,7 @@ export function useSanityQuery<T>(
     };
     // params are expected to be static module constants; changes to them do not refetch
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, skip]);
 
   return { data, loading };
 }

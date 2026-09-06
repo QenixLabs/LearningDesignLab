@@ -29,7 +29,7 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({ title, items, compact }: TestimonialsSectionProps) {
-  const { data: fetched } = useSanityQuery<SanityTestimonial[]>(TESTIMONIALS_QUERY, {}, []);
+  const { data: fetched } = useSanityQuery<SanityTestimonial[]>(TESTIMONIALS_QUERY, {}, [], Boolean(items));
   const testimonials = items ?? (fetched.length > 0 ? fetched : defaultTestimonials);
   const slides = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 

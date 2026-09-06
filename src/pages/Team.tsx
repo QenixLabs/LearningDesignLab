@@ -141,14 +141,14 @@ export default function Team() {
     socials: m.linkedin ? { linkedin: m.linkedin } : undefined,
   });
 
+  const founderSource = members.find((m) => m.isFounder) ?? members[0];
+
   const founder: TeamMember =
-    members.length > 0
-      ? toTeamMember(members.find((m) => m.isFounder) ?? members[0])
-      : fallbackFounder;
+    members.length > 0 ? toTeamMember(founderSource) : fallbackFounder;
 
   const team: TeamMember[] =
     members.length > 0
-      ? members.filter((m) => !m.isFounder).map(toTeamMember)
+      ? members.filter((m) => m !== founderSource).map(toTeamMember)
       : fallbackTeam;
 
   return (
