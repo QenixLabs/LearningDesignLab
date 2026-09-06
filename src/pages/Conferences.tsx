@@ -1,7 +1,10 @@
 import Layout from '../components/Layout';
 import Button from '../components/Button';
 import { cn } from '@/lib/utils';
-import { conferences } from '../data/conferences';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { CONFERENCES_QUERY, type SanityConference } from '@/lib/sanity/queries';
+import { imgUrl } from '@/lib/sanity/image';
+import { conferences as fallbackConferences } from '../data/conferences';
 
 function PlaceholderImage({ className }: { className?: string }) {
   return (
@@ -19,6 +22,21 @@ function PlaceholderImage({ className }: { className?: string }) {
 }
 
 export default function Conferences() {
+  const { data: rawConferences } = useSanityQuery<SanityConference[]>(
+    CONFERENCES_QUERY,
+    {},
+    []
+  );
+
+  const conferences =
+    rawConferences.length > 0
+      ? rawConferences.map((c) => ({
+          ...c,
+          image: imgUrl(c.image, 1200),
+          images: c.images?.map((img) => imgUrl(img, 1200) ?? ''),
+        }))
+      : fallbackConferences;
+
   return (
     <Layout>
       <section className="bg-white py-20 md:py-32">
