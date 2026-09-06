@@ -5,6 +5,8 @@ import Publications from './pages/Publications';
 import Conferences from './pages/Conferences';
 import Team from './pages/Team';
 import ServicePage from './pages/ServicePage';
+import AdvisoryPage from './pages/AdvisoryPage';
+import ResearchEvaluationPage from './pages/ResearchEvaluationPage';
 
 export default function App() {
   return (
@@ -17,8 +19,8 @@ export default function App() {
       <Route path="/services" element={<Navigate to="/services/course-development" replace />} />
       <Route path="/services/course-development" element={<ServicePage serviceId="course-development" />} />
       <Route path="/services/faculty-enrichment" element={<ServicePage serviceId="faculty-enrichment" />} />
-      <Route path="/services/research-evaluation" element={<ServicePage serviceId="research-evaluation" blank />} />
-      <Route path="/services/advisory" element={<ServicePage serviceId="advisory" blank />} />
+      <Route path="/services/research-evaluation" element={<ResearchEvaluationPage />} />
+      <Route path="/services/advisory" element={<AdvisoryPage />} />
     </Routes>
   );
 }
