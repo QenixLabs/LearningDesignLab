@@ -8,7 +8,7 @@ const scriptDir = import.meta.dirname;
 // Load .env.local manually (no dotenv dependency)
 const envFile = readFileSync(join(scriptDir, '..', '.env.local'), 'utf-8');
 for (const line of envFile.split('\n')) {
-  const m = line.match(/^([A-Z_]+)=(.*)$/);
+  const m = line.match(/^([A-Z_]+)=["']?(.*?)["']?$/);
   if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
 }
 
@@ -154,7 +154,8 @@ async function run() {
     },
   ];
   for (const p of pageCopy) {
-    await client.createOrReplace({ _id: p.id, _type: 'pageCopy', ...p });
+    const { id, ...doc } = p;
+    await client.createOrReplace({ _id: id, _type: 'pageCopy', ...doc });
     console.log(`✓ ${p.id}`);
   }
 

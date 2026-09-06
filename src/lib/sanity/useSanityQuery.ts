@@ -34,6 +34,7 @@ export function useSanityQuery<T>(
     return () => {
       cancelled = true;
     };
+    // params are expected to be static module constants; changes to them do not refetch
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
