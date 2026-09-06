@@ -1,12 +1,18 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import ContactForm from '../../components/ContactForm';
 import NeuronMotif from '../../components/NeuronMotif';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { SITE_SETTINGS_QUERY, type SanitySiteSettings } from '@/lib/sanity/queries';
 
 interface ContactSectionProps {
   title?: string;
 }
 
 export default function ContactSection({ title }: ContactSectionProps) {
+  const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, {
+    contactEmail: 'shraddha@learningdesignlab.co',
+  });
+
   return (
     <section id="contact" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif overlay */}
@@ -28,10 +34,10 @@ export default function ContactSection({ title }: ContactSectionProps) {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <a
-                href="mailto:shraddha@learningdesignlab.co"
+                href={`mailto:${settings.contactEmail}`}
                 className="font-body text-[14px] leading-[23px] text-white/50 hover:text-white transition-colors"
               >
-                shraddha@learningdesignlab.co
+                {settings.contactEmail}
               </a>
             </ScrollReveal>
           </div>
