@@ -56,7 +56,7 @@
 |---|---|
 | `siteSettings` | logo, contact email, phone, social links, footer text |
 | `homePage` | hero (heading, sub, CTA), about blurb, stats list, featured section copy |
-| `servicePage` × N | one per service — title, intro, body sections (Portable Text), CTA |
+| `servicePage` × N | one per service — title, intro, items list, notes, CTA |
 | `teamPage`, `projectsPage`, `publicationsPage`, `conferencesPage` | page-level copy (titles, intros) |
 
 ### Collections (client adds/removes/reorders)
@@ -65,11 +65,11 @@
 |---|---|
 | `project` | title, slug, description (Portable Text), image, tags, link, course URL, order |
 | `teamMember` | name, role, bio, photo (hotspot), LinkedIn URL, order |
-| `publication` | title, authors, year, journal, link, PDF file |
+| `publication` | citation, title, venue, type, link |
 | `conference` | title, date, location, description, link |
 | `testimonial` | quote, name, role, org, photo |
 
-- Rich text: Portable Text for long bodies — client gets bold/links/lists only.
+- Rich text: plain text fields throughout — current UI renders plain paragraphs; Portable Text is YAGNI here. Revisit only if client asks for in-paragraph links/bold.
 - Media: Sanity `image` type with hotspot/crop; frontend renders via `@sanity/image-url` with width/quality params (auto WebP, CDN resize).
 - Ordering: `order` field + `@sanity/orderable-document-list` drag handles for projects/team.
 - Studio desk structure: sidebar groups "Site Settings", "Pages" (singletons), "Content" (collections).
@@ -91,7 +91,7 @@ const { data } = useSanityQuery(TEAM_QUERY, {}, fallbackTeam)
 
 - Section components unchanged — only data source swaps.
 - Images: `urlFor(image).width(800).auto('format').url()` helper; existing `<img>` tags swap `src` only.
-- Portable Text: `@portabletext/react` with component map matching current typography.
+- Portable Text: not used (plain text fields); `@portabletext/react` omitted from deps.
 - Loading UX: sections render fallback copy immediately, swap when fetch resolves — no spinners on public site; first paint always complete.
 
 ## Error Handling
