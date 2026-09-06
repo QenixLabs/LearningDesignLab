@@ -15,13 +15,15 @@ const resourceLinks = [
   { label: 'Conferences', href: '/conferences' },
 ];
 
+const fallbackSettings: SanitySiteSettings = {
+  contactEmail: 'shraddha@learningdesignlab.co',
+  linkedinUrl: 'https://linkedin.com',
+  footerTagline:
+    "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
+};
+
 export default function Footer() {
-  const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, {
-    contactEmail: 'shraddha@learningdesignlab.co',
-    linkedinUrl: 'https://linkedin.com',
-    footerTagline:
-      "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
-  });
+  const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, fallbackSettings);
 
   return (
     <footer className="bg-black text-white relative overflow-hidden">
@@ -48,7 +50,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              {settings.footerTagline}
+              {settings.footerTagline || fallbackSettings.footerTagline}
             </p>
           </div>
 
@@ -106,13 +108,13 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col gap-3">
             <a
-              href={`mailto:${settings.contactEmail}`}
+              href={`mailto:${settings.contactEmail ?? fallbackSettings.contactEmail}`}
               className="text-white/70 hover:text-white text-sm transition-colors"
             >
-              {settings.contactEmail}
+              {settings.contactEmail ?? fallbackSettings.contactEmail}
             </a>
             <a
-              href={settings.linkedinUrl ?? '#'}
+              href={settings.linkedinUrl || fallbackSettings.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white text-sm transition-colors"

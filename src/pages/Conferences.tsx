@@ -54,9 +54,11 @@ export default function Conferences() {
         <div className="page-margin max-content">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
-            <p className="font-body text-[16px] leading-[23px] text-black/70">
-              {copy.intro}
-            </p>
+            {copy.intro && (
+              <p className="font-body text-[16px] leading-[23px] text-black/70">
+                {copy.intro}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col">

@@ -12,6 +12,7 @@ export default function ContactSection({ title }: ContactSectionProps) {
   const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, {
     contactEmail: 'shraddha@learningdesignlab.co',
   });
+  const contactEmail = settings.contactEmail ?? 'shraddha@learningdesignlab.co';
 
   return (
     <section id="contact" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
@@ -34,10 +35,10 @@ export default function ContactSection({ title }: ContactSectionProps) {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <a
-                href={`mailto:${settings.contactEmail}`}
+                href={`mailto:${contactEmail}`}
                 className="font-body text-[14px] leading-[23px] text-white/50 hover:text-white transition-colors"
               >
-                {settings.contactEmail}
+                {contactEmail}
               </a>
             </ScrollReveal>
           </div>

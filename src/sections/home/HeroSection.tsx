@@ -29,7 +29,9 @@ export default function HeroSection() {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const { data: home } = useSanityQuery<SanityHomePage>(HOME_PAGE_QUERY, {}, fallbackHome);
-  const stats = home.stats && home.stats.length > 0 ? home.stats : fallbackHome.stats!;
+  const stats = home.stats && home.stats.length > 0 ? home.stats : (fallbackHome.stats ?? []);
+  const heroTitle = home.heroTitle || fallbackHome.heroTitle;
+  const heroSubtext = home.heroSubtext || fallbackHome.heroSubtext;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -63,11 +65,11 @@ export default function HeroSection() {
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
         <div className="w-full max-w-[70%] max-md:max-w-full">
           <h1 className="hero-heading font-display uppercase text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-white mb-8">
-            {home.heroTitle}
+            {heroTitle}
           </h1>
 
           <p className="hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-12">
-            {home.heroSubtext}
+            {heroSubtext}
           </p>
 
           <div className="hero-buttons flex flex-wrap gap-4">
