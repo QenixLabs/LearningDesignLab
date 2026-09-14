@@ -11,4 +11,13 @@ export default defineConfig({
   basePath: '/studio',
   plugins: [structureTool({ structure })],
   schema: { types: schemaTypes },
+  auth: {
+    providers: [
+      {
+        name: 'sanity',
+        title: 'Email / Password',
+        url: 'https://api.sanity.io/v1/auth/login/sanity',
+      },
+    ],
+  },
 });
