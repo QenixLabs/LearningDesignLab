@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
@@ -7,6 +8,8 @@ import Team from './pages/Team';
 import ServicePage from './pages/ServicePage';
 import AdvisoryPage from './pages/AdvisoryPage';
 import ResearchEvaluationPage from './pages/ResearchEvaluationPage';
+
+const StudioPage = lazy(() => import('./pages/StudioPage'));
 
 export default function App() {
   return (
@@ -21,6 +24,14 @@ export default function App() {
       <Route path="/services/faculty-enrichment" element={<ServicePage serviceId="faculty-enrichment" />} />
       <Route path="/services/research-evaluation" element={<ResearchEvaluationPage />} />
       <Route path="/services/advisory" element={<AdvisoryPage />} />
+      <Route
+        path="/studio/*"
+        element={
+          <Suspense fallback={<div style={{ padding: '2rem' }}>Loading Studio…</div>}>
+            <StudioPage />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 }

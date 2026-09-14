@@ -4,12 +4,34 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../../components/Button';
 import StatCounter from '../../components/StatCounter';
 import NeuronMotif from '../../components/NeuronMotif';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const fallbackHome: SanityHomePage = {
+  heroTitle: 'Designing Learning That Works',
+  heroSubtext:
+    'We are an impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions. We partner with organizations and educational institutions to build evidence-informed, contextually grounded designs that translate learning into real-world outcomes.',
+  primaryCtaLabel: 'Work With Us',
+  secondaryCtaLabel: 'Explore Services',
+  stats: [
+    { value: 10, suffix: 'M+', label: 'Learners Impacted' },
+    { value: 200, suffix: '+', label: 'Trainings Delivered' },
+    { value: 65, suffix: '+', label: 'Digital Courses Built' },
+    { value: 20, suffix: '+', label: 'Countries Reached' },
+    { value: 25, suffix: '+', label: 'Organizations Partnered' },
+  ],
+};
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const { data: home } = useSanityQuery<SanityHomePage>(HOME_PAGE_QUERY, {}, fallbackHome);
+  const stats = home.stats && home.stats.length > 0 ? home.stats : (fallbackHome.stats ?? []);
+  const heroTitle = home.heroTitle || fallbackHome.heroTitle;
+  const heroSubtext = home.heroSubtext || fallbackHome.heroSubtext;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,24 +65,21 @@ export default function HeroSection() {
       <div ref={contentRef} className="page-margin max-content w-full pt-32 pb-16 relative z-10">
         <div className="w-full max-w-[70%] max-md:max-w-full">
           <h1 className="hero-heading font-display uppercase text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-white mb-8">
-            Designing Learning That Works
+            {heroTitle}
           </h1>
 
           <p className="hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-12">
-            We are an impact-driven, international learning design firm dedicated to enhancing the
-            effectiveness of skilling, competency development, and educational interventions. We partner
-            with organizations and educational institutions to build evidence-informed, contextually
-            grounded designs that translate learning into real-world outcomes.
+            {heroSubtext}
           </p>
 
           <div className="hero-buttons flex flex-wrap gap-4">
             <Button
-              text="Work With Us"
+              text={home.primaryCtaLabel ?? 'Work With Us'}
               variant="primary"
               onClick={() => handleScrollTo('contact')}
             />
             <Button
-              text="Explore Services"
+              text={home.secondaryCtaLabel ?? 'Explore Services'}
               variant="secondary"
               dark
               onClick={() => handleScrollTo('services')}
@@ -73,11 +92,9 @@ export default function HeroSection() {
 
         {/* Stats */}
         <div className="hero-stats grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-4">
-          <StatCounter value={10} suffix="M+" label="Learners Impacted" />
-          <StatCounter value={200} suffix="+" label="Trainings Delivered" />
-          <StatCounter value={65} suffix="+" label="Digital Courses Built" />
-          <StatCounter value={20} suffix="+" label="Countries Reached" />
-          <StatCounter value={25} suffix="+" label="Organizations Partnered" />
+          {stats.map((s) => (
+            <StatCounter key={s.label} value={s.value} suffix={s.suffix ?? ''} label={s.label} />
+          ))}
         </div>
       </div>
     </section>

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { SITE_SETTINGS_QUERY, type SanitySiteSettings } from '@/lib/sanity/queries';
 
 const serviceLinks = [
   { label: 'Course Development', href: '/services/course-development' },
@@ -13,7 +15,16 @@ const resourceLinks = [
   { label: 'Conferences', href: '/conferences' },
 ];
 
+const fallbackSettings: SanitySiteSettings = {
+  contactEmail: 'shraddha@learningdesignlab.co',
+  linkedinUrl: 'https://linkedin.com',
+  footerTagline:
+    "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
+};
+
 export default function Footer() {
+  const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, fallbackSettings);
+
   return (
     <footer className="bg-black text-white relative overflow-hidden">
 
@@ -39,8 +50,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Researcher's rigour and implementer's realism for organizations
-              that want learning that actually works.
+              {settings.footerTagline || fallbackSettings.footerTagline}
             </p>
           </div>
 
@@ -98,13 +108,13 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col gap-3">
             <a
-              href="mailto:shraddha@learningdesignlab.co"
+              href={`mailto:${settings.contactEmail ?? fallbackSettings.contactEmail}`}
               className="text-white/70 hover:text-white text-sm transition-colors"
             >
-              shraddha@learningdesignlab.co
+              {settings.contactEmail ?? fallbackSettings.contactEmail}
             </a>
             <a
-              href="https://linkedin.com"
+              href={settings.linkedinUrl || fallbackSettings.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/70 hover:text-white text-sm transition-colors"

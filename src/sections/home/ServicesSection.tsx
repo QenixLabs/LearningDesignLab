@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import { ArrowUpRight } from 'lucide-react';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { SERVICE_PAGES_QUERY, type SanityServicePage } from '@/lib/sanity/queries';
 
-const services = [
+const fallbackServices = [
   {
     title: 'Frameworks, Courses, & Curricula',
     description:
@@ -31,6 +33,15 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const { data: sanityServices } = useSanityQuery<SanityServicePage[]>(SERVICE_PAGES_QUERY, {}, []);
+
+  const ORDER = ['course-development', 'faculty-enrichment', 'research-evaluation', 'advisory'];
+  const services = sanityServices.length
+    ? ORDER.map((id) => sanityServices.find((s) => s.serviceId === id))
+        .filter((s): s is SanityServicePage => Boolean(s))
+        .map((s) => ({ title: s.title, description: s.description, link: `/services/${s.serviceId}` }))
+    : fallbackServices;
+
   return (
     <section id="services">
       <div className="bg-near-black py-20 md:py-32 relative overflow-hidden">
