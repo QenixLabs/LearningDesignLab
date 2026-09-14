@@ -51,7 +51,7 @@ export const team: TeamMember[] = [
     role: 'Disaster Education Expert',
     image: '/images/team/Ranit_Chatterjee-removebg-preview.png',
     description:
-      'Dr. Ranit is a disaster education expert and co-founder of RIKA Institute and DTECH, a startup utilising AI and quantum computing for climate resilience. With 15+ years across UN agencies, NGOs, and academia, he serves in advisory roles for the UNDRR and the IUCN. An acclaimed academic with innovative global teaching experience, Ranit specialises in translating complex research into actionable learning. He has designed effective disaster management and climate change courses for organisations like UNESCO.',
+      'Dr. Ranit is a disaster education expert and co-founder of RIKA Institute and DTECH, a startup utilising AI and quantum computing for climate resilience. With 15+ years across UN agencies, NGOs, and academia, he serves in advisory roles for the UNDRR and the IUCN. An acclaimed academic with innovative global teaching experience, Ranit specialises in translating complex research into actionable learning. He has designed effective disaster management and climate change courses for organizations like UNESCO.',
   },
   {
     name: 'Shweta Bahri',
@@ -107,7 +107,7 @@ export const team: TeamMember[] = [
     role: 'Curriculum & Assessment Expert',
     image: '/images/team/Kritika Mattoo.png',
     description:
-      'Kritika is a psychologist and learning designer with 15+ years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organisations.',
+      'Kritika is a psychologist and learning designer with 15+ years of experience building inclusive, gender-responsive curricula and training programs for schools, NGOs, and government institutions. With a decade of grounding in Waldorf education and experience as an education reforms consultant to the Deputy CM of Delhi, she designs experiential learning programs for students, teachers, and parents, and delivers wellbeing and capacity-building training for corporates and youth-focused organizations.',
   },
   {
     name: 'Ayomide Ajani',

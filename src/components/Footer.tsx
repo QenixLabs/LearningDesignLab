@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Linkedin, Mail } from 'lucide-react';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { SITE_SETTINGS_QUERY, type SanitySiteSettings } from '@/lib/sanity/queries';
 
@@ -15,6 +16,11 @@ const resourceLinks = [
   { label: 'Conferences', href: '/conferences' },
 ];
 
+const companyLinks = [
+  { label: 'Our Team', href: '/team' },
+  { label: 'Community', href: '/#contact' },
+];
+
 const fallbackSettings: SanitySiteSettings = {
   contactEmail: 'shraddha@learningdesignlab.co',
   linkedinUrl: 'https://linkedin.com',
@@ -24,6 +30,9 @@ const fallbackSettings: SanitySiteSettings = {
 
 export default function Footer() {
   const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, fallbackSettings);
+
+  const contactEmail = settings?.contactEmail || fallbackSettings.contactEmail;
+  const linkedinUrl = settings?.linkedinUrl || fallbackSettings.linkedinUrl;
 
   return (
     <footer className="bg-black text-white relative overflow-hidden">
@@ -54,73 +63,81 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services + Our Team */}
-          <div className="flex flex-col gap-12 h-full justify-between">
-            <div>
-              <span className="font-display text-lg text-pink mb-4 block">
-                Services
-              </span>
-              <nav className="flex flex-col gap-3">
-                {serviceLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className="text-white/70 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <Link
-              to="/team"
-              className="font-display text-lg text-pink block"
-            >
-              Our Team
-            </Link>
-          </div>
-
-          {/* Resources + Community */}
-          <div className="flex flex-col gap-12 h-full justify-between">
-            <div>
-              <span className="font-display text-lg text-pink mb-4 block">
-                Our work
-              </span>
-              <nav className="flex flex-col gap-3">
-                {resourceLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className="text-white/70 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <span className="font-display text-lg text-pink block">
-              Community
+          {/* Services */}
+          <div>
+            <span className="font-display text-lg text-pink mb-4 block">
+              Services
             </span>
+            <nav className="flex flex-col gap-3">
+              {serviceLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          {/* Contact */}
-          <div className="flex flex-col gap-3">
-            <a
-              href={`mailto:${settings.contactEmail ?? fallbackSettings.contactEmail}`}
-              className="text-white/70 hover:text-white text-sm transition-colors"
-            >
-              {settings.contactEmail ?? fallbackSettings.contactEmail}
-            </a>
-            <a
-              href={settings.linkedinUrl || fallbackSettings.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/70 hover:text-white text-sm transition-colors"
-            >
-              LinkedIn
-            </a>
+          {/* Our work */}
+          <div>
+            <span className="font-display text-lg text-pink mb-4 block">
+              Our work
+            </span>
+            <nav className="flex flex-col gap-3">
+              {resourceLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Company */}
+          <div>
+            <span className="font-display text-lg text-pink mb-4 block">
+              Company
+            </span>
+            <nav className="flex flex-col gap-3 mb-6">
+              {companyLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-4">
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-pink transition-colors inline-flex items-center"
+                aria-label={`Email ${contactEmail}`}
+                title={`Email ${contactEmail}`}
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-pink transition-colors inline-flex items-center"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
 

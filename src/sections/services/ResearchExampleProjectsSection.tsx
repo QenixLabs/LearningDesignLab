@@ -27,9 +27,7 @@ export default function ResearchExampleProjectsSection() {
       <NeuronMotif opacity={0.025} />
 
       <div className="page-margin max-content relative z-10">
-        <ScrollReveal>
-          <p className="section-label-dark text-center mb-6">Example projects</p>
-        </ScrollReveal>
+        
 
         <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black text-center mb-16 max-w-4xl mx-auto">
