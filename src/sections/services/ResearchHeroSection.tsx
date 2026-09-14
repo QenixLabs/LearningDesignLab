@@ -55,7 +55,7 @@ export default function ResearchHeroSection() {
           <StatCounter value={70} suffix="+" label="Digital courses built" />
           <StatCounter value={20} suffix="+" label="Countries reached" />
           <div className="col-span-2 md:col-span-1 flex justify-center">
-            <StatCounter value={25} suffix="+" label="Organisations partnered" />
+            <StatCounter value={25} suffix="+" label="Organizations partnered" />
           </div>
         </div>
       </div>

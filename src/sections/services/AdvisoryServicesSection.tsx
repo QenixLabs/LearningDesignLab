@@ -41,14 +41,10 @@ export default function AdvisoryServicesSection() {
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
-        <ScrollReveal delay={0.1}>
-          <p className="section-label-dark text-center mb-6">Services</p>
-        </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
           <h2 className="heading-xl text-black text-center mb-16 max-w-4xl mx-auto">
-            We Provide Science-Backed, Diagnosis-First{' '}
-            <span className="bg-primary text-white px-1">Advisory</span>
+            We Provide Science-Backed, Diagnosis-First Advisory
           </h2>
         </ScrollReveal>
 

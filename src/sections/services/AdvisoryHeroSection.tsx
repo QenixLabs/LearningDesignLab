@@ -37,7 +37,7 @@ export default function AdvisoryHeroSection() {
           </h1>
 
           <p className="ad-hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-10">
-            We partner with development organisations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.
+            We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.
           </p>
 
           <div className="ad-hero-cta">
@@ -55,7 +55,7 @@ export default function AdvisoryHeroSection() {
           <StatCounter value={80} suffix="+" label="Digital courses built" />
           <StatCounter value={25} suffix="+" label="Countries reached" />
           <div className="col-span-2 md:col-span-1 flex justify-center">
-            <StatCounter value={20} suffix="+" label="Organisations partnered" />
+            <StatCounter value={20} suffix="+" label="Organizations partnered" />
           </div>
         </div>
       </div>
