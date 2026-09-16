@@ -4,8 +4,35 @@ import Button from '../../components/Button';
 import StatCounter from '../../components/StatCounter';
 import NeuronMotif from '../../components/NeuronMotif';
 
-export default function AdvisoryHeroSection() {
+interface AdvisoryHeroStat {
+  value: number;
+  suffix?: string;
+  label: string;
+}
+
+interface AdvisoryHeroSectionProps {
+  heading?: string;
+  subtext?: string;
+  ctaLabel?: string;
+  stats?: AdvisoryHeroStat[];
+}
+
+const defaultStats: AdvisoryHeroStat[] = [
+  { value: 10, suffix: 'M+', label: 'Learners impacted' },
+  { value: 200, suffix: '+', label: 'Trainings delivered' },
+  { value: 80, suffix: '+', label: 'Digital courses built' },
+  { value: 25, suffix: '+', label: 'Countries reached' },
+  { value: 20, suffix: '+', label: 'Organizations partnered' },
+];
+
+export default function AdvisoryHeroSection({
+  heading = 'Strategic Advisory for Large-Scale Skilling Programs',
+  subtext = 'We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.',
+  ctaLabel = 'Contact Us',
+  stats,
+}: AdvisoryHeroSectionProps) {
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroStats = stats && stats.length > 0 ? stats : defaultStats;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -33,15 +60,15 @@ export default function AdvisoryHeroSection() {
       <div className="page-margin max-content pt-32 pb-24 relative z-10">
         <div className="max-w-[70%] max-md:max-w-full">
           <h1 className="ad-hero-heading font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-white mb-8">
-            Strategic Advisory for Large-Scale Skilling Programs
+            {heading}
           </h1>
 
           <p className="ad-hero-subtext font-body text-sm leading-relaxed text-white/80 max-w-[60ch] mb-10">
-            We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.
+            {subtext}
           </p>
 
           <div className="ad-hero-cta">
-            <Button text="Contact Us" variant="primary" onClick={handleScrollToContact} />
+            <Button text={ctaLabel} variant="primary" onClick={handleScrollToContact} />
           </div>
         </div>
 
@@ -50,13 +77,14 @@ export default function AdvisoryHeroSection() {
 
         {/* Stats */}
         <div className="ad-hero-stats grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4">
-          <StatCounter value={10} suffix="M+" label="Learners impacted" />
-          <StatCounter value={200} suffix="+" label="Trainings delivered" />
-          <StatCounter value={80} suffix="+" label="Digital courses built" />
-          <StatCounter value={25} suffix="+" label="Countries reached" />
-          <div className="col-span-2 md:col-span-1 flex justify-center">
-            <StatCounter value={20} suffix="+" label="Organizations partnered" />
-          </div>
+          {heroStats.map((stat, i) => (
+            <div
+              key={i}
+              className={i === heroStats.length - 1 && heroStats.length % 2 !== 0 ? 'col-span-2 md:col-span-1 flex justify-center' : ''}
+            >
+              <StatCounter value={stat.value} suffix={stat.suffix ?? '+'} label={stat.label} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,7 +1,9 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
+import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
+import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
 
-const solutions = [
+const fallbackSolutions = [
   {
     title: 'Evidence-informed',
     description:
@@ -30,13 +32,18 @@ const solutions = [
 ];
 
 export default function DifferentiatorsSection() {
+  const { data: home } = useSanityQuery<SanityHomePage>(HOME_PAGE_QUERY, {}, {} as SanityHomePage);
+
+  const heading = home.differentiatorsHeading || 'What Defines Our Solutions';
+  const solutions = home.differentiators?.length ? home.differentiators : fallbackSolutions;
+
   return (
     <section id="about" className="bg-warm-grey py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif color="#000000" opacity={0.06} size={220} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="heading-xl text-black mb-10 md:mb-16">What Defines Our Solutions</h2>
+          <h2 className="heading-xl text-black mb-10 md:mb-16">{heading}</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -57,3 +64,4 @@ export default function DifferentiatorsSection() {
     </section>
   );
 }
+
