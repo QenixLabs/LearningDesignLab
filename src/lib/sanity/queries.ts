@@ -103,13 +103,24 @@ export interface SanityHomePage {
   selectedWorkScholarships?: string[];
   selectedWorkBlogs?: string[];
   presentations?: { name: string; image?: SanityImageSource }[];
+  verticalsHeading?: string;
+  verticals?: { label: string; image?: SanityImageSource }[];
+  differentiatorsHeading?: string;
+  differentiators?: { title: string; description: string }[];
+  selectedWorkHeading?: string;
+  contactHeading?: string;
+  contactSubtext?: string;
 }
 
 export const HOME_PAGE_QUERY = `
   *[_id == "homePage"][0] {
     heroTitle, heroSubtext, primaryCtaLabel, secondaryCtaLabel,
     stats, selectedWorkProjects, selectedWorkScholarships, selectedWorkBlogs,
-    presentations
+    presentations,
+    verticalsHeading, verticals,
+    differentiatorsHeading, differentiators,
+    selectedWorkHeading,
+    contactHeading, contactSubtext
   }
 `;
 
@@ -117,6 +128,48 @@ export interface SanityServiceItem {
   title?: string;
   description?: string;
   text?: string;
+}
+
+export interface SanityServiceSector {
+  title: string;
+  description?: string;
+  image?: SanityImageSource;
+}
+
+export interface SanityServiceOffering {
+  label: string;
+  highlight?: string;
+}
+
+export interface SanityMethodologyField {
+  name: string;
+  highlight?: boolean;
+}
+
+export interface SanityServiceProofPoint {
+  title: string;
+  image?: SanityImageSource;
+}
+
+export interface SanityServiceWorkshop {
+  title: string;
+  meta?: string;
+  description: string;
+}
+
+export interface SanityServiceCard {
+  title: string;
+  paragraphs: string[];
+}
+
+export interface SanityServiceExampleProject {
+  title: string;
+  image?: SanityImageSource;
+}
+
+export interface SanityServicePartner {
+  name: string;
+  logo?: SanityImageSource;
 }
 
 export interface SanityServicePage {
@@ -131,12 +184,82 @@ export interface SanityServicePage {
   differentiator?: string;
   cta?: string;
   dark?: boolean;
+
+  // Hero section
+  heroHeading?: string;
+  heroSubtext?: string;
+  heroCtaLabel?: string;
+  heroStats?: { value: number; suffix?: string; label: string; decimals?: number }[];
+  heroFootnote?: string;
+
+  // Problem section
+  problemHeading?: string;
+  problemText?: string;
+  problemParagraphs?: string[];
+
+  // Process / Strategy section
+  processHeading?: string;
+  processSteps?: string[];
+
+  // Offerings section (Course Development)
+  offeringsHeading?: string;
+  offerings?: (SanityServiceOffering | string)[];
+
+  // Faculty workshops & accelerator
+  workshopsHeading?: string;
+  workshops?: SanityServiceWorkshop[];
+  acceleratorHeading?: string;
+  acceleratorMeta?: string;
+  acceleratorParagraphs?: string[];
+
+  // Service Cards (Research & Evaluation / Advisory)
+  serviceCardsHeading?: string;
+  serviceCards?: SanityServiceCard[];
+
+  // Example Projects (Research & Evaluation / Advisory)
+  exampleProjectsHeading?: string;
+  exampleProjects?: SanityServiceExampleProject[];
+  exampleProjectsCtaText?: string;
+  exampleProjectsCtaHref?: string;
+
+  // Methodology
+  methodologyHeading?: string;
+  methodologyFields?: (SanityMethodologyField | string)[];
+
+  // Course Development extras
+  sectorsHeading?: string;
+  sectors?: SanityServiceSector[];
+  outcomesHeading?: string;
+  outcomes?: string[];
+  proofPointsHeading?: string;
+  proofPoints?: SanityServiceProofPoint[];
+
+  // Social Proof (Faculty)
+  socialProofHeading?: string;
+  socialProofPartners?: SanityServicePartner[];
+
+  // Custom contact CTA heading
+  contactHeading?: string;
 }
 
 export const SERVICE_PAGES_QUERY = `
   *[_type == "servicePage"] {
     serviceId, number, title, description, items, itemsHeading,
-    approachNote, outcomeNote, differentiator, cta, dark
+    approachNote, outcomeNote, differentiator, cta, dark,
+    heroHeading, heroSubtext, heroCtaLabel, heroStats, heroFootnote,
+    problemHeading, problemText, problemParagraphs,
+    processHeading, processSteps,
+    offeringsHeading, offerings,
+    workshopsHeading, workshops,
+    acceleratorHeading, acceleratorMeta, acceleratorParagraphs,
+    serviceCardsHeading, serviceCards,
+    exampleProjectsHeading, exampleProjects, exampleProjectsCtaText, exampleProjectsCtaHref,
+    methodologyHeading, methodologyFields,
+    sectorsHeading, sectors,
+    outcomesHeading, outcomes,
+    proofPointsHeading, proofPoints,
+    socialProofHeading, socialProofPartners,
+    contactHeading
   }
 `;
 

@@ -1,8 +1,10 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import Button from '../../components/Button';
+import { imgUrl } from '@/lib/sanity/image';
+import type { SanityServiceExampleProject } from '@/lib/sanity/queries';
 
-const projects = [
+const defaultProjects = [
   {
     title: 'Building a competency framework, curriculum, and assessment system for UNICEF India to develop 21st-century skills in middle and senior secondary school students',
     image: '/images/research-services-page/image-1.png',
@@ -25,30 +27,54 @@ const projects = [
   },
 ];
 
-export default function AdvisoryExampleProjectsSection() {
+interface AdvisoryExampleProjectsSectionProps {
+  heading?: string;
+  projects?: SanityServiceExampleProject[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+export default function AdvisoryExampleProjectsSection({
+  heading = "We've Already Done This … Several Times Over",
+  projects,
+  ctaText = 'See All Our Projects',
+  ctaHref = '/projects',
+}: AdvisoryExampleProjectsSectionProps) {
+  const projectList =
+    projects && projects.length > 0
+      ? projects.map((p) => ({
+          title: p.title,
+          image: typeof p.image === 'string' ? p.image : imgUrl(p.image, 600) ?? '',
+        }))
+      : defaultProjects;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.025} />
 
       <div className="page-margin max-content relative z-10">
-        
-
         <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black text-center mb-16 max-w-4xl mx-auto">
-            We've Already Done This … Several Times Over
+            {heading}
           </h2>
         </ScrollReveal>
 
         <div className="max-w-3xl mx-auto">
-          {projects.map(({ title, image }, i) => (
+          {projectList.map(({ title, image }, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
               <div className={`flex items-center gap-6 py-8 ${i > 0 ? 'border-t border-pink/20' : ''}`}>
                 <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
-                  <img
-                    src={image}
-                    alt={title}
-                    className="w-full h-full object-cover"
-                  />
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-black/5 text-black/20 text-xs">
+                      No image
+                    </div>
+                  )}
                 </div>
                 <h3 className="font-body text-xs md:text-sm lg:text-base font-medium text-black leading-snug">{title}</h3>
               </div>
@@ -56,16 +82,18 @@ export default function AdvisoryExampleProjectsSection() {
           ))}
         </div>
 
-        <ScrollReveal delay={0.4}>
-          <div className="mt-16 flex justify-center">
-            <Button
-              text="See All Our Projects"
-              href="/projects"
-              variant="primary"
-              className="px-10 py-4 text-base"
-            />
-          </div>
-        </ScrollReveal>
+        {ctaText && (
+          <ScrollReveal delay={0.4}>
+            <div className="mt-16 flex justify-center">
+              <Button
+                text={ctaText}
+                href={ctaHref}
+                variant="primary"
+                className="px-10 py-4 text-base"
+              />
+            </div>
+          </ScrollReveal>
+        )}
       </div>
     </section>
   );

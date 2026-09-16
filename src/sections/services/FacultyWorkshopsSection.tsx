@@ -1,7 +1,8 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
+import type { SanityServiceWorkshop } from '@/lib/sanity/queries';
 
-const workshops = [
+const defaultWorkshops: SanityServiceWorkshop[] = [
   {
     title: 'Science of Learning for Evidence-Based Teaching',
     meta: 'In-Person · 3 Days',
@@ -28,7 +29,17 @@ const workshops = [
   },
 ];
 
-export default function FacultyWorkshopsSection() {
+interface FacultyWorkshopsSectionProps {
+  heading?: string;
+  workshops?: SanityServiceWorkshop[];
+}
+
+export default function FacultyWorkshopsSection({
+  heading = 'Our Workshops',
+  workshops,
+}: FacultyWorkshopsSectionProps) {
+  const workshopItems = workshops && workshops.length > 0 ? workshops : defaultWorkshops;
+
   return (
     <section className="bg-warm-grey py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif color="#000000" opacity={0.04} size={220} />
@@ -36,18 +47,20 @@ export default function FacultyWorkshopsSection() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black mb-10 md:mb-16">
-            Our Workshops
+            {heading}
           </h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {workshops.map((workshop, i) => (
+          {workshopItems.map((workshop, i) => (
             <ScrollReveal key={workshop.title} delay={0.1 * i}>
               <div className="group h-full bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-pink hover:shadow-pink/10">
                 <h3 className="font-display text-lg font-semibold text-black leading-snug mb-2 group-hover:text-pink transition-colors">
                   {workshop.title}
                 </h3>
-                <span className="font-display text-sm font-medium text-pink mb-4 block">{workshop.meta}</span>
+                {workshop.meta && (
+                  <span className="font-display text-sm font-medium text-pink mb-4 block">{workshop.meta}</span>
+                )}
                 <p className="font-body text-sm leading-relaxed text-black/60">
                   {workshop.description}
                 </p>

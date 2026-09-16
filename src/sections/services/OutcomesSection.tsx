@@ -57,14 +57,31 @@ const ROIIcon = () => (
   </svg>
 );
 
-const outcomes: { title: string; Icon: React.FC }[] = [
-  { title: 'Higher Learner Engagement', Icon: EngagementIcon },
-  { title: 'Improved Retention', Icon: RetentionIcon },
-  { title: 'Measurable Behavior Change', Icon: BehaviorIcon },
-  { title: 'Higher ROI on Training Budgets', Icon: ROIIcon },
+const outcomeIcons: React.FC[] = [
+  EngagementIcon,
+  RetentionIcon,
+  BehaviorIcon,
+  ROIIcon,
 ];
 
-export default function OutcomesSection() {
+const defaultOutcomes = [
+  'Higher Learner Engagement',
+  'Improved Retention',
+  'Measurable Behavior Change',
+  'Higher ROI on Training Budgets',
+];
+
+interface OutcomesSectionProps {
+  heading?: string;
+  outcomes?: string[];
+}
+
+export default function OutcomesSection({
+  heading = 'The Result? Learning That Delivers What You Wanted',
+  outcomes: outcomesProp,
+}: OutcomesSectionProps) {
+  const displayOutcomes = outcomesProp && outcomesProp.length > 0 ? outcomesProp : defaultOutcomes;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
@@ -72,23 +89,27 @@ export default function OutcomesSection() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black text-center mb-16">
-            The Result? Learning That Delivers What You Wanted
+            {heading}
           </h2>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {outcomes.map((outcome, i) => (
-            <ScrollReveal key={outcome.title} delay={0.1 * i}>
-              <div className="border border-pink/20 rounded-2xl overflow-hidden h-full transition-colors hover:bg-pink/[0.02]">
-                <div className="aspect-[4/3] bg-warm-grey flex items-center justify-center">
-                  <outcome.Icon />
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${Math.min(displayOutcomes.length, 4)} gap-6`}>
+          {displayOutcomes.map((title, i) => {
+            const Icon = outcomeIcons[i % outcomeIcons.length];
+
+            return (
+              <ScrollReveal key={title || i} delay={0.1 * i}>
+                <div className="border border-pink/20 rounded-2xl overflow-hidden h-full transition-colors hover:bg-pink/[0.02]">
+                  <div className="aspect-[4/3] bg-warm-grey flex items-center justify-center">
+                    <Icon />
+                  </div>
+                  <div className="p-6 flex items-center justify-center min-h-[100px]">
+                    <h3 className="heading-md text-black text-center">{title}</h3>
+                  </div>
                 </div>
-                <div className="p-6 flex items-center justify-center min-h-[100px]">
-                  <h3 className="heading-md text-black text-center">{outcome.title}</h3>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>

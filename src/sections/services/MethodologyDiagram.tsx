@@ -6,7 +6,7 @@ import NeuronMotif from '../../components/NeuronMotif';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const fields = [
+const defaultFields = [
   { name: 'Cognitive\nScience', top: '5%', left: '20%', highlight: true },
   { name: 'Instructional\nDesign', top: '5%', left: '50%', center: true },
   { name: 'Human-Centred\nDesign', top: '5%', left: '80%' },
@@ -18,8 +18,34 @@ const fields = [
   { name: 'EdTech & L&D', top: '50%', left: '5%' },
 ];
 
-export default function MethodologyDiagram() {
+interface MethodologyFieldProp {
+  name: string;
+  highlight?: boolean;
+}
+
+interface MethodologyDiagramProps {
+  heading?: string;
+  fields?: (MethodologyFieldProp | string)[];
+}
+
+export default function MethodologyDiagram({
+  heading = 'We Borrow from Diverse Fields That Facilitate Learning',
+  fields: fieldsProp,
+}: MethodologyDiagramProps) {
   const diagramRef = useRef<HTMLDivElement>(null);
+
+  const fields = defaultFields.map((defaultField, idx) => {
+    const custom = fieldsProp?.[idx];
+    if (!custom) return defaultField;
+    if (typeof custom === 'string') {
+      return { ...defaultField, name: custom };
+    }
+    return {
+      ...defaultField,
+      name: custom.name || defaultField.name,
+      highlight: custom.highlight ?? defaultField.highlight,
+    };
+  });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -104,7 +130,7 @@ export default function MethodologyDiagram() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <h2 className="heading-xl text-white text-center mb-20">
-            We Borrow from Diverse Fields That Facilitate Learning
+            {heading}
           </h2>
         </ScrollReveal>
 

@@ -66,6 +66,8 @@ export default function SelectedWorkSection() {
     ? home.presentations.map((p) => ({ name: p.name, image: imgUrl(p.image, 400) ?? '' }))
     : fallbackPresentations;
 
+  const selectedWorkHeading = home.selectedWorkHeading || 'Our Work (So Far)';
+
   return (
     <section id="projects" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif overlay */}
@@ -73,7 +75,7 @@ export default function SelectedWorkSection() {
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="heading-xl text-white mb-10 md:mb-16">Our Work (So Far)</h2>
+          <h2 className="heading-xl text-white mb-10 md:mb-16">{selectedWorkHeading}</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch">
