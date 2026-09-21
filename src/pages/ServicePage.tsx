@@ -64,8 +64,9 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
   const navigate = useNavigate();
   const { data: sanityServices } = useSanityQuery<SanityServicePage[]>(SERVICE_PAGES_QUERY, {}, []);
 
+  const doc = sanityServices.find((s) => s.serviceId === serviceId);
+
   const service: ServiceData | undefined = (() => {
-    const doc = sanityServices.find((s) => s.serviceId === serviceId);
     if (doc) {
       return {
         id: doc.serviceId,
@@ -102,30 +103,101 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
 
   return (
     <Layout>
-      {serviceId === 'faculty-enrichment' ? <FacultyHeroSection /> : <ServicesHeroSection />}
-      {serviceId === 'faculty-enrichment' ? <FacultyProblemSection /> : <ProblemSection />}
-      {serviceId === 'faculty-enrichment' && <FacultyWorkshopsSection />}
-      {serviceId === 'faculty-enrichment' && <FacultyAcceleratorSection />}
-      {serviceId === 'faculty-enrichment' ? <FacultyStrategySection /> : <ProcessSection />}
-      {serviceId === 'course-development' ? <WhatWeOfferSection /> : serviceId !== 'faculty-enrichment' ? <ServiceDetail {...service} /> : null}
-      <MethodologyDiagram />
+      {serviceId === 'faculty-enrichment' ? (
+        <FacultyHeroSection
+          heading={doc?.heroHeading ?? undefined}
+          subtext={doc?.heroSubtext ?? undefined}
+          ctaLabel={doc?.heroCtaLabel ?? undefined}
+          stats={doc?.heroStats ?? undefined}
+          footnote={doc?.heroFootnote ?? undefined}
+        />
+      ) : (
+        <ServicesHeroSection
+          heading={doc?.heroHeading ?? undefined}
+          subtext={doc?.heroSubtext ?? undefined}
+          ctaLabel={doc?.heroCtaLabel ?? undefined}
+          stats={doc?.heroStats ?? undefined}
+        />
+      )}
+      {serviceId === 'faculty-enrichment' ? (
+        <FacultyProblemSection
+          heading={doc?.problemHeading ?? undefined}
+          paragraphs={doc?.problemParagraphs ?? undefined}
+          text={doc?.problemText ?? undefined}
+        />
+      ) : (
+        <ProblemSection
+          heading={doc?.problemHeading ?? undefined}
+          text={doc?.problemText ?? undefined}
+        />
+      )}
+      {serviceId === 'faculty-enrichment' && (
+        <FacultyWorkshopsSection
+          heading={doc?.workshopsHeading ?? undefined}
+          workshops={doc?.workshops ?? undefined}
+        />
+      )}
+      {serviceId === 'faculty-enrichment' && (
+        <FacultyAcceleratorSection
+          heading={doc?.acceleratorHeading ?? undefined}
+          meta={doc?.acceleratorMeta ?? undefined}
+          paragraphs={doc?.acceleratorParagraphs ?? undefined}
+        />
+      )}
+      {serviceId === 'faculty-enrichment' ? (
+        <FacultyStrategySection
+          heading={doc?.processHeading ?? undefined}
+          steps={doc?.processSteps ?? undefined}
+        />
+      ) : (
+        <ProcessSection
+          heading={doc?.processHeading ?? undefined}
+          steps={doc?.processSteps ?? undefined}
+        />
+      )}
+      {serviceId === 'course-development' ? (
+        <WhatWeOfferSection
+          heading={doc?.offeringsHeading ?? undefined}
+          offerings={doc?.offerings ?? undefined}
+        />
+      ) : serviceId !== 'faculty-enrichment' ? (
+        <ServiceDetail {...service} />
+      ) : null}
+      <MethodologyDiagram
+        heading={doc?.methodologyHeading ?? undefined}
+        fields={doc?.methodologyFields ?? undefined}
+      />
       {serviceId !== 'faculty-enrichment' && (
         <>
-          <TargetSectorsSection />
-          <OutcomesSection />
-          <ProofPointsSection />
+          <TargetSectorsSection
+            heading={doc?.sectorsHeading ?? undefined}
+            sectors={doc?.sectors ?? undefined}
+          />
+          <OutcomesSection
+            heading={doc?.outcomesHeading ?? undefined}
+            outcomes={doc?.outcomes ?? undefined}
+          />
+          <ProofPointsSection
+            heading={doc?.proofPointsHeading ?? undefined}
+            proofPoints={doc?.proofPoints ?? undefined}
+          />
         </>
       )}
-      {serviceId === 'faculty-enrichment' && <FacultySocialProofSection />}
+      {serviceId === 'faculty-enrichment' && (
+        <FacultySocialProofSection
+          heading={doc?.socialProofHeading ?? undefined}
+          partners={doc?.socialProofPartners ?? undefined}
+        />
+      )}
       {serviceId === 'faculty-enrichment' ? (
         <TestimonialsSection items={facultyTestimonials} compact />
       ) : (
         <TestimonialsSection />
       )}
       {serviceId === 'faculty-enrichment' ? (
-        <ContactSection title="Your Educators Are Working Hard. Let's Ensure Their Efforts Pay Off." />
+        <ContactSection title={doc?.contactHeading ?? "Your Educators Are Working Hard. Let's Ensure Their Efforts Pay Off."} />
       ) : (
-        <ContactSection />
+        <ContactSection title={doc?.contactHeading ?? undefined} />
       )}
     </Layout>
   );

@@ -1,7 +1,8 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
+import type { SanityServiceCard } from '@/lib/sanity/queries';
 
-const services = [
+const defaultServices: SanityServiceCard[] = [
   {
     title: 'Learning Program Evaluation',
     paragraphs: [
@@ -34,21 +35,30 @@ const services = [
   },
 ];
 
-export default function ResearchServicesSection() {
+interface ResearchServicesSectionProps {
+  heading?: string;
+  services?: SanityServiceCard[];
+}
+
+export default function ResearchServicesSection({
+  heading = 'Research, Evaluation, & Knowledge Products Built for Application',
+  services,
+}: ResearchServicesSectionProps) {
+  const serviceItems = services && services.length > 0 ? services : defaultServices;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
-
         <ScrollReveal delay={0.15}>
           <h2 className="heading-xl text-black text-center mb-16 max-w-4xl mx-auto">
-            Research, Evaluation, & Knowledge Products Built for Application 
+            {heading}
           </h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {services.map((service, i) => (
+          {serviceItems.map((service, i) => (
             <ScrollReveal key={service.title} delay={0.1 * i}>
               <div className="border border-pink/20 rounded-2xl p-6 h-full transition-colors hover:bg-pink/[0.02]">
                 <h3 className="font-display text-lg font-semibold text-black leading-snug mb-6">

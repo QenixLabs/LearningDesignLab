@@ -1,7 +1,7 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
-const steps = [
+const defaultSteps = [
   'We define what people need to do differently, and study the context, enablers, and barriers to achieving that',
   'We conduct rigorous research to understand what has worked and identify evidence-based strategies and pedagogy to drive impact.',
   'We design learning activities and strategies backwards from the goal in collaboration with in context and domain experts.',
@@ -10,7 +10,17 @@ const steps = [
   'We create tools and conduct trainings to enable facilitators for quality implementation.',
 ];
 
-export default function ProcessSection() {
+interface ProcessSectionProps {
+  heading?: string;
+  steps?: string[];
+}
+
+export default function ProcessSection({
+  heading = 'We Start with the Change You Need to See, Then Work Backwards',
+  steps,
+}: ProcessSectionProps) {
+  const processSteps = steps && steps.length > 0 ? steps : defaultSteps;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
@@ -18,7 +28,7 @@ export default function ProcessSection() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.1}>
           <h2 className="heading-xl text-black text-center mb-20 max-w-4xl mx-auto">
-            We Start with the Change You Need to See, Then Work Backwards
+            {heading}
           </h2>
         </ScrollReveal>
 
@@ -26,7 +36,7 @@ export default function ProcessSection() {
           {/* Vertical line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-pink/30 -translate-x-1/2" />
 
-          {steps.map((step, i) => {
+          {processSteps.map((step, i) => {
             const isLeft = i % 2 === 0;
             const number = String(i + 1).padStart(2, '0');
 

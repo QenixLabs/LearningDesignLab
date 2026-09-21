@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "seed:sanity": "tsx scripts/seed-sanity.ts"
+    "seed:sanity": "tsx scripts/seed-sanity.ts",
+    "seed:case-studies": "tsx scripts/seed-case-studies.ts"
   },
   "dependencies": {
     "@fontsource/google-sans-code": "^5.2.4",

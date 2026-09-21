@@ -28,6 +28,9 @@ export const cardSections: CardSection[] = [
           'We developed 12 online courses for community teachers focusing on disaster risk reduction, safe schools, climate change, and gender-transformative education. To support educators navigating emergency contexts, we applied behaviour-focused learning design and learning science principles to manage cognitive load, maximize retention, and drive real-world impact.',
         image: '/images/projects/UNESCO_Myanmar_collage.png',
         imageAlt: 'UNESCO Myanmar project',
+        actions: [
+          { label: 'Read Case Study', href: '/projects/courses-for-community-teachers-in-myanmar' },
+        ],
       },
       {
         client: 'Search for Common Ground',
@@ -37,6 +40,7 @@ export const cardSections: CardSection[] = [
         image: '/images/projects/Search for Common Ground.png',
         imageAlt: 'Search for Common Ground project',
         actions: [
+          { label: 'Read Case Study', href: '/projects/multiformat-courses-for-moderators' },
           { label: 'View Course', href: 'https://cnxus.org/digital-community-stewards-online-course/' },
           { label: 'Watch Video', href: 'https://www.youtube.com/watch?v=khGvtsxTVdU&t=1117s' },
         ],
@@ -57,6 +61,7 @@ export const cardSections: CardSection[] = [
         image: '/images/projects/Patang India.jpg',
         imageAlt: 'Patang India project',
         actions: [
+          { label: 'Read Case Study', href: '/projects/gender-awareness-activism-course' },
           { label: 'View Course', href: 'https://patang.graphy.com/' },
           { label: 'Watch Video', href: 'https://youtu.be/eRkFhV0jKgk?si=Ftr-9xIKl1FumNCy' },
         ],
@@ -68,7 +73,10 @@ export const cardSections: CardSection[] = [
           "We worked with GIZ to create application-focused online courses on AI and data science, tailored to upskill young people from social science backgrounds. Hosted on SWAYAM—India's largest government-led open-course platform—the program covers foundational concepts, real-world applications, and ethical considerations, equipping learners with future-ready skills to lead data-driven development and solutions.",
         image: '/images/projects/GIZ & Swayam.jpg',
         imageAlt: 'GIZ & Swayam project',
-        actions: [{ label: 'View Course', href: '#' }],
+        actions: [
+          { label: 'Read Case Study', href: '/projects/ai-data-science-course' },
+          { label: 'Explore on SWAYAM', href: 'https://swayam.gov.in/' },
+        ],
       },
       {
         client: 'QUEST Alliance',

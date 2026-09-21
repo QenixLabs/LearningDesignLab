@@ -4,6 +4,7 @@ import { servicePage } from './singletons/servicePage';
 import { pageCopy } from './singletons/pageCopy';
 import { teamMember } from './collections/teamMember';
 import { project } from './collections/project';
+import { caseStudy } from './collections/caseStudy';
 import { publication } from './collections/publication';
 import { conference } from './collections/conference';
 import { testimonial } from './collections/testimonial';
@@ -15,6 +16,7 @@ export const schemaTypes = [
   pageCopy,
   teamMember,
   project,
+  caseStudy,
   publication,
   conference,
   testimonial,

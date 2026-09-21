@@ -2,8 +2,16 @@ import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import Button from '../../components/Button';
 import { FileText } from 'lucide-react';
+import { imgUrl } from '@/lib/sanity/image';
+import type { SanityImageSource } from '@sanity/image-url';
 
-const projects: { title: string; image?: string; fit?: 'cover' | 'contain' }[] = [
+export interface ProofPointItem {
+  title: string;
+  image?: SanityImageSource | string;
+  fit?: 'cover' | 'contain';
+}
+
+const defaultProjects: ProofPointItem[] = [
   {
     title: 'A story-based course on data analytics for Swayam Platform, GIZ',
     image: '/images/verticals/A story-based.jpg',
@@ -23,12 +31,14 @@ const projects: { title: string; image?: string; fit?: 'cover' | 'contain' }[] =
   },
 ];
 
-function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: string; fit?: 'cover' | 'contain' }) {
-  if (image) {
+function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: SanityImageSource | string; fit?: 'cover' | 'contain' }) {
+  const resolvedUrl = imgUrl(image) || (typeof image === 'string' ? image : undefined);
+
+  if (resolvedUrl) {
     return (
       <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
         <img
-          src={image}
+          src={resolvedUrl}
           alt={title}
           className={`w-full h-full ${fit === 'contain' ? 'object-contain p-2' : 'object-cover'}`}
         />
@@ -43,7 +53,17 @@ function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: 
   );
 }
 
-export default function ProofPointsSection() {
+interface ProofPointsSectionProps {
+  heading?: string;
+  proofPoints?: ProofPointItem[];
+}
+
+export default function ProofPointsSection({
+  heading = "We've Already Made This Happen … Several Times Over",
+  proofPoints: proofPointsProp,
+}: ProofPointsSectionProps) {
+  const displayProjects = proofPointsProp && proofPointsProp.length > 0 ? proofPointsProp : defaultProjects;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       {/* Neuron motif */}
@@ -52,13 +72,13 @@ export default function ProofPointsSection() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <h2 className="font-body text-[14px] leading-[23px] font-medium text-black mb-16">
-            We've Already Made This Happen … Several Times Over
+            {heading}
           </h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {projects.map(({ title, image, fit }, i) => (
-            <ScrollReveal key={i} delay={0.08 * i}>
+          {displayProjects.map(({ title, image, fit }, i) => (
+            <ScrollReveal key={title || i} delay={0.08 * i}>
               <div className="flex items-center gap-4">
                 <ProjectImage title={title} image={image} fit={fit} />
                 <h3 className="font-body text-xs md:text-sm lg:text-base font-medium text-black leading-snug">{title}</h3>

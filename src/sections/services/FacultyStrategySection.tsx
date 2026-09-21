@@ -1,7 +1,7 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
-const steps = [
+const defaultSteps = [
   'We conduct pre-workshop surveys, consult institutional leadership and stakeholders, and review existing courses.',
   "Through that, we map the institutional context, the faculty's current practice, the specific behaviors we want to alter, and the barriers and enablers to that change.",
   'We ground every workshop in current evidence from Science of Learning (SOL) and select only strategies with a real evidence base.',
@@ -10,7 +10,17 @@ const steps = [
   'Where deeper change is needed, we offer optional structured transfer support: review and refresher sessions, expert feedback, and community learning.',
 ];
 
-export default function FacultyStrategySection() {
+interface FacultyStrategySectionProps {
+  heading?: string;
+  steps?: string[];
+}
+
+export default function FacultyStrategySection({
+  heading = 'We Build Training Backwards from the Practice We Want to See',
+  steps,
+}: FacultyStrategySectionProps) {
+  const strategySteps = steps && steps.length > 0 ? steps : defaultSteps;
+
   return (
     <section className="bg-white py-20 md:py-32 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
@@ -18,7 +28,7 @@ export default function FacultyStrategySection() {
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.2}>
           <h2 className="font-display text-[37px] leading-[40px] font-medium text-black text-center mb-20 max-w-4xl mx-auto">
-            We Build Training Backwards from the Practice We Want to See
+            {heading}
           </h2>
         </ScrollReveal>
 
@@ -26,7 +36,7 @@ export default function FacultyStrategySection() {
           {/* Vertical line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-pink/30 -translate-x-1/2" />
 
-          {steps.map((step, i) => {
+          {strategySteps.map((step, i) => {
             const isLeft = i % 2 === 0;
             const number = String(i + 1).padStart(2, '0');
 

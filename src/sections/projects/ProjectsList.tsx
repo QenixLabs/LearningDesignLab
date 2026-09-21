@@ -48,6 +48,13 @@ function ProjectImage({
 export default function ProjectsList() {
   const { data: rawProjects } = useSanityQuery<SanityProject[]>(PROJECTS_QUERY, {}, []);
 
+  const CASE_STUDY_SLUG_MAP: Record<string, string> = {
+    'UNESCO Myanmar': '/projects/courses-for-community-teachers-in-myanmar',
+    'Search for Common Ground': '/projects/multiformat-courses-for-moderators',
+    'Patang India': '/projects/gender-awareness-activism-course',
+    'GIZ & Swayam': '/projects/ai-data-science-course',
+  };
+
   // Section titles must match the schema's options.list in src/studio/schemaTypes/collections/project.ts
   const cardSections =
     rawProjects.length > 0
@@ -56,14 +63,28 @@ export default function ProjectsList() {
             title: sectionTitle,
             projects: rawProjects
               .filter((p) => p.section === sectionTitle)
-              .map((p) => ({
-                client: p.client,
-                title: p.title,
-                description: p.description,
-                image: imgUrl(p.image, 1200),
-                imageAlt: p.imageAlt,
-                actions: p.actions,
-              })),
+              .map((p) => {
+                const caseStudyHref =
+                  p.caseStudy?.slug
+                    ? `/projects/${p.caseStudy.slug}`
+                    : p.caseStudySlug
+                      ? (p.caseStudySlug.startsWith('/') ? p.caseStudySlug : `/projects/${p.caseStudySlug}`)
+                      : CASE_STUDY_SLUG_MAP[p.client];
+
+                let actions = p.actions ? [...p.actions] : [];
+                if (caseStudyHref && !actions.some((a) => a.label.toLowerCase().includes('case study'))) {
+                  actions = [{ label: 'Read Case Study', href: caseStudyHref }, ...actions];
+                }
+
+                return {
+                  client: p.client,
+                  title: p.title,
+                  description: p.description,
+                  image: imgUrl(p.image, 1200),
+                  imageAlt: p.imageAlt,
+                  actions,
+                };
+              }),
           }))
           .filter((s) => s.projects.length > 0)
       : fallbackSections;
