@@ -54,6 +54,7 @@ export const structure: StructureResolver = (S, context) =>
       S.divider(),
       orderableDocumentListDeskItem({ type: 'teamMember', title: 'Team Members', S, context }),
       orderableDocumentListDeskItem({ type: 'project', title: 'Projects', S, context }),
+      orderableDocumentListDeskItem({ type: 'caseStudy', title: 'Case Studies', S, context }),
       orderableDocumentListDeskItem({ type: 'publication', title: 'Publications', S, context }),
       orderableDocumentListDeskItem({ type: 'conference', title: 'Conferences', S, context }),
       orderableDocumentListDeskItem({ type: 'testimonial', title: 'Testimonials', S, context }),

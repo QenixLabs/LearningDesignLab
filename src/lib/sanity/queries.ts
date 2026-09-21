@@ -63,11 +63,77 @@ export interface SanityProject {
   image?: SanityImageSource;
   imageAlt: string;
   actions?: { label: string; href: string }[];
+  caseStudySlug?: string;
+  caseStudy?: { slug?: string };
 }
 
 export const PROJECTS_QUERY = `
   *[_type == "project"] | order(orderRank asc) {
-    section, client, title, description, image, imageAlt, actions
+    section, client, title, description, image, imageAlt, actions,
+    caseStudySlug,
+    "caseStudy": caseStudy->{ "slug": slug.current }
+  }
+`;
+
+// ---------- Case Studies ----------
+export interface SanityCaseStudy {
+  slug: { current: string };
+  client: string;
+  title: string;
+  subtitle?: string;
+  category?: string;
+  heroImage?: SanityImageSource;
+  heroImageAlt?: string;
+  nutshell?: { label: string; value: string }[];
+  intro?: string;
+  challengeCallout?: string;
+  sections?: {
+    heading?: string;
+    level?: number;
+    paragraphs?: string[];
+    list?: string[];
+    gridItems?: { title: string; description: string }[];
+  }[];
+  curriculumStructure?: {
+    title: string;
+    description?: string;
+    themes?: { theme: string; courses: string[] }[];
+    stages?: { stage: string; title: string; description: string }[];
+  };
+  quote?: {
+    text: string;
+    attribution: string;
+    role: string;
+  };
+  impactStats?: {
+    value: string;
+    label: string;
+    subtext?: string;
+  }[];
+  lessonsLearned?: {
+    number: number;
+    text: string;
+  }[];
+  actions?: {
+    label: string;
+    href: string;
+    variant?: 'primary' | 'secondary' | 'outline';
+  }[];
+}
+
+export const CASE_STUDIES_QUERY = `
+  *[_type == "caseStudy"] | order(orderRank asc) {
+    slug, client, title, subtitle, category, heroImage, heroImageAlt,
+    nutshell, intro, challengeCallout, sections, curriculumStructure,
+    quote, impactStats, lessonsLearned, actions
+  }
+`;
+
+export const CASE_STUDY_BY_SLUG_QUERY = `
+  *[_type == "caseStudy" && slug.current == $slug][0] {
+    slug, client, title, subtitle, category, heroImage, heroImageAlt,
+    nutshell, intro, challengeCallout, sections, curriculumStructure,
+    quote, impactStats, lessonsLearned, actions
   }
 `;
 
