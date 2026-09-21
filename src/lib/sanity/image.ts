@@ -1,8 +1,7 @@
-import imageUrlBuilder from '@sanity/image-url';
-import type { SanityImageSource } from '@sanity/image-url';
+import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url';
 import { sanityClient } from './client';
 
-const builder = sanityClient ? imageUrlBuilder(sanityClient) : null;
+const builder = sanityClient ? createImageUrlBuilder(sanityClient) : null;
 
 /**
  * Accepts a Sanity image object (from GROQ) or a local string path (fallback).

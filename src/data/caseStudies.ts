@@ -3,9 +3,16 @@ export interface NutshellItem {
   value: string;
 }
 
+export interface CaseStudyImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  layout?: 'full' | 'phone' | 'card';
+}
+
 export interface CaseStudySection {
   heading?: string;
-  level?: 2 | 3;
+  level?: 2 | 3 | number;
   paragraphs?: string[];
   callout?: {
     label?: string;
@@ -17,6 +24,9 @@ export interface CaseStudySection {
     title: string;
     description: string;
   }[];
+  image?: CaseStudyImage;
+  images?: CaseStudyImage[];
+  imagesCaption?: string;
 }
 
 export interface CurriculumTheme {
@@ -141,6 +151,12 @@ export const caseStudies: CaseStudy[] = [
           'Once we were aligned on the goal and had deep clarity on the learners, we audited GIZ’s existing materials against defined performance goals, trimming superfluous topics and filling skill gaps alongside GIZ’s subject matter experts.',
           'We framed our learning design principles on cognitive science and online learning research — even when they differed from typical courses on the platform. For instance, while the standard video length on SWAYAM is 30–50 minutes, we capped videos at <6 minutes and created multiple short, focused videos, drawing on attention research showing that learner engagement plummets sharply after 5–6 minutes.',
         ],
+        image: {
+          src: '/images/projects/GIZ_1.jpeg',
+          alt: 'GIZ and IGNOU course production team at the IGNOU studio desk',
+          caption: 'Course development and filming with the IGNOU and GIZ team at the IGNOU studio',
+          layout: 'full',
+        },
       },
       {
         level: 2,
@@ -175,6 +191,12 @@ export const caseStudies: CaseStudy[] = [
           'Scripts and sequences underwent a rigorous dual-review process: learning designers validated pedagogical effectiveness while SMEs ensured technical accuracy. To maintain quality as production expanded, we standardized content development across the team early on.',
           'Once scripts were finalized, they were filmed in the IGNOU Studio with instructor headshots and graphics, and edited by a video development agency while our team developed custom graphics, infographics, and interactives.',
         ],
+        image: {
+          src: '/images/projects/GIZ_2.png',
+          alt: 'SWAYAM platform course interface showing Introduction to Data Analytics with Power BI',
+          caption: 'Course learning modules and interactive video player structure on the SWAYAM platform',
+          layout: 'full',
+        },
       },
     ],
     quote: {
@@ -261,6 +283,27 @@ export const caseStudies: CaseStudy[] = [
           'Every module opens with a relatable narrative rather than abstract theory: a girl pressured to marry rather than pursue higher education, a young man overwhelmed by financial expectations, or a mother whose full day of domestic labor is dismissed. Learners arrive at theory naturally because they become curious about their own lived experiences.',
           'The course features real stories of ordinary youth who confronted and challenged gender norms. During pilot testing, learners singled out these narratives as "the most memorable part of the course." These accounts were drawn directly from field reports and workshops gathered by Patang’s staff over years of grassroots engagement.',
         ],
+        images: [
+          {
+            src: '/images/projects/patang_1.png',
+            alt: 'Gender Champions course curriculum overview and progress tracking on mobile',
+            caption: 'Module progression & navigation',
+            layout: 'phone',
+          },
+          {
+            src: '/images/projects/patang_2.png',
+            alt: 'Video narrative exploring lived youth experiences in the Patang mobile interface',
+            caption: 'Field-grounded video stories',
+            layout: 'phone',
+          },
+          {
+            src: '/images/projects/patang_3.png',
+            alt: 'Interactive infographic on Gender and Identity beyond the binary',
+            caption: 'Visual synthesis infographic',
+            layout: 'phone',
+          },
+        ],
+        imagesCaption: 'Mobile-first learning interface designed for tier-two college youth: progressive modules, real-world video stories, and illustrated synthesis infographics',
       },
       {
         level: 3,
@@ -287,6 +330,12 @@ export const caseStudies: CaseStudy[] = [
           'The course consciously avoids rigid right/wrong grading on questions touching on deeply held personal convictions. Multiple-choice prompts often allow multiple viewpoints to hold truth, and automated feedback never shames a learner for an unexamined belief.',
           'Crucially, the Masculinity module does not open by condemning "toxic masculinity." Instead, it frames boys and men as equally constrained by rigid patriarchal expectations — pressured to suppress emotion, burdened with sole provider pressure, and penalized for vulnerability. By inviting boys into the conversation as partners affected by gender inequality rather than culprits, the course inspires young men to champion equity alongside their peers.',
         ],
+        image: {
+          src: '/images/projects/patang_4.png',
+          alt: 'Interactive reflection prompt exploring societal expectations on men without judgement',
+          caption: 'Interactive reflection prompt exploring societal expectations on men without moralizing or judgement',
+          layout: 'phone',
+        },
       },
       {
         level: 3,
@@ -485,23 +534,6 @@ export const caseStudies: CaseStudy[] = [
       attribution: 'Myat Thiri',
       role: 'Project Coordinator, UNESCO Myanmar',
     },
-    impactStats: [
-      {
-        value: '4.4 / 5',
-        label: 'Average Pilot Rating',
-        subtext: 'Evaluated by 36 volunteer community teachers across diverse states in Myanmar',
-      },
-      {
-        value: '12',
-        label: 'Published Courses',
-        subtext: 'Fully deployed on Myanmar Teacher Platform (MTP)',
-      },
-      {
-        value: '4',
-        label: 'Thematic Tracks',
-        subtext: 'Covering DRR, Safe Schools, Climate Change, & Gender Transformation',
-      },
-    ],
   },
   {
     slug: 'multiformat-courses-for-moderators',
@@ -559,6 +591,12 @@ export const caseStudies: CaseStudy[] = [
         paragraphs: [
           'The resulting suite directly addresses the reality of volunteer moderators: severe time constraints, high emotional friction, and diverse language backgrounds.',
         ],
+        image: {
+          src: '/images/projects/SFCG_1.png',
+          alt: 'Nine gamified micro-learning pathways for digital community stewards',
+          caption: 'Nine gamified micro-learning pathways mapped directly to real challenges faced by online community moderators',
+          layout: 'card',
+        },
       },
       {
         level: 3,
@@ -570,19 +608,31 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         level: 3,
-        heading: 'Active learning through simulations and games',
-        paragraphs: [
-          'Rather than lecturing on digital safety standards, the courses immerse learners in live decision-making. Practice occurs through games, simulations, and dilemma scenarios.',
-          'For instance, the fact-checking course integrates "Bad News" (a simulation game developed with Cambridge University), while leadership modules present ambiguous moderation dilemmas where learners must evaluate which community guidelines a post breaches.',
-        ],
-      },
-      {
-        level: 3,
         heading: 'Visual-first design: comics, infographics, and real artifacts',
         paragraphs: [
           'Complex cognitive dynamics like confirmation bias and implicit bias are communicated through serialized comic illustrations rather than academic definitions.',
           'A "flourishing garden" clickable visual metaphor breaks down a steward’s responsibilities into digestible components. Real cartoons, actual social media screenshots, and downloadable infographic toolkits give learners authentic materials to dissect and share with their moderating teams.',
         ],
+        image: {
+          src: '/images/projects/SFCG_2.png',
+          alt: 'Boolean search operators Venn diagram and key rules for fact-checking and verification',
+          caption: 'Visual-first framework explaining Boolean search syntax (OR, NOT, AND) for rapid content verification and fact-checking',
+          layout: 'full',
+        },
+      },
+      {
+        level: 3,
+        heading: 'Active learning through simulations and games',
+        paragraphs: [
+          'Rather than lecturing on digital safety standards, the courses immerse learners in live decision-making. Practice occurs through games, simulations, and dilemma scenarios.',
+          'For instance, the fact-checking course integrates "Bad News" (a simulation game developed with Cambridge University), while leadership modules present ambiguous moderation dilemmas where learners must evaluate which community guidelines a post breaches.',
+        ],
+        image: {
+          src: '/images/projects/SFCG_3.png',
+          alt: 'Trust Building Activity framework: setup, delivery note, gameplay, and discussion prompts',
+          caption: 'Trust Building Activity framework: practical peer exercises designed for community stewardship workshops',
+          layout: 'full',
+        },
       },
       {
         level: 3,

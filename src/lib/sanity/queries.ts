@@ -93,6 +93,19 @@ export interface SanityCaseStudy {
     paragraphs?: string[];
     list?: string[];
     gridItems?: { title: string; description: string }[];
+    image?: {
+      asset?: SanityImageSource;
+      alt?: string;
+      caption?: string;
+      layout?: 'full' | 'phone' | 'card';
+    };
+    images?: {
+      asset?: SanityImageSource;
+      alt?: string;
+      caption?: string;
+      layout?: 'full' | 'phone' | 'card';
+    }[];
+    imagesCaption?: string;
   }[];
   curriculumStructure?: {
     title: string;

@@ -42,7 +42,7 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
           Thank you!
         </h3>
         <p className={`text-center ${dark ? 'text-white/70' : 'text-black/60'}`}>
-          We've received your message and will get back to you within 48 hours.
+          We've received your message.
         </p>
       </div>
     );

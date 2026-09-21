@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import ScrollReveal from '../components/ScrollReveal';
 import Button from '../components/Button';
 import ContactSection from '../sections/home/ContactSection';
-import { getCaseStudy, getAdjacentCaseStudies, type CaseStudy } from '../data/caseStudies';
+import { getCaseStudy, getAdjacentCaseStudies, type CaseStudy, type CaseStudySection } from '../data/caseStudies';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { CASE_STUDY_BY_SLUG_QUERY, type SanityCaseStudy } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
@@ -20,7 +20,7 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
   if (!activeSlug) {
     return <Navigate to="/projects" replace />;
   }
-
+  
   const fallbackStudy = getCaseStudy(activeSlug);
   const { data: sanityStudy } = useSanityQuery<SanityCaseStudy | null>(
     CASE_STUDY_BY_SLUG_QUERY,
@@ -30,17 +30,77 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
 
   const study: CaseStudy | undefined = sanityStudy
     ? {
-        slug: sanityStudy.slug.current,
-        client: sanityStudy.client,
-        title: sanityStudy.title,
+        slug: sanityStudy.slug?.current || activeSlug,
+        client: sanityStudy.client || fallbackStudy?.client || '',
+        title: sanityStudy.title || fallbackStudy?.title || '',
         subtitle: sanityStudy.subtitle || fallbackStudy?.subtitle || '',
         category: sanityStudy.category || fallbackStudy?.category || 'Courses & Curricula',
         heroImage: sanityStudy.heroImage ? (imgUrl(sanityStudy.heroImage, 1200) || '') : (fallbackStudy?.heroImage || ''),
-        heroImageAlt: sanityStudy.heroImageAlt || fallbackStudy?.heroImageAlt || sanityStudy.title,
+        heroImageAlt: sanityStudy.heroImageAlt || fallbackStudy?.heroImageAlt || sanityStudy.title || '',
         nutshell: sanityStudy.nutshell || fallbackStudy?.nutshell || [],
         intro: sanityStudy.intro || fallbackStudy?.intro,
         challengeCallout: sanityStudy.challengeCallout || fallbackStudy?.challengeCallout,
-        sections: (sanityStudy.sections as any) || fallbackStudy?.sections || [],
+        sections: (sanityStudy.sections && sanityStudy.sections.length > 0
+          ? sanityStudy.sections.map((sec, secIdx): CaseStudySection => {
+              const fbSec =
+                (sec.heading ? fallbackStudy?.sections?.find((s) => s.heading === sec.heading) : undefined) ||
+                fallbackStudy?.sections?.[secIdx];
+
+              // Resolve single section image
+              let resolvedImage = undefined;
+              if (sec.image) {
+                const asset = sec.image.asset || (sec.image as any);
+                const src =
+                  imgUrl(asset, 1200) ||
+                  (typeof asset === 'string' ? asset : (asset as any)?.src);
+
+                if (src) {
+                  resolvedImage = {
+                    src,
+                    alt: sec.image.alt || fbSec?.image?.alt || '',
+                    caption: sec.image.caption || fbSec?.image?.caption,
+                    layout: (sec.image.layout || fbSec?.image?.layout || 'full') as 'full' | 'phone' | 'card',
+                  };
+                }
+              }
+              if (!resolvedImage && fbSec?.image) {
+                resolvedImage = fbSec.image;
+              }
+
+              // Resolve collage / multi-image
+              let resolvedImages = undefined;
+              if (sec.images && sec.images.length > 0) {
+                resolvedImages = sec.images.map((imgItem: any, iIdx: number) => {
+                  const asset = imgItem.asset || imgItem;
+                  const src =
+                    imgUrl(asset, 800) ||
+                    (typeof asset === 'string' ? asset : imgItem?.src) ||
+                    '';
+                  const fbImg = fbSec?.images?.[iIdx];
+                  return {
+                    src,
+                    alt: imgItem.alt || fbImg?.alt || '',
+                    caption: imgItem.caption || fbImg?.caption,
+                    layout: (imgItem.layout || fbImg?.layout || 'phone') as 'full' | 'phone' | 'card',
+                  };
+                });
+              }
+              if (!resolvedImages && fbSec?.images) {
+                resolvedImages = fbSec.images;
+              }
+
+              return {
+                heading: sec.heading,
+                level: (sec.level === 3 ? 3 : 2) as 2 | 3,
+                paragraphs: sec.paragraphs,
+                list: sec.list,
+                gridItems: sec.gridItems,
+                image: resolvedImage,
+                images: resolvedImages,
+                imagesCaption: sec.imagesCaption || fbSec?.imagesCaption,
+              };
+            })
+          : (fallbackStudy?.sections || [])) as CaseStudySection[],
         curriculumStructure: (sanityStudy.curriculumStructure as any) || fallbackStudy?.curriculumStructure,
         quote: sanityStudy.quote || fallbackStudy?.quote,
         impactStats: sanityStudy.impactStats || fallbackStudy?.impactStats,
@@ -136,50 +196,33 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
           </div>
         </header>
 
-        {/* Nutshell & Main Hero Visual */}
+        {/* Nutshell */}
         <section className="py-12 md:py-16 bg-[#FAFAFA] border-b border-black/10">
-          <div className="page-margin max-content">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* Nutshell Card */}
-              <ScrollReveal className="lg:col-span-6 order-2 lg:order-1">
-                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl border border-black/10 shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-pink" />
-                  <div className="flex items-center gap-2 mb-6">
-                    <Sparkles className="w-4 h-4 text-pink" />
-                    <span className="font-body text-xs font-semibold tracking-widest uppercase text-pink">
-                      In a Nutshell
-                    </span>
-                  </div>
-
-                  <dl className="space-y-6">
-                    {study.nutshell.map((item) => (
-                      <div key={item.label} className="border-b border-black/[0.06] pb-5 last:border-b-0 last:pb-0">
-                        <dt className="font-display text-xs font-semibold uppercase tracking-wider text-black/50 mb-1.5">
-                          {item.label}
-                        </dt>
-                        <dd className="font-body text-[14px] sm:text-[15px] leading-relaxed text-black/85">
-                          {item.value}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
+          <div className="page-margin max-content max-w-[850px] mx-auto">
+            <ScrollReveal>
+              <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl border border-black/10 shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-pink" />
+                <div className="flex items-center justify-center gap-2 mb-8">
+                  <Sparkles className="w-4 h-4 text-pink" />
+                  <span className="font-body text-xs font-semibold tracking-widest uppercase text-pink">
+                    In a Nutshell
+                  </span>
                 </div>
-              </ScrollReveal>
 
-              {/* Hero Image */}
-              <ScrollReveal className="lg:col-span-6 order-1 lg:order-2">
-                <div className="rounded-xl overflow-hidden border border-black/10 shadow-sm bg-white p-2">
-                  <img
-                    src={study.heroImage}
-                    alt={study.heroImageAlt}
-                    className="w-full h-auto max-h-[480px] object-contain rounded-lg bg-black/[0.02]"
-                  />
-                  <p className="font-body text-[12px] text-black/50 text-center py-2">
-                    {study.heroImageAlt}
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
+                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                  {study.nutshell.map((item) => (
+                    <div key={item.label} className="border-b border-black/[0.06] pb-5 last:border-b-0 last:pb-0 sm:last:border-b-0">
+                      <dt className="font-display text-xs font-semibold uppercase tracking-wider text-black/50 mb-1.5">
+                        {item.label}
+                      </dt>
+                      <dd className="font-body text-[14px] sm:text-[15px] leading-relaxed text-black/85">
+                        {item.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -189,7 +232,7 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
             {/* Optional Introductory Context */}
             {study.intro && (
               <ScrollReveal>
-                <p className="font-body text-lg md:text-xl leading-relaxed text-black/85 mb-10 font-normal">
+                <p className="font-body text-[15px] md:text-[16px] leading-[26px] md:leading-[28px] text-black/80 mb-10 font-normal">
                   {study.intro}
                 </p>
               </ScrollReveal>
@@ -284,6 +327,92 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
                           </li>
                         ))}
                       </ol>
+                    )}
+
+                    {/* Multi-image collage / gallery */}
+                    {section.images && section.images.length > 0 && (
+                      <div className="my-8 sm:my-10">
+                        <div
+                          className={`grid gap-4 sm:gap-6 ${
+                            section.images.length === 3
+                              ? 'grid-cols-1 sm:grid-cols-3'
+                              : section.images.length === 2
+                              ? 'grid-cols-1 sm:grid-cols-2'
+                              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                          }`}
+                        >
+                          {section.images.map((img, iIdx) => (
+                            <figure
+                              key={iIdx}
+                              className="group flex flex-col bg-[#FAF9F7] rounded-2xl p-2 sm:p-2.5 border border-black/10 shadow-sm hover:shadow-md hover:border-pink/30 transition-all duration-300"
+                            >
+                              <div className="overflow-hidden rounded-xl bg-white flex items-center justify-center p-1">
+                                <img
+                                  src={img.src}
+                                  alt={img.alt}
+                                  loading="lazy"
+                                  className="w-full h-auto object-contain max-h-[500px] group-hover:scale-[1.02] transition-transform duration-300"
+                                />
+                              </div>
+                              {img.caption && (
+                                <figcaption className="mt-2 text-center font-body text-xs font-medium text-black/65 px-1">
+                                  {img.caption}
+                                </figcaption>
+                              )}
+                            </figure>
+                          ))}
+                        </div>
+                        {section.imagesCaption && (
+                          <p className="mt-3.5 text-center font-body text-xs sm:text-[13px] text-black/55 italic max-w-2xl mx-auto leading-relaxed">
+                            {section.imagesCaption}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Single image */}
+                    {section.image && (
+                      <figure className="my-8 sm:my-10">
+                        {section.image.layout === 'phone' ? (
+                          <div className="max-w-[320px] sm:max-w-[340px] mx-auto bg-[#FAF9F7] rounded-3xl p-3 border border-black/10 shadow-md hover:shadow-lg hover:border-pink/30 transition-all duration-300">
+                            <div className="rounded-2xl overflow-hidden bg-white p-1">
+                              <img
+                                src={section.image.src}
+                                alt={section.image.alt}
+                                loading="lazy"
+                                className="w-full h-auto object-contain"
+                              />
+                            </div>
+                          </div>
+                        ) : section.image.layout === 'card' ? (
+                          <div className="max-w-[500px] mx-auto bg-[#141414] rounded-2xl p-2.5 sm:p-3 border border-black/15 shadow-lg hover:shadow-xl transition-all duration-300">
+                            <div className="rounded-xl overflow-hidden bg-[#111]">
+                              <img
+                                src={section.image.src}
+                                alt={section.image.alt}
+                                loading="lazy"
+                                className="w-full h-auto object-contain"
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="w-full bg-[#FAF9F7] rounded-2xl p-2.5 sm:p-3 border border-black/10 shadow-sm hover:shadow-md hover:border-pink/30 transition-all duration-300">
+                            <div className="rounded-xl overflow-hidden bg-white flex items-center justify-center">
+                              <img
+                                src={section.image.src}
+                                alt={section.image.alt}
+                                loading="lazy"
+                                className="w-full h-auto object-contain max-h-[540px]"
+                              />
+                            </div>
+                          </div>
+                        )}
+                        {section.image.caption && (
+                          <figcaption className="mt-3 text-center font-body text-xs sm:text-[13px] text-black/60 italic max-w-xl mx-auto leading-relaxed">
+                            {section.image.caption}
+                          </figcaption>
+                        )}
+                      </figure>
                     )}
                   </section>
                 </ScrollReveal>
