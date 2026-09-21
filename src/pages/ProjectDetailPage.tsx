@@ -35,7 +35,7 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
         title: sanityStudy.title,
         subtitle: sanityStudy.subtitle || fallbackStudy?.subtitle || '',
         category: sanityStudy.category || fallbackStudy?.category || 'Courses & Curricula',
-        heroImage: sanityStudy.heroImage ? imgUrl(sanityStudy.heroImage, 1200) : (fallbackStudy?.heroImage || ''),
+        heroImage: sanityStudy.heroImage ? (imgUrl(sanityStudy.heroImage, 1200) || '') : (fallbackStudy?.heroImage || ''),
         heroImageAlt: sanityStudy.heroImageAlt || fallbackStudy?.heroImageAlt || sanityStudy.title,
         nutshell: sanityStudy.nutshell || fallbackStudy?.nutshell || [],
         intro: sanityStudy.intro || fallbackStudy?.intro,
