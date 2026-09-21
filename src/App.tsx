@@ -17,10 +17,6 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/ai-data-science-course" element={<ProjectDetailPage slug="ai-data-science-course" />} />
-      <Route path="/projects/gender-awareness-activism-course" element={<ProjectDetailPage slug="gender-awareness-activism-course" />} />
-      <Route path="/projects/courses-for-community-teachers-in-myanmar" element={<ProjectDetailPage slug="courses-for-community-teachers-in-myanmar" />} />
-      <Route path="/projects/multiformat-courses-for-moderators" element={<ProjectDetailPage slug="multiformat-courses-for-moderators" />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       <Route path="/publications" element={<Publications />} />
       <Route path="/conferences" element={<Conferences />} />

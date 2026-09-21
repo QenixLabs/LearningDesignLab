@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const caseStudy = defineType({
   name: 'caseStudy',
@@ -127,9 +127,66 @@ export const caseStudy = defineType({
                 },
               ],
             }),
+            defineField({
+              name: 'image',
+              title: 'Section Image',
+              type: 'image',
+              options: { hotspot: true },
+              fields: [
+                defineField({ name: 'alt', title: 'Alt Text', type: 'string' }),
+                defineField({ name: 'caption', title: 'Caption', type: 'string' }),
+                defineField({
+                  name: 'layout',
+                  title: 'Layout Style',
+                  type: 'string',
+                  options: {
+                    list: [
+                      { title: 'Full Width (Screenshots & Diagrams)', value: 'full' },
+                      { title: 'Phone Mockup (Mobile Screens)', value: 'phone' },
+                      { title: 'Card (Dark Container)', value: 'card' },
+                    ],
+                  },
+                  initialValue: 'full',
+                }),
+              ],
+            }),
+            defineField({
+              name: 'images',
+              title: 'Section Image Collage / Gallery',
+              description: 'Multiple images displayed side-by-side (e.g. 3 mobile app screens)',
+              type: 'array',
+              of: [
+                defineArrayMember({
+                  type: 'image',
+                  options: { hotspot: true },
+                  fields: [
+                    defineField({ name: 'alt', title: 'Alt Text', type: 'string' }),
+                    defineField({ name: 'caption', title: 'Caption', type: 'string' }),
+                    defineField({
+                      name: 'layout',
+                      title: 'Layout Style',
+                      type: 'string',
+                      options: {
+                        list: [
+                          { title: 'Phone Mockup', value: 'phone' },
+                          { title: 'Card', value: 'card' },
+                          { title: 'Full Width', value: 'full' },
+                        ],
+                      },
+                      initialValue: 'phone',
+                    }),
+                  ],
+                }),
+              ],
+            }),
+            defineField({
+              name: 'imagesCaption',
+              title: 'Collage Overall Caption',
+              type: 'string',
+            }),
           ],
           preview: {
-            select: { title: 'heading' },
+            select: { title: 'heading', media: 'image' },
           },
         },
       ],

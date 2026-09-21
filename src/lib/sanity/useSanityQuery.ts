@@ -19,12 +19,17 @@ export function useSanityQuery<T>(
   const [data, setData] = useState<T>(fallback);
   const [loading, setLoading] = useState(true);
 
+  // Stable key so the effect re-runs whenever params actually change
+  const paramsKey = JSON.stringify(params);
+
   useEffect(() => {
     if (skip) {
       setLoading(false);
       return;
     }
     let cancelled = false;
+    setData(fallback);
+    setLoading(true);
     if (!sanityClient) {
       console.error('[sanity] VITE_SANITY_PROJECT_ID is not set; rendering fallback content');
       setLoading(false);
@@ -44,9 +49,8 @@ export function useSanityQuery<T>(
     return () => {
       cancelled = true;
     };
-    // params are expected to be static module constants; changes to them do not refetch
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, skip]);
+  }, [query, paramsKey, skip]);
 
   return { data, loading };
 }
