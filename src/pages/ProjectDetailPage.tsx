@@ -253,13 +253,13 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
             )}
 
             {/* Sections Flow */}
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-6 md:space-y-8">
               {study.sections.map((section, secIdx) => (
                 <ScrollReveal key={secIdx}>
                   <section className="pt-4">
                     {section.heading && (
                       section.level === 3 ? (
-                        <h3 className="font-display text-xl md:text-2xl font-semibold text-black mt-8 mb-4 tracking-tight">
+                        <h3 className="font-display text-xl md:text-2xl font-semibold text-black mb-2 tracking-tight">
                           {section.heading}
                         </h3>
                       ) : (
@@ -421,8 +421,8 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
 
             {/* Curriculum Structure: Stages or Thematic Tracks */}
             {study.curriculumStructure && (
-              <ScrollReveal className="mt-16 md:mt-20">
-                <div className="bg-[#FAF9F7] p-6 sm:p-8 md:p-10 rounded-xl border border-black/10">
+              <ScrollReveal className="mt-6 md:mt-8">
+                <div className="bg-[#FAF9F7] p-6 sm:p-8 rounded-xl border border-black/10">
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-black mb-3">
                     {study.curriculumStructure.title}
                   </h2>
