@@ -6,17 +6,58 @@ import NeuronMotif from '../../components/NeuronMotif';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const defaultFields = [
-  { name: 'Cognitive\nScience', top: '5%', left: '20%', highlight: true },
-  { name: 'Instructional\nDesign', top: '5%', left: '50%', center: true },
-  { name: 'Human-Centred\nDesign', top: '5%', left: '80%' },
-  { name: 'Behavioral\nScience', top: '35%', left: '90%', highlight: true },
-  { name: 'AI & Learning', top: '65%', left: '80%', highlight: true },
-  { name: 'UX & UI', top: '85%', left: '50%', center: true },
-  { name: 'Education\nTechnology', top: '65%', left: '20%' },
-  { name: 'Performance\nSupport', top: '35%', left: '10%', highlight: true },
-  { name: 'EdTech & L&D', top: '50%', left: '5%' },
+interface FieldDefinition {
+  name: string;
+  dotX: number;
+  dotY: number;
+  labelPos: 'top' | 'bottom' | 'left' | 'right';
+  highlight?: boolean;
+}
+
+const defaultFields: FieldDefinition[] = [
+  { name: 'Cognitive\nScience', dotX: 22, dotY: 14, labelPos: 'top', highlight: true },
+  { name: 'Instructional\nDesign', dotX: 50, dotY: 13, labelPos: 'top' },
+  { name: 'Human-Centred\nDesign', dotX: 78, dotY: 14, labelPos: 'top' },
+  { name: 'Behavioral\nScience', dotX: 74, dotY: 34, labelPos: 'right', highlight: true },
+  { name: 'AI & Learning', dotX: 74, dotY: 68, labelPos: 'bottom', highlight: true },
+  { name: 'UI & UX', dotX: 50, dotY: 82, labelPos: 'bottom' },
+  { name: 'Education\nTechnology', dotX: 26, dotY: 68, labelPos: 'bottom' },
+  { name: 'Performance\nSupport', dotX: 26, dotY: 34, labelPos: 'left', highlight: true },
+  { name: 'EdTech & L&D', dotX: 20, dotY: 50, labelPos: 'left' },
 ];
+
+function getFieldDisplay(field: FieldDefinition): { displayName: string; isMultiLine: boolean } {
+  let name = field.name.trim();
+  if (name === 'UX & UI') name = 'UI & UX';
+
+  // UI & UX must ALWAYS stay on one single line
+  if (name === 'UI & UX') {
+    return { displayName: 'UI & UX', isMultiLine: false };
+  }
+
+  // If already explicitly formatted with \n, preserve it
+  if (name.includes('\n')) {
+    return { displayName: name, isMultiLine: true };
+  }
+
+  // Format known 2-word labels with a newline so diagram pills remain compact and don't overflow on smaller screens
+  const splitMap: Record<string, string> = {
+    'Cognitive Science': 'Cognitive\nScience',
+    'Instructional Design': 'Instructional\nDesign',
+    'Human-Centred Design': 'Human-Centred\nDesign',
+    'Human-Centered Design': 'Human-Centered\nDesign',
+    'Behavioral Science': 'Behavioral\nScience',
+    'Education Technology': 'Education\nTechnology',
+    'Performance Support': 'Performance\nSupport',
+    'AI & Learning': 'AI &\nLearning',
+  };
+
+  if (splitMap[name]) {
+    return { displayName: splitMap[name], isMultiLine: true };
+  }
+
+  return { displayName: name, isMultiLine: false };
+}
 
 interface MethodologyFieldProp {
   name: string;
@@ -37,13 +78,12 @@ export default function MethodologyDiagram({
   const fields = defaultFields.map((defaultField, idx) => {
     const custom = fieldsProp?.[idx];
     if (!custom) return defaultField;
-    if (typeof custom === 'string') {
-      return { ...defaultField, name: custom };
-    }
+    const rawName = typeof custom === 'string' ? custom : custom.name || defaultField.name;
+    const name = rawName === 'UX & UI' ? 'UI & UX' : rawName;
     return {
       ...defaultField,
-      name: custom.name || defaultField.name,
-      highlight: custom.highlight ?? defaultField.highlight,
+      name,
+      highlight: typeof custom !== 'string' && custom.highlight !== undefined ? custom.highlight : defaultField.highlight,
     };
   });
 
@@ -151,26 +191,22 @@ export default function MethodologyDiagram({
               </filter>
             </defs>
 
-            {fields.map((field, i) => {
-              const fx = parseFloat(field.left);
-              const fy = parseFloat(field.top);
-              return (
-                <path
-                  key={`line-${i}`}
-                  id={`line-${i}`}
-                  d={`M 50 50 L ${fx} ${fy}`}
-                  className="connecting-line"
-                  pathLength="1"
-                  stroke="rgba(255,20,147,0.55)"
-                  strokeWidth="0.45"
-                  strokeLinecap="round"
-                  strokeDasharray="1"
-                  strokeDashoffset="1"
-                  fill="none"
-                  filter="url(#line-glow)"
-                />
-              );
-            })}
+            {fields.map((field, i) => (
+              <path
+                key={`line-${i}`}
+                id={`line-${i}`}
+                d={`M 50 50 L ${field.dotX} ${field.dotY}`}
+                className="connecting-line"
+                pathLength="1"
+                stroke="rgba(255,20,147,0.55)"
+                strokeWidth="0.45"
+                strokeLinecap="round"
+                strokeDasharray="1"
+                strokeDashoffset="1"
+                fill="none"
+                filter="url(#line-glow)"
+              />
+            ))}
 
             {fields.map((_field, i) => (
                 <circle
@@ -219,46 +255,71 @@ export default function MethodologyDiagram({
             </div>
           </div>
 
-          {/* Field Nodes */}
-          {fields.map((field, i) => (
-            <div
-              key={i}
-              className="field-node absolute group cursor-default"
-              style={{
-                top: field.top,
-                left: field.left,
-                transform: field.center ? 'translateX(-50%)' : 'translate(-50%, -50%)',
-                zIndex: 4,
-              }}
-            >
-              <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-110">
-                <span className="relative w-3 h-3 rounded-full bg-pink mb-2 shadow-[0_0_12px_rgba(255,20,147,0.8)] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,20,147,1)]">
-                  <span className="absolute inset-0 rounded-full bg-pink animate-ping opacity-40" />
-                </span>
-                <span className="font-body text-xs text-white/90 whitespace-pre-line text-center leading-tight px-4 py-2 rounded-full border border-white/10 bg-white/[0.08] backdrop-blur-sm shadow-lg transition-colors duration-300 group-hover:text-pink group-hover:border-pink/40 group-hover:bg-pink/15 group-hover:shadow-[0_0_24px_rgba(255,20,147,0.25)]">
-                  {field.name}
-                </span>
+          {/* Field Nodes (Dots + Labels) */}
+          {fields.map((field, i) => {
+            const { displayName, isMultiLine } = getFieldDisplay(field);
+            const labelPositionClass = (() => {
+              switch (field.labelPos) {
+                case 'top':
+                  return 'bottom-3.5 left-1/2 -translate-x-1/2';
+                case 'bottom':
+                  return 'top-3.5 left-1/2 -translate-x-1/2';
+                case 'left':
+                  return 'right-3.5 top-1/2 -translate-y-1/2';
+                case 'right':
+                  return 'left-3.5 top-1/2 -translate-y-1/2';
+              }
+            })();
+
+            return (
+              <div
+                key={i}
+                className="field-node absolute group cursor-default"
+                style={{
+                  top: `${field.dotY}%`,
+                  left: `${field.dotX}%`,
+                  zIndex: 4,
+                }}
+              >
+                {/* The Dot: line connects directly to this center (0, 0) */}
+                <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                  <span className="relative w-3.5 h-3.5 rounded-full bg-pink shadow-[0_0_12px_rgba(255,20,147,0.85)] transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_20px_rgba(255,20,147,1)]">
+                    <span className="absolute inset-0 rounded-full bg-pink animate-ping opacity-40" />
+                  </span>
+                </div>
+
+                {/* The Label: positioned cleanly outside the dot */}
+                <div
+                  className={`absolute ${labelPositionClass} min-w-max transition-transform duration-300 group-hover:scale-105 pointer-events-auto`}
+                >
+                  <span className={`font-body text-xs text-white/90 ${isMultiLine ? 'whitespace-pre' : 'whitespace-nowrap'} text-center leading-tight px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.08] backdrop-blur-sm shadow-lg block transition-colors duration-300 group-hover:text-pink group-hover:border-pink/40 group-hover:bg-pink/15 group-hover:shadow-[0_0_24px_rgba(255,20,147,0.25)]`}>
+                    {displayName}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Mobile Grid */}
-        <div className="md:hidden grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-md mx-auto">
-          {fields.map((field, i) => (
-            <div
-              key={i}
-              className={`text-center py-3 px-2 rounded-full border transition-colors duration-300 ${
-                field.highlight
-                  ? 'border-pink/40 bg-pink/15 text-pink shadow-[0_0_20px_rgba(255,20,147,0.2)]'
-                  : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/40 hover:bg-pink/10 hover:text-pink'
-              }`}
-            >
-              <span className="font-body text-xs whitespace-pre-line">
-                {field.name}
-              </span>
-            </div>
-          ))}
+        {/* Mobile / Small Screen Grid */}
+        <div className="md:hidden grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl mx-auto px-2">
+          {fields.map((field, i) => {
+            const { displayName } = getFieldDisplay(field);
+            return (
+              <div
+                key={i}
+                className={`text-center py-2.5 px-3 sm:px-4 rounded-2xl border transition-colors duration-300 flex items-center justify-center min-h-[52px] ${
+                  field.highlight
+                    ? 'border-pink/40 bg-pink/15 text-pink shadow-[0_0_20px_rgba(255,20,147,0.2)]'
+                    : 'border-white/10 bg-white/[0.05] text-white/80 hover:border-pink/40 hover:bg-pink/10 hover:text-pink'
+                }`}
+              >
+                <span className="font-body text-xs sm:text-sm text-center leading-snug whitespace-pre-line">
+                  {displayName}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

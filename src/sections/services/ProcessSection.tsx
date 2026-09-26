@@ -22,12 +22,12 @@ export default function ProcessSection({
   const processSteps = steps && steps.length > 0 ? steps : defaultSteps;
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-8 pb-16 md:pt-12 md:pb-24 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-black text-center mb-20 max-w-4xl mx-auto">
+          <h2 className="heading-xl text-black text-center mb-12 md:mb-16 max-w-4xl mx-auto">
             {heading}
           </h2>
         </ScrollReveal>

@@ -83,7 +83,7 @@ export default function OutcomesSection({
   const displayOutcomes = outcomesProp && outcomesProp.length > 0 ? outcomesProp : defaultOutcomes;
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-10 pb-10 md:pt-14 md:pb-14 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">

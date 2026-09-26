@@ -26,7 +26,7 @@ export default function FacultyProblemSection({
       : defaultParagraphs;
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-16 pb-10 md:pt-24 md:pb-14 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10 text-center">

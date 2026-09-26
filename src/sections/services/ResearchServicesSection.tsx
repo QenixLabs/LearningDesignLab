@@ -47,12 +47,12 @@ export default function ResearchServicesSection({
   const serviceItems = services && services.length > 0 ? services : defaultServices;
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.15}>
-          <h2 className="heading-xl text-black text-center mb-16 max-w-4xl mx-auto">
+          <h2 className="heading-xl text-black text-center mb-12 md:mb-16 max-w-4xl mx-auto">
             {heading}
           </h2>
         </ScrollReveal>
