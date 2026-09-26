@@ -65,7 +65,7 @@ export default function WhatWeOfferSection({
   const totalSlots = Math.max(10, Math.ceil(displayItems.length / 2) * 2);
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">

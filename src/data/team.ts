@@ -145,4 +145,11 @@ export const team: TeamMember[] = [
     description:
       'With a background in psychology, neuroscience, and marketing, Ishwar strikes the right balance between understanding the technicality of our work and marketing it. He handles our branding, content, graphics, and project management.',
   },
+  {
+    name: 'Aditi Johari',
+    role: 'Instructional Designer & Developer',
+    image: '/images/team/Aditi Johari.png',
+    description:
+      "Aditi has over 18 years of experience in learning, performance, and capability building across organizations like Tata Digital, Reliance, and Accenture. She works at the intersection of learning science, applied AI, and the business’ context. Aditi specializes in simplifying complex workflows and creating effective AI-enabled learning solutions aligned with business goals.",
+  }
 ];

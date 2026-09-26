@@ -39,7 +39,7 @@ export default function TargetSectorsSection({
   const displaySectors = sectorsProp && sectorsProp.length > 0 ? sectorsProp : defaultSectors;
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-16 pb-10 md:pt-24 md:pb-14 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10">

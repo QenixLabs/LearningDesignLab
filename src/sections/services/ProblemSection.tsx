@@ -11,7 +11,7 @@ export default function ProblemSection({
   text = "We start with why learning fails before it begins. Content, platforms, and methods are often decided before determining what learners need to be able to do differently after learning. The result? Learning doesn't address the key issues; learning ends in information transfer, and budgets are spent without any real impact.",
 }: ProblemSectionProps) {
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+    <section className="bg-white pt-16 pb-8 md:pt-24 md:pb-12 relative overflow-hidden">
       <NeuronMotif opacity={0.03} />
 
       <div className="page-margin max-content relative z-10 text-center">
