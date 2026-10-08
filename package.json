@@ -12,6 +12,7 @@
     "seed:case-studies": "tsx scripts/seed-case-studies.ts"
   },
   "dependencies": {
+    "@emailjs/browser": "^5.0.2",
     "@fontsource/google-sans-code": "^5.2.4",
     "@fontsource/lexend-deca": "^5.2.10",
     "@hookform/resolvers": "^5.2.2",
