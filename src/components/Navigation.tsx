@@ -99,6 +99,7 @@ export default function Navigation() {
         { label: 'Conferences', href: '/conferences' },
       ],
     },
+    { label: 'Community', href: '/community' },
     { label: 'Contact us', href: '/#contact', button: true },
   ];
 

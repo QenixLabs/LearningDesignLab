@@ -9,6 +9,7 @@ import Team from './pages/Team';
 import ServicePage from './pages/ServicePage';
 import AdvisoryPage from './pages/AdvisoryPage';
 import ResearchEvaluationPage from './pages/ResearchEvaluationPage';
+import Community from './pages/Community';
 
 const StudioPage = lazy(() => import('./pages/StudioPage'));
 
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/services/faculty-enrichment" element={<ServicePage serviceId="faculty-enrichment" />} />
       <Route path="/services/research-evaluation" element={<ResearchEvaluationPage />} />
       <Route path="/services/advisory" element={<AdvisoryPage />} />
+      <Route path="/community" element={<Community />} />
       <Route
         path="/studio/*"
         element={

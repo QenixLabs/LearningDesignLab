@@ -18,7 +18,7 @@ const resourceLinks = [
 
 const companyLinks = [
   { label: 'Our Team', href: '/team' },
-  { label: 'Community', href: '/#contact' },
+  { label: 'Community', href: '/community' },
 ];
 
 const fallbackSettings: SanitySiteSettings = {
