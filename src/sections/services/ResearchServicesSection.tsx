@@ -18,7 +18,7 @@ const defaultServices: SanityServiceCard[] = [
   {
     title: 'AI-Powered Learning Enablement',
     paragraphs: [
-      'We train learning designers to enhance their design process with AI tools, improving output quality while reducing production time. We also build AI-powered chatbots for employee performance support, evaluate and select AI-enabled platforms for organisational learning, and help institutions enable students to use AI tools more effectively as part of their learning process.',
+      'We train learning designers to enhance their design process with AI tools, improving output quality while reducing production time. We also build AI-powered chatbots for employee performance support, evaluate and select AI-enabled platforms for organizational learning, and help institutions enable students to use AI tools more effectively as part of their learning process.',
     ],
   },
   {

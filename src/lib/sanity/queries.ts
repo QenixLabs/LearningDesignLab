@@ -166,10 +166,24 @@ export interface SanitySiteSettings {
   contactEmail: string;
   linkedinUrl?: string;
   footerTagline?: string;
+  siteTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  ogImage?: SanityImageSource;
+  customMetaTags?: string;
 }
 
 export const SITE_SETTINGS_QUERY = `
-  *[_id == "siteSettings"][0] { contactEmail, linkedinUrl, footerTagline }
+  *[_id == "siteSettings"][0] { 
+    contactEmail, 
+    linkedinUrl, 
+    footerTagline,
+    siteTitle,
+    metaDescription,
+    metaKeywords,
+    ogImage,
+    customMetaTags
+  }
 `;
 
 export interface SanityHomePage {
@@ -350,4 +364,127 @@ export interface SanityPageCopy {
 
 export const PAGE_COPY_QUERY = `
   *[_id == $id][0] { pageKey, heading, intro }
+`;
+
+// ---------- Community Page ----------
+export interface SanityCommunityWebinar {
+  title: string;
+  speaker: string;
+  role?: string;
+  description?: string;
+  tag?: string;
+  thumbnail?: SanityImageSource;
+  url: string;
+}
+
+export interface SanityCommunityDialogue {
+  title: string;
+  countries?: string[];
+  excerpt?: string;
+  highlight?: string;
+  url: string;
+}
+
+export interface SanityCommunityBlogPost {
+  title: string;
+  subtitle?: string;
+  category?: string;
+  image?: SanityImageSource;
+  url: string;
+}
+
+export interface SanityCommunityPoster {
+  title: string;
+  speakers: string;
+  subtitle?: string;
+  badge?: string;
+  image?: SanityImageSource;
+  url: string;
+}
+
+export interface SanityCommunityAdvisor {
+  name: string;
+  role?: string;
+  affiliation?: string;
+  bio?: string;
+  image?: SanityImageSource;
+}
+
+export interface SanityCommunityVolunteer {
+  name: string;
+  role?: string;
+  image?: SanityImageSource;
+}
+
+export interface SanityCommunityPage {
+  heroBadge?: string;
+  heroTitle?: string;
+  heroDescription?: string;
+  heroStats?: { value: string; label: string }[];
+  socialLinks?: {
+    website?: string;
+    linkedin?: string;
+    whatsapp?: string;
+    youtube?: string;
+    instagram?: string;
+  };
+  webinarsHeading?: string;
+  webinarsDescription?: string;
+  webinars?: SanityCommunityWebinar[];
+  dialoguesLabel?: string;
+  dialoguesHeading?: string;
+  dialoguesDescription?: string;
+  dialogues?: SanityCommunityDialogue[];
+  meetupsLabel?: string;
+  meetupsHeading?: string;
+  meetupsParagraph1?: string;
+  meetupsParagraph2?: string;
+  meetupsEventsUrl?: string;
+  meetupVideo?: {
+    tag?: string;
+    title?: string;
+    thumbnail?: SanityImageSource;
+    url?: string;
+  };
+  blogLabel?: string;
+  blogHeading?: string;
+  blogDescription?: string;
+  blogNewsletterUrl?: string;
+  blogPosts?: SanityCommunityBlogPost[];
+  readingClubLabel?: string;
+  readingClubHeading?: string;
+  readingClubDescription?: string;
+  readingClubHowItWorks?: string;
+  expertPostersLabel?: string;
+  expertPostersHeading?: string;
+  expertPostersDescription?: string;
+  expertPosters?: SanityCommunityPoster[];
+  whatsappHubLabel?: string;
+  whatsappHubHeading?: string;
+  whatsappHubDescription?: string;
+  whatsappHubButtonText?: string;
+  whatsappHubUrl?: string;
+  advisorsLabel?: string;
+  advisorsHeading?: string;
+  advisorsDescription?: string;
+  advisors?: SanityCommunityAdvisor[];
+  volunteersLabel?: string;
+  volunteersHeading?: string;
+  volunteersDescription?: string;
+  volunteers?: SanityCommunityVolunteer[];
+}
+
+export const COMMUNITY_PAGE_QUERY = `
+  *[_type == "communityPage" || _id == "communityPage"][0] {
+    heroBadge, heroTitle, heroDescription, heroStats, socialLinks,
+    webinarsHeading, webinarsDescription, webinars,
+    dialoguesLabel, dialoguesHeading, dialoguesDescription, dialogues,
+    meetupsLabel, meetupsHeading, meetupsParagraph1, meetupsParagraph2, meetupsEventsUrl, meetupVideo,
+    blogLabel, blogHeading, blogDescription, blogNewsletterUrl, blogPosts,
+    readingClubLabel, readingClubHeading, readingClubDescription, readingClubHowItWorks,
+    expertPostersLabel, expertPostersHeading, expertPostersDescription, expertPosters,
+    whatsappHubLabel, whatsappHubHeading, whatsappHubDescription, whatsappHubButtonText, whatsappHubUrl,
+    advisorsLabel, advisorsHeading, advisorsDescription, advisors,
+    volunteersLabel, volunteersHeading, volunteersDescription, volunteers
+  }
 `;
