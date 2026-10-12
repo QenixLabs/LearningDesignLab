@@ -26,6 +26,9 @@ export const structure: StructureResolver = (S, context) =>
         .title('Home Page')
         .child(S.document().schemaType('homePage').documentId('homePage')),
       S.listItem()
+        .title('Community Page')
+        .child(S.document().schemaType('communityPage').documentId('communityPage')),
+      S.listItem()
         .title('Service Pages')
         .child(
           S.list()

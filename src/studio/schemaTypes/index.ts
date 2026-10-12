@@ -1,5 +1,6 @@
 import { siteSettings } from './singletons/siteSettings';
 import { homePage } from './singletons/homePage';
+import { communityPage } from './singletons/communityPage';
 import { servicePage } from './singletons/servicePage';
 import { pageCopy } from './singletons/pageCopy';
 import { teamMember } from './collections/teamMember';
@@ -12,6 +13,7 @@ import { testimonial } from './collections/testimonial';
 export const schemaTypes = [
   siteSettings,
   homePage,
+  communityPage,
   servicePage,
   pageCopy,
   teamMember,

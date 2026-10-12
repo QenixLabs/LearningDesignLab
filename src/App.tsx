@@ -10,12 +10,15 @@ import ServicePage from './pages/ServicePage';
 import AdvisoryPage from './pages/AdvisoryPage';
 import ResearchEvaluationPage from './pages/ResearchEvaluationPage';
 import Community from './pages/Community';
+import SEOUpdater from './components/SEOUpdater';
 
 const StudioPage = lazy(() => import('./pages/StudioPage'));
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <SEOUpdater />
+      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
@@ -37,5 +40,6 @@ export default function App() {
         }
       />
     </Routes>
+    </>
   );
 }

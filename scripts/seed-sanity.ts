@@ -177,6 +177,249 @@ async function run() {
   });
   console.log('✓ homePage');
 
+  // --- Community Page singleton ---
+  await client.createOrReplace({
+    _id: 'communityPage',
+    _type: 'communityPage',
+    heroBadge: 'Learning Designers Community (LDC)',
+    heroTitle: 'Join a Global Community of Learning Professionals & Educators',
+    heroDescription:
+      'Learning Designers Community (LDC) is a network of 7,500+ educators, practitioners, and researchers across 50+ countries, hosted by professionals from the Global South. Our members span education, ed-tech, enterprise L&D, and skilling, making LDC one of the few cross-sectoral networks dedicated to bridging research and practice and advancing innovative and impactful learning experiences worldwide.\n\nJoin LDC’s peer-learning sessions, monthly expert talks, member meetups, async conversations, learning design job postings, and the Global South Learning Voices blog.',
+    heroStats: [
+      { _key: 'hs1', value: '7,500+', label: 'Educators & Researchers' },
+      { _key: 'hs2', value: '50+', label: 'Countries Worldwide' },
+      { _key: 'hs3', value: 'Global South', label: 'Hosted & Driven' },
+      { _key: 'hs4', value: 'Cross-Sector', label: 'Education, Ed-Tech & L&D' },
+    ],
+    socialLinks: {
+      website: 'https://www.learningdesignco.org/about-3',
+      linkedin: 'https://www.linkedin.com/company/learningdesigners/',
+      whatsapp: 'https://chat.whatsapp.com/DNIBEVUeVMFEc5bChIbLES',
+      youtube: 'http://www.youtube.com/@learningdesigners',
+      instagram: 'https://www.instagram.com/learning.ldc',
+    },
+    webinarsHeading: 'Webinars & Expert Talks',
+    webinarsDescription:
+      'Live sessions with the world’s leading experts and organizations unpacking diverse learning themes: game-based learning, Science of Learning, universal design for learning, Behavior Change, AI-in-learning use cases, and research and technologies shaping the field.',
+    webinars: await Promise.all([
+      {
+        _key: 'w1',
+        title: 'Design Learning for Behavior Change',
+        speaker: 'with Julie Dirksen',
+        role: 'Author of "Design For How People Learn"',
+        description:
+          'Practical approaches for moving beyond knowledge retention to meaningful, lasting behavior transformation in professional and adult education.',
+        tag: 'Behavior Change',
+        thumbnail: await imageField('/images/Community/webinar_julie_dirksen.jpg'),
+        url: 'https://youtu.be/R3amDG2L2tQ?si=OtsZT7aFxBVSBk0b&t=1452',
+      },
+      {
+        _key: 'w2',
+        title: "Science of Learning isn't always intuitive",
+        speaker: 'with Carl Hendrick',
+        role: 'Co-Author of "How Learning Happens"',
+        description:
+          'Debunking pervasive educational myths with empirical cognitive science, retrieval practice, and evidence-informed pedagogical strategies.',
+        tag: 'Cognitive Science',
+        thumbnail: await imageField('/images/Community/webinar_carl_hendrick.jpg'),
+        url: 'https://youtu.be/YnJ44brzuho?si=YXRjHjP3B2ylTO4A&t=807',
+      },
+      {
+        _key: 'w3',
+        title: 'Reimagining Learning Design with AI',
+        speaker: 'with Dr Philippa Hardman',
+        role: 'Affiliate Scholar, University of Cambridge',
+        description:
+          'How AI tools are changing curriculum scoping, instructional prototyping, and personalized adaptive learning journeys at scale.',
+        tag: 'AI in Learning',
+        thumbnail: await imageField('/images/Community/webinar_philippa_hardman.jpg'),
+        url: 'https://youtu.be/Zu8YAidGlWc?si=_ummdrYIglGBBbWF&t=811',
+      },
+    ]),
+    dialoguesLabel: 'International Exchanges',
+    dialoguesHeading: 'Cross-Country Education Dialogues',
+    dialoguesDescription:
+      'A series of dialogues with senior educators from 10 countries, including Nigeria, Pakistan, Japan, UAE, Egypt, Canada, and India. They explore how education systems are evolving across contexts and what we can learn from each other to design learning that is more relevant, equitable, human-centered, and future-ready.',
+    dialogues: [
+      {
+        _key: 'd1',
+        countries: ['11 Countries', 'Nigeria', 'India', 'Canada'],
+        title: 'Dialogues on Education: Shaping the Future',
+        excerpt:
+          'What happens when education leaders pause to deeply reflect? In partnership with Bohmian Dialogue facilitator Hidde van der Pol, senior educators from 11 countries explore the evolving role of educators.',
+        highlight:
+          'With the rapid advancement of AI, should educators focus on teaching core content, or partner with students to prepare them for the future?',
+        url: 'https://www.linkedin.com/posts/learningdesigners_dialogues-on-education-by-ldc-activity-7259137131485224960-5Jow?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAMHxpgBIvb5YqrwQlo35BLMcSl2b9WUssE',
+      },
+      {
+        _key: 'd2',
+        countries: ['11 Countries', 'Global South', 'Sustainability'],
+        title: 'What Should Education Stand for in Today’s World?',
+        excerpt:
+          'Senior educators from 11 countries examine how education must evolve beyond rote knowledge to address widening socio-economic divides, technological growth, and sustainable thinking.',
+        highlight:
+          'Emerging initiatives: Collaborative dialogues for educators, a research paper on evolving perspectives, and institutional capacity-building programs.',
+        url: 'https://www.linkedin.com/posts/learningdesigners_ldccross-country-education-dialogues-activity-7285279596449513472-tn4y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAMHxpgBIvb5YqrwQlo35BLMcSl2b9WUssE',
+      },
+      {
+        _key: 'd3',
+        countries: ['International', 'AI in Learning', 'Fortnightly Dialogues'],
+        title: 'AI & Education: Cultivating Depth in an Age of Convenience',
+        excerpt:
+          'What many consider "misuse of AI" reflects our human tendency to seek shortcuts. Fortnightly cross-country dialogues explore how education and learning designs can cultivate depth over convenience.',
+        highlight:
+          'What role can education play in cultivating human depth, stillness, and critical inquiry in an age of effortless shortcuts?',
+        url: 'https://www.linkedin.com/posts/learningdesigners_ai-and-education-insights-activity-7318490918674657284-reis?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFeJLrcBYXYQxmZU_e-vujRlAbeYTbG9HCc',
+      },
+    ],
+    meetupsLabel: 'Monthly Peer Learning',
+    meetupsHeading: 'Learning Professionals Meetups',
+    meetupsParagraph1:
+      'LDC Meetups are informal, discussion-led gatherings for learning designers, educators, and practitioners to explore how learning is changing in the real world and discuss shared challenges. Each meetup focuses on a timely theme - bridging research, practice, and lived experience across contexts.',
+    meetupsParagraph2:
+      'Participants also create a collaborative document that consolidates insights from their practice and curate a list of recommended resources every month.',
+    meetupsEventsUrl: 'https://luma.com/learningdesigners?period=past',
+    meetupVideo: {
+      tag: 'Peer Learning',
+      thumbnail: await imageField('/images/Community/meetup_insights_video.jpg'),
+      url: 'https://youtu.be/iEbls3Je7uA?si=AaDorzaWcJNoZOo3',
+    },
+    blogLabel: 'Publications & Research',
+    blogHeading: "Global South's Learning Blog & Newsletter",
+    blogDescription:
+      'Learning design case studies, research, and insights from Asia and Africa that rarely make it into mainstream educational conversations. LDC spotlights bold experiments, on-the-ground innovation, and fresh perspectives shaping the future of learning. Published monthly via LinkedIn and amplified through LDC’s newsletter, it reaches thousands of professionals globally.',
+    blogNewsletterUrl: 'https://www.linkedin.com/newsletters/global-south-s-learning-voices-7289983829136588802/',
+    blogPosts: await Promise.all([
+      {
+        _key: 'bp1',
+        title: "Why Facts Don't Change Minds",
+        subtitle: 'Designing Learning That Transforms Behaviour',
+        category: 'Behavioral Science',
+        image: await imageField('/images/Community/why_facts_dont_change_minds_banner.jpg'),
+        url: 'https://www.linkedin.com/pulse/why-facts-dont-change-minds-designing-learning-transforms-frrec/',
+      },
+      {
+        _key: 'bp2',
+        title: 'More Than a High Score',
+        subtitle: 'What Research Says About Learning Through Games',
+        category: 'Game-Based Learning',
+        image: await imageField('/images/Community/more_than_high_score_banner.jpg'),
+        url: 'https://www.linkedin.com/pulse/more-than-high-score-what-research-says-learning-through-eairc/',
+      },
+      {
+        _key: 'bp3',
+        title: 'Learning How to Learn',
+        subtitle: 'Introducing the Science of Learning to Undergraduate Students',
+        category: 'Science of Learning',
+        image: await imageField('/images/Community/learning_how_to_learn_banner.jpg'),
+        url: 'https://www.linkedin.com/pulse/learning-how-learn-introducing-science-undergraduate-xytsc/',
+      },
+    ]),
+    readingClubLabel: 'Evidence-Informed Practice',
+    readingClubHeading: 'Reading Club',
+    readingClubDescription:
+      'LDC’s peer-learning initiative fostering evidence-informed practice by connecting research with practical learning design. Through curated academic readings aligned with our monthly themes and expert webinars, diverse educators, researchers, and learning designers gather to reflect and discuss how the research findings apply to their practice and share nuances and insights based on their experience.',
+    readingClubHowItWorks:
+      'Monthly research paper → Self-guided annotation → Facilitated group reflection → Practical implementation toolkit.',
+    expertPostersLabel: 'Knowledge Hub',
+    expertPostersHeading: 'Events, Resources, & Expert Insights',
+    expertPostersDescription:
+      'LDC shares insights from our events, resources, and expertise through their LinkedIn page and newsletters to help professionals improve their learning design practice.',
+    expertPosters: await Promise.all([
+      {
+        _key: 'ep1',
+        title: 'The Science of Becoming an Expert Teacher',
+        speakers: 'Dr. Nidhi Sachdeva & Dr. Paul A. Kirschner',
+        subtitle: 'Why experience isn’t enough and what expert teachers do differently.',
+        badge: 'Teacher Expertise',
+        image: await imageField('/images/Community/The_science_of_becoming_expert_teacher.jpg'),
+        url: 'https://www.linkedin.com/posts/learningdesigners_ldc-expert-sessionbecoming-an-expert-teacher-activity-7503068262260240385-_Cg8?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxGt2gBa3DpkwT67UaRXl2JI76APNhHFz8',
+      },
+      {
+        _key: 'ep2',
+        title: "The Science of Learning Isn't Always Intuitive",
+        speakers: 'Dr. Carl Hendrick',
+        subtitle: 'Discover popular instructional illusions and research-informed pedagogical realities.',
+        badge: 'Cognitive Science',
+        image: await imageField('/images/Community/1786326627736_page-0001.jpg'),
+        url: 'https://www.linkedin.com/posts/learningdesigners_instructional-illusions-activity-7492486899555545089-TBHO?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxGt2gBa3DpkwT67UaRXl2JI76APNhHFz8',
+      },
+      {
+        _key: 'ep3',
+        title: 'Designing Learning for Behaviour Change',
+        speakers: 'Julie Dirksen',
+        subtitle: 'Translating behavioural principles into sticky, impactful learning interventions.',
+        badge: 'Behavioral Design',
+        image: await imageField('/images/Community/1775622556614_page-0001.jpg'),
+        url: 'https://www.linkedin.com/posts/learningdesigners_julie-dirksen-on-designing-for-behavior-change-activity-7447511672539287552-WzcP?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxGt2gBa3DpkwT67UaRXl2JI76APNhHFz8',
+      },
+    ]),
+    whatsappHubLabel: 'WhatsApp Community Hub',
+    whatsappHubHeading: 'Group Discussions, Resources and Global Job Postings',
+    whatsappHubDescription:
+      'LDC hosts a WhatsApp community where professionals worldwide share resources, ask questions, and share career opportunities related to learning design, education, training, instructional design, learning evaluation, etc.',
+    whatsappHubButtonText: 'Join the community',
+    whatsappHubUrl: 'https://chat.whatsapp.com/DNIBEVUeVMFEc5bChIbLES',
+    advisorsLabel: 'Guidance & Scientific Rigor',
+    advisorsHeading: 'Our Advisors',
+    advisorsDescription:
+      'Distinguished global scholars guiding LDC’s mission in evidence-based learning design and rigorous impact measurement.',
+    advisors: await Promise.all([
+      {
+        _key: 'adv1',
+        name: 'Dr. Nidhi Sachdeva',
+        role: 'Educational Scientist & Cognitive Researcher',
+        affiliation: 'University of Toronto',
+        bio: 'Author and leading researcher specializing in the Science of Learning, microlearning design, and evidence-informed instructional strategies.',
+      },
+      {
+        _key: 'adv2',
+        name: 'Dr. Will Thalheimer',
+        role: 'Learning Researcher & Evaluation Pioneer',
+        affiliation: 'Creator of LTEM (Learning-Transfer Evaluation Model)',
+        bio: 'Internationally recognized learning expert focused on research-backed learning methodologies and the science of performance evaluation.',
+        image: await imageField('/images/team/Will_Thalheimer.png'),
+      },
+    ]),
+    volunteersLabel: 'The Driving Force',
+    volunteersHeading: 'Our Volunteers',
+    volunteersDescription:
+      'The passionate practitioners and educators behind LDC’s meetups, editorial publications, and community facilitation.',
+    volunteers: await Promise.all([
+      {
+        _key: 'vol1',
+        name: 'Shraddha',
+        role: 'Founder',
+        image: await imageField('/images/team/Shraddha_Rawat-removebg-preview.png'),
+      },
+      {
+        _key: 'vol2',
+        name: 'Parisha',
+        role: 'Co-founder',
+        image: await imageField('/images/team/Parisha_Jain-removebg-preview.png'),
+      },
+      {
+        _key: 'vol3',
+        name: 'Miriam',
+        role: 'Meet-up Facilitator',
+        image: await imageField('/images/team/Miriam_Elnaggar-removebg-preview.png'),
+      },
+      {
+        _key: 'vol4',
+        name: 'Ragini',
+        role: 'Blog Editor',
+        image: await imageField('/images/team/Ragini_Lall.png'),
+      },
+      {
+        _key: 'vol5',
+        name: 'Jaya',
+        role: 'Blog Editor',
+        image: await imageField('/images/team/Jaya_Ramchandani.png'),
+      },
+    ]),
+  });
+  console.log('✓ communityPage');
+
   const defaultMethodologyFields = [
     { _key: 'm1', name: 'Cognitive Science', highlight: true },
     { _key: 'm2', name: 'Instructional Design', highlight: false },
@@ -398,7 +641,7 @@ async function run() {
           _key: 'sc3',
           title: 'AI-Powered Learning Enablement',
           paragraphs: [
-            'We train learning designers to enhance their design process with AI tools, improving output quality while reducing production time. We also build AI-powered chatbots for employee performance support, evaluate and select AI-enabled platforms for organisational learning, and help institutions enable students to use AI tools more effectively as part of their learning process.',
+            'We train learning designers to enhance their design process with AI tools, improving output quality while reducing production time. We also build AI-powered chatbots for employee performance support, evaluate and select AI-enabled platforms for organization al learning, and help institutions enable students to use AI tools more effectively as part of their learning process.',
           ],
         },
         {

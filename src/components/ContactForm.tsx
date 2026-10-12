@@ -4,9 +4,10 @@ import Button from './Button';
 
 interface ContactFormProps {
   dark?: boolean;
+  className?: string;
 }
 
-export default function ContactForm({ dark = true }: ContactFormProps) {
+export default function ContactForm({ dark = true, className = '' }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -15,13 +16,12 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
     name: '',
     phone: '',
     email: '',
-    organisation: '',
-    service: '',
+    organization: '',
     message: '',
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (errorMessage) {
@@ -36,8 +36,7 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
       name: '',
       phone: '',
       email: '',
-      organisation: '',
-      service: '',
+      organization: '',
       message: '',
     });
   };
@@ -67,8 +66,8 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
         phone: formData.phone,
         email: formData.email,
         reply_to: formData.email,
-        organisation: formData.organisation,
-        service: formData.service,
+        organization: formData.organization || 'N/A',
+        service: 'N/A',
         message: formData.message || 'N/A',
       };
 
@@ -91,9 +90,8 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
   if (submitted) {
     return (
       <div
-        className={`p-12 border ${
-          dark ? 'border-white/20 bg-white/5' : 'border-black/10 bg-black/[0.03]'
-        } flex flex-col items-center justify-center min-h-[400px] text-center space-y-4`}
+        className={`p-12 border ${dark ? 'border-white/20 bg-white/5' : 'border-black/10 bg-black/[0.03]'
+          } flex flex-col items-center justify-center min-h-[400px] text-center space-y-4`}
       >
         <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
           <svg
@@ -119,9 +117,8 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
         <button
           type="button"
           onClick={handleReset}
-          className={`mt-4 text-xs tracking-wider uppercase underline underline-offset-4 ${
-            dark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'
-          } transition-colors`}
+          className={`mt-4 text-xs tracking-wider uppercase underline underline-offset-4 ${dark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'
+            } transition-colors`}
         >
           Send another message
         </button>
@@ -129,37 +126,25 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
     );
   }
 
-  const inputClasses = `w-full bg-transparent border-b ${
-    dark
+  const inputClasses = `w-full bg-transparent border-b ${dark
       ? 'border-white/25 text-white placeholder:text-white/30 focus:border-white'
       : 'border-black/25 text-black placeholder:text-black/30 focus:border-near-black'
-  } py-3 font-body text-base outline-none transition-colors`;
+    } py-3 font-body text-base outline-none transition-colors`;
   const labelClasses = `section-label block mb-2 ${dark ? 'text-white/50' : 'text-black/45'}`;
-
-  const serviceOptions = [
-    'Frameworks & Courses',
-    'Faculty Enrichment',
-    'Research & Evaluation',
-    'Strategic Advisory',
-    'Multiple Services',
-    'Other',
-  ];
 
   return (
     <form
       onSubmit={handleSubmit}
-      className={`p-6 md:p-12 border ${
-        dark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
-      }`}
+      className={`p-6 md:p-12 border ${dark ? 'border-white/10 bg-white/[0.03]' : 'border-black/10 bg-black/[0.02]'
+        } ${className}`}
     >
       <div className="space-y-6">
         {errorMessage && (
           <div
-            className={`p-4 border text-sm ${
-              dark
+            className={`p-4 border text-sm ${dark
                 ? 'border-red-500/30 bg-red-500/10 text-red-300'
                 : 'border-red-500/40 bg-red-50 text-red-700'
-            }`}
+              }`}
           >
             {errorMessage}
           </div>
@@ -205,45 +190,26 @@ export default function ContactForm({ dark = true }: ContactFormProps) {
           />
         </div>
         <div>
-          <label className={labelClasses}>Organisation *</label>
+          <label className={labelClasses}>Organization (Optional)</label>
           <input
             type="text"
-            name="organisation"
-            required
-            value={formData.organisation}
+            name="organization"
+            value={formData.organization}
             onChange={handleChange}
             className={inputClasses}
-            placeholder="Your organisation"
+            placeholder="Your organization"
             disabled={isLoading}
           />
         </div>
         <div>
-          <label className={labelClasses}>Service Interest *</label>
-          <select
-            name="service"
-            required
-            value={formData.service}
-            onChange={handleChange}
-            className={`${inputClasses} cursor-pointer`}
-            disabled={isLoading}
-          >
-            <option value="">Select a service</option>
-            {serviceOptions.map((opt) => (
-              <option key={opt} value={opt} className="text-black">
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className={labelClasses}>Message</label>
+          <label className={labelClasses}>What would you like to explore?</label>
           <textarea
             name="message"
             rows={4}
             value={formData.message}
             onChange={handleChange}
             className={`${inputClasses} resize-none`}
-            placeholder="Tell us about your project"
+            placeholder="What would you like to explore?"
             disabled={isLoading}
           />
         </div>
