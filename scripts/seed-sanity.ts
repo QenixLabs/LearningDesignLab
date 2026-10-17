@@ -528,7 +528,7 @@ async function run() {
           image: await imageField(pp.path),
         }))
       ),
-      contactHeading: "Let's build learning that drives impact",
+      contactHeading: "Let's build better learning together",
     },
     'faculty-enrichment': {
       heroHeading: 'Faculty Enrichment That Changes How They Teach, Design, & Learn',
@@ -695,7 +695,7 @@ async function run() {
       contactHeading: "Let's Move From Assumptions to Evidence",
     },
     'advisory': {
-      heroHeading: 'Strategic Advisory for Large-Scale Skilling Programs',
+      heroHeading: 'Advisory for Large-Scale Skilling',
       heroSubtext: 'We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.',
       heroCtaLabel: 'Contact Us',
       heroStats: [
