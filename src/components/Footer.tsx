@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Linkedin, Mail } from 'lucide-react';
+import { Instagram, Linkedin, Mail } from 'lucide-react';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { SITE_SETTINGS_QUERY, type SanitySiteSettings } from '@/lib/sanity/queries';
 
@@ -23,9 +23,10 @@ const companyLinks = [
 
 const fallbackSettings: SanitySiteSettings = {
   contactEmail: 'shraddha@learningdesignlab.co',
-  linkedinUrl: 'https://linkedin.com',
+  linkedinUrl: 'https://www.linkedin.com/company/learningdesigners/',
+  instagramUrl: 'https://www.instagram.com/learningdesigners/',
   footerTagline:
-    "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
+    "Researcher's rigor and implementer's realism for organizations that want learning that actually works.",
 };
 
 export default function Footer() {
@@ -33,14 +34,17 @@ export default function Footer() {
 
   const contactEmail = settings?.contactEmail || fallbackSettings.contactEmail;
   const linkedinUrl = settings?.linkedinUrl || fallbackSettings.linkedinUrl;
+  const instagramUrl = settings?.instagramUrl || fallbackSettings.instagramUrl;
+  const rawTagline = settings?.footerTagline || fallbackSettings.footerTagline || '';
+  const footerTagline = rawTagline.replace(/want\s+learning/i, 'want\nlearning');
 
   return (
     <footer className="bg-black text-white relative overflow-hidden">
 
     <div className="page-margin max-content pt-24 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-8">
           {/* Logo & Tagline */}
-          <div>
+          <div className="shrink-0">
             <Link
               to="/"
               className="inline-block mb-4"
@@ -58,8 +62,8 @@ export default function Footer() {
                 className="h-20 w-auto"
               />
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              {settings.footerTagline || fallbackSettings.footerTagline}
+            <p className="text-white/50 text-sm leading-relaxed max-w-[270px] whitespace-pre-line">
+              {footerTagline}
             </p>
           </div>
 
@@ -127,16 +131,30 @@ export default function Footer() {
               >
                 <Mail className="w-5 h-5" />
               </a>
-              <a
-                href={linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-pink transition-colors inline-flex items-center"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+              {linkedinUrl && (
+                <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-pink transition-colors inline-flex items-center"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {instagramUrl && (
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-pink transition-colors inline-flex items-center"
+                  aria-label="Instagram"
+                  title="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
             </div>
           </div>
         </div>

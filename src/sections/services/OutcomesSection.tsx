@@ -2,66 +2,134 @@ import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
 const EngagementIcon = () => (
-  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24">
-    <circle cx="32" cy="20" r="7" stroke="#E5009C" strokeWidth="2.5" />
+  <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[68px] h-[68px]">
+    {/* Center Leader / Learner */}
+    <circle cx="28" cy="18" r="5.5" stroke="#E5009C" strokeWidth="2.25" />
     <path
-      d="M20 48c0-8 5.5-13 12-13s12 5 12 13"
+      d="M18 39c0-5.5 4.5-9 10-9s10 3.5 10 9"
       stroke="#6B7280"
-      strokeWidth="2.5"
+      strokeWidth="2.25"
       strokeLinecap="round"
     />
-    <circle cx="48" cy="26" r="5" stroke="#E5009C" strokeWidth="2" />
-    <path d="M54 46c0-6-4-10-9-10" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" />
-    <circle cx="16" cy="26" r="5" stroke="#E5009C" strokeWidth="2" />
-    <path d="M10 46c0-6 4-10 9-10" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" />
+    {/* Left Peer */}
+    <circle cx="15" cy="22" r="4" stroke="#6B7280" strokeWidth="2" />
+    <path
+      d="M8 39c0-4 3-7 7-7 2 0 3.7.8 4.8 2.2"
+      stroke="#6B7280"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    {/* Right Peer */}
+    <circle cx="41" cy="22" r="4" stroke="#6B7280" strokeWidth="2" />
+    <path
+      d="M48 39c0-4-3-7-7-7-2 0-3.7.8-4.8 2.2"
+      stroke="#6B7280"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    {/* Completion spark at top */}
+    <path
+      d="M28 5v5m-2.5-2.5h5"
+      stroke="#E5009C"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+    />
+    <circle cx="28" cy="7.5" r="1.25" fill="#E5009C" />
   </svg>
 );
 
-const RetentionIcon = () => (
-  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24">
+const CompetencyIcon = () => (
+  <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[68px] h-[68px]">
+    {/* Target concentric rings */}
+    <circle cx="28" cy="28" r="19" stroke="#6B7280" strokeWidth="1.75" strokeDasharray="3 3" opacity="0.6" />
+    <circle cx="28" cy="28" r="13" stroke="#6B7280" strokeWidth="2.25" />
+    <circle cx="28" cy="28" r="5.5" stroke="#E5009C" strokeWidth="2.25" fill="#E5009C" fillOpacity="0.15" />
+    {/* Crosshairs */}
+    <path d="M28 6v5M28 45v5M6 28h5M45 28h5" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" />
+    {/* Upward measurement gain arrow */}
     <path
-      d="M32 10c-11 0-20 9-20 20s9 20 20 20 20-9 20-20S43 10 32 10z"
-      stroke="#6B7280"
-      strokeWidth="2.5"
-    />
-    <path
-      d="M24 30c0-3 3.5-6 8-6s8 3 8 6-3.5 6-8 6-8-3-8-6z"
+      d="M17 37l9-9 6 4 11-11"
       stroke="#E5009C"
       strokeWidth="2.5"
       strokeLinecap="round"
+      strokeLinejoin="round"
     />
-    <circle cx="26" cy="22" r="2" fill="#E5009C" />
-    <circle cx="38" cy="22" r="2" fill="#E5009C" />
-    <path d="M28 42c1.5 1 4.5 1 8 0" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" />
+    <path
+      d="M36 12h7v7"
+      stroke="#E5009C"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-const BehaviorIcon = () => (
-  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24">
-    <path d="M14 48h36" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M20 48V36" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M32 48V28" stroke="#E5009C" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M44 48V32" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
-    <circle cx="32" cy="22" r="5" stroke="#E5009C" strokeWidth="2.5" />
-    <path d="M35 20l-3 4-2-2" stroke="#E5009C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+const RetentionTransferIcon = () => (
+  <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[68px] h-[68px]">
+    {/* Knowledge / Memory base */}
+    <path
+      d="M19 16a6 6 0 0 0-6 6c0 1.2.4 2.3 1 3.2A6 6 0 0 0 13 32a6 6 0 0 0 6 6h1a4.5 4.5 0 0 0 4.5-4.5v-13A4.5 4.5 0 0 0 19 16z"
+      stroke="#6B7280"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M19 23a2.5 2.5 0 1 0 0-5M19 33a2.5 2.5 0 1 0 0-5"
+      stroke="#6B7280"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+    />
+    {/* Transfer Bridge */}
+    <path
+      d="M26 28h9"
+      stroke="#E5009C"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeDasharray="2.5 3.5"
+    />
+    <path
+      d="M32 24.5l3.5 3.5-3.5 3.5"
+      stroke="#E5009C"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    {/* Practical Application checkmark node */}
+    <circle cx="42" cy="28" r="6.5" stroke="#E5009C" strokeWidth="2.25" fill="#E5009C" fillOpacity="0.15" />
+    <path
+      d="M39.5 28l2 2 3.5-3.5"
+      stroke="#E5009C"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-const ROIIcon = () => (
-  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24">
-    <path d="M12 48h40" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M16 48V38" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M28 48V30" stroke="#E5009C" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M40 48V22" stroke="#E5009C" strokeWidth="2.5" strokeLinecap="round" />
-    <path d="M40 14l8 8m0 0l-8 8m8-8H42" stroke="#E5009C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+const FrameworksIcon = () => (
+  <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[68px] h-[68px]">
+    {/* Modular building blocks */}
+    <rect x="9" y="34" width="17" height="11" rx="2" stroke="#6B7280" strokeWidth="2.25" />
+    <rect x="30" y="34" width="17" height="11" rx="2" stroke="#6B7280" strokeWidth="2.25" />
+    <rect x="19.5" y="21" width="17" height="11" rx="2" stroke="#6B7280" strokeWidth="2.25" />
+    {/* Top scalable framework module */}
+    <rect x="19.5" y="8" width="17" height="11" rx="2" stroke="#E5009C" strokeWidth="2.25" fill="#E5009C" fillOpacity="0.15" />
+    {/* System nodes */}
+    <circle cx="28" cy="13.5" r="1.75" fill="#E5009C" />
+    <circle cx="28" cy="26.5" r="1.75" fill="#6B7280" />
+    <circle cx="17.5" cy="39.5" r="1.75" fill="#6B7280" />
+    <circle cx="38.5" cy="39.5" r="1.75" fill="#6B7280" />
+    {/* Scaling arrow */}
+    <path d="M40 16l6-6m0 0v5m0-5h-5" stroke="#E5009C" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const outcomeIcons: React.FC[] = [
   EngagementIcon,
-  RetentionIcon,
-  BehaviorIcon,
-  ROIIcon,
+  CompetencyIcon,
+  RetentionTransferIcon,
+  FrameworksIcon,
 ];
 
 const defaultOutcomes = [
@@ -103,8 +171,8 @@ export default function OutcomesSection({
                   <div className="aspect-[4/3] bg-warm-grey flex items-center justify-center">
                     <Icon />
                   </div>
-                  <div className="p-6 flex items-center justify-center min-h-[100px]">
-                    <h3 className="heading-md text-black text-center">{title}</h3>
+                  <div className="p-5 flex items-center justify-center min-h-[88px]">
+                    <h3 className="font-body text-[15px] font-medium text-black text-center leading-snug">{title}</h3>
                   </div>
                 </div>
               </ScrollReveal>

@@ -60,13 +60,16 @@ export default function ContactForm({ dark = true, className = '' }: ContactForm
 
     try {
       // Common template parameters mapped for flexibility in EmailJS templates
+      const orgValue = formData.organization?.trim() || 'N/A';
       const templateParams = {
         name: formData.name,
         from_name: formData.name,
         phone: formData.phone,
         email: formData.email,
         reply_to: formData.email,
-        organization: formData.organization || 'N/A',
+        organization: orgValue,
+        organisation: orgValue, // Matches {{organisation}} (with 's') in EmailJS template
+        company: orgValue,
         service: 'N/A',
         message: formData.message || 'N/A',
       };
@@ -209,7 +212,7 @@ export default function ContactForm({ dark = true, className = '' }: ContactForm
             value={formData.message}
             onChange={handleChange}
             className={`${inputClasses} resize-none`}
-            placeholder="What would you like to explore?"
+            placeholder="Message"
             disabled={isLoading}
           />
         </div>

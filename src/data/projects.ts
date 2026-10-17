@@ -106,7 +106,7 @@ export const cardSections: CardSection[] = [
     ],
   },
   {
-    title: 'Workshops',
+    title: 'Our Work, Workshops and Beyond',
     projects: [
       {
         client: 'UNESCO MGIEP',

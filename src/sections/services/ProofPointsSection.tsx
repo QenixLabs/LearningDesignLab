@@ -22,7 +22,7 @@ const defaultProjects: ProofPointItem[] = [
     fit: 'contain',
   },
   {
-    title: 'A scenario based gamified course on gender for youth in colombia',
+    title: 'A scenario based gamified course on gender for youth in Colombia',
     image: '/images/verticals/A scenerio based .jpg',
   },
   {
@@ -71,7 +71,7 @@ export default function ProofPointsSection({
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
-          <h2 className="font-body text-[14px] leading-[23px] font-medium text-black mb-16">
+          <h2 className="heading-xl text-black mb-16 max-w-[70ch] mx-auto text-center">
             {heading}
           </h2>
         </ScrollReveal>

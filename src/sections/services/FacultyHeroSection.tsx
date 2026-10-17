@@ -27,8 +27,8 @@ const defaultStats: FacultyHeroStat[] = [
 ];
 
 export default function FacultyHeroSection({
-  heading = 'Faculty Enrichment That Changes How They Teach, Design, & Learn',
-  subtext = 'We partner with universities and faculty development cells to design and deliver workshops that shift teaching practice. Grounded in evidence and global best practices. Built for immediate application.',
+  heading = 'Faculty Enrichment That Changes How They Teach',
+  subtext = 'We offer online and in-person workshops for faculty that shift their teaching practice. Grounded in evidence and global best practices. Built for immediate application.',
   ctaLabel = 'Contact Us',
   stats,
   footnote = '*Impact of our workshops based on pre- and post-surveys.',

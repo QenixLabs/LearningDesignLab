@@ -40,7 +40,7 @@ export default function AdvisoryPage() {
         ctaHref={doc?.exampleProjectsCtaHref ?? undefined}
       />
       <TestimonialsSection />
-      <ContactSection title={doc?.contactHeading ?? undefined} />
+      <ContactSection title={doc?.contactHeading ?? "Let’s Design for Adoption, Not Just Delivery"} />
     </Layout>
   );
 }

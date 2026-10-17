@@ -14,10 +14,10 @@ import {
   ExternalLink,
   ChevronRight,
 } from 'lucide-react';
-import ContactSection from '@/sections/home/ContactSection';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { COMMUNITY_PAGE_QUERY, type SanityCommunityPage } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
+import ContactSectionLDC from '@/sections/home/ContactSectionLDC';
 
 function getYoutubeThumbnail(url?: string): string | null {
   if (!url) return null;
@@ -97,30 +97,21 @@ export default function Community() {
   // Cross-Country Education Dialogues
   const defaultDialogues = [
     {
-      countries: ['11 Countries', 'Nigeria', 'India', 'Canada'],
       title: 'Dialogues on Education: Shaping the Future',
       excerpt:
         'What happens when education leaders pause to deeply reflect? In partnership with Bohmian Dialogue facilitator Hidde van der Pol, senior educators from 11 countries explore the evolving role of educators.',
-      highlight:
-        'With the rapid advancement of AI, should educators focus on teaching core content, or partner with students to prepare them for the future?',
       url: 'https://www.linkedin.com/posts/learningdesigners_dialogues-on-education-by-ldc-activity-7259137131485224960-5Jow?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAMHxpgBIvb5YqrwQlo35BLMcSl2b9WUssE',
     },
     {
-      countries: ['11 Countries', 'Global South', 'Sustainability'],
       title: 'What Should Education Stand for in Today’s World?',
       excerpt:
         'Senior educators from 11 countries examine how education must evolve beyond rote knowledge to address widening socio-economic divides, technological growth, and sustainable thinking.',
-      highlight:
-        'Emerging initiatives: Collaborative dialogues for educators, a research paper on evolving perspectives, and institutional capacity-building programs.',
       url: 'https://www.linkedin.com/posts/learningdesigners_ldccross-country-education-dialogues-activity-7285279596449513472-tn4y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAMHxpgBIvb5YqrwQlo35BLMcSl2b9WUssE',
     },
     {
-      countries: ['International', 'AI in Learning', 'Fortnightly Dialogues'],
       title: 'AI & Education: Cultivating Depth in an Age of Convenience',
       excerpt:
         'What many consider "misuse of AI" reflects our human tendency to seek shortcuts. Fortnightly cross-country dialogues explore how education and learning designs can cultivate depth over convenience.',
-      highlight:
-        'What role can education play in cultivating human depth, stillness, and critical inquiry in an age of effortless shortcuts?',
       url: 'https://www.linkedin.com/posts/learningdesigners_ai-and-education-insights-activity-7318490918674657284-reis?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFeJLrcBYXYQxmZU_e-vujRlAbeYTbG9HCc',
     },
   ];
@@ -128,10 +119,8 @@ export default function Community() {
   const dialogues =
     sanityData?.dialogues && sanityData.dialogues.length > 0
       ? sanityData.dialogues.map((d) => ({
-          countries: d.countries || ['International'],
           title: d.title,
           excerpt: d.excerpt || '',
-          highlight: d.highlight || '',
           url: d.url,
         }))
       : defaultDialogues;
@@ -223,6 +212,7 @@ export default function Community() {
       role: 'Educational Scientist & Cognitive Researcher',
       affiliation: 'University of Toronto',
       bio: 'Author and leading researcher specializing in the Science of Learning, microlearning design, and evidence-informed instructional strategies.',
+      image: '/images/team/Nidhi.png',
       initials: 'NS',
     },
     {
@@ -340,7 +330,7 @@ export default function Community() {
 
             {/* H1 Heading */}
             <ScrollReveal delay={0.1}>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] font-bold text-white tracking-tight mb-8">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[50px] leading-[1.12] font-bold text-white tracking-tight max-w-3xl mx-auto mb-6">
                 {sanityData?.heroTitle || 'Join a Global Community of Learning Professionals & Educators'}
               </h1>
             </ScrollReveal>
@@ -348,16 +338,16 @@ export default function Community() {
             {/* Core Narrative */}
             <ScrollReveal delay={0.2}>
               {sanityData?.heroDescription ? (
-                <div className="space-y-4 max-w-3xl mx-auto mb-10">
+                <div className="space-y-4 max-w-2xl mx-auto mb-8">
                   {sanityData.heroDescription.split('\n\n').map((para, idx) => (
-                    <p key={idx} className="font-body text-base md:text-lg text-white/80 leading-relaxed">
+                    <p key={idx} className="font-body text-sm sm:text-base text-white/80 leading-relaxed">
                       {para}
                     </p>
                   ))}
                 </div>
               ) : (
                 <>
-                  <p className="font-body text-base md:text-lg text-white/80 leading-relaxed max-w-3xl mx-auto mb-6">
+                  <p className="font-body text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl mx-auto mb-4">
                     Learning Designers Community (LDC) is a network of{' '}
                     <span className="text-pink font-semibold">7,500+ educators, practitioners, and researchers</span>{' '}
                     across <span className="text-white font-semibold">50+ countries</span>, hosted by professionals
@@ -365,7 +355,7 @@ export default function Community() {
                     LDC one of the few cross-sectoral networks dedicated to bridging research and practice and advancing
                     innovative and impactful learning experiences worldwide.
                   </p>
-                  <p className="font-body text-sm md:text-base text-white/60 leading-relaxed max-w-2xl mx-auto mb-10">
+                  <p className="font-body text-xs sm:text-sm text-white/60 leading-relaxed max-w-xl mx-auto mb-8">
                     Join LDC’s peer-learning sessions, monthly expert talks, member meetups, async conversations,
                     learning design job postings, and the Global South Learning Voices blog.
                   </p>
@@ -552,9 +542,7 @@ export default function Community() {
           {/* ACTIVITY 2: Cross-Country Education Dialogues */}
           <div className="mb-14 md:mb-16 pt-2">
             <div className="max-w-3xl mb-8">
-              <span className="font-body text-xs uppercase tracking-wider text-pink font-semibold block mb-2">
-                {sanityData?.dialoguesLabel || 'International Exchanges'}
-              </span>
+             
               <h3 className="font-display text-2xl md:text-3xl font-bold text-black tracking-tight mb-3">
                 {sanityData?.dialoguesHeading || 'Cross-Country Education Dialogues'}
               </h3>
@@ -575,28 +563,6 @@ export default function Community() {
                   className="group bg-white border border-black/10 rounded-xl p-6 flex flex-col justify-between hover:border-pink/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block cursor-pointer"
                 >
                   <div>
-                    {/* Country tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {item.countries.map((c) => (
-                        <span
-                          key={c}
-                          className="px-2.5 py-0.5 rounded text-[11px] font-body font-medium bg-[#f0f0f3] text-black/70 border border-black/5"
-                        >
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="flex items-center gap-1.5">
-                        <Linkedin className="w-4 h-4 text-[#0077B5]" />
-                        <span className="text-[11px] font-body text-black/50 uppercase tracking-wider font-medium">
-                          LinkedIn Dialogue Post
-                        </span>
-                      </div>
-                      <ExternalLink className="w-3.5 h-3.5 text-black/30 group-hover:text-pink transition-colors" />
-                    </div>
-
                     <h4 className="font-display text-base md:text-lg font-bold text-black mb-3 group-hover:text-pink transition-colors">
                       {item.title}
                     </h4>
@@ -606,21 +572,10 @@ export default function Community() {
                     </p>
                   </div>
 
-                  <div>
-                    <div className="p-3 rounded-lg bg-pink/5 border border-pink/15 mb-3">
-                      <span className="font-body text-[10px] uppercase tracking-wider text-pink block mb-1 font-semibold">
-                        Key Takeaway
-                      </span>
-                      <p className="font-body text-xs text-black/80 italic leading-relaxed">
-                        "{item.highlight}"
-                      </p>
-                    </div>
-
                     <div className="pt-2 border-t border-black/5 flex items-center justify-between text-xs font-body font-semibold text-[#0077B5] group-hover:text-pink transition-colors">
                       <span>View post on LinkedIn</span>
                       <ChevronRight className="w-4 h-4 text-black/40 group-hover:text-pink group-hover:translate-x-0.5 transition-transform" />
                     </div>
-                  </div>
                 </a>
               ))}
             </div>
@@ -631,9 +586,7 @@ export default function Community() {
             <div className="bg-white border border-black/10 rounded-2xl p-8 md:p-12 overflow-hidden relative">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <div className="lg:col-span-7">
-                  <span className="font-body text-xs uppercase tracking-wider text-pink font-semibold block mb-2">
-                    {sanityData?.meetupsLabel || 'Monthly Peer Learning'}
-                  </span>
+             
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-black tracking-tight mb-4">
                     {sanityData?.meetupsHeading || 'Learning Professionals Meetups'}
                   </h3>
@@ -714,9 +667,7 @@ export default function Community() {
           <div className="mb-14 md:mb-16">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
               <div className="max-w-2xl">
-                <span className="section-label-pink mb-2 block">
-                  {sanityData?.blogLabel || 'Publications & Research'}
-                </span>
+             
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight mb-4">
                   {sanityData?.blogHeading || "Global South's Learning Blog & Newsletter"}
                 </h3>
@@ -800,9 +751,6 @@ export default function Community() {
               <div className="w-12 h-12 rounded-xl bg-pink/10 border border-pink/20 text-pink flex items-center justify-center mb-6">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <span className="font-body text-xs uppercase tracking-wider text-pink font-semibold block mb-2">
-                {sanityData?.readingClubLabel || 'Evidence-Informed Practice'}
-              </span>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-black mb-4">
                 {sanityData?.readingClubHeading || 'Reading Club'}
               </h3>
@@ -825,9 +773,6 @@ export default function Community() {
             <div className="lg:col-span-7">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                 <div>
-                  <span className="font-body text-xs uppercase tracking-wider text-pink font-semibold block mb-1">
-                    {sanityData?.expertPostersLabel || 'Knowledge Hub'}
-                  </span>
                   <h3 className="font-display text-2xl font-bold text-black">
                     {sanityData?.expertPostersHeading || 'Events, Resources, & Expert Insights'}
                   </h3>
@@ -877,10 +822,6 @@ export default function Community() {
                             <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-body uppercase tracking-wider bg-black/5 text-black/70 font-semibold">
                               {poster.badge}
                             </span>
-                            <span className="text-[11px] font-body text-black/40 flex items-center gap-1 group-hover:text-pink transition-colors">
-                              <span>LinkedIn Post</span>
-                              <ExternalLink className="w-3 h-3" />
-                            </span>
                           </div>
                           <h4 className="font-display text-base sm:text-lg font-bold text-black mb-1 group-hover:text-pink transition-colors line-clamp-2">
                             {poster.title}
@@ -911,10 +852,7 @@ export default function Community() {
           {/* ACTIVITY 7: WhatsApp Community & Job Postings (PDF Page 4) */}
           <div className="mt-14 md:mt-16 p-6 md:p-10 rounded-2xl bg-gradient-to-r from-[#128C7E]/10 via-[#25D366]/5 to-transparent border border-[#25D366]/20 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/20 text-[#128C7E] font-body text-xs font-semibold uppercase tracking-wider mb-3">
-                <MessageCircle className="w-3.5 h-3.5" />
-                {sanityData?.whatsappHubLabel || 'WhatsApp Community Hub'}
-              </div>
+             
               <h3 className="font-display text-2xl md:text-3xl font-bold text-black mb-3">
                 {sanityData?.whatsappHubHeading || 'Group Discussions, Resources and Global Job Postings'}
               </h3>
@@ -941,9 +879,7 @@ export default function Community() {
       <section className="bg-[#f8f9fa] py-12 md:py-16 border-b border-black/10">
         <div className="page-margin max-content">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="section-label-pink mb-2 block">
-              {sanityData?.advisorsLabel || 'Guidance & Scientific Rigor'}
-            </span>
+           
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
               {sanityData?.advisorsHeading || 'Our Advisors'}
             </h2>
@@ -990,9 +926,7 @@ export default function Community() {
       <section className="bg-white py-12 md:py-16">
         <div className="page-margin max-content">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="section-label-pink mb-2 block">
-              {sanityData?.volunteersLabel || 'The Driving Force'}
-            </span>
+           
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
               {sanityData?.volunteersHeading || 'Our Volunteers'}
             </h2>
@@ -1033,7 +967,7 @@ export default function Community() {
           </div>
         </div>
       </section>
-      <ContactSection />
+      <ContactSectionLDC />
     </Layout>
   );
 }

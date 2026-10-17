@@ -77,7 +77,7 @@ export const services: Record<string, ServiceData> = {
     title: 'Faculty & Teacher Enrichment',
     description: 'We facilitate hands-on workshops on the Science of Learning, Universal Design for Learning (UDL), assessment design for the AI Era, AI applications for teaching and research. We equip faculty in schools and universities with evidence-based strategies to make their teaching practice more effective and boost student outcomes.',
     items: facultyEnrichmentItems,
-    itemsHeading: 'Our workshops',
+    itemsHeading: 'Our Work, Workshops and Beyond',
     differentiator: 'Most faculty development programmes are delivered by pure researchers with no practical teaching experience, or practitioners disconnected from the latest evidence. We bridge research and practice.',
     cta: 'Enquire about faculty workshops',
     dark: true,

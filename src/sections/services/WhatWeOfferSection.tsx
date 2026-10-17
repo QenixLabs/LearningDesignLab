@@ -62,7 +62,7 @@ export default function WhatWeOfferSection({
         })
       : defaultOfferings;
 
-  const totalSlots = Math.max(10, Math.ceil(displayItems.length / 2) * 2);
+  const totalSlots = Math.ceil(displayItems.length / 2) * 2;
 
   return (
     <section className="bg-white pt-8 pb-20 md:pt-12 md:pb-28 relative overflow-hidden">

@@ -61,8 +61,8 @@ export default function AdvisoryServicesSection({
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {serviceItems.map((service, i) => (
             <ScrollReveal key={service.title} delay={0.1 * i}>
-              <div className="border border-pink/20 rounded-2xl p-6 h-full transition-colors hover:bg-pink/[0.02]">
-                <h3 className="font-display text-lg font-semibold text-black leading-snug mb-6">
+              <div className="group h-full bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-pink hover:shadow-pink/10">
+                <h3 className="font-display text-lg font-semibold text-black leading-snug mb-6 group-hover:text-pink transition-colors">
                   {service.title}
                 </h3>
                 {service.paragraphs.map((p, j) => (

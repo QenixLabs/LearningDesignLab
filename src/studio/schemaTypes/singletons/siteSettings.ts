@@ -23,6 +23,12 @@ export const siteSettings = defineType({
       group: 'general',
     }),
     defineField({
+      name: 'instagramUrl',
+      title: 'Instagram URL',
+      type: 'url',
+      group: 'general',
+    }),
+    defineField({
       name: 'footerTagline',
       title: 'Footer tagline',
       type: 'text',
