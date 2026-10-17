@@ -167,6 +167,7 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
         heading={doc?.methodologyHeading ?? undefined}
         fields={doc?.methodologyFields ?? undefined}
       />
+      
       {serviceId !== 'faculty-enrichment' && (
         <>
           <TargetSectorsSection
@@ -196,6 +197,8 @@ export default function ServicePage({ serviceId, blank = false }: ServicePagePro
       )}
       {serviceId === 'faculty-enrichment' ? (
         <ContactSection title={doc?.contactHeading ?? "Your Educators Are Working Hard. Let's Ensure Their Efforts Pay Off."} />
+      ) : serviceId === 'course-development' ? (
+        <ContactSection title={doc?.contactHeading ?? "Let's build better learning together"} />
       ) : (
         <ContactSection title={doc?.contactHeading ?? undefined} />
       )}

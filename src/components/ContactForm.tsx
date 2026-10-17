@@ -212,7 +212,7 @@ export default function ContactForm({ dark = true, className = '' }: ContactForm
             value={formData.message}
             onChange={handleChange}
             className={`${inputClasses} resize-none`}
-            placeholder="What would you like to explore?"
+            placeholder="Message"
             disabled={isLoading}
           />
         </div>

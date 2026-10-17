@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import NeuronPattern from '../components/NeuronPattern';
 import Button from '../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
@@ -52,10 +53,11 @@ export default function Conferences() {
 
   return (
     <Layout>
-      <section className="bg-white py-20 md:py-32">
-        <div className="page-margin max-content">
+      <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+        <NeuronPattern opacity={0.09} />
+        <div className="page-margin max-content relative z-10">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
+            <h1 className="page-heading text-black mb-6">{copy.heading}</h1>
             {copy.intro && (
               <p className="font-body text-[16px] leading-[23px] text-black/70">
                 {copy.intro}
@@ -81,13 +83,13 @@ export default function Conferences() {
                       isReversed && 'md:order-2'
                     )}
                   >
-                    <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-black leading-tight mb-2">
+                    <h2 className="font-display text-xl md:text-2xl lg:text-[28px] font-semibold text-black leading-tight mb-2">
                       {conf.title}
                     </h2>
-                    <p className="font-body text-sm text-black/50 mb-1">
+                    <h3 className="font-body text-sm md:text-[15px] text-black/50 font-normal mb-1">
                       {conf.year && `${conf.year} · `}
                       {conf.location}
-                    </p>
+                    </h3>
                     {showContent && (
                       <>
                         <p className="font-body text-[14px] leading-[23px] text-black/70 mt-4 mb-6">

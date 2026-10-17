@@ -1,4 +1,5 @@
 import ScrollReveal from '../../components/ScrollReveal';
+import NeuronPattern from '../../components/NeuronPattern';
 import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
@@ -55,14 +56,19 @@ export default function ProjectsList() {
     'GIZ & Swayam': '/projects/ai-data-science-course',
   };
 
+  const SECTION_DISPLAY_TITLES: Record<string, string> = {
+    Workshops: 'Our Work, Workshops and Beyond',
+    'Our Work, Workshops and Beyond': 'Our Work, Workshops and Beyond',
+  };
+
   // Section titles must match the schema's options.list in src/studio/schemaTypes/collections/project.ts
   const cardSections =
     rawProjects.length > 0
       ? ['Courses & Curricula', 'Workshops', 'Research, Evaluation, & Knowledge Products']
           .map((sectionTitle) => ({
-            title: sectionTitle,
+            title: SECTION_DISPLAY_TITLES[sectionTitle] || sectionTitle,
             projects: rawProjects
-              .filter((p) => p.section === sectionTitle)
+              .filter((p) => p.section === sectionTitle || p.section === SECTION_DISPLAY_TITLES[sectionTitle])
               .map((p) => {
                 const caseStudyHref =
                   p.caseStudy?.slug
@@ -87,7 +93,10 @@ export default function ProjectsList() {
               }),
           }))
           .filter((s) => s.projects.length > 0)
-      : fallbackSections;
+      : fallbackSections.map((s) => ({
+          ...s,
+          title: SECTION_DISPLAY_TITLES[s.title] || s.title,
+        }));
 
   const { data: copy } = useSanityQuery<SanityPageCopy>(
     PAGE_COPY_QUERY,
@@ -101,11 +110,12 @@ export default function ProjectsList() {
   );
 
   return (
-    <section className="bg-white py-20 md:py-32">
-      <div className="page-margin max-content">
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
+      <NeuronPattern opacity={0.09} />
+      <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
-            <h1 className="font-display text-[36px] leading-[38px] font-medium text-black mb-6">{copy.heading}</h1>
+            <h1 className="page-heading text-black mb-6">{copy.heading}</h1>
             {copy.intro && (
               <p className="font-body text-[16px] leading-[23px] text-black/70">
                 {copy.intro}
@@ -119,7 +129,7 @@ export default function ProjectsList() {
           {cardSections.map((section) => (
             <div key={section.title}>
               <ScrollReveal>
-                <h2 className="display-md text-black mb-10 md:mb-16">
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-medium text-black mb-10 md:mb-16 text-center tracking-tight leading-tight">
                   {section.title}
                 </h2>
               </ScrollReveal>
@@ -142,7 +152,7 @@ export default function ProjectsList() {
                             isReversed ? 'md:order-2' : 'md:order-1'
                           )}
                         >
-                          <h3 className="font-display text-xl md:text-3xl lg:text-4xl font-semibold text-black leading-tight mb-2">
+                          <h3 className="font-display text-xl md:text-2xl lg:text-[26px] font-semibold text-black leading-tight mb-2">
                             {project.client}
                           </h3>
                           <h4 className="font-display text-sm md:text-base text-pink mb-6">

@@ -511,7 +511,7 @@ async function run() {
             path: '/images/projects/UNESCO_Myanmar_collage.png',
           },
           {
-            title: 'A scenario based gamified course on gender for youth in colombia',
+            title: 'A scenario based gamified course on gender for youth in Colombia',
             path: '/images/verticals/A scenerio based .jpg',
           },
           {
@@ -542,7 +542,7 @@ async function run() {
         'The standard faculty development program runs like this: a trainer presents slides, faculty take notes, everyone leaves with good intentions and a PDF. Six weeks later, nothing in the classroom has changed.',
         "That's a design problem. When workshops are 90% information and 10% practice – delivered without clear behavioral goals, content-mapping, application, or follow-through – they only produce awareness, not behavior change.",
       ],
-      workshopsHeading: 'Our Workshops',
+      workshopsHeading: 'Our Work, Workshops and Beyond',
       workshops: [
         {
           _key: 'w1',

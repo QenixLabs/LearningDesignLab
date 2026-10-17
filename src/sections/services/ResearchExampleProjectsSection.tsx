@@ -55,11 +55,11 @@ export default function ResearchExampleProjectsSection({
           </h2>
         </ScrollReveal>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {projectList.map(({ title, image }, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
-              <div className={`flex items-center gap-6 py-8 ${i > 0 ? 'border-t border-pink/20' : ''}`}>
-                <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
                   {image ? (
                     <img
                       src={image}

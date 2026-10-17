@@ -18,6 +18,7 @@ export const servicePage = defineType({
     { name: 'sectorsOutcomes', title: 'Sectors & Outcomes' },
     { name: 'socialProof', title: 'Partners' },
     { name: 'contact', title: 'Contact' },
+    
   ],
   fields: [
     defineField({
@@ -370,7 +371,10 @@ export const servicePage = defineType({
       type: 'string',
       group: 'contact',
       description: 'Custom CTA heading on this service page',
+      hidden: ({ document }) => document?.serviceId !== 'faculty-enrichment',
     }),
+
+    
   ],
   preview: { select: { title: 'title' } },
 });

@@ -35,18 +35,18 @@ interface FacultyWorkshopsSectionProps {
 }
 
 export default function FacultyWorkshopsSection({
-  heading = 'Our Workshops',
+  heading = 'Workshops',
   workshops,
 }: FacultyWorkshopsSectionProps) {
   const workshopItems = workshops && workshops.length > 0 ? workshops : defaultWorkshops;
 
   return (
-    <section className="bg-warm-grey pt-12 pb-20 md:pt-16 md:pb-28 relative overflow-hidden">
+    <section className="bg-warm-grey pt-12 pb-6 md:pt-16 relative overflow-hidden">
       <NeuronMotif color="#000000" opacity={0.04} size={220} />
 
       <div className="page-margin max-content relative z-10">
         <ScrollReveal delay={0.1}>
-          <h2 className="heading-xl text-black mb-10 md:mb-16">
+          <h2 className="heading-xl text-black mb-10 md:mb-16 text-center">
             {heading}
           </h2>
         </ScrollReveal>

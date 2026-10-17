@@ -165,6 +165,7 @@ export const TESTIMONIALS_QUERY = `
 export interface SanitySiteSettings {
   contactEmail: string;
   linkedinUrl?: string;
+  instagramUrl?: string;
   footerTagline?: string;
   siteTitle?: string;
   metaDescription?: string;
@@ -177,6 +178,7 @@ export const SITE_SETTINGS_QUERY = `
   *[_id == "siteSettings"][0] { 
     contactEmail, 
     linkedinUrl, 
+    instagramUrl,
     footerTagline,
     siteTitle,
     metaDescription,
