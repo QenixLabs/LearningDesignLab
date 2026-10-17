@@ -421,6 +421,8 @@ async function run() {
         image: await imageField('/images/team/Jaya_Ramchandani.png'),
       },
     ]),
+    contactHeading: 'Contribute to LDC',
+    contactSubtext: "Submit your contact details. We'll get back to you within 7 working days.",
   });
   console.log('✓ communityPage');
 

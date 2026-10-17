@@ -12,6 +12,7 @@ export const communityPage = defineType({
     { name: 'publications', title: 'Blog & Reading Club' },
     { name: 'communityHub', title: 'WhatsApp Hub' },
     { name: 'advisorsVolunteers', title: 'Advisors & Volunteers' },
+    { name: 'contact', title: 'Contact Section' },
   ],
   fields: [
     // --- Hero & Socials ---
@@ -455,6 +456,30 @@ export const communityPage = defineType({
           preview: { select: { title: 'name', subtitle: 'role', media: 'image' } },
         },
       ],
+    }),
+
+    // --- Contact Section ---
+    defineField({
+      name: 'contactHeading',
+      title: 'Contact Heading',
+      type: 'string',
+      group: 'contact',
+      initialValue: 'Contribute to LDC',
+    }),
+    defineField({
+      name: 'contactSubtext',
+      title: 'Contact Subtext',
+      type: 'text',
+      rows: 2,
+      group: 'contact',
+      initialValue: "Submit your contact details. We'll get back to you within 7 working days.",
+    }),
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      description: 'Optional custom email for community inquiries (defaults to site settings email)',
+      type: 'string',
+      group: 'contact',
     }),
   ],
 });

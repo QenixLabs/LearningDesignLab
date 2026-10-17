@@ -967,7 +967,11 @@ export default function Community() {
           </div>
         </div>
       </section>
-      <ContactSectionLDC />
+      <ContactSectionLDC
+        heading={sanityData?.contactHeading}
+        subtext={sanityData?.contactSubtext}
+        email={sanityData?.contactEmail}
+      />
     </Layout>
   );
 }
