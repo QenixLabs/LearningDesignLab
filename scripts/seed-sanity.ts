@@ -77,9 +77,13 @@ async function run() {
     _id: 'siteSettings',
     _type: 'siteSettings',
     contactEmail: 'shraddha@learningdesignlab.co',
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: 'https://www.linkedin.com/company/learningdesigners/',
+    instagramUrl: 'https://www.instagram.com/learningdesigners/',
     footerTagline:
-      "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
+      "Researcher's rigor and implementer's realism for organizations that want learning that actually works.",
+    siteTitle: 'Learning Design Lab',
+    metaDescription:
+      'An impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions.',
   });
   console.log('✓ siteSettings');
 
@@ -776,7 +780,7 @@ async function run() {
       ),
       exampleProjectsCtaText: 'See All Our Projects',
       exampleProjectsCtaHref: '/projects',
-      contactHeading: "Let's build learning that drives impact",
+      contactHeading: "Let’s Design for Adoption, Not Just Delivery",
     },
   };
 
