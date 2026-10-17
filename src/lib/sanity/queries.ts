@@ -474,6 +474,9 @@ export interface SanityCommunityPage {
   volunteersHeading?: string;
   volunteersDescription?: string;
   volunteers?: SanityCommunityVolunteer[];
+  contactHeading?: string;
+  contactSubtext?: string;
+  contactEmail?: string;
 }
 
 export const COMMUNITY_PAGE_QUERY = `
@@ -487,6 +490,7 @@ export const COMMUNITY_PAGE_QUERY = `
     expertPostersLabel, expertPostersHeading, expertPostersDescription, expertPosters,
     whatsappHubLabel, whatsappHubHeading, whatsappHubDescription, whatsappHubButtonText, whatsappHubUrl,
     advisorsLabel, advisorsHeading, advisorsDescription, advisors,
-    volunteersLabel, volunteersHeading, volunteersDescription, volunteers
+    volunteersLabel, volunteersHeading, volunteersDescription, volunteers,
+    contactHeading, contactSubtext, contactEmail
   }
 `;

@@ -3,21 +3,22 @@ import ContactForm from '../../components/ContactForm';
 import NeuronMotif from '../../components/NeuronMotif';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { SITE_SETTINGS_QUERY, type SanitySiteSettings } from '@/lib/sanity/queries';
-import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
 
-interface ContactSectionProps {
+interface ContactSectionLDCProps {
   title?: string;
+  heading?: string;
+  subtext?: string;
+  email?: string;
 }
 
-export default function ContactSectionLDC({ title }: ContactSectionProps) {
+export default function ContactSectionLDC({ title, heading, subtext, email }: ContactSectionLDCProps) {
   const { data: settings } = useSanityQuery<SanitySiteSettings>(SITE_SETTINGS_QUERY, {}, {
     contactEmail: 'shraddha@learningdesignlab.co',
   });
-  const { data: home } = useSanityQuery<SanityHomePage>(HOME_PAGE_QUERY, {}, {} as SanityHomePage);
 
-  const contactEmail = settings.contactEmail ?? 'shraddha@learningdesignlab.co';
-  const heading = title ?? home.contactHeading ?? "Contribute to LDC";
-  const subtext = home.contactSubtext ?? "Submit your contact details. We'll get back to you within 7 working days.";
+  const contactEmail = email || settings.contactEmail || 'shraddha@learningdesignlab.co';
+  const displayHeading = heading || title || "Contribute to LDC";
+  const displaySubtext = subtext || "Submit your contact details. We'll get back to you within 7 working days.";
 
   return (
     <section id="contact" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
@@ -30,12 +31,12 @@ export default function ContactSectionLDC({ title }: ContactSectionProps) {
           <div>
             <ScrollReveal>
               <h2 className="heading-xl text-white mb-6">
-                {heading}
+                {displayHeading}
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="font-body text-[14px] leading-[23px] text-white/70 mb-6 max-w-[45ch]">
-                {subtext}
+                {displaySubtext}
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>

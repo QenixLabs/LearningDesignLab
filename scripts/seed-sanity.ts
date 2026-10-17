@@ -77,9 +77,13 @@ async function run() {
     _id: 'siteSettings',
     _type: 'siteSettings',
     contactEmail: 'shraddha@learningdesignlab.co',
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: 'https://www.linkedin.com/company/learningdesigners/',
+    instagramUrl: 'https://www.instagram.com/learningdesigners/',
     footerTagline:
-      "Researcher's rigour and implementer's realism for organizations that want learning that actually works.",
+      "Researcher's rigor and implementer's realism for organizations that want learning that actually works.",
+    siteTitle: 'Learning Design Lab',
+    metaDescription:
+      'An impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions.',
   });
   console.log('✓ siteSettings');
 
@@ -417,6 +421,8 @@ async function run() {
         image: await imageField('/images/team/Jaya_Ramchandani.png'),
       },
     ]),
+    contactHeading: 'Contribute to LDC',
+    contactSubtext: "Submit your contact details. We'll get back to you within 7 working days.",
   });
   console.log('✓ communityPage');
 
@@ -524,7 +530,7 @@ async function run() {
           image: await imageField(pp.path),
         }))
       ),
-      contactHeading: "Let's build learning that drives impact",
+      contactHeading: "Let's build better learning together",
     },
     'faculty-enrichment': {
       heroHeading: 'Faculty Enrichment That Changes How They Teach, Design, & Learn',
@@ -691,7 +697,7 @@ async function run() {
       contactHeading: "Let's Move From Assumptions to Evidence",
     },
     'advisory': {
-      heroHeading: 'Strategic Advisory for Large-Scale Skilling Programs',
+      heroHeading: 'Advisory for Large-Scale Skilling',
       heroSubtext: 'We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.',
       heroCtaLabel: 'Contact Us',
       heroStats: [
@@ -776,7 +782,7 @@ async function run() {
       ),
       exampleProjectsCtaText: 'See All Our Projects',
       exampleProjectsCtaHref: '/projects',
-      contactHeading: "Let's build learning that drives impact",
+      contactHeading: "Let’s Design for Adoption, Not Just Delivery",
     },
   };
 

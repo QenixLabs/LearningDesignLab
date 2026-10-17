@@ -26,7 +26,7 @@ const defaultStats: AdvisoryHeroStat[] = [
 ];
 
 export default function AdvisoryHeroSection({
-  heading = 'Strategic Advisory for Large-Scale Skilling Programs',
+  heading = 'Advisory for Large-Scale Skilling',
   subtext = 'We partner with development organizations, training institutes, and governments tackling learning and skilling challenges at scale – we compare models, synthesise research findings, and design programs grounded in what has worked; we design the program structure, systems, processes, and roles for skilling to yield high returns.',
   ctaLabel = 'Contact Us',
   stats,

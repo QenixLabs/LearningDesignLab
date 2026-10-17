@@ -97,7 +97,7 @@ export const services: Record<string, ServiceData> = {
   'advisory': {
     id: 'advisory',
     number: '04',
-    title: 'Advisory for Large-Scale Skilling Programs',
+    title: 'Advisory for Large-Scale Skilling',
     description: 'We diagnose barriers and conceptualise systems and solutions that address them using behavioral science and user-centred design. We define program structures, competency gaps and goals, develop and road-test strategies, advise policy makers, large-scale implementers, and investors on designing systems that support sustained learning at scale.',
     items: advisoryItems,
     itemsHeading: 'Where we advise',
