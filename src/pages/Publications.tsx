@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import NeuronPattern from '../components/NeuronPattern';
+import NeuronMotif from '../components/NeuronMotif';
 import { ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
@@ -35,7 +35,7 @@ export default function Publications() {
   return (
     <Layout>
       <section className="bg-white py-20 md:py-32 min-h-[80vh] relative overflow-hidden">
-        <NeuronPattern opacity={0.09} />
+        <NeuronMotif opacity={0.15} />
         <div className="page-margin max-content relative z-10">
           <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
             <h1 className="page-heading text-black mb-6">{copy.heading}</h1>
@@ -60,14 +60,14 @@ export default function Publications() {
                     rel: 'noopener noreferrer',
                   })}
                   className={cn(
-                    'group block bg-warm-grey border border-black/10 p-6 md:p-8 transition-colors hover:border-pink/30'
+                    'group block bg-warm-grey border border-black/10 p-6 md:p-8 transition-colors hover:border-pink/30 rounded-xl shadow-xs'
                   )}
                 >
                   <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
                       <p className="font-body text-sm text-black/70 leading-relaxed mb-3">
                         {pub.citation}{' '}
-                        <span className="text-black underline underline-offset-4 decoration-black/30">
+                        <span className="text-black underline underline-offset-4 decoration-black/30 group-hover:text-pink transition-colors">
                           {pub.title}
                         </span>{' '}
                         {pub.venue}
@@ -76,7 +76,7 @@ export default function Publications() {
                     </div>
                     {isLinked && (
                       <div className="flex-shrink-0">
-                        <span className="inline-flex items-center justify-center w-10 h-10 bg-pink text-white transition-colors group-hover:bg-pink-dark">
+                        <span className="inline-flex items-center justify-center w-10 h-10 bg-pink text-white transition-colors group-hover:bg-pink-dark rounded-sm">
                           <ExternalLink className="w-4 h-4" />
                         </span>
                       </div>

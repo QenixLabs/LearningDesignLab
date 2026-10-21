@@ -12,6 +12,7 @@ const serviceLinks = [
 
 const resourceLinks = [
   { label: 'Projects', href: '/projects' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'Publications', href: '/publications' },
   { label: 'Conferences', href: '/conferences' },
 ];

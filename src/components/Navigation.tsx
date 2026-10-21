@@ -20,7 +20,7 @@ export default function Navigation() {
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const dropdownsRef = useRef<HTMLDivElement>(null);
 
-  const whiteHeroRoutes = ['/team', '/projects', '/publications', '/conferences'];
+  const whiteHeroRoutes = ['/team', '/projects', '/publications', '/conferences', '/case-studies'];
   const hasWhiteHero = whiteHeroRoutes.some((route) =>
     location.pathname.startsWith(route)
   );
@@ -97,6 +97,7 @@ export default function Navigation() {
         { label: 'Projects', href: '/projects' },
         { label: 'Publications', href: '/publications' },
         { label: 'Conferences', href: '/conferences' },
+        { label: 'Case Studies', href: '/case-studies' },
       ],
     },
     { label: 'Community', href: '/community' },

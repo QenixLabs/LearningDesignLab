@@ -807,7 +807,7 @@ async function run() {
     console.log(`✓ servicePage-${svc.id}`);
   }
 
-  // --- Page copy ---
+  // --- ourWork ---
   const pageCopy = [
     {
       id: 'pageCopy-team',

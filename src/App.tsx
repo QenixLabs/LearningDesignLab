@@ -5,6 +5,7 @@ import Projects from './pages/Projects';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import Publications from './pages/Publications';
 import Conferences from './pages/Conferences';
+import CaseStudies from './pages/CaseStudies';
 import Team from './pages/Team';
 import ServicePage from './pages/ServicePage';
 import AdvisoryPage from './pages/AdvisoryPage';
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+      <Route path="/case-studies" element={<CaseStudies />} />
       <Route path="/publications" element={<Publications />} />
       <Route path="/conferences" element={<Conferences />} />
       <Route path="/team" element={<Team />} />
