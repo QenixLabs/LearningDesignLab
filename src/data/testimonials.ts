@@ -29,4 +29,10 @@ export const defaultTestimonials: Testimonial[] = [
     highlight: 'highly engaging and deeply reflective',
     attribution: 'Dr. Rita Mishra, Founder and CEO, Patang',
   },
+  {
+    quote:
+      'It was a pleasure collaborating with Shraddha to create the online courses. The work was marked by admirable designs, engaging activities, and thoughtful examples, reflecting creative and innovative course design style.',
+    highlight: 'admirable designs, engaging activities, and thoughtful examples',
+    attribution: 'Dharini Priscilla, Ex Advisor, Search for Common Ground',
+  },
 ];

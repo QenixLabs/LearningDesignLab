@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import ResearchHeroSection from '../sections/services/ResearchHeroSection';
-import ResearchProblemSection from '../sections/services/ResearchProblemSection';
 import ResearchServicesSection from '../sections/services/ResearchServicesSection';
 import MethodologyDiagram from '../sections/services/MethodologyDiagram';
 import ResearchExampleProjectsSection from '../sections/services/ResearchExampleProjectsSection';
@@ -20,10 +19,6 @@ export default function ResearchEvaluationPage() {
         subtext={doc?.heroSubtext ?? undefined}
         ctaLabel={doc?.heroCtaLabel ?? undefined}
         stats={doc?.heroStats ?? undefined}
-      />
-      <ResearchProblemSection
-        heading={doc?.problemHeading ?? undefined}
-        paragraphs={doc?.problemParagraphs ?? undefined}
       />
       <ResearchServicesSection
         heading={doc?.serviceCardsHeading ?? undefined}

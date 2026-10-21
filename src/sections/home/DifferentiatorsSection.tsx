@@ -5,17 +5,17 @@ import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
 
 const fallbackSolutions = [
   {
-    title: 'Evidence-informed',
-    description:
-      'Rather than tradition or trends, our designs are rooted in the Science of Learning, translational research from cognitive science, and educational research.',
-  },
-  {
     title: 'Impact-First & Application-Focused',
     description:
       "We work for impact and prioritize transfer of learning to the real world. We build skills, not just content; we drive measurable improvements in people's performance.",
   },
   {
-    title: 'Inclusive & Contextually Grounded',
+    title: 'Evidence-informed',
+    description:
+      'Rather than tradition or trends, our designs are rooted in thorough diagnosis and deep research. We conduct research to study existing solutions and understand what has or had not worked to create evidence informed learning strategies and products. Our practice is guided by insights from Science of Learning.',
+  },
+  {
+    title: 'Contextually Grounded & Inclusive',
     description:
       'We ground our work in a deep understanding of context, barriers, and needs. We co-design with the users and create solutions that are relevant to specific gaps and goals. Inclusion, accessibility, and equity are embedded in our design process from the beginning.',
   },

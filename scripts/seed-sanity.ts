@@ -83,7 +83,7 @@ async function run() {
       "Researcher's rigor and implementer's realism for organizations that want learning that actually works.",
     siteTitle: 'Learning Design Lab',
     metaDescription:
-      'An impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions.',
+      'An impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling and educational interventions.',
   });
   console.log('✓ siteSettings');
 
@@ -92,7 +92,7 @@ async function run() {
     _type: 'homePage',
     heroTitle: 'Designing Learning That Works',
     heroSubtext:
-      'We are an impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions. We partner with organizations and educational institutions to build evidence-informed, contextually grounded designs that translate learning into real-world outcomes.',
+      'We are an impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling and educational interventions. We partner with organizations and educational institutions to build evidence-informed, contextually grounded designs that translate learning into real-world outcomes.',
     primaryCtaLabel: 'Work With Us',
     secondaryCtaLabel: 'Explore Services',
     stats: [
@@ -103,15 +103,15 @@ async function run() {
       { _key: 's5', value: 25, suffix: '+', label: 'Organizations Partnered' },
     ],
     selectedWorkProjects: [
-      'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
-      'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
-      'Workshops on AI for Teaching, Learning and Research for faculty members of Stirling University, UAE',
-      'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
+      'Development of a story-based course on Data Analysis and Visualization for GIZ & Ministry of Education, India, SWAYAM Platform',
+      "A study on the impact of UNICEF's skilling and employment program for girls",
+      'Workshops on Science of Learning for faculty from 20+ disciplines including Law, Engineering, Management, Medicine, Design, Language, Agriculture etc.',
+      "Development of an assessment system to track shifts in social and emotional skills of students through UNICEF's service based learning program",
     ],
     selectedWorkScholarships: [
       'Navigating Structural, Epistemic, and Human Dimensions in Education',
       'Reimagining Learning with AI: Towards a Learning Society',
-      'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPANCER)',
+      'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPENCER)',
     ],
     selectedWorkBlogs: [
       "Why Facts Don't Change Minds: Designing Learning That Transcends Behavior",
@@ -146,19 +146,19 @@ async function run() {
     differentiators: [
       {
         _key: 'd1',
-        title: 'Evidence-informed',
-        description:
-          'Rather than tradition or trends, our designs are rooted in the Science of Learning, translational research from cognitive science, and educational research.',
-      },
-      {
-        _key: 'd2',
         title: 'Impact-First & Application-Focused',
         description:
           "We work for impact and prioritize transfer of learning to the real world. We build skills, not just content; we drive measurable improvements in people's performance.",
       },
       {
+        _key: 'd2',
+        title: 'Evidence-informed',
+        description:
+          'Rather than tradition or trends, our designs are rooted in thorough diagnosis and deep research. We conduct research to study existing solutions and understand what has or had not worked to create evidence informed learning strategies and products. Our practice is guided by insights from Science of Learning.',
+      },
+      {
         _key: 'd3',
-        title: 'Inclusive & Contextually Grounded',
+        title: 'Contextually Grounded & Inclusive',
         description:
           'We ground our work in a deep understanding of context, barriers, and needs. We co-design with the users and create solutions that are relevant to specific gaps and goals. Inclusion, accessibility, and equity are embedded in our design process from the beginning.',
       },
@@ -175,7 +175,7 @@ async function run() {
           'Our work uses AI capabilities to deliver the most value even in novel contexts. Along with workshops and learning products, we offer AI-based tools, resources, and prompts that make decision-making, learning, research, and assessments deeper and more engaging.',
       },
     ],
-    selectedWorkHeading: 'Our Work (So Far)',
+    selectedWorkHeading: 'A glimpse of our projects',
     contactHeading: "Let's build learning that drives impact",
     contactSubtext: "Submit your contact details. We'll get back to you within 7 working days.",
   });
@@ -441,8 +441,8 @@ async function run() {
   // --- Service pages ---
   const serviceDetails: Record<string, Record<string, any>> = {
     'course-development': {
-      heroHeading: 'Curricula & courses to change outcomes, not just build knowledge',
-      heroSubtext: 'We partner with universities, nonprofits, and organizations to design courses, training programs, and full curricula that build real competence. Grounded in research and Science of Learning.',
+      heroHeading: 'Curricula, Courses, & Digital Learning',
+      heroSubtext: 'We partner with organizations to design courses, training programs, and curricula that builds real competence.',
       heroCtaLabel: 'Contact Us',
       heroStats: [
         { _key: 's1', value: 10, suffix: 'M+', label: 'Learners impacted' },
@@ -511,14 +511,17 @@ async function run() {
           {
             title: 'A story-based course on data analytics for Swayam Platform, GIZ',
             path: '/images/verticals/A story-based.jpg',
+            link: '/projects/ai-data-science-course',
           },
           {
             title: 'Behavioral design of trainings that enable teachers to practice desired behaviors for UNESCO Myanmar',
             path: '/images/projects/UNESCO_Myanmar_collage.png',
+            link: '/projects/courses-for-community-teachers-in-myanmar',
           },
           {
             title: 'A scenario based gamified course on gender for youth in Colombia',
             path: '/images/verticals/A scenerio based .jpg',
+            link: '/projects/gender-awareness-activism-course',
           },
           {
             title: 'Targeted design and assessment of projects to build 12 competencies & digital badges for UNICEF India',
@@ -528,18 +531,19 @@ async function run() {
           _key: `pp${i}`,
           title: pp.title,
           image: await imageField(pp.path),
+          link: pp.link,
         }))
       ),
       contactHeading: "Let's build better learning together",
     },
     'faculty-enrichment': {
-      heroHeading: 'Faculty Enrichment That Changes How They Teach, Design, & Learn',
-      heroSubtext: 'We partner with universities and faculty development cells to design and deliver workshops that shift teaching practice. Grounded in evidence and global best practices. Built for immediate application.',
+      heroHeading: 'Educator Enrichment That Changes How They Teach & Learn',
+      heroSubtext: 'We bridge the gap between cognitive science and educational research and teaching and learning practice by working with teachers in schools and universities to build their capacities and establishing systems grounded in evidence-based teaching that drives better learning outcomes.',
       heroCtaLabel: 'Contact Us',
       heroStats: [
-        { _key: 's1', value: 97, suffix: '%', label: 'Educators confident they can actively reduce student forgetting' },
-        { _key: 's2', value: 4.4, suffix: ' / 5', label: 'Average rating on usefulness and engagement of workshop', decimals: 1 },
-        { _key: 's3', value: 100, suffix: '%', label: 'Left believing AI can save them time and improve efficiency' },
+        { _key: 's1', value: 44, suffix: '%', label: "Jump in educators' confidence to use retrieval practice to reduce forgetting after 18 hrs of training" },
+        { _key: 's2', value: 58, suffix: '%', label: "Educators felt confident applying Mayer's Multimedia Principles to design more effective slides" },
+        { _key: 's3', value: 33, suffix: '%', label: 'Jump in teachers who believe that they can reduce student forgetting through evidence-based strategies' },
         { _key: 's4', value: 44, suffix: '%', label: 'Jump in confidence to manage cognitive load while teaching' },
       ],
       heroFootnote: '*Impact of our workshops based on pre- and post-surveys.',
@@ -574,9 +578,16 @@ async function run() {
         {
           _key: 'w4',
           title: 'Universal Design for Learning',
-          meta: 'In-Person · 1 Day',
+          meta: 'In-Person · 2 Days',
           description:
             'For schools and universities that want to equip their teachers with strategies to cater to a wide variety of students. UDL can enable educators to anticipate and address learning barriers and design flexible methods and support for more effective instruction.',
+        },
+        {
+          _key: 'w5',
+          title: 'Science of Learning for Evidence-Based Teaching Practices',
+          meta: 'Online Course · Coming Soon',
+          description:
+            'For educators and institutions seeking to ground their teaching in cognitive science and evidence-based practices through a flexible, self-paced online format.',
         },
       ],
       acceleratorHeading: 'Institutional Integration & Behavior Change Accelerator',
@@ -622,18 +633,14 @@ async function run() {
         { _key: 's4', value: 20, suffix: '+', label: 'Countries reached' },
         { _key: 's5', value: 25, suffix: '+', label: 'Organizations partnered' },
       ],
-      problemHeading: 'Most Evaluations Measure Satisfaction. We Measure Whether Learning Worked.',
-      problemParagraphs: [
-        'Most program evaluations are limited to whether participants liked the training. The following recommendations are generic and rarely change what any specific programme does next.',
-        'We ask the most consequential question: did this intervention produce the change it was designed to produce, and why or why not? We use established frameworks — Kirkpatrick, LTEM — combined with rigorous mixed-methods research, to conduct evaluations that examine both process and impact. And because our team designs and implements learning programs as much as we evaluate them, our findings are synthesised into tools, frameworks, and guides built for immediate use.',
-      ],
-      serviceCardsHeading: 'Research, Evaluation, & Knowledge Products Built for Application',
+
+      serviceCardsHeading: 'Research, Evaluation, & Knowledge Products',
       serviceCards: [
         {
           _key: 'sc1',
           title: 'Learning Program Evaluation',
           paragraphs: [
-            "We evaluate the process and impact of skilling and capacity-building programmes using the Kirkpatrick and LTEM frameworks — covering both formative evaluation (to improve a program while it's running) and summative evaluation (to assess what it achieved). Our findings are synthesised into easily applicable frameworks and tools. As designers and implementers of learning programs, we understand the nuances that shape outcomes — which means our reports read less like academic documents and more like tools that can be picked up and used.",
+            'We conduct process and impact evaluation into easily applicable frameworks and tools. As designers and implementers of learning programs, we understand the nuances that shape outcomes — which means our reports read less like academic documents and more like tools and guidelines that can be used.',
           ],
         },
         {
@@ -707,7 +714,7 @@ async function run() {
         { _key: 's4', value: 25, suffix: '+', label: 'Countries reached' },
         { _key: 's5', value: 20, suffix: '+', label: 'Organizations partnered' },
       ],
-      problemHeading: 'Most Skilling Programs Are Not Designed Around the People They Serve',
+      problemHeading: 'Designing Skilling Programs Around Realities and Results',
       problemParagraphs: [
         "Many skilling programs across sectors either struggle to motivate people to learn or fail to build the competencies that drive change. This happens because programs are often not designed with learner personas in mind; there is a lack of specificity regarding performance goals and misalignment among the program modality, learner needs, technology, and the people who enable the program. We conduct systems analysis for existing programs and conceptualize new programs that align systems, processes, teams, and learning experience with learners' realities, organizational needs, and expected results. We use approaches like Human-Centred Design (HCD), Theory of Change (ToC), behavior design, and instructional systems design for program and system design and improvement.",
       ],

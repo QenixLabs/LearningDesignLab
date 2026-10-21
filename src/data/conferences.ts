@@ -18,12 +18,30 @@ export interface Conference {
 
 export const conferences: Conference[] = [
   {
-    title: "Mathew Farber's Innovation & Edtech Course",
+    title: 'UNICEF India, Youth Central, 2026',
+    year: '2026',
+    location: 'UNICEF India, Youth Central',
+    description:
+      'Presented a research-backed framework for 21st century skills and a model for the development and assessment of these skills in schools at UNICEF India, Youth Central, 2026.',
+    imageAlt: 'UNICEF India, Youth Central, 2026',
+    image: '/images/conferences/unicef_youth_central.jpg',
+  },
+  {
+    title: 'Patang India, Gender Online Course Launch, 2026',
+    year: '2026',
+    location: 'Patang India',
+    description:
+      'Presented the pedagogical choices behind the mobile-based Gender Champions Course developed for young people from tier 2 cities of India at the Patang India Course Launch Event.',
+    imageAlt: 'Patang India, Gender Online Course Launch, 2026',
+    image: '/images/projects/Conferences_patang_india.png',
+  },
+  {
+    title: 'Innovation & Edtech Course, University of Northern Colorado, USA, 2026',
     year: '2026',
     location: 'University of Northern Colorado, USA',
     description:
-      'Shraddha spoke with a diverse group of PhD scholars about global edtech and innovation, and her work at UNESCO and LDC. They also discussed a potential anti-edtech climate in the US, and increasingly, globally. They called for edtech to be optimized for purpose and systems first, and only then for performance.',
-    imageAlt: "Mathew Farber's Innovation & Edtech Course 2026",
+      'Shraddha spoke with a group of PhD scholars about global edtech and innovation, and her work at UNESCO and LDC. They also discussed a potential anti-edtech climate in the US, and increasingly, globally. They called for edtech to be optimized for purpose and systems first, and only then for performance.',
+    imageAlt: 'Innovation & Edtech Course 2026',
     image: '/images/conferences/Mathew Farber’s Innovation .jpg',
   },
   {

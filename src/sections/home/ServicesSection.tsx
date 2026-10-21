@@ -7,9 +7,15 @@ import { SERVICE_PAGES_QUERY, type SanityServicePage } from '@/lib/sanity/querie
 
 const fallbackServices = [
   {
-    title: 'Frameworks, Courses, & Curricula',
+    title: 'Advisory for Skilling Programs',
     description:
-      'We design in-person and online courses, learning journeys, microlearning modules, and assessment frameworks. We design goal-aligned and barrier-informed learning products and behavioral nudges based in the Science of Learning (SoL).',
+      'We conduct situational analysis and conceptualise learning systems, programs and products for organizations. We identify skilling needs or performance gaps, create performance goals, design strategies to achieve them, develop and test solutions and advise organizations to support sustained competence development at scale.',
+    link: '/services/advisory',
+  },
+  {
+    title: 'Frameworks, Courses & Curriculums',
+    description:
+      'We design highly effective in-person and online courses, curriculums, microlearning modules, and assessment frameworks using the science of learning to build competencies. Our learning products are based on research of existing global and national frameworks & research, and research on what has worked when building these skills. This rigour helps us create learning that drives real world outcomes.',
     link: '/services/course-development',
   },
   {
@@ -24,18 +30,12 @@ const fallbackServices = [
       'We conduct rigorous process and impact evaluations of in-person and digital skilling programs. We help educational institutions, edtech companies, and nonprofits measure the results of their interventions and synthesize findings into actionable frameworks, toolkits and knowledge products.',
     link: '/services/research-evaluation',
   },
-  {
-    title: 'Advisory for Large-Scale Skilling',
-    description:
-      'We diagnose barriers and conceptualise systems and solutions that address them using behavioral science and user-centred design. We define program structures, competency gaps and goals, develop and road-test strategies, advise policy makers, large-scale implementers, and investors on designing systems that support sustained learning at scale.',
-    link: '/services/advisory',
-  },
 ];
 
 export default function ServicesSection() {
   const { data: sanityServices } = useSanityQuery<SanityServicePage[]>(SERVICE_PAGES_QUERY, {}, []);
 
-  const ORDER = ['course-development', 'faculty-enrichment', 'research-evaluation', 'advisory'];
+  const ORDER = ['advisory', 'course-development', 'faculty-enrichment', 'research-evaluation'];
   const services = sanityServices.length
     ? ORDER.map((id) => sanityServices.find((s) => s.serviceId === id))
         .filter((s): s is SanityServicePage => Boolean(s))

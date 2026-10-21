@@ -7,8 +7,8 @@ interface ProblemSectionProps {
 }
 
 export default function ProblemSection({
-  heading = "We're Reversing the Way Learning Programs Are Built",
-  text = "We start with why learning fails before it begins. Content, platforms, and methods are often decided before determining what learners need to be able to do differently after learning. The result? Learning doesn't address the key issues; learning ends in information transfer, and budgets are spent without any real impact.",
+  heading = "Content Alone Doesn't Build Capability",
+  text = "Organizations often invest heavily in courses and training that learners complete, but forget. Traditional curriculum design prioritises covering information rather than engineering the conditions for retention, application, and mastery. We design learning experiences that bridge the gap between knowing and doing — whether that's an asynchronous online course, a blended learning training journey, or learning processes.",
 }: ProblemSectionProps) {
   return (
     <section className="bg-white pt-16 pb-8 md:pt-24 md:pb-12 relative overflow-hidden">

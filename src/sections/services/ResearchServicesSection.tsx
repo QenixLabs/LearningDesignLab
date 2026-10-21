@@ -6,7 +6,7 @@ const defaultServices: SanityServiceCard[] = [
   {
     title: 'Learning Program Evaluation',
     paragraphs: [
-      "We evaluate the process and impact of skilling and capacity-building programmes using the Kirkpatrick and LTEM frameworks — covering both formative evaluation (to improve a program while it's running) and summative evaluation (to assess what it achieved). Our findings are synthesised into easily applicable frameworks and tools. As designers and implementers of learning programs, we understand the nuances that shape outcomes — which means our reports read less like academic documents and more like tools that can be picked up and used.",
+      'We conduct process and impact evaluation into easily applicable frameworks and tools. As designers and implementers of learning programs, we understand the nuances that shape outcomes — which means our reports read less like academic documents and more like tools and guidelines that can be used.',
     ],
   },
   {
@@ -41,7 +41,7 @@ interface ResearchServicesSectionProps {
 }
 
 export default function ResearchServicesSection({
-  heading = 'Research, Evaluation, & Knowledge Products Built for Application',
+  heading = 'Research, Evaluation, & Knowledge Products',
   services,
 }: ResearchServicesSectionProps) {
   const serviceItems = services && services.length > 0 ? services : defaultServices;

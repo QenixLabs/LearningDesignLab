@@ -1,6 +1,7 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import type { SanityServiceWorkshop } from '@/lib/sanity/queries';
+import { cn } from '@/lib/utils';
 
 const defaultWorkshops: SanityServiceWorkshop[] = [
   {
@@ -23,9 +24,15 @@ const defaultWorkshops: SanityServiceWorkshop[] = [
   },
   {
     title: 'Universal Design for Learning',
-    meta: 'In-Person · 1 Day',
+    meta: 'In-Person · 2 Days',
     description:
       'For schools and universities that want to equip their teachers with strategies to cater to a wide variety of students. UDL can enable educators to anticipate and address learning barriers and design flexible methods and support for more effective instruction.',
+  },
+  {
+    title: 'Science of Learning for Evidence-Based Teaching Practices',
+    meta: 'Online Course · Coming Soon',
+    description:
+      'For educators and institutions seeking to ground their teaching in cognitive science and evidence-based practices through a flexible, self-paced online format.',
   },
 ];
 
@@ -52,22 +59,58 @@ export default function FacultyWorkshopsSection({
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {workshopItems.map((workshop, i) => (
-            <ScrollReveal key={workshop.title} delay={0.1 * i}>
-              <div className="group h-full bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-pink hover:shadow-pink/10">
-                <h3 className="font-display text-lg font-semibold text-black leading-snug mb-2 group-hover:text-pink transition-colors">
-                  {workshop.title}
-                </h3>
-                {workshop.meta && (
-                  <span className="font-display text-sm font-medium text-pink mb-4 block">{workshop.meta}</span>
-                )}
-                <p className="font-body text-sm leading-relaxed text-black/60">
-                  {workshop.description}
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
+          {workshopItems.map((workshop, i) => {
+            const isFullWidth = i === workshopItems.length - 1 && workshopItems.length % 2 === 1;
+            const isComingSoon = workshop.meta?.toLowerCase().includes('coming soon');
+
+            return (
+              <ScrollReveal
+                key={workshop.title}
+                delay={0.1 * i}
+                className={isFullWidth ? 'md:col-span-2' : undefined}
+              >
+                <div
+                  className={cn(
+                    'group h-full bg-gradient-to-br from-white to-pink/10 border border-black/10 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-pink hover:shadow-pink/10',
+                    isFullWidth && 'border-pink/30 bg-gradient-to-br from-white via-pink/[0.04] to-pink/10 shadow-sm'
+                  )}
+                >
+                  <div className={cn(isFullWidth && 'md:flex md:items-start md:justify-between md:gap-8')}>
+                    <div className={cn(isFullWidth ? 'md:max-w-[48%]' : '')}>
+                      {workshop.meta && (
+                        <span
+                          className={cn(
+                            'font-display text-sm font-medium mb-3 inline-flex items-center gap-2',
+                            isComingSoon
+                              ? 'px-3 py-1 rounded-full text-xs font-semibold bg-pink/10 text-pink border border-pink/30'
+                              : 'text-pink block'
+                          )}
+                        >
+                          {isComingSoon && <span className="w-1.5 h-1.5 rounded-full bg-pink animate-pulse" />}
+                          {workshop.meta}
+                        </span>
+                      )}
+                      <h3 className="font-display text-lg md:text-xl font-semibold text-black leading-snug mb-2 group-hover:text-pink transition-colors">
+                        {workshop.title}
+                      </h3>
+                    </div>
+                    <div className={cn(isFullWidth ? 'md:max-w-[50%] md:pt-1' : '')}>
+                      <p className="font-body text-sm leading-relaxed text-black/60">
+                        {workshop.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            );
+          })}
         </div>
+
+        <ScrollReveal delay={0.3}>
+          <p className="mt-8 text-center text-sm text-black/60 italic">
+            * The duration of the workshops can be customised. Modules of these workshops are also offered through online sessions.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

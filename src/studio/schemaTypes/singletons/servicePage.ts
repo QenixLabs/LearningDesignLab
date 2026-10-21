@@ -335,6 +335,7 @@ export const servicePage = defineType({
         fields: [
           defineField({ name: 'title', type: 'string', validation: (r) => r.required() }),
           defineField({ name: 'image', type: 'image', options: { hotspot: true } }),
+          defineField({ name: 'link', type: 'string', title: 'Case Study Link (optional)' }),
         ],
         preview: { select: { title: 'title', media: 'image' } },
       }],

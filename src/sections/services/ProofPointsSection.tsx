@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 import Button from '../../components/Button';
@@ -9,21 +10,25 @@ export interface ProofPointItem {
   title: string;
   image?: SanityImageSource | string;
   fit?: 'cover' | 'contain';
+  link?: string;
 }
 
 const defaultProjects: ProofPointItem[] = [
   {
     title: 'A story-based course on data analytics for Swayam Platform, GIZ',
     image: '/images/verticals/A story-based.jpg',
+    link: '/projects/ai-data-science-course',
   },
   {
     title: 'Behavioral design of trainings that enable teachers to practice desired behaviors for UNESCO Myanmar',
     image: '/images/projects/UNESCO_Myanmar_collage.png',
     fit: 'contain',
+    link: '/projects/courses-for-community-teachers-in-myanmar',
   },
   {
     title: 'A scenario based gamified course on gender for youth in Colombia',
     image: '/images/verticals/A scenerio based .jpg',
+    link: '/projects/gender-awareness-activism-course',
   },
   {
     title: 'Targeted design and assessment of projects to build 12 competencies & digital badges for UNICEF India',
@@ -31,16 +36,35 @@ const defaultProjects: ProofPointItem[] = [
   },
 ];
 
+function getCaseStudyLink(title: string, explicitLink?: string): string | undefined {
+  if (explicitLink) return explicitLink;
+  const t = title.toLowerCase();
+  // UNICEF case study is pending so no link there
+  if (t.includes('unicef')) {
+    return undefined;
+  }
+  if (t.includes('swayam') || t.includes('data analytics') || t.includes('giz') || t.includes('data science')) {
+    return '/projects/ai-data-science-course';
+  }
+  if (t.includes('myanmar') || t.includes('unesco') || t.includes('teachers')) {
+    return '/projects/courses-for-community-teachers-in-myanmar';
+  }
+  if (t.includes('gender') || t.includes('colombia') || t.includes('gamified')) {
+    return '/projects/gender-awareness-activism-course';
+  }
+  return undefined;
+}
+
 function ProjectImage({ title, image, fit = 'cover' }: { title: string; image?: SanityImageSource | string; fit?: 'cover' | 'contain' }) {
   const resolvedUrl = imgUrl(image) || (typeof image === 'string' ? image : undefined);
 
   if (resolvedUrl) {
     return (
-      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0">
+      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-black/5 rounded-lg overflow-hidden flex-shrink-0 border border-black/5">
         <img
           src={resolvedUrl}
           alt={title}
-          className={`w-full h-full ${fit === 'contain' ? 'object-contain p-2' : 'object-cover'}`}
+          className={`w-full h-full group-hover:scale-105 transition-transform duration-300 ${fit === 'contain' ? 'object-contain p-2' : 'object-cover'}`}
         />
       </div>
     );
@@ -77,14 +101,45 @@ export default function ProofPointsSection({
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {displayProjects.map(({ title, image, fit }, i) => (
-            <ScrollReveal key={title || i} delay={0.08 * i}>
-              <div className="flex items-center gap-4">
+          {displayProjects.map(({ title, image, fit, link }, i) => {
+            const effectiveLink = getCaseStudyLink(title, link);
+
+            const cardContent = (
+              <div
+                className={`flex items-center gap-4 transition-all duration-200 ${
+                  effectiveLink ? 'group cursor-pointer hover:-translate-y-1' : ''
+                }`}
+              >
                 <ProjectImage title={title} image={image} fit={fit} />
-                <h3 className="font-body text-xs md:text-sm lg:text-base font-medium text-black leading-snug">{title}</h3>
+                <div className="flex-1">
+                  <h3
+                    className={`font-body text-xs md:text-sm lg:text-base font-medium text-black leading-snug transition-colors ${
+                      effectiveLink ? 'group-hover:text-pink' : ''
+                    }`}
+                  >
+                    {title}
+                  </h3>
+                  {effectiveLink && (
+                    <span className="inline-flex items-center gap-1 font-display text-xs text-pink font-semibold mt-2 group-hover:underline">
+                      Read Case Study &rarr;
+                    </span>
+                  )}
+                </div>
               </div>
-            </ScrollReveal>
-          ))}
+            );
+
+            return (
+              <ScrollReveal key={title || i} delay={0.08 * i}>
+                {effectiveLink ? (
+                  <Link to={effectiveLink} className="block cursor-pointer">
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div>{cardContent}</div>
+                )}
+              </ScrollReveal>
+            );
+          })}
         </div>
 
         <ScrollReveal delay={0.4}>

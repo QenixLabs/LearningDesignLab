@@ -50,7 +50,7 @@ export const cardSections: CardSection[] = [
         title: 'Program Design For a School-Based Program on 21st Century Skills',
         description:
           'We created a competency framework and behavioral indicators aligned with national and global frameworks on 21st-century skills for children and youth. Development of a program and curriculum to build these competencies amongst middle school and senior secondary school students. Also created an assessment system and assessment tools to measure proficiency levels vis-à-vis each competency.',
-        image: '/images/projects/Program Design For a School.jpg',
+        image: '/images/projects/UNICEFSBLPic.jpg',
         imageAlt: 'UNICEF India 21st Century Skills program design',
       },
       {
@@ -76,6 +76,7 @@ export const cardSections: CardSection[] = [
         actions: [
           { label: 'Read Case Study', href: '/projects/ai-data-science-course' },
           { label: 'Explore on SWAYAM', href: 'https://swayam.gov.in/' },
+          { label: 'View Video', href: 'https://drive.google.com/file/d/1kYlHf3QyIx18SOXLltNARINcjyCEvBhh/view?usp=sharing' },
         ],
       },
       {

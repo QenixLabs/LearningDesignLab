@@ -20,15 +20,15 @@ export interface FacultyHeroSectionProps {
 }
 
 const defaultStats: FacultyHeroStat[] = [
-  { value: 97, suffix: '%', label: 'Educators confident they can actively reduce student forgetting' },
-  { value: 4.4, decimals: 1, suffix: ' / 5', label: 'Average rating on usefulness and engagement of workshop' },
-  { value: 100, suffix: '%', label: 'Left believing AI can save them time and improve efficiency' },
+  { value: 44, suffix: '%', label: "Jump in educators' confidence to use retrieval practice to reduce forgetting after 18 hrs of training" },
+  { value: 58, suffix: '%', label: "Educators felt confident applying Mayer's Multimedia Principles to design more effective slides" },
+  { value: 33, suffix: '%', label: 'Jump in teachers who believe that they can reduce student forgetting through evidence-based strategies' },
   { value: 44, suffix: '%', label: 'Jump in confidence to manage cognitive load while teaching' },
 ];
 
 export default function FacultyHeroSection({
-  heading = 'Faculty Enrichment That Changes How They Teach',
-  subtext = 'We offer online and in-person workshops for faculty that shift their teaching practice. Grounded in evidence and global best practices. Built for immediate application.',
+  heading = 'Educator Enrichment That Changes How They Design and Teach',
+  subtext = 'We bridge the gap between cognitive science and educational research and teaching and learning practice by working with teachers in schools and universities to build their capacities and establishing systems grounded in evidence-based teaching that drives better learning outcomes.',
   ctaLabel = 'Contact Us',
   stats,
   footnote = '*Impact of our workshops based on pre- and post-surveys.',
@@ -87,8 +87,12 @@ export default function FacultyHeroSection({
         </div>
 
         {/* Stats */}
-        <div className="fe-hero-stats mt-20 max-w-5xl mx-auto bg-black border border-white/10 rounded-2xl overflow-hidden">
-          <div className="grid grid-cols-2 divide-x divide-y divide-white/10">
+        <div className="fe-hero-stats mt-20 max-w-5xl mx-auto">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-white mb-6 text-center">
+            Impact of our workshops
+          </h2>
+          <div className="bg-black border border-white/10 rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-2 divide-x divide-y divide-white/10">
             {heroStats.map((stat, i) => {
               const decimals = stat.decimals !== undefined ? stat.decimals : stat.value % 1 !== 0 ? 1 : 0;
               return (
@@ -116,6 +120,7 @@ export default function FacultyHeroSection({
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
 

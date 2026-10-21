@@ -20,8 +20,8 @@ const defaultStats = [
 ];
 
 export default function ServicesHeroSection({
-  heading = 'Curricula & courses to change outcomes, not just build knowledge',
-  subtext = 'We partner with universities, nonprofits, and organizations to design courses, training programs, and full curricula that build real competence. Grounded in research and Science of Learning.',
+  heading = 'Curricula, Courses, & Digital Learning',
+  subtext = 'We partner with educational, social impact and private organizations to design courses, training programs, and curricula that builds real competence.',
   ctaLabel = 'Contact Us',
   stats,
 }: ServicesHeroSectionProps) {

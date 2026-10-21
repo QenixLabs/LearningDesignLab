@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 import ScrollReveal from '../components/ScrollReveal';
 import NeuronMotif from '../components/NeuronMotif';
@@ -33,6 +34,29 @@ export default function Community() {
     {},
     null
   );
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const hash = decodeURIComponent(window.location.hash.replace('#', '')).toLowerCase();
+      if (hash.includes('blog') || hash.includes('newsletter') || hash.includes('global')) {
+        const scrollToTarget = () => {
+          const el = document.getElementById('blog-newsletter') || document.getElementById('newsletter');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        };
+        scrollToTarget();
+        const t1 = setTimeout(scrollToTarget, 100);
+        const t2 = setTimeout(scrollToTarget, 300);
+        const t3 = setTimeout(scrollToTarget, 600);
+        return () => {
+          clearTimeout(t1);
+          clearTimeout(t2);
+          clearTimeout(t3);
+        };
+      }
+    }
+  }, [sanityData]);
 
   // Social Links for LDC
   const ldcSocials = {
@@ -661,14 +685,20 @@ export default function Community() {
       </section>
 
       {/* ===================== SECTION: PUBLICATIONS & INSIGHTS ===================== */}
-      <section className="bg-white py-12 md:py-16 border-t border-black/10">
+      <section
+        id="blog-newsletter"
+        className="bg-white py-12 md:py-16 border-t border-black/10 scroll-mt-24"
+      >
         <div className="page-margin max-content">
           {/* ACTIVITY 4: Global South’s Learning Blog & Newsletter */}
-          <div className="mb-14 md:mb-16">
+          <div id="newsletter" className="mb-14 md:mb-16 scroll-mt-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
               <div className="max-w-2xl">
              
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight mb-4">
+                <h3
+                  id="Global South's Learning Blog & Newsletter"
+                  className="font-display text-3xl md:text-4xl font-bold text-black tracking-tight mb-4 scroll-mt-24"
+                >
                   {sanityData?.blogHeading || "Global South's Learning Blog & Newsletter"}
                 </h3>
                 <p className="font-body text-sm md:text-base text-black/70 leading-relaxed">
