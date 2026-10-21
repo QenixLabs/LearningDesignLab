@@ -362,10 +362,11 @@ export interface SanityPageCopy {
   pageKey: string;
   heading: string;
   intro?: string;
+  subtitle?: string;
 }
 
 export const PAGE_COPY_QUERY = `
-  *[_id == $id][0] { pageKey, heading, intro }
+  *[_id == $id][0] { pageKey, heading, intro, "subtitle": coalesce(subtitle, intro) }
 `;
 
 // ---------- Community Page ----------

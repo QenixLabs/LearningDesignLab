@@ -213,7 +213,7 @@ import { defineField, defineType } from 'sanity';
 
 export const pageCopy = defineType({
   name: 'pageCopy',
-  title: 'Page Copy',
+  title: 'ourWork',
   type: 'document',
   fields: [
     defineField({
@@ -502,10 +502,10 @@ export const structure: StructureResolver = (S, context) =>
             )
         ),
       S.listItem()
-        .title('Page Copy')
+        .title('ourWork')
         .child(
           S.list()
-            .title('Page Copy')
+            .title('ourWork')
             .items(
               PAGE_COPY.map((p) =>
                 S.listItem()
@@ -635,7 +635,7 @@ git commit -m "feat(cms): mount Sanity Studio lazily at /studio"
 
 - [ ] **Step 1: Manual QA**
 
-- `/studio` loads login; after login, sidebar shows Site Settings, Home Page, Service Pages, Page Copy, then 5 collections.
+- `/studio` loads login; after login, sidebar shows Site Settings, Home Page, Service Pages, ourWork, then 5 collections.
 - Home (`/`) renders unchanged.
 - Empty dataset → singleton forms open with empty fields; no crash.
 

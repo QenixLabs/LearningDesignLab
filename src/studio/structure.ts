@@ -13,6 +13,7 @@ const PAGE_COPY = [
   { id: 'pageCopy-projects', title: 'Projects page' },
   { id: 'pageCopy-publications', title: 'Publications page' },
   { id: 'pageCopy-conferences', title: 'Conferences page' },
+  { id: 'pageCopy-case-studies', title: 'Case Studies page' },
 ];
 
 export const structure: StructureResolver = (S, context) =>
@@ -42,10 +43,10 @@ export const structure: StructureResolver = (S, context) =>
             )
         ),
       S.listItem()
-        .title('Page Copy')
+        .title('ourWork')
         .child(
           S.list()
-            .title('Page Copy')
+            .title('ourWork')
             .items(
               PAGE_COPY.map((p) =>
                 S.listItem()

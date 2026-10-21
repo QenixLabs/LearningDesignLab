@@ -1,5 +1,5 @@
 import ScrollReveal from '../../components/ScrollReveal';
-import NeuronPattern from '../../components/NeuronPattern';
+import NeuronMotif from '../../components/NeuronMotif';
 import Button from '../../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
@@ -22,7 +22,7 @@ function ProjectImage({
     return (
       <div
         className={cn(
-          'bg-black/[0.04] border border-black/10 rounded-lg flex items-center justify-center',
+          'w-full bg-black/[0.04] border border-black/10 rounded-xl flex items-center justify-center p-8',
           className
         )}
       >
@@ -34,15 +34,17 @@ function ProjectImage({
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      className={cn(
-        'w-full bg-black/[0.04] rounded-lg border border-black/10',
-        fit === 'contain' ? 'object-contain' : 'object-cover',
-        className
-      )}
-    />
+    <div className="w-full overflow-hidden rounded-xl bg-white border border-black/10 flex items-center justify-center shadow-xs">
+      <img
+        src={src}
+        alt={alt}
+        className={cn(
+          'w-full max-h-[420px]',
+          fit === 'contain' ? 'object-contain' : 'object-cover',
+          className
+        )}
+      />
+    </div>
   );
 }
 
@@ -110,8 +112,8 @@ export default function ProjectsList() {
   );
 
   return (
-    <section className="bg-white py-20 md:py-32 relative overflow-hidden">
-      <NeuronPattern opacity={0.09} />
+    <section className="bg-white py-20 md:py-32 relative overflow-hidden min-h-screen">
+      <NeuronMotif opacity={0.15} />
       <div className="page-margin max-content relative z-10">
         <ScrollReveal>
           <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
@@ -125,7 +127,7 @@ export default function ProjectsList() {
         </ScrollReveal>
 
         {/* Cards */}
-        <div className="flex flex-col gap-16 md:gap-24 mt-24 md:mt-32">
+        <div className="flex flex-col gap-16 md:gap-24 mt-16 md:mt-24">
           {cardSections.map((section) => (
             <div key={section.title}>
               <ScrollReveal>
@@ -134,16 +136,15 @@ export default function ProjectsList() {
                 </h2>
               </ScrollReveal>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-8 md:gap-12">
                 {section.projects.map((project, index) => {
                   const isReversed = index % 2 === 1;
                   return (
                     <ScrollReveal key={project.title}>
                       <article
                         className={cn(
-                          'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-12 md:py-20 border-t border-black/10',
-                          index === section.projects.length - 1 &&
-                            'border-b border-black/10'
+                          'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 p-6 sm:p-8 md:p-12',
+                          'bg-warm-grey border border-black/10 rounded-2xl shadow-xs hover:border-pink/30 hover:shadow-md transition-all duration-300'
                         )}
                       >
                         <div
@@ -155,14 +156,14 @@ export default function ProjectsList() {
                           <h3 className="font-display text-xl md:text-2xl lg:text-[26px] font-semibold text-black leading-tight mb-2">
                             {project.client}
                           </h3>
-                          <h4 className="font-display text-sm md:text-base text-pink mb-6">
+                          <h4 className="font-display text-sm md:text-base text-pink mb-4 md:mb-6">
                             {project.title}
                           </h4>
-                          <p className="font-body text-[14px] leading-[23px] text-black/70 mb-8">
+                          <p className="font-body text-[14px] leading-[23px] text-black/70 mb-6 md:mb-8">
                             {project.description}
                           </p>
                           {project.actions && project.actions.length > 0 && (
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                               {project.actions.map((action) => (
                                 <Button
                                   key={action.label}
@@ -179,7 +180,7 @@ export default function ProjectsList() {
 
                         <div
                           className={cn(
-                            'flex items-center order-1',
+                            'flex items-center justify-center order-1',
                             isReversed ? 'md:order-1' : 'md:order-2'
                           )}
                         >

@@ -2,7 +2,7 @@ import { siteSettings } from './singletons/siteSettings';
 import { homePage } from './singletons/homePage';
 import { communityPage } from './singletons/communityPage';
 import { servicePage } from './singletons/servicePage';
-import { pageCopy } from './singletons/pageCopy';
+import { ourWork, pageCopy } from './singletons/pageCopy';
 import { teamMember } from './collections/teamMember';
 import { project } from './collections/project';
 import { caseStudy } from './collections/caseStudy';
@@ -15,6 +15,7 @@ export const schemaTypes = [
   homePage,
   communityPage,
   servicePage,
+  ourWork,
   pageCopy,
   teamMember,
   project,

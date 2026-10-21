@@ -1,8 +1,8 @@
-# Plan 04 — Singletons Migration (Home, Services, Site Settings, Page Copy)
+# Plan 04 — Singletons Migration (Home, Services, Site Settings, ourWork)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Home page copy (hero, selected work), service page content, footer/contact email+LinkedIn, and collection page headers all render from Sanity singletons with local fallbacks.
+**Goal:** Home ourWork (hero, selected work), service page content, footer/contact email+LinkedIn, and collection page headers all render from Sanity singletons with local fallbacks.
 
 **Architecture:** Singleton queries added to `src/lib/sanity/queries.ts` (fetch by fixed document ID). Components keep current fallback literals or import from `src/data/`.
 
@@ -331,7 +331,7 @@ git add src/components/Footer.tsx src/sections/home/ContactSection.tsx
 git commit -m "feat(cms): footer and contact read email/socials from siteSettings"
 ```
 
-### Task 6: Page copy headers (Publications + Conferences)
+### Task 6: ourWork headers (Publications + Conferences)
 
 **Files:**
 - Modify: `src/pages/Publications.tsx`

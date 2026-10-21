@@ -10,7 +10,7 @@ Use the Google account (or email) you were invited with.
 | Site Settings | Contact email, LinkedIn link, footer tagline |
 | Home Page | Hero headline + paragraph, buttons, stats, "Selected Work" lists |
 | Service Pages | The four service pages (title, description, item lists, CTA text) |
-| Page Copy | Headings + intro text on Team, Projects, Publications, Conferences pages |
+| ourWork | Headings + intro text on Team, Projects, Publications, Conferences pages |
 | Team Members | Add/edit/remove/reorder people. "Founder" checkbox = shown on top |
 | Projects | Project cards. "Section" picks which group they appear in |
 | Publications | Publication entries. Set Link URL to `#` to show without a link |
