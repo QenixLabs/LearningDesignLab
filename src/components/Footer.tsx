@@ -43,7 +43,7 @@ export default function Footer() {
     <footer className="bg-black text-white relative overflow-hidden">
 
     <div className="page-margin max-content pt-24 pb-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:justify-between gap-12 md:gap-8">
+        <div className="flex flex-col md:flex-row md:justify-between gap-10 md:gap-8 max-w-6xl">
           {/* Logo & Tagline */}
           <div className="shrink-0">
             <Link
