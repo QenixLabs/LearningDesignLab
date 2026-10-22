@@ -83,13 +83,12 @@ export default function Navigation() {
       label: 'Services',
       href: '/services',
       children: [
+        { label: 'Advisory for Large-Scale Skilling', href: '/services/advisory' },
         { label: 'Course Development', href: '/services/course-development' },
         { label: 'Faculty Enrichment', href: '/services/faculty-enrichment' },
         { label: 'Research & Evaluation of Skilling', href: '/services/research-evaluation' },
-        { label: 'Advisory for Large-Scale Skilling', href: '/services/advisory' },
       ],
     },
-    { label: 'Our team', href: '/team' },
     {
       label: 'Our work',
       href: '/projects',
@@ -100,6 +99,8 @@ export default function Navigation() {
         { label: 'Case Studies', href: '/case-studies' },
       ],
     },
+    { label: 'Our team', href: '/team' },
+
     { label: 'Community', href: '/community' },
     { label: 'Contact us', href: '/#contact', button: true },
   ];
