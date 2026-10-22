@@ -8,6 +8,34 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    citation: 'Rawat, S., Tiwari, S., Sharma, M., & Chatterjee Singh, N. (2024).',
+    title: 'The digital pedagogy competence scale (DiPeCoS): Development and validation.',
+    venue: 'Research and Practice in Technology Enhanced Learning, 19, Article 018.',
+    type: 'Journal Article',
+    href: 'https://doi.org/10.58459/rptel.2024.19018',
+  },
+  {
+    citation: 'Rawat, S., Jain, P., & Saini, A. (2023).',
+    title: 'Designing UDL-informed online learning with digital tools.',
+    venue: 'International Conference of Technology for Education, India.',
+    type: 'Conference Paper',
+    href: 'https://www.researchgate.net/publication/385291539_Designing_UDL-Informed_Online_Learning_with_Digital_Tools',
+  },
+  {
+    citation: 'UNICEF, UNHCR, & UNFPA. (2025).',
+    title: 'Technical guidelines for engaging the most marginalised: For practitioners working on intersectoral programming in adolescent and youth (including development of RAISE-IM Framework).',
+    venue: 'UNICEF; UNHCR; UNFPA.',
+    type: 'Report',
+    href: 'https://drive.google.com/file/d/1zvQk_pag_nUrl7mLnFNMEfF3L6JOs-2s/view?usp=sharing',
+  },
+  {
+    citation: 'Rawat, S., Rautela, R., & Rawat, S. (2020).',
+    title: 'Unleashing the potential of digital learning: Freemiumpace and libre pedagogy.',
+    venue: 'The Blue Dot. (13). UNESCO MGIEP.',
+    type: 'Magazine Article',
+    href: 'https://montessori-ami.org/sites/default/files/downloads/news/Cuevas2020NewSchoolApproaches.pdf',
+  },
+  {
     citation: 'Rawat, S., Raghavendra, D., & Desai, N. (2025).',
     title: 'Interdisciplinarity in practice: Navigating structural, epistemic and human dimensions in education.',
     venue: 'India Higher Education Research Conference 2025, IIT Delhi, India.',
@@ -27,41 +55,6 @@ export const publications: Publication[] = [
     venue: 'UNESCO MGIEP, Peace Paragons.',
     type: 'Report',
     href: 'https://mgiep.unesco.org/article/can-dialogue-build-peace-through-education-what-cross-country-dialogues-taught-us-about-learning-listening-and-peace',
-  },
-  {
-    citation: 'Rawat, S., Tiwari, S., Sharma, M., & Chatterjee Singh, N. (2024).',
-    title: 'The digital pedagogy competence scale (DiPeCoS): Development and validation.',
-    venue: 'Research and Practice in Technology Enhanced Learning, 19, Article 018.',
-    type: 'Journal Article',
-    href: 'https://doi.org/10.58459/rptel.2024.19018',
-  },
-  {
-    citation: 'Rawat, S., Jain, P., & Saini, A. (2023).',
-    title: 'Designing UDL-informed online learning with digital tools.',
-    venue: 'International Conference of Technology for Education, India.',
-    type: 'Conference Paper',
-    href: 'https://www.researchgate.net/publication/385291539_Designing_UDL-Informed_Online_Learning_with_Digital_Tools',
-  },
-  {
-    citation: 'Rawat, S., Tiwari, S., Sharma, M., & Chatterjee, N. (2022).',
-    title: 'Development and validation of a brief Digital Pedagogy Competency Scale (DiPeCoS).',
-    venue: 'International Conference on Computers in Education.',
-    type: 'Conference Paper',
-    href: 'https://library.apsce.net/index.php/ICCE/article/view/4558',
-  },
-  {
-    citation: 'Rawat, S., Rautela, R., & Rawat, S. (2020).',
-    title: 'Unleashing the potential of digital learning: Freemiumpace and libre pedagogy.',
-    venue: 'The Blue Dot. (13). UNESCO MGIEP.',
-    type: 'Magazine Article',
-    href: 'https://montessori-ami.org/sites/default/files/downloads/news/Cuevas2020NewSchoolApproaches.pdf',
-  },
-  {
-    citation: 'UNICEF, UNHCR, & UNFPA. (2025).',
-    title: 'Technical guidelines for engaging the most marginalised: For practitioners working on intersectoral programming in adolescent and youth (including development of RAISE-IM Framework).',
-    venue: 'UNICEF; UNHCR; UNFPA.',
-    type: 'Report',
-    href: 'https://apacnewsnetwork.com/2024/11/unicef-yuwaah-unfpa-and-unhcr-launch-guidelines-for-most-marginalized-youth/',
   },
   {
     citation: 'Rawat, S., Raghavendra, D., Desai, N., Ofotu, N., Onwiri, C., Omon, S., Chime, C., & Jain, P. (2025).',

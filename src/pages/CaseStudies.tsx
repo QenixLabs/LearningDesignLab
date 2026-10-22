@@ -4,40 +4,8 @@ import NeuronMotif from '../components/NeuronMotif';
 import ScrollReveal from '../components/ScrollReveal';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
 import { PAGE_COPY_QUERY, type SanityPageCopy } from '@/lib/sanity/queries';
-
-interface CaseStudyListItem {
-  title: string;
-  description: string;
-  href: string;
-}
-
-const caseStudiesList: CaseStudyListItem[] = [
-  {
-    title: "Training Myanmar's Community Teachers for Education in Crisis",
-    description:
-      '12 courses, 4 themes, & learning designed for behavior change in emergency contexts',
-    href: '/projects/courses-for-community-teachers-in-myanmar',
-  },
-  {
-    title:
-      "Redesigning an AI & Data Science Course for SWAYAM, India's Largest Digital Learning Platform",
-    description:
-      'We converted existing text-heavy material into engaging, application-based video courses for social science students with no formal background in AI and data science.',
-    href: '/projects/ai-data-science-course',
-  },
-  {
-    title: 'Creating A Gender Course That Turns Youth Into Activists',
-    description:
-      'Seven modules, real field stories, and a Bollywood love song — designed to turn awareness into action',
-    href: '/projects/gender-awareness-activism-course',
-  },
-  {
-    title: 'Upskilling Moderators of Online Communities',
-    description:
-      'Nine gamified, mobile-first courses developed using games, comics, and interactives',
-    href: '/projects/multiformat-courses-for-moderators',
-  },
-];
+import { caseStudies } from '../data/caseStudies';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function CaseStudies() {
   const { data: pageCopy } = useSanityQuery<SanityPageCopy | null>(
@@ -74,22 +42,80 @@ export default function CaseStudies() {
             </div>
           </ScrollReveal>
 
-          <div className="max-w-3xl mx-auto space-y-16 md:space-y-20">
-            {caseStudiesList.map((item, index) => (
-              <ScrollReveal key={item.title} delay={0.08 * index}>
-                <article className="space-y-4">
-                  <h2 className="font-display text-2xl sm:text-3xl font-semibold text-black leading-snug">
-                    {item.title}
-                  </h2>
-                  <p className="font-body text-sm sm:text-base text-black/75 leading-relaxed max-w-2xl">
-                    {item.description}
-                  </p>
-                  <div className="pt-2">
+          <div className="max-w-4xl mx-auto space-y-16 md:space-y-24">
+            {caseStudies.map((study, index) => (
+              <ScrollReveal key={study.slug} delay={0.08 * index}>
+                <article className="border border-black/10 rounded-2xl p-6 md:p-10 bg-gradient-to-br from-white to-black/[0.01] hover:border-pink/40 hover:shadow-xl transition-all duration-300">
+                  <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start mb-6">
+                    {study.heroImage && (
+                      <div className="w-full md:w-56 h-40 rounded-xl overflow-hidden bg-black/5 shrink-0 border border-black/5">
+                        <img
+                          src={study.heroImage}
+                          alt={study.heroImageAlt || study.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      {study.client && (
+                        <span className="font-display text-xs font-semibold uppercase tracking-wider text-pink mb-2 block">
+                          {study.client}
+                        </span>
+                      )}
+                      {/* 2-line heading */}
+                      <h2 className="font-display text-2xl sm:text-3xl font-semibold text-black leading-snug mb-2">
+                        {study.title}
+                      </h2>
+                      {study.subtitle && (
+                        <p className="font-body text-sm sm:text-base text-black/60 italic leading-relaxed">
+                          {study.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* In a nutshell */}
+                  {study.nutshell && study.nutshell.length > 0 && (
+                    <div className="my-6 bg-black/[0.02] border border-black/5 rounded-xl p-5 md:p-6">
+                      <h3 className="font-display text-xs font-bold uppercase tracking-wider text-black/50 mb-3 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-pink" />
+                        In a Nutshell
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {study.nutshell.map((item) => (
+                          <div key={item.label} className="text-sm">
+                            <span className="font-semibold text-black/85 mr-1.5">
+                              {item.label}:
+                            </span>
+                            <span className="text-black/70 leading-relaxed">
+                              {item.value}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* The Core Design Challenge */}
+                  {study.challengeCallout && (
+                    <div className="my-6 border-l-4 border-pink bg-pink/[0.04] p-4 md:p-5 rounded-r-xl">
+                      <span className="font-display text-xs font-bold uppercase tracking-wider text-pink block mb-1">
+                        The Core Design Challenge
+                      </span>
+                      <p className="font-body text-sm sm:text-base text-black/80 font-medium leading-relaxed italic">
+                        &ldquo;{study.challengeCallout}&rdquo;
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Full story button */}
+                  <div className="pt-4 flex justify-end">
                     <Link
-                      to={item.href}
-                      className="inline-block px-7 py-3 rounded-md bg-pink text-white font-body text-sm font-medium hover:bg-pink-dark transition-colors shadow-sm"
+                      to={`/projects/${study.slug}`}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-pink text-white font-body text-sm font-semibold hover:bg-pink-dark transition-all duration-200 shadow-sm hover:shadow hover:gap-3"
                     >
-                      Read more
+                      <span>+ Full story</span>
+                      <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </article>

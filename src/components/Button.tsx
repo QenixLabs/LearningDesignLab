@@ -58,8 +58,14 @@ export default function Button({
         </Link>
       );
     }
+    const isExternal = href.startsWith('http://') || href.startsWith('https://');
     return (
-      <a href={href} className={`${baseClasses} ${variantClasses} ${className}`}>
+      <a
+        href={href}
+        className={`${baseClasses} ${variantClasses} ${className}`}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+      >
         {text}
       </a>
     );

@@ -7,16 +7,16 @@ import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
 
 const fallbackProjects = [
-  'Applied online courses on AI and a story-based course on Data Science for GIZ & SWAYAM',
-  'Research to study the impact of Digital Girl Hub Program (a large-scale skilling and employment program for girls): UNICEF India',
-  'Workshops on AI for Teaching, Learning and Research for faculty members of Stirling University, UAE',
-  'Employability curriculum (student trainer manual and trainer workbook) for ITIs in India with Quest Alliance',
+  'Development of a story-based course on Data Analysis and Visualization for GIZ & Ministry of Education, India, SWAYAM Platform',
+  "A study on the impact of UNICEF's skilling and employment program for girls",
+  'Workshops on Science of Learning for faculty from 20+ disciplines including Law, Engineering, Management, Medicine, Design, Language, Agriculture etc.',
+  "Development of an assessment system to track shifts in social and emotional skills of students through UNICEF's service based learning program",
 ];
 
 const fallbackScholarships = [
   'Navigating Structural, Epistemic, and Human Dimensions in Education',
   'Reimagining Learning with AI: Towards a Learning Society',
-  'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPANCER)',
+  'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPENCER)',
 ];
 
 const fallbackBlogs = [
@@ -66,7 +66,7 @@ export default function SelectedWorkSection() {
     ? home.presentations.map((p) => ({ name: p.name, image: imgUrl(p.image, 400) ?? '' }))
     : fallbackPresentations;
 
-  const selectedWorkHeading = home.selectedWorkHeading || 'Our Work (So Far)';
+  const selectedWorkHeading = home.selectedWorkHeading || 'A glimpse of our projects';
 
   return (
     <section id="projects" className="bg-near-black py-20 md:py-32 relative overflow-hidden">
@@ -151,7 +151,7 @@ export default function SelectedWorkSection() {
               </div>
               <Button
                 text="See More"
-                href="https://www.linkedin.com/newsletters/global-south-s-learning-voices-7289983829136588802/"
+                href="/community#blog-newsletter"
                 variant="primary"
                 className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
               />

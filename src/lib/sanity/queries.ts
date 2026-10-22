@@ -244,6 +244,7 @@ export interface SanityMethodologyField {
 export interface SanityServiceProofPoint {
   title: string;
   image?: SanityImageSource;
+  link?: string;
 }
 
 export interface SanityServiceWorkshop {

@@ -1,7 +1,7 @@
 import ScrollReveal from '../../components/ScrollReveal';
 import NeuronMotif from '../../components/NeuronMotif';
 
-const defaultHeading = 'Most Skilling Programs Are Not Designed Around the People They Serve';
+const defaultHeading = 'Designing Skilling Programs Around Realities and Results';
 const defaultParagraphs = [
   "Many skilling programs across sectors either struggle to motivate people to learn or fail to build the competencies that drive change. This happens because programs are often not designed with learner personas in mind; there is a lack of specificity regarding performance goals and misalignment among the program modality, learner needs, technology, and the people who enable the program. We conduct systems analysis for existing programs and conceptualize new programs that align systems, processes, teams, and learning experience with learners' realities, organizational needs, and expected results. We use approaches like Human-Centred Design (HCD), Theory of Change (ToC), behavior design, and instructional systems design for program and system design and improvement.",
 ];

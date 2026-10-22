@@ -104,6 +104,8 @@ export const caseStudies: CaseStudy[] = [
         value: 'Online courses designed for building skills and optimized for attention, understanding, recall, and competency',
       },
     ],
+    challengeCallout:
+      'How do we rebuild an applied course with a fresh goal for an open platform — transforming text modules into short, engaging video sequences with active hands-on interactivity for non-technical learners?',
     sections: [
       {
         level: 2,

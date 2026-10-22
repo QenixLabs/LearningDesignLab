@@ -17,13 +17,42 @@ export default function Layout({ children }: LayoutProps) {
 
   useLayoutEffect(() => {
     if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        return;
+      const rawId = location.hash.replace('#', '');
+      let id = rawId;
+      try {
+        id = decodeURIComponent(rawId);
+      } catch {
+        // ignore
       }
+
+      const findAndScroll = () => {
+        const el =
+          document.getElementById(id) ||
+          document.getElementById(rawId) ||
+          (id.toLowerCase().includes('blog') || id.toLowerCase().includes('newsletter')
+            ? document.getElementById('blog-newsletter') || document.getElementById('newsletter')
+            : null);
+
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return true;
+        }
+        return false;
+      };
+
+      if (!findAndScroll()) {
+        const t1 = setTimeout(findAndScroll, 100);
+        const t2 = setTimeout(findAndScroll, 300);
+        const t3 = setTimeout(findAndScroll, 600);
+        return () => {
+          clearTimeout(t1);
+          clearTimeout(t2);
+          clearTimeout(t3);
+        };
+      }
+      return;
     }
+
     scrollToTop();
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();

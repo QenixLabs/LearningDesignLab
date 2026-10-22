@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const fallbackHome: SanityHomePage = {
   heroTitle: 'Designing Learning That Works',
   heroSubtext:
-    'We are an impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling, competency development, and educational interventions. We partner with organizations and educational institutions to build evidence-informed, contextually grounded designs that translate learning into real-world outcomes.',
+    'We are an impact-driven, international learning design firm dedicated to enhancing the effectiveness of skilling and educational interventions. We partner with organizations and educational institutions to build evidence-informed, contextually grounded designs that translate learning into real-world outcomes.',
   primaryCtaLabel: 'Work With Us',
   secondaryCtaLabel: 'Explore Services',
   stats: [
