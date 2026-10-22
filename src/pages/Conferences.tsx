@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
-import NeuronPattern from '../components/NeuronPattern';
+import NeuronMotif from '../components/NeuronMotif';
+import ScrollReveal from '../components/ScrollReveal';
 import Button from '../components/Button';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
@@ -11,7 +12,7 @@ function PlaceholderImage({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'bg-black/[0.04] border border-black/10 rounded-lg flex items-center justify-center',
+        'w-full bg-white border border-black/10 rounded-xl flex items-center justify-center shadow-xs',
         className
       )}
     >
@@ -53,112 +54,127 @@ export default function Conferences() {
 
   return (
     <Layout>
-      <section className="bg-white py-20 md:py-32 relative overflow-hidden">
-        <NeuronPattern opacity={0.09} />
+      <section className="bg-white py-20 md:py-32 relative overflow-hidden min-h-screen">
+        <NeuronMotif opacity={0.15} />
         <div className="page-margin max-content relative z-10">
-          <div className="max-w-[75ch] mx-auto text-center mb-16 md:mb-24">
-            <h1 className="page-heading text-black mb-6">{copy.heading}</h1>
-            {copy.intro && (
-              <p className="font-body text-[16px] leading-[23px] text-black/70">
-                {copy.intro}
-              </p>
-            )}
-          </div>
+          <ScrollReveal>
+            <div className="max-w-[75ch] mx-auto text-center mb-12 md:mb-16">
+              <h1 className="page-heading text-black mb-6">{copy.heading}</h1>
+              {copy.intro && (
+                <p className="font-body text-[16px] leading-[23px] text-black/70">
+                  {copy.intro}
+                </p>
+              )}
+            </div>
+          </ScrollReveal>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-8 md:gap-12">
             {conferences.map((conf, index) => {
               const isReversed = index % 2 === 1;
-              const showContent = conf.description || (conf.actions && conf.actions.length > 0) || (conf.tags && conf.tags.length > 0);
+              const showContent =
+                conf.description ||
+                (conf.actions && conf.actions.length > 0) ||
+                (conf.tags && conf.tags.length > 0);
               return (
-                <article
-                  key={`${conf.title}-${index}`}
-                  className={cn(
-                    'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-12 md:py-20 border-t border-black/10',
-                    index === conferences.length - 1 && 'border-b border-black/10'
-                  )}
-                >
-                  <div
+                <ScrollReveal key={`${conf.title}-${index}`}>
+                  <article
                     className={cn(
-                      'flex flex-col justify-center',
-                      isReversed && 'md:order-2'
+                      'grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 p-6 sm:p-8 md:p-12',
+                      'bg-warm-grey border border-black/10 rounded-2xl shadow-xs hover:border-pink/30 hover:shadow-md transition-all duration-300'
                     )}
                   >
-                    <h2 className="font-display text-xl md:text-2xl lg:text-[28px] font-semibold text-black leading-tight mb-2">
-                      {conf.title}
-                    </h2>
-                    <h3 className="font-body text-sm md:text-[15px] text-black/50 font-normal mb-1">
-                      {conf.year && `${conf.year} · `}
-                      {conf.location}
-                    </h3>
-                    {showContent && (
-                      <>
-                        <p className="font-body text-[14px] leading-[23px] text-black/70 mt-4 mb-6">
-                          {conf.description}
-                        </p>
-                        {conf.tags && conf.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {conf.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="inline-flex items-center gap-1.5 px-3 py-1 bg-black text-white text-xs font-body rounded-sm"
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        {conf.actions && conf.actions.length > 0 && (
-                          <div className="flex flex-wrap gap-4">
-                            {conf.actions.map((action) => (
-                              <Button
-                                key={action.label}
-                                text={action.label}
-                                href={action.href}
-                                variant="primary"
-                                dark={false}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
+                    <div
+                      className={cn(
+                        'flex flex-col justify-center',
+                        isReversed ? 'md:order-2' : 'md:order-1'
+                      )}
+                    >
+                      <h2 className="font-display text-xl md:text-2xl lg:text-[26px] font-semibold text-black leading-tight mb-2">
+                        {conf.title}
+                      </h2>
+                      <h3 className="font-body text-sm md:text-[15px] text-pink font-medium mb-1">
+                        {conf.year && `${conf.year} · `}
+                        {conf.location}
+                      </h3>
+                      {showContent && (
+                        <>
+                          {conf.description && (
+                            <p className="font-body text-[14px] leading-[23px] text-black/70 mt-3 mb-6">
+                              {conf.description}
+                            </p>
+                          )}
+                          {conf.tags && conf.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mb-6">
+                              {conf.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1 bg-black text-white text-xs font-body rounded-full"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {conf.actions && conf.actions.length > 0 && (
+                            <div className="flex flex-wrap gap-4">
+                              {conf.actions.map((action) => (
+                                <Button
+                                  key={action.label}
+                                  text={action.label}
+                                  href={action.href}
+                                  variant="primary"
+                                  dark={false}
+                                  className="rounded-full"
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
 
-                  <div
-                    className={cn(
-                      'flex items-center',
-                      isReversed && 'md:order-1'
-                    )}
-                  >
-                    {conf.images ? (
-                      <div className="flex flex-col gap-4">
-                        {conf.images.map((img, i) => (
+                    <div
+                      className={cn(
+                        'flex items-center justify-center',
+                        isReversed ? 'md:order-1' : 'md:order-2'
+                      )}
+                    >
+                      {conf.images ? (
+                        <div className="flex flex-col gap-4 w-full">
+                          {conf.images.map((img, i) => (
+                            <div
+                              key={i}
+                              className="w-full overflow-hidden rounded-xl bg-white border border-black/10 flex items-center justify-center shadow-xs"
+                            >
+                              <img
+                                src={img}
+                                alt={`${conf.imageAlt || conf.title} ${i + 1}`}
+                                className={cn(
+                                  'w-full aspect-[4/3] object-cover',
+                                  conf.imagePosition
+                                )}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ) : conf.image ? (
+                        <div className="w-full overflow-hidden rounded-xl bg-white border border-black/10 flex items-center justify-center shadow-xs">
                           <img
-                            key={i}
-                            src={img}
-                            alt={`${conf.imageAlt} ${i + 1}`}
+                            src={conf.image}
+                            alt={conf.imageAlt || conf.title}
                             className={cn(
-                              'w-full aspect-[4/3] object-cover rounded-lg border border-black/10',
+                              'w-full aspect-[4/3] object-cover',
                               conf.imagePosition
                             )}
                           />
-                        ))}
-                      </div>
-                    ) : conf.image ? (
-                      <img
-                        src={conf.image}
-                        alt={conf.imageAlt}
-                        className={cn(
-                          'w-full aspect-[4/3] object-cover rounded-lg border border-black/10',
-                          conf.imagePosition
-                        )}
-                      />
-                    ) : (
-                      <PlaceholderImage className="w-full aspect-[4/3]" />
-                    )}
-                  </div>
-                </article>
+                        </div>
+                      ) : (
+                        <PlaceholderImage className="w-full aspect-[4/3]" />
+                      )}
+                    </div>
+                  </article>
+                </ScrollReveal>
               );
             })}
           </div>

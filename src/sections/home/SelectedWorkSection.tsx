@@ -98,7 +98,7 @@ export default function SelectedWorkSection() {
                 text="See More"
                 href="/projects"
                 variant="primary"
-                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+                className="mt-6 w-fit min-w-[120px] mx-auto text-center px-6 py-2.5 text-xs whitespace-nowrap"
               />
             </BentoPanel>
           </ScrollReveal>
@@ -106,21 +106,16 @@ export default function SelectedWorkSection() {
           {/* Presentations At */}
           <ScrollReveal className="md:col-span-1 h-full">
             <BentoPanel title="Presentations At" className="h-full">
-              <div className="flex flex-col gap-3 flex-1">
+              <div className="flex flex-col gap-3 flex-1 justify-center">
                 {presentations.map((item) => (
                   <div
                     key={item.name}
-                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
+                    className="bg-white rounded-md px-3.5 py-2.5 flex items-center justify-center h-16 w-full shadow-sm"
                   >
                     <img
                       src={item.image}
                       alt={item.name}
-                      className={cn(
-                        'w-auto max-w-full object-contain',
-                        item.name === 'University of Colorado'
-                          ? 'h-24 md:h-32'
-                          : 'h-16 md:h-20'
-                      )}
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                 ))}
@@ -129,7 +124,7 @@ export default function SelectedWorkSection() {
                 text="See More"
                 href="/conferences"
                 variant="primary"
-                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+                className="mt-6 w-fit min-w-[120px] mx-auto text-center px-6 py-2.5 text-xs whitespace-nowrap"
               />
             </BentoPanel>
           </ScrollReveal>
@@ -153,7 +148,7 @@ export default function SelectedWorkSection() {
                 text="See More"
                 href="/community#blog-newsletter"
                 variant="primary"
-                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+                className="mt-6 w-fit min-w-[120px] mx-auto text-center px-6 py-2.5 text-xs whitespace-nowrap"
               />
             </BentoPanel>
           </ScrollReveal>
@@ -177,7 +172,7 @@ export default function SelectedWorkSection() {
                 text="See More"
                 href="/publications"
                 variant="primary"
-                className="mt-6 w-[35%] mx-auto text-center px-4 py-2 text-xs"
+                className="mt-6 w-fit min-w-[120px] mx-auto text-center px-6 py-2.5 text-xs whitespace-nowrap"
               />
             </BentoPanel>
           </ScrollReveal>

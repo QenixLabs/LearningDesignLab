@@ -21,7 +21,8 @@ export default function Button({
   type = 'button',
   disabled = false,
 }: ButtonProps) {
-  const baseClasses = 'inline-block px-8 py-3.5 font-body text-sm font-medium transition-all duration-250 ease-out cursor-pointer';
+  const baseClasses =
+    'inline-block px-8 py-3.5 font-body text-sm font-medium transition-all duration-250 ease-out cursor-pointer whitespace-nowrap text-center';
 
   // Pink brand CTA (kept for pages that still want the accent)
   const primaryClasses = 'bg-pink text-white border border-pink hover:bg-pink-dark hover:border-pink-dark';
