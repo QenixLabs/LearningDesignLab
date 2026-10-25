@@ -1,28 +1,60 @@
+import { Link } from 'react-router-dom';
 import ScrollReveal from '../../components/ScrollReveal';
 import Button from '../../components/Button';
 import NeuronMotif from '../../components/NeuronMotif';
 import { cn } from '@/lib/utils';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { HOME_PAGE_QUERY, type SanityHomePage } from '@/lib/sanity/queries';
+import { HOME_PAGE_QUERY, type SanityHomePage, type ShowcasedWorkItem } from '@/lib/sanity/queries';
 import { imgUrl } from '@/lib/sanity/image';
+import { ArrowUpRight } from 'lucide-react';
 
-const fallbackProjects = [
-  'Development of a story-based course on Data Analysis and Visualization for GIZ & Ministry of Education, India, SWAYAM Platform',
-  "A study on the impact of UNICEF's skilling and employment program for girls",
-  'Workshops on Science of Learning for faculty from 20+ disciplines including Law, Engineering, Management, Medicine, Design, Language, Agriculture etc.',
-  "Development of an assessment system to track shifts in social and emotional skills of students through UNICEF's service based learning program",
+const fallbackProjects: ShowcasedWorkItem[] = [
+  {
+    text: 'Development of a story-based course on Data Analysis and Visualization for GIZ & Ministry of Education, India, SWAYAM Platform',
+    href: '/projects/ai-data-science-course',
+  },
+  {
+    text: "A study on the impact of UNICEF's skilling and employment program for girls",
+    href: '/projects',
+  },
+  {
+    text: 'Workshops on Science of Learning for faculty from 20+ disciplines including Law, Engineering, Management, Medicine, Design, Language, Agriculture etc.',
+    href: '/services/faculty-enrichment',
+  },
+  {
+    text: "Development of an assessment system to track shifts in social and emotional skills of students through UNICEF's service based learning program",
+    href: '/projects',
+  },
 ];
 
-const fallbackScholarships = [
-  'Navigating Structural, Epistemic, and Human Dimensions in Education',
-  'Reimagining Learning with AI: Towards a Learning Society',
-  'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPENCER)',
+const fallbackScholarships: ShowcasedWorkItem[] = [
+  {
+    text: 'Navigating Structural, Epistemic, and Human Dimensions in Education',
+    href: '/publications',
+  },
+  {
+    text: 'Reimagining Learning with AI: Towards a Learning Society',
+    href: '/publications',
+  },
+  {
+    text: 'Development and Validation of a Brief Digital Pedagogy Competency Scale (SPENCER)',
+    href: '/publications',
+  },
 ];
 
-const fallbackBlogs = [
-  "Why Facts Don't Change Minds: Designing Learning That Transcends Behavior",
-  'Learning How to Learn: Introducing the Science of Learning to Undergraduate Students',
-  'Beyond the Hype: What AI Actually Means for the Next Billion Learners',
+const fallbackBlogs: ShowcasedWorkItem[] = [
+  {
+    text: "Why Facts Don't Change Minds: Designing Learning That Transcends Behavior",
+    href: '/community#blog-newsletter',
+  },
+  {
+    text: 'Learning How to Learn: Introducing the Science of Learning to Undergraduate Students',
+    href: '/community#blog-newsletter',
+  },
+  {
+    text: 'Beyond the Hype: What AI Actually Means for the Next Billion Learners',
+    href: '/community#blog-newsletter',
+  },
 ];
 
 const fallbackPresentations: { name: string; image: string }[] = [
@@ -30,6 +62,58 @@ const fallbackPresentations: { name: string; image: string }[] = [
   { name: 'University of Northern Colorado', image: '/images/logos/northern colorado.jpg' },
   { name: 'Masinde Muliro University of Science & Technology, Kenya', image: '/images/logos/masinde muliro.png' },
 ];
+
+function WorkRow({ item }: { item: string | ShowcasedWorkItem }) {
+  const text = typeof item === 'string' ? item : item.text;
+  const href = typeof item === 'string' ? undefined : item.href;
+  const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
+
+  const rowContent = (
+    <div className="border-b border-white/10 pb-4 last:border-0 last:pb-0 flex items-center justify-between gap-4 group transition-colors">
+      <p className="font-body text-[14px] leading-[23px] text-white/80 group-hover:text-white transition-colors flex-1">
+        {text}
+      </p>
+      <div
+        className={cn(
+          'inline-flex items-center justify-center w-8 h-8 rounded-full border shrink-0 transition-all duration-200',
+          href
+            ? 'border-white/20 text-white/70 group-hover:border-pink group-hover:bg-pink group-hover:text-white shadow-sm'
+            : 'border-white/15 text-white/40 group-hover:border-white/30 group-hover:text-white/60'
+        )}
+        title={href ? `Open: ${href}` : 'Add link in CMS'}
+      >
+        <ArrowUpRight
+          className={cn(
+            'w-4 h-4 transition-transform duration-200',
+            href && 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+          )}
+        />
+      </div>
+    </div>
+  );
+
+  if (href) {
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          {rowContent}
+        </a>
+      );
+    }
+    return (
+      <Link to={href} className="block">
+        {rowContent}
+      </Link>
+    );
+  }
+
+  return <div>{rowContent}</div>;
+}
 
 function BentoPanel({
   title,
@@ -83,15 +167,8 @@ export default function SelectedWorkSection() {
           <ScrollReveal className="md:col-span-3 h-full">
             <BentoPanel title="Projects" className="h-full">
               <div className="flex flex-col gap-4 flex-1">
-                {projects.map((project) => (
-                  <div
-                    key={project}
-                    className="border-b border-white/10 pb-4 last:border-0 last:pb-0"
-                  >
-                    <p className="font-body text-[14px] leading-[23px] text-white/80">
-                      {project}
-                    </p>
-                  </div>
+                {projects.map((project, idx) => (
+                  <WorkRow key={(typeof project === 'string' ? project : project.text) + idx} item={project} />
                 ))}
               </div>
               <Button
@@ -133,15 +210,8 @@ export default function SelectedWorkSection() {
           <ScrollReveal delay={0.1} className="md:col-span-2 h-full">
             <BentoPanel title="Blogs" className="h-full">
               <div className="flex flex-col gap-3 flex-1">
-                {blogs.map((blog) => (
-                  <div
-                    key={blog}
-                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
-                  >
-                    <p className="font-body text-[14px] leading-[23px] text-white/80">
-                      {blog}
-                    </p>
-                  </div>
+                {blogs.map((blog, idx) => (
+                  <WorkRow key={(typeof blog === 'string' ? blog : blog.text) + idx} item={blog} />
                 ))}
               </div>
               <Button
@@ -157,15 +227,8 @@ export default function SelectedWorkSection() {
           <ScrollReveal delay={0.15} className="md:col-span-2 h-full">
             <BentoPanel title="Scholarship & Publications" className="h-full">
               <div className="flex flex-col gap-3 flex-1">
-                {scholarships.map((item) => (
-                  <div
-                    key={item}
-                    className="border-b border-white/10 pb-3 last:border-0 last:pb-0"
-                  >
-                    <p className="font-body text-[14px] leading-[23px] text-white/80">
-                      {item}
-                    </p>
-                  </div>
+                {scholarships.map((item, idx) => (
+                  <WorkRow key={(typeof item === 'string' ? item : item.text) + idx} item={item} />
                 ))}
               </div>
               <Button

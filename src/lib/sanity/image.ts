@@ -11,5 +11,16 @@ export function imgUrl(source: SanityImageSource | string | undefined, width = 8
   if (!source) return undefined;
   if (typeof source === 'string') return source;
   if (!builder) return undefined;
-  return builder.image(source).width(width).auto('format').url();
+  try {
+    // If source is an object without an asset or ref, return undefined safely
+    if (typeof source === 'object') {
+      const srcObj = source as any;
+      if (!srcObj.asset && !srcObj._ref) {
+        return undefined;
+      }
+    }
+    return builder.image(source).width(width).auto('format').url();
+  } catch {
+    return undefined;
+  }
 }

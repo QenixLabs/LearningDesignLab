@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const homePage = defineType({
   name: 'homePage',
@@ -24,9 +24,99 @@ export const homePage = defineType({
       }],
       validation: (r) => r.max(5),
     }),
-    defineField({ name: 'selectedWorkProjects', title: 'Selected work — Projects', type: 'array', of: [{ type: 'string' }] }),
-    defineField({ name: 'selectedWorkScholarships', title: 'Selected work — Scholarships', type: 'array', of: [{ type: 'string' }] }),
-    defineField({ name: 'selectedWorkBlogs', title: 'Selected work — Blogs', type: 'array', of: [{ type: 'string' }] }),
+    defineField({
+      name: 'selectedWorkProjects',
+      title: 'Selected work — Projects',
+      description: 'Showcased projects with text description and optional clickable hyperlink',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'showcasedProject',
+          title: 'Project Item',
+          fields: [
+            defineField({
+              name: 'text',
+              title: 'Project Title / Description',
+              type: 'text',
+              rows: 2,
+              validation: (r) => r.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'Hyperlink / URL',
+              type: 'string',
+              description: 'e.g. /projects/ai-data-science-course or https://...',
+            }),
+          ],
+          preview: {
+            select: { title: 'text', subtitle: 'href' },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'selectedWorkScholarships',
+      title: 'Selected work — Scholarships & Publications',
+      description: 'Showcased scholarships/publications with text and optional clickable hyperlink',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'showcasedScholarship',
+          title: 'Scholarship / Publication Item',
+          fields: [
+            defineField({
+              name: 'text',
+              title: 'Title / Description',
+              type: 'text',
+              rows: 2,
+              validation: (r) => r.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'Hyperlink / URL',
+              type: 'string',
+              description: 'e.g. /publications or external link',
+            }),
+          ],
+          preview: {
+            select: { title: 'text', subtitle: 'href' },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'selectedWorkBlogs',
+      title: 'Selected work — Blogs',
+      description: 'Showcased blogs/articles with text and optional clickable hyperlink',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'showcasedBlog',
+          title: 'Blog Item',
+          fields: [
+            defineField({
+              name: 'text',
+              title: 'Blog Title / Topic',
+              type: 'text',
+              rows: 2,
+              validation: (r) => r.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'Hyperlink / URL',
+              type: 'string',
+              description: 'e.g. /community#blog-newsletter or article link',
+            }),
+          ],
+          preview: {
+            select: { title: 'text', subtitle: 'href' },
+          },
+        }),
+      ],
+    }),
     defineField({
       name: 'presentations',
       title: 'Selected work — Presentations',
