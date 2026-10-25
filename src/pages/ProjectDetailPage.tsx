@@ -33,13 +33,13 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
         slug: sanityStudy.slug?.current || activeSlug,
         client: sanityStudy.client || fallbackStudy?.client || '',
         title: sanityStudy.title || fallbackStudy?.title || '',
-        subtitle: sanityStudy.subtitle || fallbackStudy?.subtitle || '',
+        subtitle: sanityStudy.subtitle ?? fallbackStudy?.subtitle ?? '',
         category: sanityStudy.category || fallbackStudy?.category || 'Courses & Curricula',
-        heroImage: sanityStudy.heroImage ? (imgUrl(sanityStudy.heroImage, 1200) || '') : (fallbackStudy?.heroImage || ''),
+        heroImage: sanityStudy.heroImage ? (imgUrl(sanityStudy.heroImage, 1200) || fallbackStudy?.heroImage || '') : (fallbackStudy?.heroImage || ''),
         heroImageAlt: sanityStudy.heroImageAlt || fallbackStudy?.heroImageAlt || sanityStudy.title || '',
-        nutshell: sanityStudy.nutshell || fallbackStudy?.nutshell || [],
-        intro: sanityStudy.intro || fallbackStudy?.intro,
-        challengeCallout: sanityStudy.challengeCallout || fallbackStudy?.challengeCallout,
+        nutshell: sanityStudy.nutshell && sanityStudy.nutshell.length > 0 ? sanityStudy.nutshell : (fallbackStudy?.nutshell || []),
+        intro: sanityStudy.intro ?? fallbackStudy?.intro,
+        challengeCallout: sanityStudy.challengeCallout ?? fallbackStudy?.challengeCallout,
         sections: (sanityStudy.sections && sanityStudy.sections.length > 0
           ? sanityStudy.sections.map((sec, secIdx): CaseStudySection => {
               const fbSec =
@@ -49,8 +49,9 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
               // Resolve single section image
               let resolvedImage = undefined;
               if (sec.image) {
-                const asset = sec.image.asset || (sec.image as any);
+                const asset = (sec.image as any).asset || (sec.image as any);
                 const src =
+                  imgUrl(sec.image, 1200) ||
                   imgUrl(asset, 1200) ||
                   (typeof asset === 'string' ? asset : (asset as any)?.src);
 
@@ -63,9 +64,6 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
                   };
                 }
               }
-              if (!resolvedImage && fbSec?.image) {
-                resolvedImage = fbSec.image;
-              }
 
               // Resolve collage / multi-image
               let resolvedImages = undefined;
@@ -73,6 +71,7 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
                 resolvedImages = sec.images.map((imgItem: any, iIdx: number) => {
                   const asset = imgItem.asset || imgItem;
                   const src =
+                    imgUrl(imgItem, 800) ||
                     imgUrl(asset, 800) ||
                     (typeof asset === 'string' ? asset : imgItem?.src) ||
                     '';
@@ -85,15 +84,14 @@ export default function ProjectDetailPage({ slug: propSlug }: ProjectDetailPageP
                   };
                 });
               }
-              if (!resolvedImages && fbSec?.images) {
-                resolvedImages = fbSec.images;
-              }
 
               return {
                 heading: sec.heading,
                 level: (sec.level === 3 ? 3 : 2) as 2 | 3,
                 paragraphs: sec.paragraphs,
+                callout: sec.callout || fbSec?.callout,
                 list: sec.list,
+                numberedList: sec.numberedList || fbSec?.numberedList,
                 gridItems: sec.gridItems,
                 image: resolvedImage,
                 images: resolvedImages,

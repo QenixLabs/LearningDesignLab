@@ -50,18 +50,28 @@ export const caseStudy = defineType({
       title: 'Hero / Featured Image',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Descriptive text for accessibility & SEO',
+        }),
+      ],
     }),
     defineField({
       name: 'heroImageAlt',
-      title: 'Image Alt Text',
+      title: 'Image Alt Text (Fallback)',
       type: 'string',
+      description: 'Used if no alt text is set directly on the hero image above',
     }),
     defineField({
       name: 'nutshell',
       title: 'In a Nutshell (Key Attributes)',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
+          name: 'nutshellItem',
           type: 'object',
           fields: [
             defineField({ name: 'label', type: 'string', title: 'Label' }),
@@ -70,7 +80,7 @@ export const caseStudy = defineType({
           preview: {
             select: { title: 'label', subtitle: 'value' },
           },
-        },
+        }),
       ],
     }),
     defineField({
@@ -90,7 +100,9 @@ export const caseStudy = defineType({
       title: 'Narrative Sections',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
+          name: 'sectionItem',
+          title: 'Section',
           type: 'object',
           fields: [
             defineField({ name: 'heading', type: 'string', title: 'Heading' }),
@@ -108,28 +120,45 @@ export const caseStudy = defineType({
               of: [{ type: 'text', rows: 3 }],
             }),
             defineField({
+              name: 'callout',
+              title: 'Callout Box (Highlighted Quote / Key Takeaway)',
+              type: 'object',
+              fields: [
+                defineField({ name: 'label', type: 'string', title: 'Callout Label' }),
+                defineField({ name: 'text', type: 'text', rows: 3, title: 'Callout Text' }),
+              ],
+            }),
+            defineField({
               name: 'list',
-              type: 'array',
               title: 'Bulleted Takeaways (Checkmarks)',
+              type: 'array',
+              of: [{ type: 'string' }],
+            }),
+            defineField({
+              name: 'numberedList',
+              title: 'Numbered Steps / List',
+              type: 'array',
               of: [{ type: 'string' }],
             }),
             defineField({
               name: 'gridItems',
-              type: 'array',
               title: 'Grid Cards (Key Pillars)',
+              type: 'array',
               of: [
-                {
+                defineArrayMember({
+                  name: 'gridItem',
                   type: 'object',
                   fields: [
                     defineField({ name: 'title', type: 'string', title: 'Card Title' }),
                     defineField({ name: 'description', type: 'text', rows: 3, title: 'Card Description' }),
                   ],
-                },
+                }),
               ],
             }),
             defineField({
               name: 'image',
-              title: 'Section Image',
+              title: 'Section Image (Single)',
+              description: 'Replace or upload an image for this section (e.g. diagrams, screenshots, infographics)',
               type: 'image',
               options: { hotspot: true },
               fields: [
@@ -152,11 +181,12 @@ export const caseStudy = defineType({
             }),
             defineField({
               name: 'images',
-              title: 'Section Image Collage / Gallery',
+              title: 'Section Image Collage / Gallery (Multiple)',
               description: 'Multiple images displayed side-by-side (e.g. 3 mobile app screens)',
               type: 'array',
               of: [
                 defineArrayMember({
+                  name: 'collageImage',
                   type: 'image',
                   options: { hotspot: true },
                   fields: [
@@ -186,9 +216,21 @@ export const caseStudy = defineType({
             }),
           ],
           preview: {
-            select: { title: 'heading', media: 'image' },
+            select: {
+              heading: 'heading',
+              paragraphs: 'paragraphs',
+              media: 'image',
+            },
+            prepare({ heading, paragraphs, media }) {
+              const snippet = Array.isArray(paragraphs) && paragraphs.length > 0 ? paragraphs[0] : '';
+              return {
+                title: heading || (snippet ? snippet.slice(0, 55) + '…' : 'Section (Image/Showcase)'),
+                subtitle: heading && snippet ? snippet.slice(0, 65) + '…' : (heading ? undefined : 'No heading specified'),
+                media,
+              };
+            },
           },
-        },
+        }),
       ],
     }),
     defineField({
@@ -203,7 +245,8 @@ export const caseStudy = defineType({
           title: 'Thematic Tracks (e.g. UNESCO Myanmar)',
           type: 'array',
           of: [
-            {
+            defineArrayMember({
+              name: 'curriculumTheme',
               type: 'object',
               fields: [
                 defineField({ name: 'theme', type: 'string', title: 'Theme Name' }),
@@ -214,7 +257,7 @@ export const caseStudy = defineType({
                   of: [{ type: 'string' }],
                 }),
               ],
-            },
+            }),
           ],
         }),
         defineField({
@@ -222,14 +265,15 @@ export const caseStudy = defineType({
           title: 'Sequential Stages / Modules (e.g. Patang)',
           type: 'array',
           of: [
-            {
+            defineArrayMember({
+              name: 'curriculumStage',
               type: 'object',
               fields: [
                 defineField({ name: 'stage', type: 'string', title: 'Stage (e.g. Module 1)' }),
                 defineField({ name: 'title', type: 'string', title: 'Stage Title' }),
                 defineField({ name: 'description', type: 'text', rows: 2, title: 'Description' }),
               ],
-            },
+            }),
           ],
         }),
       ],
@@ -249,14 +293,15 @@ export const caseStudy = defineType({
       title: 'Key Impact Statistics',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
+          name: 'impactStat',
           type: 'object',
           fields: [
             defineField({ name: 'value', type: 'string', title: 'Metric Value' }),
             defineField({ name: 'label', type: 'string', title: 'Metric Label' }),
             defineField({ name: 'subtext', type: 'string', title: 'Subtext' }),
           ],
-        },
+        }),
       ],
     }),
     defineField({
@@ -264,13 +309,14 @@ export const caseStudy = defineType({
       title: 'Key Lessons Learned',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
+          name: 'lessonLearned',
           type: 'object',
           fields: [
             defineField({ name: 'number', type: 'number', title: 'Lesson Number' }),
             defineField({ name: 'text', type: 'text', rows: 2, title: 'Lesson Text' }),
           ],
-        },
+        }),
       ],
     }),
     defineField({
@@ -278,7 +324,8 @@ export const caseStudy = defineType({
       title: 'Action Buttons',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
+          name: 'actionBtn',
           type: 'object',
           fields: [
             defineField({ name: 'label', type: 'string', title: 'Button Label' }),
@@ -290,7 +337,7 @@ export const caseStudy = defineType({
               initialValue: 'primary',
             }),
           ],
-        },
+        }),
       ],
     }),
     defineField({ name: 'orderRank', type: 'string', hidden: true }),

@@ -91,7 +91,9 @@ export interface SanityCaseStudy {
     heading?: string;
     level?: number;
     paragraphs?: string[];
+    callout?: { label?: string; text: string };
     list?: string[];
+    numberedList?: string[];
     gridItems?: { title: string; description: string }[];
     image?: {
       asset?: SanityImageSource;
@@ -188,15 +190,20 @@ export const SITE_SETTINGS_QUERY = `
   }
 `;
 
+export interface ShowcasedWorkItem {
+  text: string;
+  href?: string;
+}
+
 export interface SanityHomePage {
   heroTitle: string;
   heroSubtext: string;
   primaryCtaLabel?: string;
   secondaryCtaLabel?: string;
   stats?: { value: number; suffix?: string; label: string }[];
-  selectedWorkProjects?: string[];
-  selectedWorkScholarships?: string[];
-  selectedWorkBlogs?: string[];
+  selectedWorkProjects?: (string | ShowcasedWorkItem)[];
+  selectedWorkScholarships?: (string | ShowcasedWorkItem)[];
+  selectedWorkBlogs?: (string | ShowcasedWorkItem)[];
   presentations?: { name: string; image?: SanityImageSource }[];
   verticalsHeading?: string;
   verticals?: { label: string; image?: SanityImageSource }[];

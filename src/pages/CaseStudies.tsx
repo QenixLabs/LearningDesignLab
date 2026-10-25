@@ -3,8 +3,9 @@ import Layout from '../components/Layout';
 import NeuronMotif from '../components/NeuronMotif';
 import ScrollReveal from '../components/ScrollReveal';
 import { useSanityQuery } from '@/lib/sanity/useSanityQuery';
-import { PAGE_COPY_QUERY, type SanityPageCopy } from '@/lib/sanity/queries';
-import { caseStudies } from '../data/caseStudies';
+import { PAGE_COPY_QUERY, CASE_STUDIES_QUERY, type SanityPageCopy, type SanityCaseStudy } from '@/lib/sanity/queries';
+import { imgUrl } from '@/lib/sanity/image';
+import { caseStudies, getCaseStudy, type CaseStudy } from '../data/caseStudies';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function CaseStudies() {
@@ -20,6 +21,42 @@ export default function CaseStudies() {
         'Deep dives into how we apply learning sciences, behavioural change design, and evidence-informed methodologies to solve complex learning challenges across the globe.',
     }
   );
+
+  const { data: sanityStudies } = useSanityQuery<SanityCaseStudy[]>(
+    CASE_STUDIES_QUERY,
+    {},
+    []
+  );
+
+  const studies: (CaseStudy | {
+    slug: string;
+    client: string;
+    title: string;
+    subtitle?: string;
+    heroImage?: string;
+    heroImageAlt?: string;
+    nutshell?: { label: string; value: string }[];
+    challengeCallout?: string;
+  })[] =
+    sanityStudies && sanityStudies.length > 0
+      ? sanityStudies.map((s) => {
+          const fb = getCaseStudy(s.slug?.current || '');
+          const heroSrc = s.heroImage
+            ? imgUrl(s.heroImage, 800) || fb?.heroImage || ''
+            : fb?.heroImage || '';
+
+          return {
+            slug: s.slug?.current || fb?.slug || '',
+            client: s.client || fb?.client || '',
+            title: s.title || fb?.title || '',
+            subtitle: s.subtitle ?? fb?.subtitle ?? '',
+            heroImage: heroSrc,
+            heroImageAlt: s.heroImageAlt || fb?.heroImageAlt || s.title || '',
+            nutshell: s.nutshell && s.nutshell.length > 0 ? s.nutshell : (fb?.nutshell || []),
+            challengeCallout: s.challengeCallout ?? fb?.challengeCallout,
+          };
+        })
+      : caseStudies;
 
   const subtitle = pageCopy?.subtitle || pageCopy?.intro;
 
@@ -43,7 +80,7 @@ export default function CaseStudies() {
           </ScrollReveal>
 
           <div className="max-w-4xl mx-auto space-y-16 md:space-y-24">
-            {caseStudies.map((study, index) => (
+            {studies.map((study, index) => (
               <ScrollReveal key={study.slug} delay={0.08 * index}>
                 <article className="border border-black/10 rounded-2xl p-6 md:p-10 bg-gradient-to-br from-white to-black/[0.01] hover:border-pink/40 hover:shadow-xl transition-all duration-300">
                   <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start mb-6">
